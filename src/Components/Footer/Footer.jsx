@@ -9,23 +9,23 @@ const Footer = () => {
             <ul className="top">
               <li className="logo-details">
                 <i className="fab fa-slack"></i>
-                <span className="logo_name">Artsafari</span>
+                <span className="logo_name">Youngblood 3.0</span>
               </li>
             </ul>
             <div className="link-boxes">
               <ul className="box" aria-label="Company links">
-                <li className="link_name">Magazine</li>
+                <li className="link_name">Website</li>
                 <li>
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>
-                  <a href="#">About us</a>
+                  <a href="/about">About us</a>
                 </li>
                 <li>
                   <a href="#">Contact us</a>
                 </li>
                 <li>
-                  <a href="#">Our publishers</a>
+                  <a href="#">Report an issue</a>
                 </li>
               </ul>
               <ul className="box" aria-label="Account links">

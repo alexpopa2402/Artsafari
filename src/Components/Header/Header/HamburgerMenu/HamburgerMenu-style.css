@@ -1,0 +1,44 @@
+.hamburger-menu-container {
+  display: none;
+}
+
+.hamburger-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgb(37, 37, 37);
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.burger-nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.burger-nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0.5rem 0;
+}
+
+.burger-login-signup {
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .hamburger-menu-container {
+    display: block;
+  }
+}

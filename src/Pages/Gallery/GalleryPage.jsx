@@ -1,21 +1,49 @@
-//import React from 'react';
-//import './GalleryPage.css'; // Make sure to create a corresponding CSS file for styling
+import { useState } from 'react';
+import './GalleryPage-style.css';
 
 const images = [
-    'image1.jpg',
-    'image2.jpg',
-    'image3.jpg',
+    '/src/assets/81.jpg',
+    '/src/assets/abstract.jpg',
+    '/src/assets/81.jpg',
+    '/src/assets/abstract.jpg',
+    '/src/assets/81.jpg',
+    '/src/assets/abstract.jpg',
+    '/src/assets/81.jpg',
+    '/src/assets/abstract.jpg',
+    '/src/assets/81.jpg',
+    '/src/assets/abstract.jpg',
+    '/src/assets/81.jpg',
+    '/src/assets/abstract.jpg',
+    '/src/assets/81.jpg',
+    '/src/assets/abstract.jpg',
     // Add more image paths here
 ];
 
 const GalleryPage = () => {
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const handleImageClick = (image) => {
+        setSelectedImage(image);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedImage(null);
+    };
+
     return (
         <div className="gallery-container">
             {images.map((image, index) => (
-                <div key={index} className="gallery-item">
+                <div key={index} className="gallery-item" onClick={() => handleImageClick(image)}>
                     <img src={image} alt={`Gallery ${index}`} />
                 </div>
             ))}
+
+            {selectedImage && (
+                <div className="modal" onClick={handleCloseModal}>
+                    <span className="close">&times;</span>
+                    <img className="modal-content" src={selectedImage} alt="Full Screen" />
+                </div>
+            )}
         </div>
     );
 };

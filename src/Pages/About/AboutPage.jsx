@@ -1,4 +1,4 @@
-import './AboutPage.css';
+import './AboutPage-style.css';
 
 const About = () => {
     return (
