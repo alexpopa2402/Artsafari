@@ -155,13 +155,13 @@ footer .bottom-details .bottom_text{
 .logo-details {
   color: #fff;
   font-size: 30px;
-  display: flex;
-  align-items: center;
+/*   display: flex;
+  align-items: center; */
 }
 
-.logo_name {
+/* .logo_name {
   margin-left: 10px;
-}
+} */
 
 .link-boxes {
   display: flex;
@@ -295,7 +295,7 @@ footer .bottom-details .bottom_text {
   }
 
   footer .content .link-boxes .input-box {
-   /*  width: 40%; */
+/*     width: 40%; */
     margin-top: 10px;
   }
 }

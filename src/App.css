@@ -42,9 +42,8 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
+/*   min-height: 100vh; */
   text-rendering: optimizeSpeed;
-/*   padding-block: 2rem; */
   margin-inline: auto;
 /*   line-height: 1.5; */
 overflow-y: scroll;
@@ -84,16 +83,6 @@ input, button, textarea, select {
   }
 }
 
-/* .Homepage--main {
-  display: grid;
-  place-content: center;
-  min-height: 100vh;
-
-  font-family: var(--ff-primary);
-  font-weight: var(--fw-400);
-
-  background-color: hsl(var(--clr-neutral-200));
-} */
 
 h1,
 h2,
@@ -111,6 +100,16 @@ h3 {
   margin-top: var(--flow-spacer, 1em);
 }
 
+
+.grandContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  flex-grow: 1;
+}
 
 
 

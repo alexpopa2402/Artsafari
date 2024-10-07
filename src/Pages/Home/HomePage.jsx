@@ -1,9 +1,10 @@
 import "./HomePage.css";
+import Carousel from "../../Components/Carousel/Carousel";
 
 const HomePage = () => {
     return (
         <div className="homepage-container">
-
+            <Carousel />
             <main className="homepage-main">
                 <section className="homepage-section">
                 <header className="homepage-header">
