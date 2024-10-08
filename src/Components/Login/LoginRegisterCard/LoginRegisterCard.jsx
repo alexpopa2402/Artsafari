@@ -6,7 +6,7 @@ const LoginRegisterCard = ({ onClose }) => {
     const [popupType, setPopupType] = useState('login'); // 'login', 'forgotPassword', 'signUp'
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState({ email: '', password: '' });
+    const [errors, setErrors] = useState({ email: '', password: '' }); //useState(null)
     const [showPassword, setShowPassword] = useState(false);
     const [passwordStrength, setPasswordStrength] = useState('');
 

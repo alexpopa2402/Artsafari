@@ -1,0 +1,109 @@
+/* UserPage-style.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-header img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid #ddd;
+}
+
+.profile-header .profile-info {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.profile-header .profile-info h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #333;
+}
+
+.profile-header .profile-info p {
+    margin: 5px 0;
+    color: #777;
+}
+
+.profile-header .profile-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile-header .profile-actions button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.profile-header .profile-actions button:hover {
+    background-color: #0056b3;
+}
+
+.artworks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.artwork {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.artwork img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.artwork:hover {
+    transform: translateY(-10px);
+}
+
+.artwork-info {
+    padding: 15px;
+}
+
+.artwork-info h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.artwork-info p {
+    margin: 10px 0 0;
+    color: #777;
+}

@@ -1,11 +1,12 @@
 
 .main-header {
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(255, 255, 255);
   color: #ffffff;
   font-size: 1rem;
   position: sticky;
   top: 0;
-  box-shadow: 2px 9px 17px -5px rgba(139, 139, 139, 0.8);
+/*   box-shadow: 2px 9px 17px -5px rgba(139, 139, 139, 0.8); */
+  border-bottom: 1px solid #0000003a;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,7 +15,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
-  height: 60px;
+  height: 80px;
 }
 
 .title-container {
@@ -23,16 +24,18 @@
 }
 
 .main-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-right: 1rem;
   white-space: nowrap;
+  color: #c70000;
 }
 
 .sub-title {
   font-size: 1rem;
   margin-right: 1rem;
   white-space: nowrap;
+  color: #000000;
 }
 
 .nav-links {
@@ -43,9 +46,10 @@
 }
 
 .nav-links a {
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
   margin: 0 0.5rem;
+  font-size: 0.9rem;
 }
 
 
