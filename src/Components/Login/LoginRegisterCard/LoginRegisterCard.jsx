@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, } from 'react';
+import { supabase } from '../../../Client/supabaseClient';
+
 import PropTypes from 'prop-types';
 import './LoginRegisterCard-style.css';
 
@@ -6,7 +8,7 @@ const LoginRegisterCard = ({ onClose }) => {
     const [popupType, setPopupType] = useState('login'); // 'login', 'forgotPassword', 'signUp'
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState({ email: '', password: '' }); //useState(null)
+    const [errors, setErrors] = useState({ email: '', password: '' });
     const [showPassword, setShowPassword] = useState(false);
     const [passwordStrength, setPasswordStrength] = useState('');
 
@@ -16,10 +18,9 @@ const LoginRegisterCard = ({ onClose }) => {
 
     const handleSignUpClick = () => {
         setPopupType('signUp');
-        setPassword(''); // Clear the password field
+        setPassword('');
     };
 
-    //Validation functions for email and password
     const validateEmail = (email) => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
@@ -44,7 +45,7 @@ const LoginRegisterCard = ({ onClose }) => {
         setPasswordStrength(strength);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let valid = true;
         let newErrors = { email: '', password: '' };
@@ -62,8 +63,54 @@ const LoginRegisterCard = ({ onClose }) => {
         setErrors(newErrors);
 
         if (valid) {
-            // Handle form submission logic here
-            onClose();
+            if (popupType === 'signUp') {
+                await handleSignUp();
+            } else if (popupType === 'login') {
+                await handleLogin();
+            }
+        }
+    };
+
+    const handleSignUp = async () => {
+        const { user, error } = await supabase.auth.signUp({
+            email,
+            password,
+        });
+        if (error) {
+            setErrors({ ...errors, email: error.message });
+        } else {
+            // Automatically sign in the user after successful sign-up
+/*             const { session, error: signInError } = await supabase.auth.signIn({
+                email,
+                password,
+            }); */
+            const { data: { session }, error: signInError } = await supabase.auth.signIn({
+                email,
+                password,
+            });
+            if (signInError) {
+                setErrors({ ...errors, email: signInError.message });
+            } else {
+                // Redirect to user page or perform other actions
+                window.location.href = '/user';
+            }
+        }
+    };
+
+    const handleLogin = async () => {
+/*         const { user, error } = await supabase.auth.signIn({
+            email,
+            password,
+        }); */
+        const { data: { session }, error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
+        if (error) {
+            setErrors({ ...errors, email: error.message });
+        } else {
+            // Redirect to user page or perform other actions
+            window.location.href = '/user';
         }
     };
 

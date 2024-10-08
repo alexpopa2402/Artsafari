@@ -1,23 +1,44 @@
-import { useEffect, useState } from "react";
-import "./Header-style.css"
-import SearchBar from "../SearchBar/searchbar";
-import "../SearchBar/SearchBar-style.css"
-import LoginRegisterButton from "../Login/loginRegisterButton/loginRegisterButton";
-import "../Login/loginRegisterButton/LoginRegisterButton-style.css"
-import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
-import "../HamburgerMenu/HamburgerMenu-style.css";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { supabase } from '../../Client/supabaseClient';
+import { Link } from 'react-router-dom';
+import './Header-style.css';
+import SearchBar from '../SearchBar/searchbar';
+import '../SearchBar/SearchBar-style.css';
+import LoginRegisterButton from '../Login/loginRegisterButton/loginRegisterButton';
+import '../Login/loginRegisterButton/LoginRegisterButton-style.css';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
+import '../HamburgerMenu/HamburgerMenu-style.css';
+import UserMenu from '../UserMenu/UserMenu';
+import '../UserMenu/UserMenu-style.css';
+
 
 const Header = () => {
+  const [session, setSession] = useState(null);
+
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 515);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 515);
+    const fetchSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setSession(session);
+
+      const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+        setSession(session);
+      });
+
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 515);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        authListener.unsubscribe();
+        window.removeEventListener("resize", handleResize);
+      };
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    fetchSession();
   }, []);
 
   return (
@@ -32,7 +53,7 @@ const Header = () => {
       <Link to='/artists' className='artists'>ARTISTS</Link>
       <Link to='/about' className="about">ABOUT US</Link>
       </nav>
-      <LoginRegisterButton/>
+      {session ? <UserMenu /> : <LoginRegisterButton />}
       <HamburgerMenu/>
     </header>
   );
