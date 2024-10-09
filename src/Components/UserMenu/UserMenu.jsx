@@ -19,7 +19,7 @@ const UserMenu = () => {
             </div>
             {isOpen && (
                 <div className="dropdown-menu">
-                    <button onClick={() => navigate('/user')}>My Profile</button>
+                    <button onClick={() => navigate('/profile')}>My Profile</button>
                     <button onClick={handleLogout}>Log Out</button>
                 </div>
             )}

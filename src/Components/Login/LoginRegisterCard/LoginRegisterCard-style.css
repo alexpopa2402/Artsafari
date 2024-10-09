@@ -71,8 +71,8 @@
   
   .error {
     color: red;
-    font-size: 12px;
-    margin-top: 5px;
+    font-size: 14px;
+    margin-top: 25px;
     display: block;
   }
   
@@ -151,9 +151,29 @@
     }
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
+/*     .popup-form {
+      width: 40%;
+      padding: 15px;
+    } */
+  
+    .popup-form h2 {
+      font-size: 1.2rem;
+    }
+  
+    .popup-form input {
+      padding: 8px;
+    }
+  
+    .popup-form button {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 430px) {
     .popup-form {
-      width: 90%;
+      width: 95%;
       padding: 15px;
     }
   
@@ -168,5 +188,29 @@
     .popup-form button {
       padding: 8px 15px;
       font-size: 14px;
+    }
+  }
+
+  @media (max-width: 280px) {
+
+    .popup-form {
+      width: 100vw;
+    }
+
+    .popup-form h2 {
+      font-size: 1.2rem;
+    }
+  
+    .popup-form input {
+      padding: 8px;
+    }
+  
+    .popup-form button {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+
+    .popup-links {
+      font-size: 0.8rem;
     }
   }
