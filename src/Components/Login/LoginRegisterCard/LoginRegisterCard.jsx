@@ -1,4 +1,4 @@
-import { useState, } from 'react';
+import { useState } from 'react';
 import { supabase } from '../../../Client/supabaseClient';
 import PropTypes from 'prop-types';
 import './LoginRegisterCard-style.css';
@@ -7,23 +7,19 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const LoginRegisterCard = ({ onClose }) => {
     const [popupType, setPopupType] = useState('login'); // 'login', 'forgotPassword', 'signUp'
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState({ email: '', password: '' });
+    const [errors, setErrors] = useState({ email: '', password: '', name: '' });
     const [showPassword, setShowPassword] = useState(false);
     const [passwordStrength, setPasswordStrength] = useState('');
     const [showThankYouMessage, setShowThankYouMessage] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleForgotPasswordClick = () => {
-        setPopupType('forgotPassword');
-        setErrors({ email: '', password: '' }); // Clear errors
-    };
-
-    const handleSignUpClick = () => {
-        setPopupType('signUp');
-        setPassword('');
-        setErrors({ email: '', password: '' }); // Clear errors
+    // Validation functions
+    const validateName = (name) => {
+        const nameRegex = /^[a-zA-Z\s]+$/;
+        return nameRegex.test(name);
     };
 
     const validateEmail = (email) => {
@@ -32,16 +28,17 @@ const LoginRegisterCard = ({ onClose }) => {
     };
 
     const validatePassword = (password) => {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         if (!passwordRegex.test(password)) {
-            return 'Password must be at least 6 characters and include an upper case letter, a lower case letter, a number, and a symbol';
+            return 'Password must be at least 8 characters and include an upper case letter, a lower case letter, a number, and a symbol';
         }
         return '';
     };
 
+    // Password strength calculation
     const calculatePasswordStrength = (password) => {
         let strength = '';
-        if (password.length >= 6) {
+        if (password.length >= 8) {
             if (password.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/)) {
                 strength = 'strong';
             } else if (password.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)) {
@@ -53,17 +50,34 @@ const LoginRegisterCard = ({ onClose }) => {
         setPasswordStrength(strength);
     };
 
+    // Handler functions
+    const handleForgotPasswordClick = () => {
+        setPopupType('forgotPassword');
+        setErrors({ email: '', password: '' }); // Clear errors
+    };
+
+    const handleSignUpClick = () => {
+        setPopupType('signUp');
+        setPassword('');
+        setErrors({ email: '', password: '', name: '' }); // Clear errors
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         let valid = true;
-        let newErrors = { email: '', password: '' };
-    
+        let newErrors = { email: '', password: '', name: '' };
+
         if (!validateEmail(email)) {
             newErrors.email = 'Invalid email format';
             valid = false;
         }
-    
+
         if (popupType === 'signUp') {
+            if (!validateName(name)) {
+                newErrors.name = 'Name can only contain letters and spaces';
+                valid = false;
+            }
+
             const passwordError = validatePassword(password);
             if (passwordError) {
                 newErrors.password = passwordError;
@@ -72,7 +86,7 @@ const LoginRegisterCard = ({ onClose }) => {
         }
 
         setErrors(newErrors);
-    
+
         if (valid) {
             if (popupType === 'signUp') {
                 await handleSignUp();
@@ -87,6 +101,11 @@ const LoginRegisterCard = ({ onClose }) => {
         const { user, error } = await supabase.auth.signUp({
             email,
             password,
+            options: {
+                data: {
+                    name,
+                }
+            }
         });
         setIsLoading(false);
         if (error) {
@@ -122,10 +141,11 @@ const LoginRegisterCard = ({ onClose }) => {
                     <>
                         {popupType === 'login' && (
                             <>
-                                <h2>Youngblood</h2>
+                                <h2>Welcome to Youngblood </h2>
+                                <h5 style={{ marginBottom: '0.5rem' }}> — Log in — </h5>
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-group">
-                                        <label htmlFor="email">Email:</label>
+                                        <label htmlFor="email">Email</label>
                                         <input
                                             type="email"
                                             id="email"
@@ -136,7 +156,7 @@ const LoginRegisterCard = ({ onClose }) => {
                                         {errors.email && <span className="error">{errors.email}</span>}
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="password">Password:</label>
+                                        <label htmlFor="password">Password</label>
                                         <div className="password-input-container">
                                             <input
                                                 type={showPassword ? "text" : "password"}
@@ -160,6 +180,12 @@ const LoginRegisterCard = ({ onClose }) => {
                                     <a onClick={handleForgotPasswordClick}>Forgot password?</a>
                                     <a onClick={handleSignUpClick}>Don&apos;t have an account? Sign Up</a>
                                 </div>
+                                    <p className="terms-text">
+                                        By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
+                                    </p>
+                                    <p className="recaptcha-text">
+                                        This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                                    </p>
                             </>
                         )}
                         {popupType === 'forgotPassword' && (
@@ -167,7 +193,7 @@ const LoginRegisterCard = ({ onClose }) => {
                                 <h2>Forgot Password</h2>
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-group">
-                                        <label htmlFor="email">Email:</label>
+                                        <label htmlFor="email">Email</label>
                                         <input
                                             type="email"
                                             id="email"
@@ -177,16 +203,43 @@ const LoginRegisterCard = ({ onClose }) => {
                                         />
                                         {errors.email && <span className="error">{errors.email}</span>}
                                     </div>
-                                    <button type="submit">Reset Password</button>
+                                    <button type="submit" disabled={!validateEmail(email)}>Reset Password</button>
                                 </form>
+                                    <p className="terms-text">
+                                        By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
+                                    </p>
+                                    <p className="recaptcha-text">
+                                        This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                                    </p>
                             </>
                         )}
                         {popupType === 'signUp' && (
                             <>
-                                <h2>Sign Up</h2>
+                                <h2>Welcome to Youngblood <h5> — Create an account — </h5></h2>
+                                
                                 <form onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                        <label htmlFor="name">Name</label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            placeholder="Enter your full name"
+                                            value={name}
+                                            onChange={(e) => {
+                                                const newName = e.target.value;
+                                                setName(newName);
+                                                if (newName === '' || validateName(newName)) {
+                                                    setErrors({ ...errors, name: '' });
+                                                } else {
+                                                    setErrors({ ...errors, name: 'Name can only contain letters and spaces' });
+                                                }
+                                            }}
+                                            required
+                                        />
+                                        {errors.name && <span className="error">{errors.name}</span>}
+                                    </div>
                                     <div className="form-group">
-                                        <label htmlFor="email">Email:</label>
+                                        <label htmlFor="email">Email</label>
                                         <input
                                             type="email"
                                             id="email"
@@ -197,7 +250,7 @@ const LoginRegisterCard = ({ onClose }) => {
                                         {errors.email && <span className="error">{errors.email}</span>}
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="password">Password:</label>
+                                        <label htmlFor="password">Password</label>
                                         <div className="password-input-container">
                                             <input
                                                 type={showPassword ? "text" : "password"}
@@ -229,13 +282,19 @@ const LoginRegisterCard = ({ onClose }) => {
                                             <div className={`password-strength-bar ${passwordStrength}`}></div>
                                         </div>
                                         <div className="password-strength-text">
-                                            Strength: {passwordStrength === 'strong' ? 'Strong' : passwordStrength === 'moderate' ? 'Moderate' : 'Weak'}
+                                            Strength: {passwordStrength === 'strong' ? 'Great!' : passwordStrength === 'moderate' ? 'Moderate' : 'Weak'}
                                         </div>
                                     </div>
-                                    <button type="submit" disabled={isLoading}>
+                                    <button type="submit" disabled={isLoading || !validateEmail(email)}>
                                         {isLoading ? 'Loading...' : 'Sign Up'}
                                     </button>
                                 </form>
+                                    <p className="terms-text">
+                                        By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
+                                    </p>
+                                    <p className="recaptcha-text">
+                                        This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                                    </p>
                             </>
                         )}
                     </>
@@ -250,3 +309,4 @@ LoginRegisterCard.propTypes = {
 };
 
 export default LoginRegisterCard;
+

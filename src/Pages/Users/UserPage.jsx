@@ -28,7 +28,7 @@ const UserPage = () => {
     return (
         <div className="user-page">
             <div className="welcome-section">
-                <h1>Welcome, {user.email}</h1>
+                <h1>Welcome, {user.user_metadata.name}</h1>
             </div>
             <div className="profile-section">
                 <img src="path/to/profile-picture.jpg" alt="Profile Picture" className="profile-picture" />

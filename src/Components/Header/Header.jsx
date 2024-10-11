@@ -53,8 +53,8 @@ const Header = () => {
       <Link to='/artists' className='artists'>ARTISTS</Link>
       <Link to='/about' className="about">ABOUT US</Link>
       </nav>
-      {session ? <UserMenu /> : <LoginRegisterButton />}
       <HamburgerMenu/>
+      {session ? <UserMenu /> : <LoginRegisterButton />}
     </header>
   );
 };

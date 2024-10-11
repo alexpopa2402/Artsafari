@@ -2,7 +2,7 @@ import './AboutPage-style.css';
 
 const About = () => {
     return (
-        <div className="about-container">
+         <div className="about-container">
             <h1 className="about-title">About Us</h1>
             <div className="about-content">
                 <p>
@@ -11,9 +11,10 @@ const About = () => {
                 <p>
                     From contemporary paintings to abstract sculptures, each piece tells a unique story and showcases the creativity of emerging and established artists. Take a journey through our curated collections and immerse yourself in the global art scene, right from the comfort of your home.
                 </p>
-            </div>
+            </div> 
         </div>
     );
 };
 
 export default About;
+
