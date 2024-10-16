@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --clr-primary-400: 263 55% 52%;
   --clr-secondary-400: 217 19% 35%;
   --clr-secondary-500: 219 29% 14%;
@@ -15,7 +15,7 @@
   --fs-400: 0.8125rem;
   --fs-500: 1.25rem;
   --fs-800: 3.5rem;
-}
+} */
 
 /* Box sizing rules */
 *,
@@ -26,7 +26,6 @@
 
 *{
   margin: 0;
-  box-sizing: border-box;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -42,12 +41,21 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
-/*   min-height: 100vh; */
   text-rendering: optimizeSpeed;
   margin-inline: auto;
-/*   line-height: 1.5; */
-overflow-y: scroll;
-overflow-x: hidden;
+  line-height: 1.5;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.master-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.central-container {
+  flex-grow: 1;
 }
 
 /* A elements that don't have a class get default styles */
@@ -100,16 +108,6 @@ h3 {
   margin-top: var(--flow-spacer, 1em);
 }
 
-
-.grandContainer {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.main-container {
-  flex-grow: 1;
-}
 
 
 

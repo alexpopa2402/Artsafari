@@ -1,15 +1,16 @@
-.button-container {
-/*   text-align: center; */
-}
-
 .login-button {
   padding: 10px 20px;
   font-size: 15px;
   cursor: pointer;
   background-color: #ffffff;
   color: rgb(37, 37, 37);
-  border: none;
   border-radius: 45px;
-  border: 1px solid #00000052;
+  border: 1px solid rgba(0, 0, 0, 0.43);
   white-space: nowrap; /* Ensure text remains on one line */
+}
+
+.login-button:active {
+  background-color: rgb(132, 8, 8);
+  color: #ffffff;
+  transform: scale(0.95); /* Slightly reduce size for bouncy effect */
 }

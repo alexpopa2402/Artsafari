@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Header-style.css';
 import SearchBar from '../SearchBar/searchbar';
 import '../SearchBar/SearchBar-style.css';
-import LoginRegisterButton from '../Login/loginRegisterButton/loginRegisterButton';
+import LoginRegisterButton from '../Login/LoginRegisterButton/LoginRegisterButton';
 import '../Login/loginRegisterButton/LoginRegisterButton-style.css';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import '../HamburgerMenu/HamburgerMenu-style.css';

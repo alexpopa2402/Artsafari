@@ -14,7 +14,7 @@ const LoginRegisterButton = () => {
     };
 
     return (
-        <div className="button-container">
+        <div>
             <button className="login-button" onClick={handleButtonClick}>
                 Log in / Sign up
             </button>

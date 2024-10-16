@@ -28,7 +28,7 @@ const LoginRegisterCard = ({ onClose }) => {
     };
 
     const validatePassword = (password) => {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[^\s]{8,}$/;
         if (!passwordRegex.test(password)) {
             return 'Password must be at least 8 characters and include an upper case letter, a lower case letter, a number, and a symbol';
         }
@@ -37,6 +37,26 @@ const LoginRegisterCard = ({ onClose }) => {
 
     // Password strength calculation
     const calculatePasswordStrength = (password) => {
+        let strength = '';
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    
+        if (password === '') {
+            strength = '';
+        } else if (passwordRegex.test(password)) {
+            if (password.length >= 12) {
+                strength = 'strong';
+            } else if (password.length >= 10) {
+                strength = 'moderate';
+            } else if (password.length >= 8) {
+                strength = 'weak';
+            }
+        } else {
+            strength = 'weak';
+        }
+    
+        setPasswordStrength(strength);
+    };
+/*     const calculatePasswordStrength = (password) => {
         let strength = '';
         if (password.length >= 8) {
             if (password.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/)) {
@@ -48,7 +68,7 @@ const LoginRegisterCard = ({ onClose }) => {
             }
         }
         setPasswordStrength(strength);
-    };
+    }; */
 
     // Handler functions
     const handleForgotPasswordClick = () => {
@@ -130,11 +150,11 @@ const LoginRegisterCard = ({ onClose }) => {
     return (
         <div className="overlay" onClick={onClose}>
             <div className="popup-form" onClick={(e) => e.stopPropagation()}>
-                <span className="close-popup" onClick={onClose}>×</span>
+                <span className="close-thanks-popup" onClick={onClose}>×</span>
                 {showThankYouMessage ? (
                     <div className="thank-you-message">
-                        <h2>Thanks for signing up!</h2>
-                        <p>Please check your Inbox for the registration link in order to activate your profile!</p>
+                        <h3>Thanks for signing up!</h3>
+                        <p>Please check your Inbox or Spam folder for the profile activation link.</p>
                         <button onClick={onClose}>Close</button>
                     </div>
                 ) : (
@@ -215,7 +235,8 @@ const LoginRegisterCard = ({ onClose }) => {
                         )}
                         {popupType === 'signUp' && (
                             <>
-                                <h2>Welcome to Youngblood <h5> — Create an account — </h5></h2>
+                                <h2>Welcome to Youngblood </h2>
+                                <h5> — Create an account — </h5>
                                 
                                 <form onSubmit={handleSubmit}>
                                 <div className="form-group">
@@ -285,7 +306,7 @@ const LoginRegisterCard = ({ onClose }) => {
                                             Strength: {passwordStrength === 'strong' ? 'Great!' : passwordStrength === 'moderate' ? 'Moderate' : 'Weak'}
                                         </div>
                                     </div>
-                                    <button type="submit" disabled={isLoading || !validateEmail(email)}>
+                                    <button type="submit" className="submit-button" disabled={isLoading || !validateEmail(email) || validatePassword(password) !== ''}>
                                         {isLoading ? 'Loading...' : 'Sign Up'}
                                     </button>
                                 </form>
@@ -309,4 +330,3 @@ LoginRegisterCard.propTypes = {
 };
 
 export default LoginRegisterCard;
-

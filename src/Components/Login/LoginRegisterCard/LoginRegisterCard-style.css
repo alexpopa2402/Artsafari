@@ -58,12 +58,26 @@
   }
   
 
-  .popup-form button {
+  .submit-button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 10px;
   }
+
+  .submit-button:disabled {
+/*     background-color: grey; */
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.submit-button:disabled:hover {
+    background-color: grey;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+}
   
   .popup-links {
     margin-top: 10px;
@@ -134,7 +148,7 @@
     width: 33%;
   }
   
-  .password-strength-bar.medium {
+  .password-strength-bar.moderate {
     background-color: orange;
     width: 66%;
   }
@@ -150,14 +164,18 @@
     color: #333;
   }
   
-  .close-popup {
+  .close-thanks-popup {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 2px;
+    right: 7px;
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
     margin-right: 0.2rem;
+  }
+
+  .thank-you-message h3, p{
+    margin-bottom: 1rem;
   }
   
   @keyframes popupAnimation {
@@ -217,17 +235,17 @@
       width: 100vw;
     }
 
-    .popup-form h2 {
-      font-size: 1.2rem;
+    .popup-form h3 {
+      font-size: 1rem;
     }
   
-    .popup-form input {
-      padding: 8px;
+    .popup-form p {
+      font-size: 14px;
     }
   
     .popup-form button {
       padding: 8px 15px;
-      font-size: 14px;
+      font-size: 12px;
     }
 
     .popup-links {

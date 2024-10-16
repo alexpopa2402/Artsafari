@@ -11,22 +11,22 @@
 .burger-menu {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   background-color: rgb(255, 255, 255);
   position: absolute;
-  top: 60px;
+  top: 79px;
   right: 0;
   width: 100%;
+  height: 100vh;
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-top: 1px solid #6a69693a;
 }
 
 .burger-nav-links {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 0.5rem 1rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .burger-nav-links a {
@@ -35,12 +35,34 @@
   margin: 0.5rem 0;
 }
 
-.burger-login-signup {
+.divider {
   width: 100%;
+  height: 1px;
+  background-color: #6a69693a;
+  margin-bottom: 1rem;
+}
+
+.burger-logout:active {
+  background-color: rgb(37, 37, 37);
+  color: #ffffff;
+  transform: scale(0.95); /* Slightly reduce size for bouncy effect */
 }
 
 @media (max-width: 1000px) {
-  .hamburger-menu-container {
+  .hamburger-menu-container,
+  .burger-menu .login-button {
     display: block;
+    border-radius: 0.2rem;
   }
+}
+
+.close-popup {
+  position: absolute;
+  top: 0.8em;
+  right: 1.3em;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 0.2rem;
+  color: #000;
 }

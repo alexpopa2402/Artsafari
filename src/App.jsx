@@ -13,9 +13,9 @@ import './App.css';
 
 const App = () => {
   return (
-      <div className='grandContainer'>
+      <div className='master-container'>
         <Header />
-        <div className='main-container'>
+        <div className='central-container'>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/gallery" element={<GalleryPage />} />
