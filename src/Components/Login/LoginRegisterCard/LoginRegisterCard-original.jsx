@@ -1,19 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+//////////////////// original unfactored code /////////////
+
+/* import { useState, useEffect, useRef } from 'react';
+import { supabase } from '../../../Client/supabaseClient';
 import PropTypes from 'prop-types';
 import './LoginRegisterCard-style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { faApple, faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import {
-    handleForgotPasswordClick,
-    handleSignUpClick,
-    handlePasswordChange,
-    handleNameChange,
-    handleSubmit,
-    handleSignUp,
-    handleLogin
-} from './handlers';
-import { validateEmail, validatePassword } from './validation';
+import { validateName, validateEmail, validatePassword } from './validation';
 
 const LoginRegisterCard = ({ onClose }) => {
     const [popupType, setPopupType] = useState('login'); // 'login', 'forgotPassword', 'signUp'
@@ -34,10 +27,110 @@ const LoginRegisterCard = ({ onClose }) => {
         console.log(`Render count: ${renderCount.current}`);
     });
 
+
+    // Password strength calculation
+    const calculatePasswordStrength = (password) => {
+        let strength = '';
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    
+        if (password === '') {
+            strength = '';
+        } else if (passwordRegex.test(password)) {
+            if (password.length >= 12) {
+                strength = 'strong';
+            } else if (password.length >= 10) {
+                strength = 'moderate';
+            } else if (password.length >= 8) {
+                strength = 'weak';
+            }
+        } else {
+            strength = 'weak';
+        }
+    
+        setPasswordStrength(strength);
+    };
+
+    // Handler functions
+    const handleForgotPasswordClick = () => {
+        setPopupType('forgotPassword');
+        setErrors({ email: '', password: '' }); // Clear errors
+    };
+
+    const handleSignUpClick = () => {
+        setPopupType('signUp');
+        setPassword('');
+        setErrors({ email: '', password: '', name: '' }); // Clear errors
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let valid = true;
+        let newErrors = { email: '', password: '', name: '' };
+
+        if (!validateEmail(email)) {
+            newErrors.email = 'Invalid email format';
+            valid = false;
+        }
+
+        if (popupType === 'signUp') {
+            if (!validateName(name)) {
+                newErrors.name = 'Name can only contain letters and spaces';
+                valid = false;
+            }
+
+            const passwordError = validatePassword(password);
+            if (passwordError) {
+                newErrors.password = passwordError;
+                valid = false;
+            }
+        }
+
+        setErrors(newErrors);
+
+        if (valid) {
+            if (popupType === 'signUp') {
+                await handleSignUp();
+            } else if (popupType === 'login') {
+                await handleLogin();
+            }
+        }
+    };
+
+    const handleSignUp = async () => {
+        setIsLoading(true);
+        const { user, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: {
+                    name,
+                }
+            }
+        });
+        setIsLoading(false);
+        if (error) {
+            setErrors({ ...errors, email: error.message });
+        } else {
+            setShowThankYouMessage(true);
+        }
+    };
+
+    const handleLogin = async () => {
+        const { data: { session }, error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
+        if (error) {
+            setErrors({ ...errors, password: 'Invalid credentials' });
+        } else {
+            window.location.href = '/profile';
+        }
+    };
+
     return (
         <div className="overlay" onClick={onClose}>
             <div className="popup-form" onClick={(e) => e.stopPropagation()}>
-                <span className="close-popup" onClick={onClose}>×</span>
+                <span className="close-thanks-popup" onClick={onClose}>×</span>
                 {showThankYouMessage ? (
                     <div className="thank-you-message">
                         <h3>Thanks for signing up!</h3>
@@ -49,8 +142,8 @@ const LoginRegisterCard = ({ onClose }) => {
                         {popupType === 'login' && (
                             <>
                                 <h2>Welcome to Youngblood </h2>
-                                <h5> — Log in — </h5>
-                                <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
+                                <h5 style={{ marginBottom: '0.5rem' }}> — Log in — </h5>
+                                <form onSubmit={handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="email">Email</label>
                                         <input
@@ -69,7 +162,7 @@ const LoginRegisterCard = ({ onClose }) => {
                                                 type={showPassword ? "text" : "password"}
                                                 id="password"
                                                 value={password}
-                                                onChange={(e) => handlePasswordChange(e, setPassword, setPasswordStrength, setErrors, errors, popupType)}
+                                                onChange={(e) => setPassword(e.target.value)}
                                                 required
                                             />
                                             <span
@@ -82,22 +175,10 @@ const LoginRegisterCard = ({ onClose }) => {
                                         {errors.password && <span className="error">{errors.password}</span>}
                                     </div>
                                     <button type="submit" disabled={!validateEmail(email)}>Login</button>
-                                    <span className="continue-with">or continue with</span>
-                                    <div className="social-login-buttons">
-                                        <button className="social-button apple-button">
-                                            <FontAwesomeIcon icon={faApple} /> Apple
-                                        </button>
-                                        <button className="social-button google-button">
-                                            <FontAwesomeIcon icon={faGoogle} /> Google
-                                        </button>
-                                        <button className="social-button facebook-button">
-                                            <FontAwesomeIcon icon={faFacebook} /> Facebook
-                                        </button>
-                                    </div>
                                 </form>
                                 <div className="popup-links">
-                                    <a onClick={() => handleForgotPasswordClick(setPopupType, setErrors)}>Forgot password?</a>
-                                    <a onClick={() => handleSignUpClick(setPopupType, setPassword, setErrors)}>Don&apos;t have an account? Sign Up</a>
+                                    <a onClick={handleForgotPasswordClick}>Forgot password?</a>
+                                    <a onClick={handleSignUpClick}>Don&apos;t have an account? Sign Up</a>
                                 </div>
                                     <p className="terms-text">
                                         By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
@@ -110,7 +191,7 @@ const LoginRegisterCard = ({ onClose }) => {
                         {popupType === 'forgotPassword' && (
                             <>
                                 <h2>Forgot Password</h2>
-                                <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
+                                <form onSubmit={handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="email">Email</label>
                                         <input
@@ -137,7 +218,7 @@ const LoginRegisterCard = ({ onClose }) => {
                                 <h2>Welcome to Youngblood </h2>
                                 <h5> — Create an account — </h5>
                                 
-                                <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
+                                <form onSubmit={handleSubmit}>
                                 <div className="form-group">
                                         <label htmlFor="name">Name</label>
                                         <input
@@ -145,7 +226,15 @@ const LoginRegisterCard = ({ onClose }) => {
                                             id="name"
                                             placeholder="Enter your full name"
                                             value={name}
-                                            onChange={(e) => handleNameChange(e, setName, setErrors, errors)}
+                                            onChange={(e) => {
+                                                const newName = e.target.value;
+                                                setName(newName);
+                                                if (newName === '' || validateName(newName)) {
+                                                    setErrors({ ...errors, name: '' });
+                                                } else {
+                                                    setErrors({ ...errors, name: 'Name can only contain letters and spaces' });
+                                                }
+                                            }}
                                             required
                                         />
                                         {errors.name && <span className="error">{errors.name}</span>}
@@ -168,7 +257,18 @@ const LoginRegisterCard = ({ onClose }) => {
                                                 type={showPassword ? "text" : "password"}
                                                 id="password"
                                                 value={password}
-                                                onChange={(e) => handlePasswordChange(e, setPassword, setPasswordStrength, setErrors, errors, popupType)}
+                                                onChange={(e) => {
+                                                    const newPassword = e.target.value;
+                                                    setPassword(newPassword);
+                                                    calculatePasswordStrength(newPassword);
+                                                    
+                                                    const passwordError = validatePassword(newPassword);
+                                                    if (newPassword === '') {
+                                                        setErrors({ ...errors, password: '' });
+                                                    } else {
+                                                        setErrors({ ...errors, password: passwordError });
+                                                    }
+                                                }}
                                                 required
                                             />
                                             <span
@@ -210,3 +310,4 @@ LoginRegisterCard.propTypes = {
 };
 
 export default LoginRegisterCard;
+ */

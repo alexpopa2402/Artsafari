@@ -33,6 +33,7 @@
   color: #000000;
   text-decoration: none;
   margin: 0.5rem 0;
+  cursor: pointer;
 }
 
 .divider {
@@ -56,7 +57,7 @@
   }
 }
 
-.close-popup {
+/* .close-popup {
   position: absolute;
   top: 0.8em;
   right: 1.3em;
@@ -65,4 +66,4 @@
   font-weight: bold;
   margin-right: 0.2rem;
   color: #000;
-}
+} */

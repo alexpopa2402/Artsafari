@@ -8,9 +8,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     z-index: 1000;
     backdrop-filter: blur(5px); /* Soft blur effect */
-    text-align: center;
   }
   
   .popup-form {
@@ -24,8 +24,8 @@
     animation: popupAnimation 0.2s ease-in-out;
   }
   
-  .popup-form h2 {
-    margin: 0 0 1.5em;
+  .popup-form h2, .popup-form h5 {
+    margin: 0 0 1em;
   }
   
   .form-group {
@@ -50,7 +50,7 @@
     width: 100%;
     padding: 10px;
     /* padding-top: 20px; */ /* Extra padding to ensure space for the label */
-    border: 1px solid #ccc; /* blue border */
+    border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     outline: none;
@@ -164,7 +164,7 @@
     color: #333;
   }
   
-  .close-thanks-popup {
+  .close-popup {
     position: absolute;
     top: 2px;
     right: 7px;
@@ -174,7 +174,7 @@
     margin-right: 0.2rem;
   }
 
-  .thank-you-message h3, p{
+  .thank-you-message h3, .thank-you-message p {
     margin-bottom: 1rem;
   }
   
@@ -229,7 +229,7 @@
     }
   }
 
-  @media (max-width: 280px) {
+  @media (max-width: 310px) {
 
     .popup-form {
       width: 100vw;
@@ -252,3 +252,67 @@
       font-size: 0.8rem;
     }
   }
+
+  @media (max-width: 270px) {
+
+    .popup-form {
+      width: 100vw;
+    }
+
+    .popup-form h3 {
+      font-size: 0.8rem;
+    }
+  
+    .popup-form p {
+      font-size: 12px;
+    }
+  
+    .popup-form button {
+      padding: 6px 13px;
+      font-size: 10px;
+    }
+
+    .popup-links {
+      font-size: 0.6rem;
+    }
+  }
+
+  /* social login button styling  */
+
+  .continue-with {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.social-login-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.apple-button {
+    background-color: #000;
+    color: #fff;
+}
+
+.google-button {
+    background-color: #db4437;
+    color: #fff;
+}
+
+.facebook-button {
+    background-color: #3b5998;
+    color: #fff;
+}
