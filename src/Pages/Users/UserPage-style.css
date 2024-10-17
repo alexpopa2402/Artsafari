@@ -1,28 +1,36 @@
 /* src/Pages/Users/UserPage-style.css */
 .user-page {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 1em 0.5em;
     font-family: Arial, sans-serif;
     color: black;
 }
 
-.welcome-section {
-    text-align: center;
-    margin-bottom: 20px;
-}
 
 .profile-section {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 20px;
 }
-
-.profile-picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+.profile-section .avatar {
     margin-right: 20px;
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    max-width: 20vw; /* Adjust as needed */
+    max-height: 20vw; /* Adjust as needed */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    text-align: center;
+}
+.profile-section span {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .gallery-section {
@@ -30,7 +38,7 @@
 }
 
 .gallery-section h2 {
-    margin-bottom: 10px;
+    margin: 1em 0.8em;
 }
 
 .upload-section {
@@ -49,4 +57,20 @@
 
 .upload-button:hover {
     background-color: #0056b3;
+}
+
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 200px; /* Adjust as needed */
+    position: relative;
+}
+
+.empty-gallery-message {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    position: absolute;
 }

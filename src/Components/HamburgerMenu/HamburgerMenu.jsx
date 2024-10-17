@@ -58,6 +58,9 @@ const HamburgerMenu = () => {
         <div className="burger-menu">
           <span className="close-popup" onClick={toggleMenu}>×</span>
           <nav className="burger-nav-links">
+            <a href="/" className="burger-Home">
+              HOME
+            </a>
             <a href="/gallery" className="burger-gallery">
               GALLERY
             </a>

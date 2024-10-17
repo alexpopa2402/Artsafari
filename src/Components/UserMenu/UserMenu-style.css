@@ -65,8 +65,8 @@
 
   .profile-box {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    margin-left: 0.5rem;
   }
   .profile-name {
     margin-left: 10px;

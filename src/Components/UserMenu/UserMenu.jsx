@@ -51,7 +51,7 @@ const UserMenu = () => {
                         <div className="avatar">A</div>
                         <div className='profile-box'>
                             <span className="profile-name">{user.user_metadata.name}</span>
-                            <span className="view-profile" onClick={() => navigate('/profile')}>View profile</span>
+                            <a className="view-profile" onClick={() => navigate('/profile')}>View profile</a>
                         </div>
                     </div>
                     <div className="collection">
