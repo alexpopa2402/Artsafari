@@ -11,7 +11,6 @@ const images = [
     '/src/assets/81.jpg',
     '/src/assets/abstract.jpg',
     '/src/assets/81.jpg',
-    '/src/assets/abstract.jpg',
     '/src/assets/81.jpg',
     '/src/assets/abstract.jpg',
     '/src/assets/81.jpg',
@@ -31,9 +30,9 @@ const GalleryPage = () => {
     };
 
     return (
-        <div className="gallery-container">
+        <div className="galleryContainer">
             {images.map((image, index) => (
-                <div key={index} className="gallery-item" onClick={() => handleImageClick(image)}>
+                <div key={index} className="galleryItem" onClick={() => handleImageClick(image)}>
                     <img src={image} alt={`Gallery ${index}`} />
                 </div>
             ))}

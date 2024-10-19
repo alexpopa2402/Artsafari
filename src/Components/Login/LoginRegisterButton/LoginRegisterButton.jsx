@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './LoginRegisterButton-style.css';
 import LoginRegisterCard from '../LoginRegisterCard/LoginRegisterCard';
 
@@ -12,6 +12,15 @@ const LoginRegisterButton = () => {
     const handleClosePopup = () => {
         setShowPopup(false);
     };
+
+    // Disable scrolling when popup is open
+    useEffect(() => {
+        if (showPopup) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+    }, [showPopup]);
 
     return (
         <div>

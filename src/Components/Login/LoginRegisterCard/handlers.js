@@ -3,6 +3,7 @@
 import { supabase } from '../../../Client/supabaseClient';
 import { validateName, validateEmail, validatePassword, calculatePasswordStrength } from './validation';
 
+
 export const handleForgotPasswordClick = (setPopupType, setErrors) => {
     setPopupType('forgotPassword');
     setErrors({ email: '', password: '' }); // Clear errors

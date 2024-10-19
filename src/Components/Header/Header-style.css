@@ -1,21 +1,22 @@
 
 .main-header {
   background-color: rgb(255, 255, 255);
-  color: #ffffff;
+/*   color: #ffffff; */
   font-size: 1rem;
   position: sticky;
   top: 0;
-/*   box-shadow: 2px 9px 17px -5px rgba(139, 139, 139, 0.8); */
-  border-bottom: 1px solid #0000003a;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  transition: box-shadow 0.1s ease, border-bottom 0.1s ease;
+  border-bottom: 1px solid #e6e6e6;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
-  height: 80px;
+  height: 70px;
+}
+.main-header.scrolled {
+  border-bottom: none;
+  box-shadow: 2px 9px 17px -5px rgba(139, 139, 139, 0.8);
 }
 
 .title-container {
@@ -23,12 +24,21 @@
   align-items: center;
 }
 
+.main-title .initial {
+  font-size: 2rem; /* Adjust the size as needed */
+  font-weight: bold;
+}
 .main-title {
-  font-size: 2rem;
+  font-size: calc(18px + 1vw);
   font-weight: bold;
   margin-right: 1rem;
   white-space: nowrap;
   color: #c70000;
+}
+.main-title .logo {
+  height: 70px;
+  width: auto;
+  min-width: 70px;
 }
 
 .sub-title {

@@ -6,12 +6,12 @@ const Footer = () => {
       return (
         <footer>
           <nav className="content">
-            <ul className="top">
+            <div className="top">
               <li className="logo-details">
-                <i className="fab fa-slack"></i>
+                <i className="fa fa-qrcode"></i>
                 <span className="logo_name">Youngblood 3.0</span>
               </li>
-            </ul>
+            </div>
             <div className="link-boxes">
               <ul className="box" aria-label="Company links">
                 <li className="link_name">Website</li>

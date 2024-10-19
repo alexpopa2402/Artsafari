@@ -10,12 +10,22 @@ import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import '../HamburgerMenu/HamburgerMenu-style.css';
 import UserMenu from '../UserMenu/UserMenu';
 import '../UserMenu/UserMenu-style.css';
+import YBlogosplash from '../../Assets/YBlogosplash2.png';
 
 
 const Header = () => {
   const [session, setSession] = useState(null);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 515);
+
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('.main-header');
+    if (window.scrollY > 0) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
 
   useEffect(() => {
     const fetchSession = async () => {
@@ -44,7 +54,9 @@ const Header = () => {
   return (
     <header className='main-header'>
       <div className='title-container'>
-      <Link to='/' className="main-title">{isMobile ? "YB" : "Young Blood 3.0"}</Link>
+      <Link to='/' className="main-title">
+        {isMobile ? <img src={YBlogosplash} alt="Youngblood Logo" className="logo" /> : <span><span className="initial">Y</span>oung <span className="initial">B</span>lood 3.0</span>}
+      </Link>
         <p className="sub-title">by <a href='https://www.artsafari.ro/'>Artsafari</a></p>
       </div>
       <SearchBar/>

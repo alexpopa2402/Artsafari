@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './LoginRegisterCard-style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faSpinner, faAngleLeft,faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import YBlogosplash from '../../../Assets/YBlogosplash2.png';
 import {
     handleForgotPasswordClick,
     handleSignUpClick,
@@ -26,18 +27,33 @@ const LoginRegisterCard = ({ onClose }) => {
     const [showThankYouMessage, setShowThankYouMessage] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    // Render count
-    const renderCount = useRef(0);
-
-    useEffect(() => {
-        renderCount.current += 1;
-        console.log(`Render count: ${renderCount.current}`);
-    });
-
     return (
         <div className="overlay" onClick={onClose}>
             <div className="popup-form" onClick={(e) => e.stopPropagation()}>
-                <span className="close-popup" onClick={onClose}>×</span>
+                <div className="popup-header">
+                    <div className='popup-main-title'>
+                        {popupType !== 'login' ? (
+                            <span className="previous-popup" onClick={() => setPopupType('login')}>
+                                <FontAwesomeIcon icon={faAngleLeft} />
+                            </span>
+                        ) : (
+                            <span style={{ visibility: 'hidden' }}>
+                                <FontAwesomeIcon icon={faAngleLeft} />
+                            </span>
+                        )}
+{/*                         <h2> Youngblood </h2> */}
+<img src={YBlogosplash} alt="Youngblood Logo" className="logo" />
+                        <span className="close-popup" onClick={onClose}>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </span>
+                    </div>
+
+                    <div className='popup-sub-title'>
+                        {popupType === 'login' && 'Login to your account'}
+                        {popupType === 'forgotPassword' && 'Reset your password'}
+                        {popupType === 'signUp' && 'Create an account'}
+                    </div>
+                </div>
                 {showThankYouMessage ? (
                     <div className="thank-you-message">
                         <h3>Thanks for signing up!</h3>
@@ -48,8 +64,7 @@ const LoginRegisterCard = ({ onClose }) => {
                     <>
                         {popupType === 'login' && (
                             <>
-                                <h2>Welcome to Youngblood </h2>
-                                <h5> — Log in — </h5>
+                                <div className='popup-body'>
                                 <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
                                     <div className="form-group">
                                         <label htmlFor="email">Email</label>
@@ -81,7 +96,9 @@ const LoginRegisterCard = ({ onClose }) => {
                                         </div>
                                         {errors.password && <span className="error">{errors.password}</span>}
                                     </div>
-                                    <button type="submit" disabled={!validateEmail(email)}>Login</button>
+                                    <button type="submit" className="popup-login-button" disabled={!validateEmail(email)}>
+                                        {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Login'}
+                                    </button>
                                     <span className="continue-with">or continue with</span>
                                     <div className="social-login-buttons">
                                         <button className="social-button apple-button">
@@ -99,17 +116,18 @@ const LoginRegisterCard = ({ onClose }) => {
                                     <a onClick={() => handleForgotPasswordClick(setPopupType, setErrors)}>Forgot password?</a>
                                     <a onClick={() => handleSignUpClick(setPopupType, setPassword, setErrors)}>Don&apos;t have an account? Sign Up</a>
                                 </div>
-                                    <p className="terms-text">
-                                        By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
-                                    </p>
-                                    <p className="recaptcha-text">
-                                        This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
-                                    </p>
+                                <p className="terms-text">
+                                    By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
+                                </p>
+                                <p className="recaptcha-text">
+                                    This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                                </p>
+                                </div>
                             </>
                         )}
                         {popupType === 'forgotPassword' && (
                             <>
-                                <h2>Forgot Password</h2>
+                            <div className="popup-body">
                                 <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
                                     <div className="form-group">
                                         <label htmlFor="email">Email</label>
@@ -122,23 +140,19 @@ const LoginRegisterCard = ({ onClose }) => {
                                         />
                                         {errors.email && <span className="error">{errors.email}</span>}
                                     </div>
-                                    <button type="submit" disabled={!validateEmail(email)}>Reset Password</button>
+                                    <button type="submit" disabled={!validateEmail(email)}>Send me reset instructions</button>
                                 </form>
-                                    <p className="terms-text">
-                                        By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
-                                    </p>
-                                    <p className="recaptcha-text">
-                                        This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
-                                    </p>
+                                <div>
+                                    Don&apos;t need to reset ? <a onClick={() => handleSignUpClick(setPopupType, setPassword, setErrors)}>Sign Up</a>
+                                </div>
+                                </div>
                             </>
                         )}
                         {popupType === 'signUp' && (
                             <>
-                                <h2>Welcome to Youngblood </h2>
-                                <h5> — Create an account — </h5>
-                                
+                                <div className='popup-body'>
                                 <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
-                                <div className="form-group">
+                                    <div className="form-group">
                                         <label htmlFor="name">Name</label>
                                         <input
                                             type="text"
@@ -186,16 +200,17 @@ const LoginRegisterCard = ({ onClose }) => {
                                             Strength: {passwordStrength === 'strong' ? 'Great!' : passwordStrength === 'moderate' ? 'Moderate' : 'Weak'}
                                         </div>
                                     </div>
-                                    <button type="submit" className="submit-button" disabled={isLoading || !validateEmail(email) || validatePassword(password) !== ''}>
-                                        {isLoading ? 'Loading...' : 'Sign Up'}
+                                    <button type="submit" className="popup-signup-button" disabled={isLoading || !validateEmail(email) || validatePassword(password) !== ''}>
+                                        {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Sign Up'}
                                     </button>
                                 </form>
-                                    <p className="terms-text">
-                                        By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
-                                    </p>
-                                    <p className="recaptcha-text">
-                                        This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
-                                    </p>
+                                <p className="terms-text">
+                                    By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
+                                </p>
+                                <p className="recaptcha-text">
+                                    This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                                </p>
+                                </div>
                             </>
                         )}
                     </>

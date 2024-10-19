@@ -158,7 +158,7 @@ const UploadArtwork = () => {
                             style={{ display: 'none' }}
                         />
                     </div>
-                    <button type="button" onClick={() => document.getElementById('photos').click()}>
+                    <button type="button" className = "add-artwork-button" onClick={() => document.getElementById('photos').click()}>
                         Add Photos
                     </button>
                     <div className="file-list">
@@ -174,7 +174,7 @@ const UploadArtwork = () => {
                         ))}
                     </div>
                 </div>
-                <button type="submit" disabled={totalSize > 20 * 1024 * 1024}>
+                <button type="submit" className = "artwork-submit-button" disabled={totalSize > 20 * 1024 * 1024}>
                     <div className="completion-bar" style={{ width: `${completionPercentage}%` }}></div>
                     <span>{totalSize > 20 * 1024 * 1024 ? 'Limit Exceeded' : 'Submit'}</span>
                 </button>

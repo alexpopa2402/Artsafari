@@ -71,7 +71,7 @@ const UserPage = () => {
                 </div>
             </div>
             <div className="upload-section">
-                <button className="upload-button" onClick={() => navigate('/upload-artwork')}>Upload Your Artwork</button>
+                <button className="profile-upload-button" onClick={() => navigate('/upload-artwork')}>Upload Your Artwork</button>
             </div>
         </div>
     );

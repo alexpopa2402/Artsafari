@@ -9,6 +9,7 @@
     margin-right: 1rem;
     flex-grow: 1;
     transition: .5s ease-in;
+    min-width: 110px;
   }
   
   .search-input {
@@ -17,6 +18,10 @@
     font-size: 16px;
     margin-right: 10px;
     width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
   }
   
   .search-button {
