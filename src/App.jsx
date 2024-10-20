@@ -6,6 +6,7 @@ import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import UserPage from './Pages/Users/UserPage';
 import UploadArtwork from './Components/Artwork/UploadArtwork/UploadArtwork';
+import ArtistsPage from './Pages/Artists/ArtistsPage';
 import './App.css';
 
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/profile" element={<UserPage />} />
           <Route path="/upload-artwork" element={<UploadArtwork />} />
+          <Route path="/artists" element={<ArtistsPage />} />
         </Routes>
         </div>
         <Footer />

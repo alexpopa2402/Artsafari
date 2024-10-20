@@ -1,5 +1,5 @@
-/* :root {
-  --clr-primary-400: 263 55% 52%;
+:root {
+/*   --clr-primary-400: 263 55% 52%;
   --clr-secondary-400: 217 19% 35%;
   --clr-secondary-500: 219 29% 14%;
   --clr-neutral-100: 0 0% 100%;
@@ -14,8 +14,31 @@
   --fs-300: 0.6875rem;
   --fs-400: 0.8125rem;
   --fs-500: 1.25rem;
-  --fs-800: 3.5rem;
-} */
+  --fs-800: 3.5rem; */
+
+  --background-color: #fff;
+  --primary-color: #333;
+  --secondary-color: #666;
+  --highlight-color: #1f0000;
+
+  --font-size-small: 12px;
+  --font-size-medium: 14px;
+  --font-size-large: 16px;
+  --font-size-xlarge: 1.4em;
+
+  --padding-small: 8px;
+  --padding-medium: 10px;
+  --padding-large: 20px;
+
+  --margin-small: 8px;
+  --margin-medium: 10px;
+  --margin-large: 20px;
+
+  --border-color: #ccc;
+  --border-radius: 4px;
+
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
 /* Box sizing rules */
 *,
@@ -98,15 +121,6 @@ h3 {
   font-weight: var(--fw-700);
 }
 
-/* utilities */
-.flex {
-  display: flex;
-  gap: var(--gap, 1rem);
-}
-
-.flow > *:where(:not(:first-child)) {
-  margin-top: var(--flow-spacer, 1em);
-}
 
 
 

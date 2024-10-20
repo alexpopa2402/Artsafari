@@ -1,0 +1,44 @@
+.artist-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: clamp(200px, 30%, 300px);
+  margin: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.artist-card:hover {
+  transform: scale(1.05);
+}
+
+.artist-card img {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.artist-card .info {
+  padding: 15px;
+}
+
+.artist-card .info h2 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+}
+
+.artist-card .info p {
+  margin: 0;
+  color: #666;
+}
+
+.artists-page {
+  padding: 16px;
+}
+
+.artist-cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

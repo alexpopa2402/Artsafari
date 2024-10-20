@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { supabase } from '../../Client/supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import './UserMenu-style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const UserMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +20,16 @@ const UserMenu = () => {
             setIsOpen(false);
         }
     };
+
+
+    // Disable scrolling when popup is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+    }, [isOpen]);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -47,17 +59,20 @@ const UserMenu = () => {
             {isOpen && (
                 <div className="dropdown-content">
 
-                    <div className="user-info">
+                    <div className="user-info" onClick={() => navigate('/profile')}>
                         <div className="avatar">A</div>
                         <div className='profile-box'>
+                            <span className="usermenu-close-popup" onClick={toggleMenu}>
+                                <FontAwesomeIcon icon={faTimes} />
+                            </span>
                             <span className="profile-name">{user.user_metadata.name}</span>
-                            <a className="view-profile" onClick={() => navigate('/profile')}>View profile</a>
+                            <a className="view-profile" >View profile</a>
                         </div>
                     </div>
                     <div className="collection">
                         <p>My Collection</p>
                         <a className='collection-item' href="#">Artworks</a>
-                        <a className='collection-item' href="#">Artists</a>
+                        <a className='collection-item' href="/artists">Artists</a>
                         <a className='collection-item' href="#">Insights</a>
                     </div>
                     <div className="favorites">

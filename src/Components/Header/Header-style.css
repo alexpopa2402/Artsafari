@@ -59,7 +59,7 @@
   color: #000000;
   text-decoration: none;
   margin: 0 0.5rem;
-  font-size: 0.9rem;
+  font-size: var(--font-size-large);
 }
 
 

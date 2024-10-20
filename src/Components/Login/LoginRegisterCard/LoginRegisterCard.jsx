@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './LoginRegisterCard-style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faSpinner, faAngleLeft,faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faSpinner, faAngleLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import YBlogosplash from '../../../Assets/YBlogosplash2.png';
 import {
@@ -37,15 +37,14 @@ const LoginRegisterCard = ({ onClose }) => {
                                 <FontAwesomeIcon icon={faAngleLeft} />
                             </span>
                         ) : (
-                            <span style={{ visibility: 'hidden' }}>
-                                <FontAwesomeIcon icon={faAngleLeft} />
+                            <span style={{ visibility: 'hidden', fontSize: '20px' }}>
+                                <FontAwesomeIcon icon={faTimes} />
                             </span>
                         )}
-{/*                         <h2> Youngblood </h2> */}
-<img src={YBlogosplash} alt="Youngblood Logo" className="logo" />
+                        <img src={YBlogosplash} alt="Youngblood Logo" className="logo" />
                         <span className="close-popup" onClick={onClose}>
-                        <FontAwesomeIcon icon={faTimes} />
-                    </span>
+                            <FontAwesomeIcon icon={faTimes} />
+                        </span>
                     </div>
 
                     <div className='popup-sub-title'>
@@ -65,151 +64,145 @@ const LoginRegisterCard = ({ onClose }) => {
                         {popupType === 'login' && (
                             <>
                                 <div className='popup-body'>
-                                <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
-                                    <div className="form-group">
-                                        <label htmlFor="email">Email</label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            required
-                                        />
-                                        {errors.email && <span className="error">{errors.email}</span>}
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="password">Password</label>
-                                        <div className="password-input-container">
+                                    <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
+                                        <div className="form-group">
+                                            <label htmlFor="email">Email</label>
                                             <input
-                                                type={showPassword ? "text" : "password"}
-                                                id="password"
-                                                value={password}
-                                                onChange={(e) => handlePasswordChange(e, setPassword, setPasswordStrength, setErrors, errors, popupType)}
+                                                type="email"
+                                                id="email"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
                                                 required
                                             />
-                                            <span
-                                                className={`password-toggle ${showPassword ? "show" : "hide"}`}
-                                                onClick={() => setShowPassword(!showPassword)}
-                                            >
-                                                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-                                            </span>
+                                            {errors.email && <span className="error">{errors.email}</span>}
                                         </div>
-                                        {errors.password && <span className="error">{errors.password}</span>}
+                                        <div className="form-group">
+                                            <label htmlFor="password">Password</label>
+                                            <div className="password-input-container">
+                                                <input
+                                                    type={showPassword ? "text" : "password"}
+                                                    id="password"
+                                                    value={password}
+                                                    onChange={(e) => handlePasswordChange(e, setPassword, setPasswordStrength, setErrors, errors, popupType)}
+                                                    required
+                                                />
+                                                <span
+                                                    className={`password-toggle ${showPassword ? "show" : "hide"}`}
+                                                    onClick={() => setShowPassword(!showPassword)}
+                                                >
+                                                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                                                </span>
+                                            </div>
+                                            {errors.password && <span className="error">{errors.password}</span>}
+                                        </div>
+                                        <button type="submit" className="popup-login-button" disabled={!validateEmail(email)}>
+                                            {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Login'}
+                                        </button>
+                                        <span className="continue-with">or continue with</span>
+                                        <div className="social-login-buttons">
+                                            <button className="social-button apple-button"><FontAwesomeIcon icon={faApple} /></button>
+                                            <button className="social-button google-button"><FontAwesomeIcon icon={faGoogle} /></button>
+                                            <button className="social-button facebook-button"><FontAwesomeIcon icon={faFacebook} /></button>
+                                        </div>
+                                    </form>
+                                    <div className="popup-links">
+                                        <a onClick={() => handleForgotPasswordClick(setPopupType, setErrors)}>Forgot password?</a>
+                                        <a onClick={() => handleSignUpClick(setPopupType, setPassword, setErrors)}>Don&apos;t have an account? Sign Up</a>
                                     </div>
-                                    <button type="submit" className="popup-login-button" disabled={!validateEmail(email)}>
-                                        {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Login'}
-                                    </button>
-                                    <span className="continue-with">or continue with</span>
-                                    <div className="social-login-buttons">
-                                        <button className="social-button apple-button">
-                                            <FontAwesomeIcon icon={faApple} /> Apple
-                                        </button>
-                                        <button className="social-button google-button">
-                                            <FontAwesomeIcon icon={faGoogle} /> Google
-                                        </button>
-                                        <button className="social-button facebook-button">
-                                            <FontAwesomeIcon icon={faFacebook} /> Facebook
-                                        </button>
-                                    </div>
-                                </form>
-                                <div className="popup-links">
-                                    <a onClick={() => handleForgotPasswordClick(setPopupType, setErrors)}>Forgot password?</a>
-                                    <a onClick={() => handleSignUpClick(setPopupType, setPassword, setErrors)}>Don&apos;t have an account? Sign Up</a>
-                                </div>
-                                <p className="terms-text">
-                                    By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
-                                </p>
-                                <p className="recaptcha-text">
-                                    This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
-                                </p>
+                                    <p className="terms-text">
+                                        By clicking Login or Continue with Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
+                                    </p>
+                                    <p className="recaptcha-text">
+                                        This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                                    </p>
                                 </div>
                             </>
                         )}
                         {popupType === 'forgotPassword' && (
                             <>
-                            <div className="popup-body">
-                                <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
-                                    <div className="form-group">
-                                        <label htmlFor="email">Email</label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            required
-                                        />
-                                        {errors.email && <span className="error">{errors.email}</span>}
+                                <div className="popup-body">
+                                    <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
+                                        <div className="form-group">
+                                            <label htmlFor="email">Email</label>
+                                            <input
+                                                type="email"
+                                                id="email"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                required
+                                            />
+                                            {errors.email && <span className="error">{errors.email}</span>}
+                                        </div>
+                                        <button type="submit" disabled={!validateEmail(email)}>Send me reset instructions</button>
+                                    </form>
+                                    <div className='popup-no-reset'>
+                                        Don&apos;t need to reset ? <a onClick={() => handleSignUpClick(setPopupType, setPassword, setErrors)}>Sign Up</a>
                                     </div>
-                                    <button type="submit" disabled={!validateEmail(email)}>Send me reset instructions</button>
-                                </form>
-                                <div>
-                                    Don&apos;t need to reset ? <a onClick={() => handleSignUpClick(setPopupType, setPassword, setErrors)}>Sign Up</a>
-                                </div>
                                 </div>
                             </>
                         )}
                         {popupType === 'signUp' && (
                             <>
                                 <div className='popup-body'>
-                                <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
-                                    <div className="form-group">
-                                        <label htmlFor="name">Name</label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            placeholder="Enter your full name"
-                                            value={name}
-                                            onChange={(e) => handleNameChange(e, setName, setErrors, errors)}
-                                            required
-                                        />
-                                        {errors.name && <span className="error">{errors.name}</span>}
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="email">Email</label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            required
-                                        />
-                                        {errors.email && <span className="error">{errors.email}</span>}
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="password">Password</label>
-                                        <div className="password-input-container">
+                                    <form onSubmit={(e) => handleSubmit(e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage)}>
+                                        <div className="form-group">
+                                            <label htmlFor="name">Name</label>
                                             <input
-                                                type={showPassword ? "text" : "password"}
-                                                id="password"
-                                                value={password}
-                                                onChange={(e) => handlePasswordChange(e, setPassword, setPasswordStrength, setErrors, errors, popupType)}
+                                                type="text"
+                                                id="name"
+                                                placeholder="Enter your full name"
+                                                value={name}
+                                                onChange={(e) => handleNameChange(e, setName, setErrors, errors)}
                                                 required
                                             />
-                                            <span
-                                                className={`password-toggle ${showPassword ? "show" : "hide"}`}
-                                                onClick={() => setShowPassword(!showPassword)}
-                                            >
-                                                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-                                            </span>
+                                            {errors.name && <span className="error">{errors.name}</span>}
                                         </div>
-                                        {errors.password && <span className="error">{errors.password}</span>}
-                                        <div className="password-strength-bar-container">
-                                            <div className={`password-strength-bar ${passwordStrength}`}></div>
+                                        <div className="form-group">
+                                            <label htmlFor="email">Email</label>
+                                            <input
+                                                type="email"
+                                                id="email"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                required
+                                            />
+                                            {errors.email && <span className="error">{errors.email}</span>}
                                         </div>
-                                        <div className="password-strength-text">
-                                            Strength: {passwordStrength === 'strong' ? 'Great!' : passwordStrength === 'moderate' ? 'Moderate' : 'Weak'}
+                                        <div className="form-group">
+                                            <label htmlFor="password">Password</label>
+                                            <div className="password-input-container">
+                                                <input
+                                                    type={showPassword ? "text" : "password"}
+                                                    id="password"
+                                                    value={password}
+                                                    onChange={(e) => handlePasswordChange(e, setPassword, setPasswordStrength, setErrors, errors, popupType)}
+                                                    required
+                                                />
+                                                <span
+                                                    className={`password-toggle ${showPassword ? "show" : "hide"}`}
+                                                    onClick={() => setShowPassword(!showPassword)}
+                                                >
+                                                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                                                </span>
+                                            </div>
+                                            {errors.password && <span className="error">{errors.password}</span>}
+                                            <div className="password-strength-bar-container">
+                                                <div className={`password-strength-bar ${passwordStrength}`}></div>
+                                            </div>
+                                            <div className="password-strength-text">
+                                                Strength: {passwordStrength === 'strong' ? 'Great!' : passwordStrength === 'moderate' ? 'Moderate' : 'Weak'}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <button type="submit" className="popup-signup-button" disabled={isLoading || !validateEmail(email) || validatePassword(password) !== ''}>
-                                        {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Sign Up'}
-                                    </button>
-                                </form>
-                                <p className="terms-text">
-                                    By clicking Sign Up or Continue with Email, Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
-                                </p>
-                                <p className="recaptcha-text">
-                                    This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
-                                </p>
+                                        <button type="submit" className="popup-signup-button" disabled={isLoading || !validateEmail(email) || validatePassword(password) !== ''}>
+                                            {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Sign Up'}
+                                        </button>
+                                    </form>
+                                    <p className="terms-text">
+                                        By clicking Sign Up, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.
+                                    </p>
+                                    <p className="recaptcha-text">
+                                        This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                                    </p>
                                 </div>
                             </>
                         )}

@@ -41,7 +41,7 @@ const Footer = () => {
                 </li>
               </ul>
               <form className="box input-box" aria-label="Subscribe newsletter">
-                <li className="link_name">Subscribe to our newsletter</li>
+                <li className="link_name">Newsletter</li>
                 <li>
                   <input className="email-field" type="email" placeholder="Enter your email" />
                 </li>

@@ -1,26 +1,24 @@
-//disable this file if code breaks and revert to original unfactored code in LoginRegisterCard.jsx
-
 import { supabase } from '../../../Client/supabaseClient';
 import { validateName, validateEmail, validatePassword, calculatePasswordStrength } from './validation';
 
-
+//this function is used to handle the click event of the login button
 export const handleForgotPasswordClick = (setPopupType, setErrors) => {
     setPopupType('forgotPassword');
     setErrors({ email: '', password: '' }); // Clear errors
 };
-
+//this function is used to handle the click event of the sign up button
 export const handleSignUpClick = (setPopupType, setPassword, setErrors) => {
     setPopupType('signUp');
     setPassword('');
     setErrors({ email: '', password: '', name: '' }); // Clear errors
 };
-
+//this is the function that handles the password change event
 export const handlePasswordChange = (e, setPassword, setPasswordStrength, setErrors, errors, popupType) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
     const strength = calculatePasswordStrength(newPassword);
     setPasswordStrength(strength);
-    
+
     const passwordError = validatePassword(newPassword);
     if (newPassword === '') {
         setErrors({ ...errors, password: '' });
@@ -30,7 +28,7 @@ export const handlePasswordChange = (e, setPassword, setPasswordStrength, setErr
         setErrors({ ...errors, password: '' });
     }
 };
-
+//this function is used to handle the change event of the email input field
 export const handleNameChange = (e, setName, setErrors, errors) => {
     const newName = e.target.value;
     setName(newName);
@@ -40,7 +38,7 @@ export const handleNameChange = (e, setName, setErrors, errors) => {
         setErrors({ ...errors, name: 'Name can only contain letters and spaces' });
     }
 };
-
+//this is the function that handles the submit event of the form
 export const handleSubmit = async (e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage) => {
     e.preventDefault();
     let valid = true;
@@ -74,7 +72,7 @@ export const handleSubmit = async (e, popupType, email, password, name, setError
         }
     }
 };
-
+// this is the function that handles the sign up event
 export const handleSignUp = async (email, password, name, setIsLoading, setErrors, setShowThankYouMessage) => {
     setIsLoading(true);
     const { /* user, */ error } = await supabase.auth.signUp({
@@ -93,7 +91,7 @@ export const handleSignUp = async (email, password, name, setIsLoading, setError
         setShowThankYouMessage(true);
     }
 };
-
+//this function is used to handle the login event
 export const handleLogin = async (email, password, setErrors) => {
     const { data: /* { session }, */ error } = await supabase.auth.signInWithPassword({
         email,

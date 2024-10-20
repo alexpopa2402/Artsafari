@@ -61,6 +61,7 @@ const Header = () => {
       </div>
       <SearchBar/>
       <nav className="nav-links">
+      <Link to='/' className="gallery">HOME</Link>
       <Link to='/gallery' className="gallery">GALLERY</Link>
       <Link to='/artists' className='artists'>ARTISTS</Link>
       <Link to='/about' className="about">ABOUT US</Link>
