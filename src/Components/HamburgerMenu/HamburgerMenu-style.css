@@ -76,7 +76,7 @@
 }
 
 /* Media query for screens with max height of 400px */
-@media (max-height: 400px) {
+@media (max-height: 400px), (max-width: 600px) {
   .burger-menu {
     top: 0;
     height: 100vh;

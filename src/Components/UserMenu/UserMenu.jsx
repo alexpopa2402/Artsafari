@@ -24,11 +24,18 @@ const UserMenu = () => {
 
     // Disable scrolling when popup is open
     useEffect(() => {
-        if (isOpen) {
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.classList.remove('no-scroll');
-        }
+        const handleScrollLock = () => {
+            if (isOpen) {
+                const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+                document.body.style.paddingRight = `${scrollbarWidth}px`;
+                document.body.classList.add('no-scroll');
+            } else {
+                document.body.style.paddingRight = '';
+                document.body.classList.remove('no-scroll');
+            }
+        };
+    
+        handleScrollLock();
     }, [isOpen]);
 
     useEffect(() => {
@@ -59,7 +66,7 @@ const UserMenu = () => {
             {isOpen && (
                 <div className="dropdown-content">
 
-                    <div className="user-info" onClick={() => navigate('/profile')}>
+                    <div className="user-info" onClick={() => { navigate('/profile'); toggleMenu(); }}>
                         <div className="avatar">A</div>
                         <div className='profile-box'>
                             <span className="usermenu-close-popup" onClick={toggleMenu}>

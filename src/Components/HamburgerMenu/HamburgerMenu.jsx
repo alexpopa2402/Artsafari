@@ -39,6 +39,23 @@ const HamburgerMenu = () => {
     }
   }, [isOpen]);
 
+  // Disable scrolling when popup is open and add padding to body to account for scrollbar 
+  
+/*   useEffect(() => {
+    const handleScrollLock = () => {
+        if (isOpen) {
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.style.paddingRight = '';
+            document.body.classList.remove('no-scroll');
+        }
+    };
+
+    handleScrollLock();
+}, [isOpen]); */
+
   // Logout function
   const handleLogout = async () => {
     await supabase.auth.signOut();

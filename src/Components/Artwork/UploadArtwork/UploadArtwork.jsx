@@ -68,7 +68,7 @@ const UploadArtwork = () => {
         }
     };
 
-    const completionPercentage = (totalSize / (10 * 1024 * 1024)) * 100;
+    const completionPercentage = (totalSize / (5 * 1024 * 1024)) * 100;
 
     return (
         <div className="upload-artwork">
@@ -158,7 +158,7 @@ const UploadArtwork = () => {
                             style={{ display: 'none' }}
                         />
                         <span>Files Supported: JPG, PNG, HEIC</span>
-                        <span>Total maximum per artwork: 10 MB</span>
+                        <span>Total maximum per artwork: 5 MB</span>
                         <button type="button" className="add-artwork-button" onClick={() => document.getElementById('photos').click()}>
                             Or Add Photos
                         </button>
@@ -179,7 +179,7 @@ const UploadArtwork = () => {
                 </div>
                 <button type="submit" className = "artwork-submit-button" disabled={totalSize > 20 * 1024 * 1024}>
                     <div className="completion-bar" style={{ width: `${completionPercentage}%` }}></div>
-                    <span>{totalSize > 10 * 1024 * 1024 ? 'Limit Exceeded' : 'Submit'}</span>
+                    <span>{totalSize > 5 * 1024 * 1024 ? 'Limit Exceeded' : 'Submit'}</span>
                 </button>
             </form>
         </div>

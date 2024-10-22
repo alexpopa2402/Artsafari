@@ -1,72 +1,64 @@
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useState, useEffect } from 'react';
 import './Carousel-style.css';
 
 const Carousel = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 3000, // Set autoplay speed to 3 seconds
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
-  };
+    const images = [
+        { src: '/src/assets/Mihai Surdu.avif', caption: 'People at the museum - Mihai Surdu' },
+        { src: '/src/assets/steve-johnson.jpg', caption: 'Abstract painting - Steve Johnson' },
+        { src: '/src/assets/alina-grubnyak.jpg', caption: 'Algo-r-(h)-i-(y)-thms, 2018. Installation view at ON AIR, Tomás Saraceno solo exhibition at Palais de Tokyo, Paris, 2018.' }
+    ];
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-  return (
-    <div className="carousel-container">
-      <Slider {...settings}>
-        <div className='carouselImage1'>
-          <img src="/src/assets/guernica.jpeg" alt="Image 1" />
-        </div>
-        <div>
-          <img src="/src/assets/picassos.webp" alt="Image 2" />
-        </div>
-        <div>
-          <img src="/src/assets/greatwaves.jpg" alt="Image 3" />
-        </div>
-      </Slider>
-    </div>
-  );
-};
+    const goToPrevious = () => {
+        const isFirstSlide = currentIndex === 0;
+        const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
+        setCurrentIndex(newIndex);
+    };
 
-import PropTypes from 'prop-types';
+    const goToNext = () => {
+        const isLastSlide = currentIndex === images.length - 1;
+        const newIndex = isLastSlide ? 0 : currentIndex + 1;
+        setCurrentIndex(newIndex);
+    };
 
-const SampleNextArrow = (props) => {
-    const { className, style, onClick } = props;
+    useEffect(() => {
+        const interval = setInterval(goToNext, 3000); // Change image every 3 seconds
+        return () => clearInterval(interval); // Clear interval on component unmount
+    }, [currentIndex]);
+
     return (
-      <div
-        className={`${className} custom-arrow`}
-        style={{ ...style, display: 'block', background: 'transparent', right: '10px', zIndex: 1 }}
-        onClick={onClick}
-      />
+        <div className="carousel-container">
+            <div className="carousel-arrow left-arrow" onClick={goToPrevious}>
+                &#9664;
+            </div>
+            <div className="carousel-slide">
+                {images.map((image, index) => (
+                    <div
+                        key={index}
+                        className={`carousel-item ${index === currentIndex ? 'active' : ''}`}
+                    >
+                        <img
+                            src={image.src}
+                            alt={`carousel-${index}`}
+                            className="carousel-image"
+                        />
+                        <div className="carousel-caption">{image.caption}</div>
+                    </div>
+                ))}
+            </div>
+            <div className="carousel-arrow right-arrow" onClick={goToNext}>
+                &#9654;
+            </div>
+            <div className="carousel-lines">
+                {images.map((_, index) => (
+                    <div
+                        key={index}
+                        className={`carousel-line ${index === currentIndex ? 'active' : ''}`}
+                    ></div>
+                ))}
+            </div>
+        </div>
     );
-  };
-
-SampleNextArrow.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object,
-  onClick: PropTypes.func,
-};
-
-const SamplePrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={`${className} custom-arrow`}
-        style={{ ...style, display: 'block', background: 'transparent', left: '10px', zIndex: 1 }}
-        onClick={onClick}
-      />
-    );
-  };
-
-SamplePrevArrow.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object,
-  onClick: PropTypes.func,
 };
 
 export default Carousel;
