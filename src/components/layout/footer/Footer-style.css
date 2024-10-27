@@ -1,0 +1,147 @@
+ footer {
+   background: #9a0404;
+   position: relative;
+   bottom: 0;
+   width: 100%;
+ }
+
+ .content {
+   padding: 30px 0;
+ }
+
+ .top {
+   margin: 0 clamp(1em, 5vw, 10em);
+
+ }
+
+ .logo-details {
+   color: #fff;
+   font-size: 30px;
+   display: flex;
+   align-items: center;
+ }
+
+ .logo_name {
+   margin-left: 10px;
+   font-size: calc(var(--font-size-large) + 1vw);
+   /* Adjust font size based on viewport width */
+ }
+
+ .link-boxes {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+   justify-content: space-between;
+   margin: 0 clamp(1em, 5vw, 10em);
+ }
+
+ .box {
+   padding: 0;
+ }
+
+ .link_name {
+   color: #fff;
+   font-size: calc(18px + 0.5vw);
+   font-weight: 400;
+   margin-bottom: 10px;
+   position: relative;
+   white-space: nowrap;
+ }
+
+ .link-boxes .box .link_name::before {
+   content: '';
+   position: absolute;
+   left: 0;
+   bottom: -2px;
+   height: 2px;
+   width: 35px;
+   background: #fff;
+ }
+
+ .box li {
+   margin: 6px 0;
+   list-style: none;
+   max-width: 250px;
+ }
+
+ .box li a {
+   color: #fff;
+   text-decoration: none;
+   opacity: 0.8;
+   transition: all 0.4s ease;
+ }
+
+ .box li a:hover {
+   opacity: 1;
+   text-decoration: underline;
+ }
+
+ .link-boxes .input-box input {
+   height: 40px;
+   outline: none;
+   text-align: left;
+   border: 2px solid #AFAFB6;
+   border-radius: 4px;
+   padding: 0 15px;
+   color: #fff;
+   margin-top: 5px;
+ }
+
+ .subscribe-button,
+ .email-field {
+   opacity: 0.7;
+   width: 100%;
+   transition: all 0.4s ease;
+   background: #111;
+ }
+
+ .subscribe-button:hover {
+   opacity: 1;
+   cursor: pointer;
+ }
+
+ footer .bottom-details {
+   width: 100%;
+   background: #111;
+ }
+
+ footer .bottom-details .bottom_text {
+   margin: 0 clamp(1em, 5vw, 10em);
+   padding: 20px 0;
+   display: flex;
+   justify-content: space-between;
+ }
+
+ .bottom-details .bottom_text span,
+ .bottom-details .bottom_text a {
+  font-size: calc(10px + 0.5vw);
+   font-weight: 300;
+   color: #fff;
+   opacity: 0.8;
+   text-decoration: none;
+ }
+
+ .bottom-details .bottom_text a:hover {
+   opacity: 1;
+   text-decoration: underline;
+ }
+
+ .bottom-details .bottom_text a {
+   margin-right: 10px;
+ }
+
+ @media (max-width: 700px) {
+   footer .content .link-boxes {
+     flex-wrap: wrap;
+   }
+
+   .box {
+     width: 80%;
+     margin-top: 10px;
+     justify-content: center;
+   }
+
+   footer .content .link-boxes .input-box {
+     margin-top: 10px;
+   }
+ }

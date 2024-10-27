@@ -1,0 +1,29 @@
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: auto;
+    flex-grow: 1;
+  }
+  
+  .search-input {
+    border: none;
+    outline: none;
+    font-size: var(--font-size-intermediate);
+    margin-right: 10px;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+  }
+  
+  .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #b10000;
+    z-index: 12;
+  }

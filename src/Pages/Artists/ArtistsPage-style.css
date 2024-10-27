@@ -1,33 +1,8 @@
-/* ArtistsPage-style.css */
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+.artists-page {
+  padding: 16px;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+.artists-page h1 {
+  margin: 0 0 16px;
+  font-size: 2em;
 }
-
-.header {
-    text-align: center;
-    padding: 50px 0;
-    background-color: #333;
-    color: white;
-}
-
-.header h1 {
-    margin: 0;
-    font-size: 3em;
-}
-
-.artist-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-

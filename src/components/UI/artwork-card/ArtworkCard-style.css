@@ -1,0 +1,84 @@
+
+.car_menu {
+    position: absolute;
+    bottom: 0;
+    width: fit-content;
+    height: fit-content;
+    }
+    .car{
+    height: 2rem;
+    width: 2rem;
+    background-color: aquamarine;
+    border-radius: 2px;
+    }
+    .car:hover {
+    width: 4rem;
+    transition: 1s;
+    }
+
+    .stacked {
+    display: grid;
+    }
+
+    .card {
+    /*  border: 3px solid hotpink; */
+    aspect-ratio: 1 / 1.5;
+    }
+    
+    .stacked > * {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    }
+    
+    .card__content {
+    /*  z-index: 10; */
+    background: white;
+    align-self: end;
+    margin: .5rem .5rem 2rem;
+    padding: .5rem;
+    box-shadow: 0 .25rem 1rem rgb(0 0 0 / 0.1 );
+    } 
+    
+    .card__title{
+    font-size: 1.25rem;
+    line-height: 1.1;
+    }
+    
+    .card__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    }
+    .card__img:first-child {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: bottom;
+    }
+    
+    .card__price {
+    font-size: 1.25rem;
+    }
+    
+    @media (min-width: 60rem) {
+    .card__img {
+      aspect-ratio: 1 / 1;
+    }
+    
+    .card.featured {
+      grid-row: span 2;
+      grid-column: span 2;
+    }
+    
+    .card.featured .card__img {
+      aspect-ratio: 1 / 1.25;
+    }
+    
+    .card.featured .card__title {
+      font-size: 1.75rem;
+    } 
+    .banner__title {
+      font-size: 2rem;
+    }
+    }
+    

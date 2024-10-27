@@ -1,0 +1,235 @@
+.upload-artwork {
+    margin: 0 auto;
+    background-color: var(--background-color);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1600px;
+}
+
+.upload-artwork h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group-upload {
+    margin-top: 20px;
+  }
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+form label {
+    font-size: var(--font-size-small);
+}
+
+.drop-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    font-size: var(--font-size-xlarge);
+}
+
+.drop-zone span {
+    margin-top: 10px;
+    font-size: var(--font-size-medium);
+    color: var(--secondary-color);
+}
+
+.add-artwork-button {
+    font-size: var(--font-size-medium);
+    margin-top: var(--margin-large);
+}
+
+.file-list {
+    margin-top: 10px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: var(--font-size-medium);
+}
+
+.file-preview {
+    width: auto;
+    height: auto;
+    max-width: 50px; /* Adjust as needed */
+    max-height: 50px; /* Adjust as needed */
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.file-info {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+.file-size {
+    flex-shrink: 0;
+    margin: 0 var(--margin-large);
+}
+
+.artwork-submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+/*     background-color: #007bff; */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.completion-bar {
+    height: 100%;
+    background-color: #28a745;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease;
+    z-index: 1; /* Ensure the completion bar is below the button text */
+}
+
+button span {
+    position: relative;
+    z-index: 2; /* Ensure the button text is above the completion bar */
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-grid .form-group {
+    margin-bottom: 0;
+}
+
+.dimensions-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    grid-column: span 2;
+}
+
+.dimension {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-with-unit {
+    position: relative;
+}
+
+.input-with-unit input {
+    padding-right: 30px; /* Adjust as needed */
+}
+
+.input-with-unit::after {
+    content: 'cm';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dimensions-group {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: span 1;
+    }
+
+    .form-group {
+        grid-column: span 1;
+    }
+}
+
+.select-wrapper {
+    position: relative;
+    font-size: var(--font-size-medium);
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    appearance: none;
+}
+
+.dropdown-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+@media (max-width: 290px) {
+    .file-list button, .file-info {
+        font-size: var(--font-size-small);
+    }
+    .file-preview {
+        max-width: 80px;
+        max-height: 80px;
+    }
+    .file-size {
+        display: none;
+    }
+  }

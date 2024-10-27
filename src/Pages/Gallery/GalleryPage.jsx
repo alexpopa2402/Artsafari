@@ -1,48 +1,15 @@
-import { useState } from 'react';
 import './GalleryPage-style.css';
-
-const images = [
-    '/src/assets/81.jpg',
-    '/src/assets/abstract.jpg',
-    '/src/assets/81.jpg',
-    '/src/assets/abstract.jpg',
-    '/src/assets/81.jpg',
-    '/src/assets/abstract.jpg',
-    '/src/assets/81.jpg',
-    '/src/assets/abstract.jpg',
-    '/src/assets/81.jpg',
-    '/src/assets/81.jpg',
-    '/src/assets/abstract.jpg',
-    '/src/assets/81.jpg',
-    '/src/assets/abstract.jpg',
-    // Add more image paths here
-];
+import ArtworkCard from '@components/UI/artwork-card/ArtworkCard';
+import carData from '@pages/gallery/artDatabase';
 
 const GalleryPage = () => {
-    const [selectedImage, setSelectedImage] = useState(null);
-
-    const handleImageClick = (image) => {
-        setSelectedImage(image);
-    };
-
-    const handleCloseModal = () => {
-        setSelectedImage(null);
-    };
-
     return (
-        <div className="galleryContainer">
-            {images.map((image, index) => (
-                <div key={index} className="galleryItem" onClick={() => handleImageClick(image)}>
-                    <img src={image} alt={`Gallery ${index}`} />
-                </div>
-            ))}
-
-            {selectedImage && (
-                <div className="modal" onClick={handleCloseModal}>
-                    <span className="close">&times;</span>
-                    <img className="modal-content" src={selectedImage} alt="Full Screen" />
-                </div>
-            )}
+        <div className="container">
+            <div className="product-grid">
+                {carData.map((car) => (
+                    <ArtworkCard key={car.id} car={car} />
+                ))}
+            </div>
         </div>
     );
 };

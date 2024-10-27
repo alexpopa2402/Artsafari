@@ -1,0 +1,74 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  }
+
+body {
+    text-rendering: optimizeSpeed;
+    margin-inline: auto;
+    line-height: 1.5;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  
+a {
+  font-weight: 500;
+  color: var(--secondary-color);
+  text-decoration: inherit;
+  transition: transform 0.2s, background-color 0.2s, color 0.2s;
+}
+a:hover {
+  /* background-color: rgb(37, 37, 37); */
+  color: #410202;
+  transform: scale(1.1);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+  }
+  
+  /* A elements that don't have a class get default styles */
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
+  }
+
+  /* Inherit fonts for inputs and buttons */
+input, button, textarea, select {
+    font: inherit;
+  }
+
+  /* Global button styling */
+button {
+  border-radius: 45px;
+  border: 1px solid transparent;
+  padding: 0.6em 0.6em;
+  font-size: var(--font-size-intermediate);
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+button:hover {
+  background-color: rgb(59, 0, 0);
+  color: #ffffff;
+  transform: scale(0.95);
+}
+button:disabled {
+  background-color: var(--secondary-color, #666); 
+  color: #ffffff; 
+  transform: none; 
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
