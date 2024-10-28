@@ -51,7 +51,7 @@ const Header = () => {
     <header className='main-header'>
       <div className='title-container'>
       <Link to='/' className="main-title">
-        {isMobile ? <img src={YBlogosplash} alt="Youngblood Logo" className="logo" /> : <span><span className="initial">Y</span>oung <span className="initial">B</span>lood 3.0</span>}
+        {isMobile ? <img src={YBlogosplash} alt="Youngblood Logo" className="logo" /> : <span>YoungBlood 3.0</span>}
       </Link>
         <p className="sub-title">by <a href='https://www.artsafari.ro/'>Artsafari</a></p>
       </div>

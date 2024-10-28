@@ -23,10 +23,6 @@
   align-items: center;
 }
 
-.main-title .initial {
-  font-size: 2rem;
-  font-weight: bold;
-}
 .main-title {
   font-size: calc(18px + 1vw);
   font-weight: bold;

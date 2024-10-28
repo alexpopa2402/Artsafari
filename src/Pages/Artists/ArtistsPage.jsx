@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ArtistCard from '@components/UI/artist-card/ArtistCard';
 import './ArtistsPage-style.css';
-import { placeholderArtists } from './ArtistsDatabase';
+import { placeholderArtists } from './artistsDatabase';
 
 const ArtistsPage = () => {
   const [artists, setArtists] = useState([]);

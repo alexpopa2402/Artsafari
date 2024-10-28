@@ -10,7 +10,7 @@ import UserProfile from '@pages/user-profile/UserProfile';
 import UploadForm from '@pages/upload-form/UploadForm';
 import ArtistsPage from '@pages/artists/ArtistsPage';
 
-import './App.css';
+import './assets/styles/App.css';
 
 export default function App() {
   return (
