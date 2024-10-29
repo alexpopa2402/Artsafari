@@ -1,11 +1,24 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { handleForgotPasswordClick } from './authHandlers';
 import { validateEmail } from './authValidation';
-import { handleSubmit, handleSignUpClick } from './authHandlers';
 
-const ForgotPasswordModal = ({ email, setEmail, errors, setErrors, isLoading, setIsLoading, setShowThankYouMessage, setPopupType }) => {
+const ForgotPasswordModal = ({ setPopupType }) => {
+    const [email, setEmail] = useState('');
+    const [errors, setErrors] = useState({ email: '' });
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        if (!validateEmail(email)) {
+            setErrors({ email: 'Invalid email format' });
+        } else {
+            handleForgotPasswordClick(email);
+        }
+    };
+
     return (
         <div className="popup-body">
-            <form onSubmit={(e) => handleSubmit(e, 'forgotPassword', email, '', '', setErrors, null, null, setIsLoading, setShowThankYouMessage)}>
+            <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
@@ -20,21 +33,12 @@ const ForgotPasswordModal = ({ email, setEmail, errors, setErrors, isLoading, se
                 <button type="submit" disabled={!validateEmail(email)}>Send me reset instructions</button>
             </form>
             <div className='popup-no-reset'>
-                Don&apos;t need to reset ? <a onClick={() => handleSignUpClick(setPopupType, null, setErrors)}>Sign Up</a>
+                Don&apos;t need to reset? <a onClick={() => setPopupType('signUp')}>Sign Up</a>
             </div>
         </div>
     );
 };
-
 ForgotPasswordModal.propTypes = {
-    email: PropTypes.string.isRequired,
-    setEmail: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired,
-    setErrors: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    setIsLoading: PropTypes.func.isRequired,
-    setShowThankYouMessage: PropTypes.func.isRequired,
     setPopupType: PropTypes.func.isRequired,
 };
-
 export default ForgotPasswordModal;
