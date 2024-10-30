@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import SocialLoginButtons from './SocialLoginButtons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import SocialLoginModal from './SocialLoginModal';
 import TermsText from './TermsText';
-import { handleLogin, handlePasswordChange } from './authHandlers';
+import { handleLogin, handlePasswordChange } from '@components/auth/auth-modals/authHandlers';
 import { validateEmail } from './authValidation';
 
 const LoginModal = ({ setPopupType }) => {
@@ -12,7 +12,6 @@ const LoginModal = ({ setPopupType }) => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({ email: '', password: '' });
-    const [isLoading, setIsLoading] = useState(false);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -53,9 +52,10 @@ const LoginModal = ({ setPopupType }) => {
                     {errors.password && <span className="error">{errors.password}</span>}
                 </div>
                 <button type="submit" className="popup-login-button" disabled={!validateEmail(email)}>
-                    {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Login'}
+                    {'Login'}
                 </button>
-                <SocialLoginButtons />
+                <span className="continue-with">or continue with</span>
+                <SocialLoginModal />
             </form>
             <div className="popup-links">
                 <a onClick={() => setPopupType('forgotPassword')}>Forgot password?</a>
@@ -65,6 +65,7 @@ const LoginModal = ({ setPopupType }) => {
         </div>
     );
 };
+
 LoginModal.propTypes = {
     setPopupType: PropTypes.func.isRequired,
 };

@@ -6,6 +6,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: auto;
     flex-grow: 1;
+    border: 1px solid black;
   }
   
   .search-input {
@@ -26,4 +27,10 @@
     cursor: pointer;
     color: #b10000;
     z-index: 12;
+  }
+
+  @media (max-width: 1000px) {
+    .search-container {
+      margin: 0 0.5rem 0 0;
+    }
   }

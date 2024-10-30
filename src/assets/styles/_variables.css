@@ -36,3 +36,10 @@
     --fw-400: 500;
     --fw-700: 600;
   }
+
+  :root.dark-theme {
+    --background-color: #20153d;
+    --primary-color: #ffffff;
+    --secondary-color: #999999;
+    /* Add other dark theme variables here */
+  }

@@ -2,8 +2,10 @@
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 45px;
-  border: 1px solid rgba(157, 157, 157, 0.43);
+/*   border: 1px solid rgba(157, 157, 157, 0.43); */
   white-space: nowrap; /* Ensure text remains on one line */
+  font-size: var(--font-size-medium);
+  margin: 0 1rem 0 0;
 }
 
 .login-button:active {
@@ -11,8 +13,6 @@
   color: #ffffff;
   transform: scale(0.96); /* Slightly reduce size for bouncy effect */
 }
-
-
 
 .no-scroll {
   overflow: hidden;

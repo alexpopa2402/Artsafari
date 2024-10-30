@@ -21,11 +21,12 @@ export const handlePasswordChange = (e, setPassword, setPasswordStrength, setErr
 
     const passwordError = validatePassword(newPassword);
     if (newPassword === '') {
-        setErrors({ ...errors, password: '' });
+//the additional setErrors is Make sure that setErrors is always initialized before any onChange events are triggered.
+        setErrors && setErrors({ ...errors, password: '' });
     } else if (popupType === 'signUp') {
-        setErrors({ ...errors, password: passwordError });
+        setErrors && setErrors({ ...errors, password: passwordError });
     } else {
-        setErrors({ ...errors, password: '' });
+        setErrors && setErrors({ ...errors, password: '' });
     }
 };
 //this function is used to handle the change event of the email input field

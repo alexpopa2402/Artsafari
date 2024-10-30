@@ -114,7 +114,7 @@
 
  .bottom-details .bottom_text span,
  .bottom-details .bottom_text a {
-  font-size: calc(10px + 0.5vw);
+  font-size: calc(11px + 0.2vw);
    font-weight: 300;
    color: #fff;
    opacity: 0.8;

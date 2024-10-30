@@ -11,10 +11,10 @@ import YBlogosplash from '@assets/images/YBlogosplash2.png';
 
 const Header = () => {
   const [session, setSession] = useState(null);
-
+/*   const [isDarkTheme, setIsDarkTheme] = useState(false); */
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 515);
 
-  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', function () {
     const header = document.querySelector('.main-header');
     if (window.scrollY > 0) {
       header.classList.add('scrolled');
@@ -47,23 +47,34 @@ const Header = () => {
     fetchSession();
   }, []);
 
+/*   useEffect(() => {
+    document.documentElement.classList.toggle('dark-theme', isDarkTheme);
+  }, [isDarkTheme]);
+
+  const toggleTheme = () => {
+    setIsDarkTheme(prevTheme => !prevTheme);
+  }; */
+
   return (
     <header className='main-header'>
       <div className='title-container'>
-      <Link to='/' className="main-title">
-        {isMobile ? <img src={YBlogosplash} alt="Youngblood Logo" className="logo" /> : <span>YoungBlood 3.0</span>}
-      </Link>
+        <Link to='/' className="main-title">
+          {isMobile ? <img src={YBlogosplash} alt="Youngblood Logo" className="logo" /> : <span>YoungBlood 3.0</span>}
+        </Link>
         <p className="sub-title">by <a href='https://www.artsafari.ro/'>Artsafari</a></p>
       </div>
-      <SearchBar/>
+      <SearchBar />
       <nav className="nav-links">
-      <Link to='/' className="gallery">HOME</Link>
-      <Link to='/gallery' className="gallery">GALLERY</Link>
-      <Link to='/artists' className='artists'>ARTISTS</Link>
-      <Link to='/about' className="about">ABOUT US</Link>
+        <Link to='/' className="gallery">HOME</Link>
+        <Link to='/gallery' className="gallery">GALLERY</Link>
+        <Link to='/artists' className='artists'>ARTISTS</Link>
+        <Link to='/about' className="about">ABOUT US</Link>
       </nav>
-      <HamburgerMenu/>
-      {session ? <UserMenu /> : <AuthButton />}
+        <HamburgerMenu />
+        {session ? <UserMenu /> : <AuthButton />}
+{/*         <button onClick={toggleTheme} className="theme-toggle-button">
+          {isDarkTheme ? 'Light Mode' : 'Dark Mode'}
+        </button> */}
     </header>
   );
 };

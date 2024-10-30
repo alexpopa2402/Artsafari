@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faSpinner, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { faApple, faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import SocialLoginModal from './SocialLoginModal';
 import { handlePasswordChange, handleNameChange, handleSubmit, handleSignUp } from './authHandlers';
 import { validateEmail, validatePassword } from './authValidation';
 
@@ -90,11 +90,7 @@ const SignUpModal = ({ onClose, setPopupType }) => {
                             </button>
                         </form>
                         <span className="continue-with">or continue with</span>
-                        <div className="social-login-buttons">
-                            <button className="social-button apple-button"><FontAwesomeIcon icon={faApple} /></button>
-                            <button className="social-button google-button"><FontAwesomeIcon icon={faGoogle} /></button>
-                            <button className="social-button facebook-button"><FontAwesomeIcon icon={faFacebook} /></button>
-                        </div>
+                        <SocialLoginModal />
                         <p className="terms-text">
                             By clicking Sign Up, you agree to Artsafari&aposs Terms and Conditions and Privacy Policy.
                         </p>

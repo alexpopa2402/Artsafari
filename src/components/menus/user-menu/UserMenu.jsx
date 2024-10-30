@@ -21,7 +21,6 @@ const UserMenu = () => {
         }
     };
 
-
     // Disable scrolling when popup is open
     useEffect(() => {
         const handleScrollLock = () => {
@@ -34,7 +33,7 @@ const UserMenu = () => {
                 document.body.classList.remove('no-scroll');
             }
         };
-    
+
         handleScrollLock();
     }, [isOpen]);
 
@@ -76,23 +75,26 @@ const UserMenu = () => {
                             <a className="view-profile" >View profile</a>
                         </div>
                     </div>
-                    <div className="collection">
-                        <p>My Collection</p>
-                        <a className='collection-item' href="#">Artworks</a>
-                        <a className='collection-item' href="/artists">Artists</a>
-                        <a className='collection-item' href="#">Insights</a>
+                    <div className='user-links'>
+                        <div className="collection">
+                            <p>My Collection</p>
+                            <a className='collection-item' href="#">Artworks</a>
+                            <a className='collection-item' href="/artists">Artists</a>
+                            <a className='collection-item' href="#">Insights</a>
+                        </div>
+                        <div className="favorites">
+                            <p>Favorites</p>
+                            <a className='collection-item' href="#">Saves</a>
+                            <a className='collection-item' href="#">Follows</a>
+                            <a className='collection-item' href="#">Alerts</a>
+                        </div>
+                        <div className="settings">
+                            <div className="divider"></div>
+                            <a className='collection-item' href="#">Settings</a>
+                            <a className='collection-item' onClick={handleLogout}>Log out</a>
+                        </div>
                     </div>
-                    <div className="favorites">
-                        <p>Favorites</p>
-                        <a className='collection-item' href="#">Saves</a>
-                        <a className='collection-item' href="#">Follows</a>
-                        <a className='collection-item' href="#">Alerts</a>
-                    </div>
-                    <div className="settings">
-                        <div className="divider"></div>
-                        <a className='collection-item' href="#">Settings</a>
-                        <a className='collection-item' onClick={handleLogout}>Log out</a>
-                    </div>
+
                 </div>
             )}
         </div>
