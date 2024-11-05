@@ -91,7 +91,9 @@ form label {
     justify-content: space-between;
     align-items: center;
 }
-
+.file-list button  {
+    font-size: var(--font-size-medium);
+}
 .file-name {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -175,6 +177,7 @@ button span {
     top: 50%;
     transform: translateY(-50%);
     color: #999;
+    font-size: var(--font-size-small);
 }
 
 .full-width {

@@ -37,9 +37,6 @@
 
 .burger-nav-links a {
   color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0.5rem 0;
   cursor: pointer;
 }

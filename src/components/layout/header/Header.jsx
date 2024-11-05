@@ -6,7 +6,7 @@ import SearchBar from '@components/UI/searchbar/SearchBar';
 import AuthButton from '@components/auth/auth-button/AuthButton';
 import HamburgerMenu from '@components/menus/hamburger-menu/HamburgerMenu';
 import UserMenu from '@components/menus/user-menu/UserMenu';
-import YBlogosplash from '@assets/images/YBlogosplash2.png';
+import YBlogo from '@assets/images/YBlogo.png';
 
 
 const Header = () => {
@@ -39,11 +39,12 @@ const Header = () => {
       window.addEventListener("resize", handleResize);
 
       return () => {
-        authListener.unsubscribe();
+        if (authListener) {
+          authListener.unsubscribe();
+        }
         window.removeEventListener("resize", handleResize);
       };
     };
-
     fetchSession();
   }, []);
 
@@ -59,7 +60,7 @@ const Header = () => {
     <header className='main-header'>
       <div className='title-container'>
         <Link to='/' className="main-title">
-          {isMobile ? <img src={YBlogosplash} alt="Youngblood Logo" className="logo" /> : <span>YoungBlood 3.0</span>}
+          {isMobile ? <img src={YBlogo} alt="Youngblood Logo" className="logo" /> : <span>YoungBlood 3.0</span>}
         </Link>
         <p className="sub-title">by <a href='https://www.artsafari.ro/'>Artsafari</a></p>
       </div>

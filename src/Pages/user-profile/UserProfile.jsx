@@ -29,15 +29,17 @@ const UserProfile = () => {
     return (
         <div className="user-page">
           <div className="profile-section">
-            <div className="avatar">
-              <i className="fa fa-camera"></i>
-            </div>
-            <span>Welcome, {user.user_metadata.name}</span>
+          <label htmlFor="avatar" className="avatar-label">
+              <div className="avatar-circle">
+                <i className="fa fa-camera"></i>
+              </div>
+          </label>
+            <span>{user.user_metadata.name}</span>
             <Link to="/settings/edit-profile" className="settings-button">Settings</Link>
           </div>
           <div className="divider"></div>
           <div className="gallery-section">
-            <h2>Your Gallery</h2>
+            <h2>My Gallery</h2>
             <div className="gallery-container">
               {images.length === 0 ? (
                 <div className="empty-gallery-message">

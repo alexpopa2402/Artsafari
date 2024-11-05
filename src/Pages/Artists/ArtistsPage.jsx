@@ -23,7 +23,7 @@ const ArtistsPage = () => {
     <div className="artists-page">
       <h1>Artists Page</h1>
       {artists.length === 0 && (
-        <p>This is the artists page. Add artists to start seeing profiles.</p>
+        <p>Loading artists...</p>
       )}
       <div className="artist-cards-container">
         {artists.map((artist, index) => (

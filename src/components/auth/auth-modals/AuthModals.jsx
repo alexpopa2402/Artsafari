@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import './AuthModals-style.css';
 import { faAngleLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import YBlogosplash from '@assets/images/YBlogosplash2.png';
+import YBlogo from '@assets/images/YBlogo.png';
 import LoginModal from './LoginModal';
 import ForgotPasswordModal from './ForgotPasswordModal';
 import SignUpModal from './SignUpModal';
 
 const AuthModals = ({ onClose }) => {
     const [modal, setModal] = useState('login'); // 'login', 'forgotPassword', 'signUp'
-
     const renderModalContent = () => {
         switch (modal) {
             case 'login':
@@ -38,7 +37,7 @@ const AuthModals = ({ onClose }) => {
                                 <FontAwesomeIcon icon={faTimes} />
                             </span>
                         )}
-                        <img src={YBlogosplash} alt="Youngblood Logo" className="logo" />
+                        <img src={YBlogo} alt="Youngblood Logo" className="logo" />
                         <span className="close-popup" onClick={onClose}>
                             <FontAwesomeIcon icon={faTimes} />
                         </span>

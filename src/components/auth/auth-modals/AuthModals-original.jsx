@@ -4,7 +4,7 @@ import './AuthModals-style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faSpinner, faAngleLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import YBlogosplash from '@assets/images/YBlogosplash2.png';
+import YBlogo from '@assets/images/YBlogo.png';
 import {
     handleForgotPasswordClick,
     handleSignUpClick,
@@ -41,7 +41,7 @@ const AuthModals = ({ onClose }) => {
                                 <FontAwesomeIcon icon={faTimes} />
                             </span>
                         )}
-                        <img src={YBlogosplash} alt="Youngblood Logo" className="logo" />
+                        <img src={YBlogo} alt="Youngblood Logo" className="logo" />
                         <span className="close-popup" onClick={onClose}>
                             <FontAwesomeIcon icon={faTimes} />
                         </span>
