@@ -6,12 +6,11 @@ import SearchBar from '@components/UI/searchbar/SearchBar';
 import AuthButton from '@components/auth/auth-button/AuthButton';
 import HamburgerMenu from '@components/menus/hamburger-menu/HamburgerMenu';
 import UserMenu from '@components/menus/user-menu/UserMenu';
-import YBlogo from '@assets/images/YBlogo.png';
+import YBlogo from '@assets/images/logo/YBlogo.png';
 
 
 const Header = () => {
   const [session, setSession] = useState(null);
-/*   const [isDarkTheme, setIsDarkTheme] = useState(false); */
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 515);
 
   window.addEventListener('scroll', function () {
@@ -48,14 +47,6 @@ const Header = () => {
     fetchSession();
   }, []);
 
-/*   useEffect(() => {
-    document.documentElement.classList.toggle('dark-theme', isDarkTheme);
-  }, [isDarkTheme]);
-
-  const toggleTheme = () => {
-    setIsDarkTheme(prevTheme => !prevTheme);
-  }; */
-
   return (
     <header className='main-header'>
       <div className='title-container'>
@@ -73,9 +64,6 @@ const Header = () => {
       </nav>
         <HamburgerMenu />
         {session ? <UserMenu /> : <AuthButton />}
-{/*         <button onClick={toggleTheme} className="theme-toggle-button">
-          {isDarkTheme ? 'Light Mode' : 'Dark Mode'}
-        </button> */}
     </header>
   );
 };

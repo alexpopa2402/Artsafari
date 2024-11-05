@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './AuthModals-style.css';
 import { faAngleLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import YBlogo from '@assets/images/YBlogo.png';
+import YBlogo from '@assets/images/logo/YBlogo.png';
 import LoginModal from './LoginModal';
 import ForgotPasswordModal from './ForgotPasswordModal';
 import SignUpModal from './SignUpModal';

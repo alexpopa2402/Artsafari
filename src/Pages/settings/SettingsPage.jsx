@@ -7,10 +7,10 @@ const SettingsPage = () => {
   const user = useAuth();
   const location = useLocation();
   const activeTab = location.pathname.split('/').pop();
-
   if (!user) {
     return <div>Loading...</div>;
   }
+
 
   return (
     <div className="settings-page">

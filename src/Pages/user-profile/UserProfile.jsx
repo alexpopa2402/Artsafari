@@ -4,16 +4,13 @@ import useAuth from '@hooks/useAuth';
 import './UserProfile-style.css';
 
 const images = [
-/*     '/src/assets/81.jpg',
-    '/src/assets/abstract.jpg',
-    '/src/assets/81.jpg', */
+    '/src/assets/images/carousel images/81.jpg',
 ];
 
 const UserProfile = () => {
-    const user = useAuth();
+    const { user, loading } = useAuth();
     const [selectedImage, setSelectedImage] = useState(null);
     const navigate = useNavigate();
-  
     const handleImageClick = (image) => {
       setSelectedImage(image);
     };
@@ -22,20 +19,34 @@ const UserProfile = () => {
       setSelectedImage(null);
     };
   
-    if (!user) {
+    if (loading) {
       return <div>Loading...</div>;
+    }
+
+    if (!user || !user.user_metadata) {
+      return <div>Error: User data not available</div>;
     }
 
     return (
         <div className="user-page">
           <div className="profile-section">
-          <label htmlFor="avatar" className="avatar-label">
-              <div className="avatar-circle">
-                <i className="fa fa-camera"></i>
-              </div>
-          </label>
+            <label htmlFor="avatar" className="avatar-label">
+                <div className="avatar-circle">
+                  <i className="fa fa-camera"></i>
+                </div>
+            </label>
             <span>{user.user_metadata.name}</span>
-            <Link to="/settings/edit-profile" className="settings-button">Settings</Link>
+            <div className="upload-section">
+              <button 
+                className="profile-upload-button" 
+                onClick={() => navigate('/upload-artwork')}>
+                  Upload Your Artwork
+              </button>
+            </div>
+            <Link 
+              to="/settings/edit-profile" 
+              className="settings-button">Settings
+            </Link>
           </div>
           <div className="divider"></div>
           <div className="gallery-section">
@@ -52,7 +63,6 @@ const UserProfile = () => {
                   </div>
                 ))
               )}
-    
               {selectedImage && (
                 <div className="modal" onClick={handleCloseModal}>
                   <span className="close">&times;</span>
@@ -60,9 +70,6 @@ const UserProfile = () => {
                 </div>
               )}
             </div>
-          </div>
-          <div className="upload-section">
-            <button className="profile-upload-button" onClick={() => navigate('/upload-artwork')}>Upload Your Artwork</button>
           </div>
         </div>
       );

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 import { supabase } from '@services/supabaseClient';
@@ -7,6 +7,7 @@ import './EditProfilePage-style.css';
 const EditProfilePage = () => {
   const user = useAuth();
   const navigate = useNavigate();
+  const fileInputRef = useRef(null);
 
   const [name, setName] = useState(user?.user_metadata?.name || '');
   const [profession, setProfession] = useState(user?.user_metadata?.profession || '');
@@ -70,65 +71,70 @@ const EditProfilePage = () => {
     }
   };
 
+  const handleChooseImageClick = () => {
+    fileInputRef.current.click();
+  };
+
   return (
     <div className="edit-profile-page">
-      <form onSubmit={handleSubmit}>
-        <div className="form-grid">
-          <div className="form-group">
-            <label htmlFor="avatar" className="avatar-label">
-              <div className="avatar-circle">
-                <i className="fa fa-camera"></i>
-              </div>
-              Choose an Image
-            </label>
+      <div className="form-layout">
+        <div className="form-group">
+          <div className="avatar-group">
+            <div className="avatar-circle">
+              <i className="fa fa-camera"></i>
+            </div>
+            <div 
+              className='avatar-text' 
+              onClick={handleChooseImageClick}>Choose an Image</div>
             <input
               type="file"
               id="avatar"
               accept="image/*"
               onChange={handleImageChange}
               style={{ display: 'none' }}
+              ref={fileInputRef}
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="profession">Profession</label>
-            <input
-              type="text"
-              id="profession"
-              value={profession}
-              onChange={(e) => setProfession(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="positions">Other Relevant Positions</label>
-            <input
-              type="text"
-              id="positions"
-              value={positions}
-              onChange={(e) => setPositions(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="about">About</label>
-            <textarea
-              id="about"
-              value={about}
-              onChange={(e) => setAbout(e.target.value)}
-            ></textarea>
           </div>
         </div>
-        <button type="submit" className="save-button">
-          Save
-        </button>
-      </form>
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="profession">Profession</label>
+          <input
+            type="text"
+            id="profession"
+            value={profession}
+            onChange={(e) => setProfession(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="positions">Other Relevant Positions</label>
+          <input
+            type="text"
+            id="positions"
+            value={positions}
+            onChange={(e) => setPositions(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="about">About</label>
+          <textarea
+            id="about"
+            value={about}
+            onChange={(e) => setAbout(e.target.value)}
+          ></textarea>
+        </div>
+      </div>
+      <button type="submit" className="save-button" onClick={handleSubmit}>
+        Save
+      </button>
     </div>
   );
 };

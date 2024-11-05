@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './Carousel-style.css';
 
 const Carousel = () => {
     const images = [
-        { src: '/src/assets/images/Mihai Surdu.avif', caption: 'People at the museum - Mihai Surdu' },
-        { src: '/src/assets/images/steve-johnson.jpg', caption: 'Abstract painting - Steve Johnson' },
-        { src: '/src/assets/images/alina-grubnyak.jpg', caption: 'Algo-r-(h)-i-(y)-thms, 2018. Installation view at ON AIR, Tomás Saraceno solo exhibition at Palais de Tokyo, Paris, 2018.' }
+        { src: '/src/assets/images/carousel images/Mihai Surdu.avif', caption: 'People at the museum - Mihai Surdu' },
+        { src: '/src/assets/images/carousel images/steve-johnson.jpg', caption: 'Abstract painting - Steve Johnson' },
+        { src: '/src/assets/images/carousel images/alina-grubnyak.jpg', caption: 'Algo-r-(h)-i-(y)-thms, 2018. Installation view at ON AIR, Tomás Saraceno solo exhibition at Palais de Tokyo, Paris, 2018.' }
     ];
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -15,16 +15,16 @@ const Carousel = () => {
         setCurrentIndex(newIndex);
     };
 
-    const goToNext = () => {
+    const goToNext = useCallback(() => {
         const isLastSlide = currentIndex === images.length - 1;
         const newIndex = isLastSlide ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);
-    };
+    }, [currentIndex, images.length]);
 
     useEffect(() => {
         const interval = setInterval(goToNext, 3000); // Change image every 3 seconds
         return () => clearInterval(interval); // Clear interval on component unmount
-    }, [currentIndex]);
+    }, [goToNext]);
 
     return (
         <div className="carousel-container">

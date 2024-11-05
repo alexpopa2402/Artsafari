@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UploadForm-style.css';
+import BackButton from '@components/UI/back-button/BackButton';
 
 export default function UploadForm() {
     
@@ -73,6 +74,7 @@ export default function UploadForm() {
 
     return (
         <div className="upload-artwork">
+            <BackButton />
             <h2>Upload Your Artwork</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-grid">
