@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   height: 100%;
+  background-color: var(--background-color);
   }
 
 body {
@@ -13,13 +14,13 @@ body {
   
 a {
   font-weight: 500;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   text-decoration: inherit;
   transition: transform 0.2s, background-color 0.2s, color 0.2s;
 }
 a:hover {
   /* background-color: rgb(37, 37, 37); */
-  color: #410202;
+  color: var(--font-accent-color);
   transform: scale(1.1);
 }
 
@@ -46,19 +47,19 @@ input, button, textarea, select {
   /* Global button styling */
 button {
   border-radius: 45px;
-  border: 1px solid transparent;
+  border: 1px solid var(--primary-color);
   padding: 0.6em 0.6em;
   font-size: var(--font-size-intermediate);
   font-weight: 500;
   font-family: inherit;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--background-color);
+  color: var(--font-primary-color);
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s, color 0.2s;
   white-space: nowrap;
 }
 button:hover {
-  background-color: rgb(59, 0, 0);
+  background-color: var(--primary-color);
   color: #ffffff;
   transform: scale(0.95);
 }

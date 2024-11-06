@@ -1,7 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 import './SettingsPage-style.css';
-import BackButton from '@components/UI/back-button/BackButton';
+import BackButton from '@components/buttons/back-button/BackButton';
 
 const SettingsPage = () => {
   const user = useAuth();

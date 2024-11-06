@@ -1,32 +1,33 @@
-/* src/Pages/Users/UserPage-style.css */
 .user-page {
     max-width: 100%;
     margin: 0 auto;
     padding: 1em 0.5em;
-    font-family: Arial, sans-serif;
-    color: black;
 }
 
 .profile-section {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    flex-wrap: wrap;
     align-items: center;
-    margin-bottom: 20px;
+    justify-content: space-between;
 }
-.profile-section .avatar {
-    margin-right: 20px;
-    width: 100px; /* Adjust as needed */
-    height: 100px; /* Adjust as needed */
-    max-width: 20svw; /* Adjust as needed */
-    max-height: 20svw; /* Adjust as needed */
-    border-radius: 50%;
+
+.profile-info {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    font-size: 2rem;
-    text-align: center;
+    margin: 0.5em 0.5em;
 }
+.profile-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.profile-buttons button {
+    margin: 1em 0.5em;
+    font-size: calc(10px + 0.3vw);
+}
+
 .profile-section span {
     font-size: 24px;
     font-weight: bold;
@@ -34,7 +35,7 @@
 
 .user-page .divider {
     height: 1px;
-    background-color:var(--primary-color);
+    background-color: var(--secondary-color);
 }
 
 .gallery-section {
@@ -45,29 +46,12 @@
     margin: 1em 0.8em;
 }
 
-.upload-section {
-    text-align: center;
-}
-
-.upload-section .profile-upload-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.profile-upload-button:hover {
-    background-color: #0056b3;
-}
-
 .gallery-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    min-height: 200px; /* Adjust as needed */
+    min-height: 200px;
     position: relative;
 }
 
@@ -77,18 +61,3 @@
     color: #666;
     position: absolute;
 }
-
-.settings-button {
-    margin-left: auto;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  .settings-button:hover {
-    background-color: #0056b3;
-  }

@@ -7,7 +7,7 @@
         "@assets/*": ["assets/*"],
         "@hooks/*": ["hooks/*"],
         "@utils/*": ["utils/*"],
-        "@services/*": ["services/*"]
+        "@services/*": ["services/*"],
       }
     },
     "include": ["src"]

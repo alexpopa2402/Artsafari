@@ -9,8 +9,8 @@
 }
 
 .login-button:active {
-  background-color: rgb(132, 0, 0);
-  color: #ffffff;
+  background-color:var(--highlight-color);
+  color: var(--font-primary-color);
   transform: scale(0.96); /* Slightly reduce size for bouncy effect */
 }
 

@@ -1,6 +1,7 @@
 .upload-artwork {
     margin: 0 auto;
     background-color: var(--background-color);
+    color: var(--font-primary-color);
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 1600px;
@@ -28,12 +29,19 @@
 .form-group textarea {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    background-color: var(--background-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 4px;
+}
+.select-wrapper #medium{
+    background-color: var(--background-color);
+    color: var(--font-primary-color);
+    border: 1px solid var(--secondary-color);
 }
 
 .form-group textarea {
     resize: vertical;
+    height: 100px;
 }
 
 form label {
@@ -110,8 +118,8 @@ form label {
     display: block;
     width: 100%;
     padding: 10px;
-/*     background-color: #007bff; */
-    color: #fff;
+    background-color: var(--secondary-color);
+    color: var(--font-secondary-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -121,7 +129,7 @@ form label {
 
 
 button:disabled {
-    background-color: #ccc;
+    background-color: var(--secondary-color);
     cursor: not-allowed;
 }
 

@@ -1,22 +1,23 @@
-import {useState, useEffect} from 'react';
+import DarkThemeButton from '@components/buttons/theme-button/DarkThemeButton';
+import './EditAccountPage-style.css';
 
 const EditAccountPage = () => {
-
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark-theme', isDarkTheme);
-  }, [isDarkTheme]);
-
-  const toggleTheme = () => {
-    setIsDarkTheme(prevTheme => !prevTheme);
-  };
   return (
-    <div>
-      <h2>Edit Account</h2>
-        {<button onClick={toggleTheme} className="theme-toggle-button">
-          {isDarkTheme ? 'Light Mode' : 'Dark Mode'}
-        </button>}
+    <div className='edit-account-page'>
+      <h2>Account Information</h2>
+      <div className='email-reset-form'>
+        <label htmlFor='email'>Email</label>
+        <input type='email' id='email' required='' value=''/>
+      </div>
+      <button>Save Changes</button>
+      <div className="divider"></div>
+      <div className='password-reset-form'>
+        <label htmlFor='password'>Password</label>
+        <input type='password' id='password' required='' value=''/>
+      </div>
+      <button>Create New Password</button>
+      <div className="divider"></div>
+      <DarkThemeButton />
     </div>
   );
 };

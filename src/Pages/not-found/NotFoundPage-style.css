@@ -16,7 +16,7 @@
   
   .not-found-page a {
     font-size: 1.2rem;
-    color: #007bff;
+    color:var(--font-highlight-color);
     text-decoration: none;
   }
   

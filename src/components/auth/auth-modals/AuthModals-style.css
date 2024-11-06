@@ -115,7 +115,7 @@ input::placeholder {
 .popup-links a {
   display: block;
   margin-top: 5px;
-  color: #007bff;
+  color: var(--font-highlight-color);
   cursor: pointer;
 }
 
@@ -333,7 +333,7 @@ input::placeholder {
 
 .social-button {
   padding: 0.7em 20px;
-  border: 1px solid black;
+  border: 1px solid var(--primary-color);
   border-radius: 45px;
   cursor: pointer;
   font-size: 15px;
@@ -343,7 +343,7 @@ input::placeholder {
 
 .apple-button, .google-button {
 
-  color: #000000;
+  color: var(--primary-color);
   margin: 0 10px 0 0;
 }
 

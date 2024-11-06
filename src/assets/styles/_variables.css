@@ -9,9 +9,17 @@
     -moz-osx-font-smoothing: grayscale;
 
     --background-color: #fff;
-    --primary-color: #333;
-    --secondary-color: #8c8c8c;
-    --highlight-color: #1f0000;
+    --primary-color: #000000;
+    --secondary-color: #ccc;
+
+    --button-highlight-color: #630000;
+    --button-active-color: #ffffff;
+    --button-hover-color: #ad6969;
+
+    --font-primary-color: #000000;
+    --font-secondary-color: #ffffff;
+    --font-highlight-color: #007bff;
+    --font-accent-color: #c70000;
   
     --font-size-small: 0.6875rem; /* 11px */
     --font-size-medium: 0.8125rem; /* 13px */
@@ -38,8 +46,18 @@
   }
 
   :root.dark-theme {
-    --background-color: #20153d;
+    --background-color: #020025;
     --primary-color: #ffffff;
-    --secondary-color: #999999;
+    --secondary-color: #5e66ff;
+
+    --font-primary-color: #ffffff;
+    --font-secondary-color: #999999;
+    --font-highlight-color: #ff8000;
+    --font-accent-color: #4456ff;
+
+    --button-highlight-color: #00632d;
+    --button-active-color: #000000;
+    --button-hover-color: #7369ad;
+    
     /* Add other dark theme variables here */
   }

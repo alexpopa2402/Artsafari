@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UploadForm-style.css';
-import BackButton from '@components/UI/back-button/BackButton';
+import BackButton from '@components/buttons/back-button/BackButton';
 
 export default function UploadForm() {
     

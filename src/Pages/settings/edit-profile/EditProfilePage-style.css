@@ -1,5 +1,7 @@
 .edit-profile-page {
   max-width: 800px;
+  background-color: var(--background-color);
+  color: var(--font-primary-color);
 }
 
 .form-layout {
@@ -17,37 +19,42 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  border: 1px solid #ccc;
+/*   border: 1px solid var(--secondary-color); */
+}
+.avatar-text {
+  font-size: var(--font-size-intermediate);
+  color: var(--font-primary-color);
+  cursor: pointer;
+}
+
+.avatar-text:hover {
+  text-decoration: underline;
 }
 
 #about {
   resize: vertical;
   height: 150px;
-  /* Set the default height here */
 }
 
 .save-button {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-top: 20px;
 }
 
 .save-button:disabled {
-  background-color: #ccc;
+  background-color: var(--secondary-color);
   cursor: not-allowed;
 }
 
 .avatar-circle {
-  width: 100px;
-  height: 100px;
+  width: calc(80px + 0.6vw);
+  height: calc(80px + 0.6vw);
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: var(--secondary-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,5 +63,5 @@
 
 .avatar-circle i {
   font-size: 20px;
-  color: #fff;
+  color: var(--font-secondary-color);
 }

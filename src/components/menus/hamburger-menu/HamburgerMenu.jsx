@@ -107,7 +107,7 @@ const HamburgerMenu = () => {
           <div className="divider"></div>
           <nav className="burger-nav-links">
             {session && (
-              <a href="/settings" className="burger-settings">
+              <a href="/settings/edit-profile" className="burger-settings">
                 SETTINGS
               </a>
             )} 
