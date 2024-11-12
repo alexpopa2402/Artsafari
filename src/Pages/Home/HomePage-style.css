@@ -5,6 +5,7 @@
     margin: 0 auto;
     background-color: var(--background-color);
     color: var(--font-primary-color);
+    flex-grow: 1;
 }
 
 .homepage-header {

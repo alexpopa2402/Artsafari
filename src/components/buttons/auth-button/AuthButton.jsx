@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import AuthModals from '@components/auth/auth-modals/AuthModals';
 import './AuthButton-style.css';
 
@@ -23,12 +24,15 @@ const AuthButton = () => {
     }, [showPopup]);
 
     return (
-        <div>
+        <>
             <button className="login-button" onClick={handleButtonClick}>
                 Log in / Sign up
             </button>
-            {showPopup && <AuthModals onClose={handleClosePopup} />}
-        </div>
+            {showPopup && ReactDOM.createPortal(
+                <AuthModals onClose={handleClosePopup} />,
+                document.body
+            )}
+        </>
     );
 };
 

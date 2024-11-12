@@ -1,4 +1,4 @@
-import { supabase } from '../../../services/supabaseClient';
+import { supabase } from '../services/supabaseClient';
 import { validateName, validateEmail, validatePassword, calculatePasswordStrength } from './authValidation';
 
 //this function is used to handle the click event of the login button

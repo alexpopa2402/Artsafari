@@ -4,7 +4,7 @@ import useAuth from '@hooks/useAuth';
 import './UserProfile-style.css';
 
 const images = [
-  /* '/src/assets/images/carousel images/81.jpg', */
+  '/src/assets/images/carousel images/81.jpg',
 ];
 
 const UserProfile = () => {
@@ -37,7 +37,7 @@ const UserProfile = () => {
             </div>
           </label>
           <span>
-            {user.user_metadata.name}
+            Welcome, {user.user_metadata.name} !
           </span>
         </div>
         <div className='profile-buttons'>
@@ -55,7 +55,6 @@ const UserProfile = () => {
       </div>
       <div className="divider"></div>
       <div className="gallery-section">
-        <h2>My Gallery</h2>
         <div className="gallery-container">
           {images.length === 0 ? (
             <div className="empty-gallery-message">

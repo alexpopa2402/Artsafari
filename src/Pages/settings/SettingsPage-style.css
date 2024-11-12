@@ -1,39 +1,208 @@
+/* styling for the overall settings page */
 .settings-page {
-    padding: 20px;
-    background-color: var(--background-color);
-    color: var(--font-primary-color);
-  }
-  
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--font-primary-color);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.settings-title {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  font-size: var(--font-size-large);
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.tab.active {
+  border-bottom: 2px solid #007bff;
+  font-weight: bold;
+}
+
+.tab-content {
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--font-primary-color);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 300px;
+  flex-grow: 1;
+}
+
+/* edit profile page styles */
+
+.edit-profile-page {
+  max-width: 800px;
+  background-color: var(--background-color);
+  color: var(--font-primary-color);
+}
+
+.form-layout, .account-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group .avatar-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+/*   border: 1px solid var(--secondary-color); */
+}
+.avatar-text {
+  font-size: var(--font-size-intermediate);
+  color: var(--font-primary-color);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.avatar-text:hover {
+  text-decoration: underline;
+}
+
+#about {
+  resize: vertical;
+  height: 150px;
+}
+
+.save-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.save-button:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
+}
+
+.avatar-circle {
+  min-width: calc(80px + 0.6vw);
+  min-height: calc(80px + 0.6vw);
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.avatar-circle i {
+  font-size: 20px;
+  color: var(--font-secondary-color);
+}
+
+/* edit account page styles */
+
+.edit-account-page {
+  max-width: 800px;
+  background-color: var(--background-color);
+  color: var(--font-primary-color);
+}
+
+.email-reset-form,
+.password-reset-form {
+margin-bottom: 15px;
+position: relative;
+}
+
+.email-reset-form label,
+.password-reset-form label {
+display: block;
+position: absolute;
+top: -10px;
+left: 10px;
+background-color: var(--background-color);
+padding: 0 5px;
+font-size: var(--font-size-small);
+pointer-events: none;
+z-index: 1;
+border-radius: 0.5rem;
+}
+
+.email-reset-form input,
+.password-reset-form input {
+width: 100%;
+padding: var(--padding-medium);
+border: 1px solid var(--border-color);
+border-radius: var(--border-radius);
+font-size: var(--font-size-intermediate);
+outline: none;
+box-sizing: border-box;
+background-color: var(--background-color);
+}
+
+.email-reset-form input::placeholder,
+.password-reset-form input::placeholder {
+font-size: var(--font-size-medium); /* Adjust the size as needed */
+}
+
+@media (max-width: 1000px) {
+.email-reset-form input,
+.password-reset-form input {
+  padding: var(--padding-small);
+}
+}
+
+@media (max-width: 430px) {
+.email-reset-form input,
+.password-reset-form input {
+  padding: var(--padding-small);
+}
+}
+
+@media (max-width: 320px) {
+.email-reset-form input,
+.password-reset-form input {
+  padding: var(--padding-small);
+  font-size: var(--font-size-small);
+}
+}
+
+@media (max-width: 270px) {
+.email-reset-form input,
+.password-reset-form input {
+  padding: 6px 13px;
+  font-size: 10px;
+}
+}
+
+/* media queries for mobile */
+@media (max-width: 430px) {
   .tabs {
-    display: flex;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 20px;
-  }
-  
-  .tab {
-    padding: 10px 20px;
-    cursor: pointer;
-    border: none;
-    background: none;
-    outline: none;
-    text-decoration: none;
-    color: var(--primary-color);
-  }
-  
-  .tab.active {
-    border-bottom: 2px solid #007bff;
-    font-weight: bold;
-  }
-  
-  .tab-content {
-    padding: 20px;
-    background-color: var(--background-color);
-    color: var(--font-primary-color);
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: var(--font-size-intermediate);
   }
 
-  .settings-title {
-    margin-bottom: 20px;
-    font-size: 2rem;
+  .tab-content {
+    font-size: var(--font-size-medium);
   }
+
+  .tab-content .avatar-text {
+    font-size: var(--font-size-medium);
+  }
+}

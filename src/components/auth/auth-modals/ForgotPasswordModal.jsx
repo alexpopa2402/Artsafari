@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { handleForgotPasswordClick } from './authHandlers';
-import { validateEmail } from './authValidation';
+import { handleForgotPasswordClick } from '../../../utils/authHandlers';
+import { validateEmail } from '../../../utils/authValidation';
 
 const ForgotPasswordModal = ({ setPopupType }) => {
     const [email, setEmail] = useState('');

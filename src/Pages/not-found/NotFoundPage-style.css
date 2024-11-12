@@ -2,6 +2,8 @@
 .not-found-page {
     text-align: center;
     padding: 50px;
+    background-color: var(--background-color);
+    color: var(--font-primary-color);
   }
   
   .not-found-page h1 {

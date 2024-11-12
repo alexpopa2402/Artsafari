@@ -4,7 +4,7 @@ import './UploadForm-style.css';
 import BackButton from '@components/buttons/back-button/BackButton';
 
 export default function UploadForm() {
-    
+
     const [title, setTitle] = useState('');
     const [medium, setMedium] = useState('');
     const [year, setYear] = useState('');
@@ -64,10 +64,38 @@ export default function UploadForm() {
     };
 
     const handleNumericInput = (e) => {
-        const value = e.target.value;
-        if (!/^\d*$/.test(value)) {
-            e.preventDefault();
+        const charCode = e.keyCode || e.which;
+        // Allow backspace, delete, arrow keys, etc.
+        if (
+            charCode === 8 || // Backspace
+            charCode === 46 || // Delete
+            charCode === 37 || // Left arrow
+            charCode === 39 || // Right arrow
+            (charCode >= 48 && charCode <= 57) // Numbers 0-9
+        ) {
+            return;
         }
+        e.preventDefault();
+    };
+    // Handle year input
+    const handleYearChange = (e) => {
+        const value = e.target.value;
+        if (value.length <= 4 && !/^0/.test(value)) {
+            setYear(value);
+        }
+    };
+
+    const isFormValid = () => {
+        return (
+            title &&
+            medium &&
+            year &&
+            materials &&
+            height &&
+            width &&
+            depth &&
+            totalSize <= 20 * 1024 * 1024
+        );
     };
 
     const completionPercentage = (totalSize / (5 * 1024 * 1024)) * 100;
@@ -75,8 +103,8 @@ export default function UploadForm() {
     return (
         <div className="upload-artwork">
             <BackButton />
-            <h2>Upload Your Artwork</h2>
-            <form onSubmit={handleSubmit}>
+            <form className='form-container' onSubmit={handleSubmit}>
+                <h2>Upload Your Artwork</h2>
                 <div className="form-grid">
                     <div className="form-group">
                         <label htmlFor="title">Title</label>
@@ -113,7 +141,11 @@ export default function UploadForm() {
                     </div>
                     <div className="form-group">
                         <label htmlFor="year">Year</label>
-                        <input type="text" id="year" value={year} onChange={(e) => setYear(e.target.value)} onKeyPress={handleNumericInput} required />
+                        <input type="text" id="year" value={year} onChange={handleYearChange}
+                            onKeyDown={handleNumericInput}
+                            maxLength="4"
+                            required
+                        />
                     </div>
                     <div className="form-group">
                         <label htmlFor="materials">Materials</label>
@@ -123,19 +155,19 @@ export default function UploadForm() {
                         <div className="dimension">
                             <label htmlFor="height">Height</label>
                             <div className="input-with-unit">
-                                <input type="text" id="height" value={height} onChange={(e) => setHeight(e.target.value)} onKeyPress={handleNumericInput} required />
+                                <input type="text" id="height" value={height} onChange={(e) => setHeight(e.target.value)} onKeyDown={handleNumericInput} required />
                             </div>
                         </div>
                         <div className="dimension">
                             <label htmlFor="width">Width</label>
                             <div className="input-with-unit">
-                                <input type="text" id="width" value={width} onChange={(e) => setWidth(e.target.value)} onKeyPress={handleNumericInput} required />
+                                <input type="text" id="width" value={width} onChange={(e) => setWidth(e.target.value)} onKeyDown={handleNumericInput} required />
                             </div>
                         </div>
                         <div className="dimension">
                             <label htmlFor="depth">Depth</label>
                             <div className="input-with-unit">
-                                <input type="text" id="depth" value={depth} onChange={(e) => setDepth(e.target.value)} onKeyPress={handleNumericInput} required />
+                                <input type="text" id="depth" value={depth} onChange={(e) => setDepth(e.target.value)} onKeyDown={handleNumericInput} required />
                             </div>
                         </div>
                     </div>
@@ -162,6 +194,7 @@ export default function UploadForm() {
                         />
                         <span>Files Supported: JPG, PNG, HEIC</span>
                         <span>Total maximum per artwork: 5 MB</span>
+                        <span>Currently at: {totalSize > 0 ? (totalSize / 1024).toFixed(2) : 0} KB</span>
                         <button type="button" className="add-artwork-button" onClick={() => document.getElementById('photos').click()}>
                             Or Add Photos
                         </button>
@@ -170,7 +203,9 @@ export default function UploadForm() {
                     <div className="file-list">
                         {previews.map((preview, index) => (
                             <div key={index} className="file-item">
-                                <img src={preview} alt={`Preview ${index}`} className="file-preview" />
+                                <div className='file-preview-container'>
+                                    <img src={preview} alt={`Preview ${index}`} className="file-preview" />
+                                </div>
                                 <div className="file-info">
                                     <span className='file-name'>{files[index].name}</span>
                                     <span className='file-size'>{(files[index].size / 1024).toFixed(2)} KB</span>
@@ -180,8 +215,8 @@ export default function UploadForm() {
                         ))}
                     </div>
                 </div>
-                <button type="submit" className = "artwork-submit-button" disabled={totalSize > 20 * 1024 * 1024}>
-                    <div className="completion-bar" style={{ width: `${completionPercentage}%` }}></div>
+                <button type="submit" className="artwork-submit-button" disabled={!isFormValid()}>
+                <div className={`completion-bar ${totalSize > 5 * 1024 * 1024 ? 'exceeded' : isFormValid() ? 'valid' : ''}`} style={{ width: `${completionPercentage}%` }}></div>
                     <span>{totalSize > 5 * 1024 * 1024 ? 'Limit Exceeded' : 'Submit'}</span>
                 </button>
             </form>

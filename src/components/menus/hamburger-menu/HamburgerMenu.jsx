@@ -1,93 +1,51 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '@services/supabaseClient';
+import { fetchSession, subscribeToAuthChanges } from '@services/authService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTimes } from '@fortawesome/free-solid-svg-icons';
-import AuthButton from "@components/auth/auth-button/AuthButton";
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import AuthButton from "@components/buttons/auth-button/AuthButton";
+import { toggleMenu, handleLogout } from '@utils/menuHandlers';
+import useScrollLock from '@hooks/useScrollLock';
 import "./HamburgerMenu-style.css";
 
 const HamburgerMenu = () => {
-  // State variables
   const [isOpen, setIsOpen] = useState(false);
   const [session, setSession] = useState(null);
   const menuRef = useRef(null);
   const navigate = useNavigate();
-  // Toggle the popup
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
-  // Close the popup when clicking outside of it
-  const handleClickOutside = (event) => {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
-      setIsOpen(false);
-    }
-  };
+  // Initialize authentication
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  // Disable scrolling when popup is open
-/*   useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
-  }, [isOpen]); */
-
-  // Disable scrolling when popup is open and add padding to body to account for scrollbar 
-  
-  useEffect(() => {
-    const handleScrollLock = () => {
-        if (isOpen) {
-            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-            document.body.style.paddingRight = `${scrollbarWidth}px`;
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.style.paddingRight = '';
-            document.body.classList.remove('no-scroll');
-        }
-    };
-
-    handleScrollLock();
-}, [isOpen]);
-
-  // Logout function
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    setIsOpen(false);
-    navigate('/');
-  };
-  // Fetch session and set it to state
-  useEffect(() => {
-    const fetchSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+    const initializeAuth = async () => {
+      // Fetch and set the session
+      const session = await fetchSession();
       setSession(session);
-
-      const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
-        setSession(session);
-      });
+      // Listens for changes in authentication state
+      const authListener = subscribeToAuthChanges(setSession);
+      // Cleanup the auth listener
       return () => {
-        authListener.unsubscribe();
+        if (authListener) {
+          authListener.unsubscribe();
+        }
       };
     };
-
-    fetchSession();
+    initializeAuth();
   }, []);
-  
+
+
+  // Disable scrolling when popup is open
+  useScrollLock(isOpen, false);
+
+
   return (
     <div className="hamburger-menu-container" ref={menuRef}>
-      <div className="hamburger-icon" onClick={toggleMenu}>
+      <div className="hamburger-icon" onClick={toggleMenu(isOpen, setIsOpen)}>
         <i className="fa fa-bars"></i>
       </div>
       {isOpen && (
         <div className="burger-menu">
 
-          <span className="hamburger-close-popup" onClick={toggleMenu}>
+          <span className="hamburger-close-popup" onClick={toggleMenu(isOpen, setIsOpen)}>
             <FontAwesomeIcon icon={faTimes} />
           </span>
           <nav className="burger-nav-links">
@@ -110,8 +68,11 @@ const HamburgerMenu = () => {
               <a href="/settings/edit-profile" className="burger-settings">
                 SETTINGS
               </a>
-            )} 
-            {session ? <a className='burger-logout' onClick={handleLogout}>Log out</a> : <AuthButton />}
+            )}
+            {session ? <a className='burger-logout' onClick={() => {
+              handleLogout(setSession, navigate);
+              toggleMenu(isOpen, setIsOpen)();
+            }}>Log out</a> : <AuthButton />}
           </nav>
         </div>
       )}

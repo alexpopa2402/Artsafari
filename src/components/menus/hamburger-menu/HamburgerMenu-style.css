@@ -7,9 +7,10 @@
 .hamburger-icon {
   cursor: pointer;
   color: var(--font-primary-color);
-  border: 1px solid rgba(0, 0, 0, 0.726);
-  line-height: 0;
-  padding: 0.84rem;
+  font-size: var(--font-size-large);
+/*   border: 1px solid rgba(0, 0, 0, 0.726); */
+  margin: 0 1rem;
+
 }
 
 /* Burger menu styles */
@@ -32,7 +33,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0.17rem 0.5em;
+  margin: 0.25rem 0;
 }
 
 .burger-nav-links a {
@@ -49,6 +50,9 @@
   margin-bottom: 1rem;
   padding-top: 1px;
 }
+.burger-menu .login-button {
+  margin: 0 0 1rem 0;
+}
 
 /* Logout button active state */
 .burger-logout:active {
@@ -62,7 +66,7 @@
   .hamburger-menu-container,
   .burger-menu .login-button {
     display: block;
-    margin-right: 0.5rem;
+/*     margin-right: 0.5rem; */
   }
 }
 
@@ -74,7 +78,6 @@
   cursor: pointer;
   font-size: 20px;
 /*   font-weight: bold; */
-  margin-right: 0.2rem;
   color: var(--primary-color);
 }
 
@@ -84,13 +87,13 @@
     top: 0;
     height: 100vh;
     overflow-y: auto;
-    z-index: 100;
+    z-index: 12;
   }
   .burger-menu .divider {
-    margin: 0 0 1.5rem 0;
+    margin: 0.5rem 0 1.25rem 0;
   }
   .hamburger-close-popup {
     position: fixed;
-    right: 0.88em;
+    right: 0.85em;
   }
 }

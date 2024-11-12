@@ -13,8 +13,8 @@ import {
     handleSubmit,
     handleSignUp,
     handleLogin
-} from './authHandlers';
-import { validateEmail, validatePassword } from './authValidation';
+} from '../../../utils/authHandlers';
+import { validateEmail, validatePassword } from '../../../utils/authValidation';
 
 const AuthModals = ({ onClose }) => {
     const [popupType, setPopupType] = useState('login'); // 'login', 'forgotPassword', 'signUp'

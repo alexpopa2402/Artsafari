@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faSpinner, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import SocialLoginModal from './SocialLoginModal';
-import { handlePasswordChange, handleNameChange, handleSubmit, handleSignUp } from './authHandlers';
-import { validateEmail, validatePassword } from './authValidation';
+import { handlePasswordChange, handleNameChange, handleSubmit, handleSignUp } from '../../../utils/authHandlers';
+import { validateEmail, validatePassword } from '../../../utils/authValidation';
 
 const SignUpModal = ({ onClose, setPopupType }) => {
     const [name, setName] = useState('');

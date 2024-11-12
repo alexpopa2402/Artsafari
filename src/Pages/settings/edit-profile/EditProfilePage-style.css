@@ -25,6 +25,7 @@
   font-size: var(--font-size-intermediate);
   color: var(--font-primary-color);
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .avatar-text:hover {
@@ -51,8 +52,8 @@
 }
 
 .avatar-circle {
-  width: calc(80px + 0.6vw);
-  height: calc(80px + 0.6vw);
+  min-width: calc(80px + 0.6vw);
+  min-height: calc(80px + 0.6vw);
   border-radius: 50%;
   background-color: var(--secondary-color);
   display: flex;

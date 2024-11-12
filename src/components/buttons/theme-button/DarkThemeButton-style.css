@@ -2,7 +2,6 @@
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 45px;
-    border: 1px solid #d80808;
     background-color: var(--background-color);
     color: var(--primary-color);
     margin-right: 1rem;
@@ -10,7 +9,7 @@
   }
   
   .theme-toggle-button:hover {
-    background-color: var(--button-highlight-color);
-    color: #ffffff;
+    color: var(--font-primary-opposite-color);
+    background-color: var(--button-hover-color);
     transform: scale(0.95);
   }

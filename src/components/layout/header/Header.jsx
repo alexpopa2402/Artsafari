@@ -1,69 +1,63 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '@services/supabaseClient';
+import { fetchSession, subscribeToAuthChanges } from '@services/authService';
+import { setupScrollListener } from '@utils/scrollHandlers';
 import { Link } from 'react-router-dom';
-import './Header-style.css';
 import SearchBar from '@components/UI/searchbar/SearchBar';
-import AuthButton from '@components/auth/auth-button/AuthButton';
+import AuthButton from '@components/buttons/auth-button/AuthButton';
 import HamburgerMenu from '@components/menus/hamburger-menu/HamburgerMenu';
 import UserMenu from '@components/menus/user-menu/UserMenu';
 import YBlogo from '@assets/images/logo/YBlogo.png';
-
+import './Header-style.css';
 
 const Header = () => {
   const [session, setSession] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 515);
 
-  window.addEventListener('scroll', function () {
-    const header = document.querySelector('.main-header');
-    if (window.scrollY > 0) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-
+  // Initialize authentication
   useEffect(() => {
-    const fetchSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+    const initializeAuth = async () => {
+      const session = await fetchSession();
       setSession(session);
-
-      const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
-        setSession(session);
-      });
-
-      const handleResize = () => {
-        setIsMobile(window.innerWidth <= 515);
-      };
-
-      window.addEventListener("resize", handleResize);
-
+      // Listens for changes in authentication state
+      const authListener = subscribeToAuthChanges(setSession);
+      
+      // Cleanup the auth listener
       return () => {
         if (authListener) {
           authListener.unsubscribe();
         }
-        window.removeEventListener("resize", handleResize);
       };
     };
-    fetchSession();
+    initializeAuth();
+  }, []);
+
+  // Initialize scroll listener
+  useEffect(() => {
+    const scrollListener = setupScrollListener();
+    
+    // Cleanup the scroll listener
+    return () => {
+      scrollListener();
+    };
   }, []);
 
   return (
     <header className='main-header'>
       <div className='title-container'>
         <Link to='/' className="main-title">
-          {isMobile ? <img src={YBlogo} alt="Youngblood Logo" className="logo" /> : <span>YoungBlood 3.0</span>}
+          <img src={YBlogo} alt="Youngblood Logo" className="logo" />
+          <span className="text">YoungBlood 3.0</span>
         </Link>
         <p className="sub-title">by <a href='https://www.artsafari.ro/'>Artsafari</a></p>
       </div>
       <SearchBar />
       <nav className="nav-links">
-        <Link to='/' className="gallery">HOME</Link>
-        <Link to='/gallery' className="gallery">GALLERY</Link>
-        <Link to='/artists' className='artists'>ARTISTS</Link>
-        <Link to='/about' className="about">ABOUT US</Link>
+        <Link to='/' className="home">Home</Link>
+        <Link to='/gallery' className="gallery">Gallery</Link>
+        <Link to='/artists' className='artists'>Artists</Link>
+        <Link to='/about' className="about">About Us</Link>
       </nav>
-        <HamburgerMenu />
-        {session ? <UserMenu /> : <AuthButton />}
+      {session ? <UserMenu /> : <AuthButton />}
+      <HamburgerMenu />
     </header>
   );
 };

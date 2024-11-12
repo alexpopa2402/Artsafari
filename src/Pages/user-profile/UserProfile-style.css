@@ -1,7 +1,9 @@
 .user-page {
     max-width: 100%;
-    margin: 0 auto;
     padding: 1em 0.5em;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .profile-section {
@@ -9,7 +11,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .profile-info {
@@ -17,6 +19,7 @@
     flex-direction: row;
     align-items: center;
     margin: 0.5em 0.5em;
+    color: var(--font-primary-color);
 }
 .profile-buttons {
     display: flex;
@@ -25,12 +28,13 @@
 }
 .profile-buttons button {
     margin: 1em 0.5em;
-    font-size: calc(10px + 0.3vw);
+    font-size: calc(10px + 0.2vw);
 }
 
 .profile-section span {
-    font-size: 24px;
+    font-size: calc(20px + 0.2vw);
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .user-page .divider {
@@ -39,20 +43,11 @@
 }
 
 .gallery-section {
-    margin-bottom: 20px;
-}
-
-.gallery-section h2 {
-    margin: 1em 0.8em;
-}
-
-.gallery-container {
+    margin: 1rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    flex-grow: 1;
     align-items: center;
-    height: 100%;
-    min-height: 200px;
-    position: relative;
 }
 
 .empty-gallery-message {

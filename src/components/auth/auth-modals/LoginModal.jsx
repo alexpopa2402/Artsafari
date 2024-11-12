@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import SocialLoginModal from './SocialLoginModal';
 import TermsText from './TermsText';
-import {handleLogin, handlePasswordChange } from '@components/auth/auth-modals/authHandlers';
-import { validateEmail } from './authValidation';
+import {handleLogin, handlePasswordChange } from '@utils/authHandlers';
+import { validateEmail } from '../../../utils/authValidation';
 
 const LoginModal = ({ setPopupType }) => {
     const [email, setEmail] = useState('');

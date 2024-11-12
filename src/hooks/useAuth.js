@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '@services/supabaseClient';
+import { fetchSession, fetchUser } from '@services/authService';
 
 const useAuth = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+    const fetchAuthData = async () => {
+      const session = await fetchSession();
       if (session) {
-        const { data: { user } } = await supabase.auth.getUser();
+        const user = await fetchUser();
         setUser(user);
       }
       setLoading(false);
     };
 
-    fetchUser();
+    fetchAuthData();
   }, []);
 
   return { user, loading };

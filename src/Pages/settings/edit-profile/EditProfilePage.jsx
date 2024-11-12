@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 import { supabase } from '@services/supabaseClient';
-import './EditProfilePage-style.css';
+import '@pages/settings/SettingsPage-style.css';
 
 const EditProfilePage = () => {
   const user = useAuth();
