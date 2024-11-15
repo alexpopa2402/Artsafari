@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './UploadForm-style.css';
+import './UploadFormPage-style.css';
 import BackButton from '@components/buttons/back-button/BackButton';
 
 export default function UploadForm() {
@@ -17,6 +17,7 @@ export default function UploadForm() {
     const [previews, setPreviews] = useState([]);
     const [totalSize, setTotalSize] = useState(0);
     const navigate = useNavigate();
+
 
     const handleFileChange = (e) => {
         const newFiles = Array.from(e.target.files);

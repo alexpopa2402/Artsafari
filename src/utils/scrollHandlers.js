@@ -15,23 +15,11 @@ export const handleScroll = () => {
   }
 };
 
+//exported to be used in the Header component
 export const setupScrollListener = () => {
   window.addEventListener('scroll', handleScroll);
 
   return () => {
     window.removeEventListener('scroll', handleScroll);
   };
-};
-
-export const handleScrollLock = (isOpen, takeScrollbarWidthIntoAccount = false) => {
-  if (isOpen) {
-    if (takeScrollbarWidthIntoAccount) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    }
-    document.body.classList.add('no-scroll');
-  } else {
-    document.body.style.paddingRight = '';
-    document.body.classList.remove('no-scroll');
-  }
 };

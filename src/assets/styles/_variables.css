@@ -12,8 +12,7 @@
     --primary-color: #000000;
     --secondary-color: #ccc;
 
-    --button-highlight-color: #630000;
-    --button-active-color: #ffffff;
+    --button-active-color: #630000;
     --button-disabled-color: #999999;
     --button-hover-color: #000000;
 
@@ -25,6 +24,7 @@
 
     --card-background-color: #ffffff;
   
+    --font-size-xsmall: 0.375rem; /* 6px */
     --font-size-small: 0.6875rem; /* 11px */
     --font-size-medium: 0.8125rem; /* 13px */
     --font-size-intermediate: 1rem; /* 16px */
@@ -34,6 +34,7 @@
     --padding-small: 0.5rem; /* 8px */
     --padding-medium: 0.625rem; /* 10px */
     --padding-large: 1.25rem; /* 20px */
+    --padding-xlarge: 2.5rem; /* 40px */
   
     --margin-small: 0.5rem; /* 8px */
     --margin-medium: 0.625rem; /* 10px */
@@ -50,7 +51,7 @@
   }
 
   :root.dark-theme {
-    --background-color: #020025;
+    --background-color: #01000e;
     --primary-color: #ffffff;
     --secondary-color: #5e66ff;
 
@@ -59,7 +60,6 @@
     --font-highlight-color: #ff8000;
     --font-accent-color: #4456ff;
 
-    --button-highlight-color: #00632d;
     --button-active-color: #000000;
     --button-hover-color: #7369ad;
     --button-disabled-color: #d4d4d4;

@@ -2,23 +2,30 @@ import './GalleryPage-style.css';
 import ArtworkCard from '@components/UI/artwork-card/ArtworkCard';
 import { useEffect, useState } from 'react';
 import carData from '@pages/gallery/artDatabase';
+import Spinner from '@components//loading-spinner/Spinner';
 
 const GalleryPage = () => {
     const [artwork, setArtwork] = useState([]);
     const [loading, setLoading] = useState(true);
+    
+
+/*     useEffect(() => {
+        // Simulate an error for testing purposes
+        throw new Error('Simulated error in Gallery page');
+    }, []); */
 
     useEffect(() => {
         // Simulate fetching data
         setTimeout(() => {
             setArtwork(carData);
             setLoading(false);
-        }, 1000);
+        }, 100000);
     }, []);
 
     return (
-        <div className="container">
+        <div className="gallery-container">
             {loading ? (
-                <p>Loading artwork...</p>
+                <Spinner />
             ) : (
                 <div className="product-grid">
                     {artwork.map((car) => (
@@ -29,5 +36,5 @@ const GalleryPage = () => {
         </div>
     );
 };
-
+console.log('Rendering Gallery component');
 export default GalleryPage;

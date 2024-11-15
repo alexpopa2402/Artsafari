@@ -21,11 +21,13 @@
     margin: 0.5em 0.5em;
     color: var(--font-primary-color);
 }
+
 .profile-buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
 .profile-buttons button {
     margin: 1em 0.5em;
     font-size: calc(10px + 0.2vw);
@@ -55,4 +57,16 @@
     font-size: 16px;
     color: #666;
     position: absolute;
+}
+
+
+.profile-avatar-circle {
+    min-width: calc(80px + 0.6vw);
+    min-height: calc(80px + 0.6vw);
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
 }

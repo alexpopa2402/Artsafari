@@ -15,5 +15,5 @@ const About = () => {
         </div>
     );
 };
-
+console.log('Rendering About Page component');
 export default About;

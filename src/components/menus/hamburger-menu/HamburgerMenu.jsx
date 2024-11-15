@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import AuthButton from "@components/buttons/auth-button/AuthButton";
 import { toggleMenu, handleLogout } from '@utils/menuHandlers';
-import useScrollLock from '@hooks/useScrollLock';
+import useGlobalScrollLock from '@hooks/useGlobalScrollLock';
+import useCloseOnResize from '@hooks/useCloseOnResize';
 import "./HamburgerMenu-style.css";
 
 const HamburgerMenu = () => {
@@ -32,11 +33,12 @@ const HamburgerMenu = () => {
     initializeAuth();
   }, []);
 
+  // Close hamburger menu on window resize above 1000px
+  useCloseOnResize(isOpen, setIsOpen, 1000);
 
   // Disable scrolling when popup is open
-  useScrollLock(isOpen, false);
-
-
+  useGlobalScrollLock(isOpen, false);
+  
   return (
     <div className="hamburger-menu-container" ref={menuRef}>
       <div className="hamburger-icon" onClick={toggleMenu(isOpen, setIsOpen)}>
@@ -49,18 +51,10 @@ const HamburgerMenu = () => {
             <FontAwesomeIcon icon={faTimes} />
           </span>
           <nav className="burger-nav-links">
-            <a href="/" className="burger-Home">
-              HOME
-            </a>
-            <a href="/gallery" className="burger-gallery">
-              GALLERY
-            </a>
-            <a href="/artists" className="burger-artists">
-              ARTISTS
-            </a>
-            <a href="/about" className="burger-about">
-              ABOUT US
-            </a>
+            <a href="/" className="burger-Home">HOME</a>
+            <a href="/gallery" className="burger-gallery">GALLERY</a>
+            <a href="/artists" className="burger-artists">ARTISTS</a>
+            <a href="/about" className="burger-about">ABOUT US</a>
           </nav>
           <div className="divider"></div>
           <nav className="burger-nav-links">
@@ -69,15 +63,19 @@ const HamburgerMenu = () => {
                 SETTINGS
               </a>
             )}
-            {session ? <a className='burger-logout' onClick={() => {
-              handleLogout(setSession, navigate);
-              toggleMenu(isOpen, setIsOpen)();
-            }}>Log out</a> : <AuthButton />}
+            {session ? (
+              <a className='burger-logout' onClick={() => {
+                handleLogout(setSession, navigate);
+                toggleMenu(isOpen, setIsOpen)();
+              }}>Log out</a>
+            ) : (
+              <AuthButton />
+            )}
           </nav>
         </div>
       )}
     </div>
   );
 };
-
+console.log('Rendering Hamburger component');
 export default HamburgerMenu;

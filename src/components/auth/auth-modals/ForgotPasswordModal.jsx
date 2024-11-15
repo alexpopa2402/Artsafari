@@ -19,6 +19,7 @@ const ForgotPasswordModal = ({ setPopupType }) => {
     return (
         <div className="popup-body">
             <form onSubmit={onSubmit}>
+            <div className='popup-sub-title'> Reset your password</div>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
@@ -30,10 +31,15 @@ const ForgotPasswordModal = ({ setPopupType }) => {
                     />
                     {errors.email && <span className="error">{errors.email}</span>}
                 </div>
-                <button type="submit" disabled={!validateEmail(email)}>Send me reset instructions</button>
+                <button
+                    type="submit"
+                    disabled={!validateEmail(email)}
+                >
+                    Send me reset instructions
+                </button>
             </form>
             <div className='popup-no-reset'>
-                Don&apos;t need to reset? <a onClick={() => setPopupType('signUp')}>Sign Up</a>
+                Don&apos;t need to reset? <button className='popup-link-button' onClick={() => setPopupType('signUp')}>Sign Up</button>
             </div>
         </div>
     );

@@ -30,7 +30,7 @@ const Header = () => {
     initializeAuth();
   }, []);
 
-  // Initialize scroll listener
+  // listens for scroll events and adds/removes the 'scrolled' class to the header
   useEffect(() => {
     const scrollListener = setupScrollListener();
     

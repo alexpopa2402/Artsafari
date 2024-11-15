@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import ArtistCard from '@components/UI/artist-card/ArtistCard';
 import './ArtistsPage-style.css';
 import { placeholderArtists } from './artistsDatabase';
+import Spinner from '@components/loading-spinner/Spinner';
 
 const ArtistsPage = () => {
   const [artists, setArtists] = useState([]);
@@ -23,7 +24,7 @@ const ArtistsPage = () => {
     <div className="artists-page">
       <h1>Artists Page</h1>
       {artists.length === 0 && (
-        <p>Loading artists...</p>
+        <Spinner />
       )}
       <div className="artist-cards-container">
         {artists.map((artist, index) => (

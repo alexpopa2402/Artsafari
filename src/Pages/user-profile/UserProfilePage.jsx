@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
-import './UserProfile-style.css';
+import './UserProfilePage-style.css';
+import Spinner from '@components/loading-spinner/Spinner';
 
 const images = [
   '/src/assets/images/carousel images/81.jpg',
@@ -20,7 +21,7 @@ const UserProfile = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Spinner/>
   }
 
   if (!user || !user.user_metadata) {
@@ -32,7 +33,7 @@ const UserProfile = () => {
       <div className="profile-section">
         <div className='profile-info'>
           <label htmlFor="avatar" className="avatar-label">
-            <div className="avatar-circle">
+            <div className="profile-avatar-circle">
               <i className="fa fa-camera"></i>
             </div>
           </label>
@@ -78,5 +79,6 @@ const UserProfile = () => {
     </div>
   );
 };
+console.log('Rendering User Profile component');
 
 export default UserProfile;

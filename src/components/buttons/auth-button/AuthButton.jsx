@@ -1,35 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import AuthModals from '@components/auth/auth-modals/AuthModals';
+import useGlobalScrollLock from '@hooks/useGlobalScrollLock';
 import './AuthButton-style.css';
 
 const AuthButton = () => {
-    const [showPopup, setShowPopup] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
-    const handleButtonClick = () => {
-        setShowPopup(true);
-    };
-
-    const handleClosePopup = () => {
-        setShowPopup(false);
-    };
-
-    // Disable scrolling when popup is open
-    useEffect(() => {
-        if (showPopup) {
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.classList.remove('no-scroll');
-        }
-    }, [showPopup]);
+    // Use global scroll lock
+    useGlobalScrollLock(false, showModal);
 
     return (
         <>
-            <button className="login-button" onClick={handleButtonClick}>
+            <button className="login-button" onClick={() => setShowModal(true)}>
                 Log in / Sign up
             </button>
-            {showPopup && ReactDOM.createPortal(
-                <AuthModals onClose={handleClosePopup} />,
+            {showModal && ReactDOM.createPortal(
+                <AuthModals onClose={() => setShowModal(false)} />,
                 document.body
             )}
         </>

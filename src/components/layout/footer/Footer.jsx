@@ -63,5 +63,5 @@ const Footer = () => {
     </footer>
   );
 };
-
+console.log('Rendering Footer component');
 export default Footer;

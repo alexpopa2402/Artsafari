@@ -1,4 +1,3 @@
-import DarkThemeButton from '@components/buttons/theme-button/DarkThemeButton';
 import '@pages/settings/SettingsPage-style.css';
 
 const EditAccountPage = () => {
@@ -18,9 +17,7 @@ const EditAccountPage = () => {
         </div>
         <button>Create New Password</button>
         <div className="divider"></div>
-        <DarkThemeButton />
       </div>
-
     </div>
   );
 };

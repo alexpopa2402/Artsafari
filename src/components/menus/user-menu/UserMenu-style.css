@@ -2,7 +2,7 @@
 .fa-user {
 /*   border: 1px solid #000; */
   font-size: var(--font-size-intermediate);
-  color: var(--primary-color);
+  color: var(--font-primary-color);
   margin: 0 1.5rem;
 }
 
@@ -12,7 +12,7 @@
   cursor: pointer;
   position: relative;
   right: 0;
-  color: var(--primary-color);
+  color: var(--font-primary-color);
 }
 
 .user-info {
@@ -62,7 +62,8 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   padding: 10px;
-  right: 0;
+  right: 15px;
+  top: 30px;
   width: 200px;
 }
 
@@ -99,7 +100,7 @@
   font-size: 20px;
   font-weight: bold;
   margin-right: 0.2rem;
-  color: var(--primary-color);
+  color: var(--font-primary-color);
 }
 
 .collection,
@@ -118,7 +119,7 @@
   display: block;
   padding: 5px 0;
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--font-primary-color);
 }
 
 .settings .divider {
@@ -165,6 +166,9 @@
 }
 
 @media (max-width: 1000px) {
+  .dropdown-content {
+    right: 0;
+  }
   .usermenu-close-popup {
     position: fixed;
     right: 0.88em;

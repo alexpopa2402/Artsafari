@@ -1,12 +1,13 @@
 import { Navigate } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 import PropTypes from 'prop-types';
+import Spinner from '@components/loading-spinner/Spinner';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return <div>Loading...</div>; // Or a loading spinner
+    return <Spinner />;
   }
 
   if (!user) {

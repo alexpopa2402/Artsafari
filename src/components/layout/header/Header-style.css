@@ -20,7 +20,6 @@
   display: flex;
   align-items: center;
   margin: 0 1rem;
-/*   border: 1px solid black; */
 }
 
 .main-title {
@@ -28,7 +27,6 @@
   font-weight: bold;
   white-space: nowrap;
   color: var(--font-accent-color);
-/*   border: 1px solid black; */
 }
 .main-title .logo {
   height: 70px;
@@ -41,7 +39,6 @@
   white-space: nowrap;
   color: var(--font-primary-color);
   margin-left: 1rem;
-/*   border: 1px solid black; */
 }
 
 .nav-links {
@@ -55,7 +52,6 @@
 .nav-links a {
   color: var(--font-primary-color);
   text-decoration: none;
-/*   font-size: calc(10px + 0.3vw); */
 font-size: var(--font-size-intermediate);
 }
 .nav-links a:nth-child(-n+3) {

@@ -29,13 +29,16 @@
   }
   
   .search-button {
-    background: none;
     border: none;
     cursor: pointer;
     color: var(--font-accent-color);
     z-index: 12;
     padding: 0;
   }
+  .search-button:hover {
+    background: none;
+  }
+
 
   @media (max-width: 1000px) {
 /*     .search-container {

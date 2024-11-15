@@ -29,6 +29,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    background-color: #e0e0e0;
 }
 
 .carousel-caption {
@@ -52,6 +53,15 @@
     padding: 10px;
     cursor: pointer;
     z-index: 1;
+    border-radius: 0;
+    border: none; 
+}
+
+.carousel-arrow:hover {
+    transform: none;
+    background-color: rgba(0, 0, 0, 0.293);
+    color: white;
+    transform: translateY(-50%);
 }
 
 .left-arrow {
@@ -82,7 +92,6 @@
     opacity: 1;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
     .carousel-arrow {
         font-size: 1.5rem;

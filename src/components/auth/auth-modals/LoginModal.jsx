@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import SocialLoginModal from './SocialLoginModal';
-import TermsText from './TermsText';
-import {handleLogin, handlePasswordChange } from '@utils/authHandlers';
+import { handleLogin, handlePasswordChange } from '@utils/authHandlers';
 import { validateEmail } from '../../../utils/authValidation';
 
 const LoginModal = ({ setPopupType }) => {
@@ -12,15 +11,21 @@ const LoginModal = ({ setPopupType }) => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({ email: '', password: '' });
+    const emailRef = useRef(null);
 
     const onSubmit = (e) => {
         e.preventDefault();
         handleLogin(email, password, setErrors);
     };
 
+    useEffect(() => {
+        emailRef.current?.focus();
+    }, []);
+
     return (
-        <div className="popup-body">
-                <form onSubmit={onSubmit}>
+        <div className="popup-body" role="dialog" aria-labelledby="login-modal-title" aria-modal="true">
+            <form onSubmit={onSubmit}>
+                <div className='popup-sub-title'> Log into your account</div>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
@@ -28,6 +33,7 @@ const LoginModal = ({ setPopupType }) => {
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        ref={emailRef}
                         required
                     />
                     {errors.email && <span className="error">{errors.email}</span>}
@@ -54,14 +60,12 @@ const LoginModal = ({ setPopupType }) => {
                 <button type="submit" className="popup-login-button" disabled={!validateEmail(email)}>
                     {'Login'}
                 </button>
-                <span className="continue-with">or continue with</span>
                 <SocialLoginModal />
             </form>
             <div className="popup-links">
-                <a onClick={() => setPopupType('forgotPassword')}>Forgot password?</a>
-                <a onClick={() => setPopupType('signUp')}>Don&apos;t have an account? Sign Up</a>
+                <button type="button" onClick={() => setPopupType('signUp')} className="popup-link-button">Don&apos;t have an account? Sign Up</button>
+                <button type="button" onClick={() => setPopupType('forgotPassword')} className="popup-link-button">Forgot password?</button>
             </div>
-            <TermsText />
         </div>
     );
 };
