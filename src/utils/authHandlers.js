@@ -92,8 +92,8 @@ export const handleSignUp = async (email, password, name, setIsLoading, setError
     }
 };
 //this function is used to handle the login event
-export const handleLogin = async (email, password, setErrors) => {
-    const { data: /* { session }, */ error } = await supabase.auth.signInWithPassword({
+/* export const handleLogin = async (email, password, setErrors) => {
+    const { data: error } = await supabase.auth.signInWithPassword({
         email,
         password,
     });
@@ -101,5 +101,23 @@ export const handleLogin = async (email, password, setErrors) => {
         setErrors({ password: 'Invalid credentials' });
     } else {
         window.location.href = '/profile';
+    }
+}; */
+
+export const handleLogin = async (email, password, setErrors) => {
+    try {
+        const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
+        if (error) {
+            setErrors({ password: 'Invalid credentials' });
+            return false;
+        } else {
+            return true;
+        }
+    } catch (error) {
+        setErrors({ password: error.message });
+        return false;
     }
 };

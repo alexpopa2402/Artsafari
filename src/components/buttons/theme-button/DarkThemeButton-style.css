@@ -46,7 +46,7 @@ padding: 0 10px 0 20px;
     color: var(--font-highlight-color);
   }
 
-  @media (max-width: 430px) {
+  @media (max-width: 480px) {
     .theme-toggle {
       font-size: var(--font-size-large);
     }

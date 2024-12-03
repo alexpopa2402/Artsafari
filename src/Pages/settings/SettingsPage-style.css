@@ -32,7 +32,8 @@ align-items: center;
 }
 
 .tab {
-  padding: 10px 20px;
+  padding: 10px 15px 10px 0;
+  margin-right: 5px;
   cursor: pointer;
   border: none;
   background: none;
@@ -53,7 +54,7 @@ align-items: center;
   border: 1px solid #ccc;
   border-radius: 5px;
   min-width: 240px;
-/*   flex-grow: 1; */
+  flex-grow: 1;
 }
 
 /* edit profile page styles */
@@ -174,14 +175,13 @@ font-size: var(--font-size-medium); /* Adjust the size as needed */
 
 
 
-@media (max-width: 1000px) {
-.email-reset-form input,
-.password-reset-form input {
-  padding: var(--padding-small);
-}
+@media (max-width: 1080px) {
+  .account-layout button {
+    font-size: var(--font-size-intermediate);
+  }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
 .email-reset-form input,
 .password-reset-form input {
   padding: var(--padding-small);
@@ -205,7 +205,10 @@ font-size: var(--font-size-medium); /* Adjust the size as needed */
 }
 
 /* media queries for mobile */
-@media (max-width: 430px) {
+@media (max-width: 480px) {
+  .settings-title {
+    font-size: var(--font-size-xlarge);
+  }
   .tabs {
     font-size: var(--font-size-intermediate);
   }
@@ -223,28 +226,27 @@ font-size: var(--font-size-medium); /* Adjust the size as needed */
   }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 375px) {
   .tabs {
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-intermediate);
   }
-  .tab {
-    padding: 5px 10px;
-  }
-
   .tab-content {
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-medium);
   }
 
   .tab-content .avatar-text {
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-medium);
   }
 
   .account-layout button {
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-medium);
   }
+  .theme-toggle {
+    font-size: var(--font-size-intermediate);
+  } 
 }
 
-@media (max-width: 240px) {
+/* @media (max-width: 240px) {
 
   .settings-title {
     font-size: var(--font-size-large);
@@ -278,4 +280,4 @@ font-size: var(--font-size-medium); /* Adjust the size as needed */
     font-size: var(--font-size-xsmall);
     width: 150px;
   }
-}
+} */

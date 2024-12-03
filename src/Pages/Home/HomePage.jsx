@@ -1,9 +1,11 @@
 import "./HomePage-style.css";
 import Carousel from "@components/UI/carousel/Carousel";
+/* import LandingPage from "@components/landing-page/LandingPage"; */
 
 const HomePage = () => {
     return (
         <div className="homepage-container">
+{/*             <LandingPage /> */}
             <Carousel />
             <main className="homepage-main">
                 <section className="homepage-section">
@@ -24,5 +26,5 @@ const HomePage = () => {
         </div>
     );
 };
-
+console.log('Rendering HomePage component');
 export default HomePage;

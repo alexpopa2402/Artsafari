@@ -3,7 +3,7 @@ import useAuth from '@hooks/useAuth';
 import './SettingsPage-style.css';
 import BackButton from '@components/buttons/back-button/BackButton';
 import DarkThemeButton from '@components/buttons/theme-button/DarkThemeButton';
-import Spinner from '@components/loading-spinner/Spinner';
+import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
 const SettingsPage = () => {
   const user = useAuth();

@@ -1,6 +1,7 @@
 .user-page {
     max-width: 100%;
-    padding: 1em 0.5em;
+    min-width: 300px;
+    padding: 0 0.5em;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -8,30 +9,20 @@
 
 .profile-section {
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
+    margin: 0 1rem;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
 }
 
 .profile-info {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 0.5em 0.5em;
     color: var(--font-primary-color);
+    margin: 1.5rem 0;
 }
 
-.profile-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.profile-buttons button {
-    margin: 1em 0.5em;
-    font-size: calc(10px + 0.2vw);
-}
 
 .profile-section span {
     font-size: calc(20px + 0.2vw);
@@ -39,13 +30,29 @@
     white-space: nowrap;
 }
 
+.gallery-buttons {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+.profile-settings-button {
+    font-size: var(--font-size-intermediate);
+    text-align: center;
+    margin-left: 1rem;
+}
+.settings-icon {
+    margin-right: 8px; /* Adjust the value as needed */
+  }
+
 .user-page .divider {
-    height: 1px;
+    height: 2px;
     background-color: var(--secondary-color);
+    width: 100%;
+    z-index: 100;
 }
 
 .gallery-section {
-    margin: 1rem;
+/*     margin: 1rem; */
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -54,9 +61,8 @@
 
 .empty-gallery-message {
     text-align: center;
-    font-size: 16px;
-    color: #666;
-    position: absolute;
+    font-size: var(--font-size-intermediate);
+    color: var(--font-secondary-color);
 }
 
 
@@ -68,5 +74,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
+    margin: 0 1rem 0 0;
 }
+
+@media (max-width: 610px) {
+    .profile-section {
+        align-items: center;
+        flex-direction: column;
+    }
+    .gallery-buttons {
+        margin-bottom: 1.5rem;
+    }
+  }

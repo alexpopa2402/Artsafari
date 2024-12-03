@@ -9,11 +9,11 @@
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 1px solid transparent;
 }
 .main-header.scrolled {
-  border-bottom: none;
-  box-shadow: 2px 9px 17px -5px rgba(139, 139, 139, 0.8);
+  border-bottom: 1px solid var(--background-color);
+  box-shadow: 2px 9px 17px -5px rgba(180, 180, 180, 0.8);
 }
 
 .title-container {
@@ -59,7 +59,7 @@ font-size: var(--font-size-intermediate);
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 1080px) {
   .nav-links,
   .login-button {
     display: none;

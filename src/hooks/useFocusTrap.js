@@ -2,24 +2,27 @@ import { useEffect } from 'react';
 
 const useFocusTrap = (ref, active) => {
   useEffect(() => {
-    if (!active) return;
+    if (!active || !ref.current) return;
+
+    const focusableElements = ref.current.querySelectorAll(
+      'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
     const handleFocusTrap = (e) => {
       if (e.key === 'Tab') {
-        const focusableElements = ref.current.querySelectorAll(
-          'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
-        );
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-
         if (e.shiftKey) {
+          // Shift + Tab
           if (document.activeElement === firstElement) {
-            lastElement.focus();
             e.preventDefault();
+            lastElement.focus();
           }
         } else {
+          // Tab
           if (document.activeElement === lastElement) {
-            firstElement.focus();
             e.preventDefault();
+            firstElement.focus();
           }
         }
       }
@@ -29,7 +32,7 @@ const useFocusTrap = (ref, active) => {
     return () => {
       document.removeEventListener('keydown', handleFocusTrap);
     };
-  }, [ref, active]);  
+  }, [ref, active]);
 };
 
 export default useFocusTrap;

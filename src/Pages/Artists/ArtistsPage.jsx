@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ArtistCard from '@components/UI/artist-card/ArtistCard';
 import './ArtistsPage-style.css';
 import { placeholderArtists } from './artistsDatabase';
-import Spinner from '@components/loading-spinner/Spinner';
+import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
 const ArtistsPage = () => {
   const [artists, setArtists] = useState([]);

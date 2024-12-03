@@ -2,9 +2,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 import './UserProfilePage-style.css';
-import Spinner from '@components/loading-spinner/Spinner';
+import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
 const images = [
+  '/src/assets/images/carousel images/81.jpg',
+  '/src/assets/images/carousel images/81.jpg',
+  '/src/assets/images/carousel images/81.jpg',
+  '/src/assets/images/carousel images/81.jpg',
+  '/src/assets/images/carousel images/81.jpg',
   '/src/assets/images/carousel images/81.jpg',
 ];
 
@@ -21,7 +26,7 @@ const UserProfile = () => {
   };
 
   if (loading) {
-    return <Spinner/>
+    return <Spinner />
   }
 
   if (!user || !user.user_metadata) {
@@ -41,18 +46,21 @@ const UserProfile = () => {
             Welcome, {user.user_metadata.name} !
           </span>
         </div>
-        <div className='profile-buttons'>
-          <button
-            className="profile-upload-button"
-            onClick={() => navigate('/upload-artwork')}>
-            Upload Your Artwork
-          </button>
-          <button
-            className="edit-profile-button"
-            onClick={() => navigate('/settings/edit-profile')}>
-            Settings
-          </button>
-        </div>
+        <div className='gallery-buttons'>
+        <button
+          className="profile-upload-button"
+          onClick={() => navigate('/upload-artwork')}>
+          Upload Your Artwork
+        </button>
+        <button
+          className="profile-settings-button"
+          onClick={() => navigate('/settings/edit-profile')}
+          aria-label="Settings"
+        >
+          <i className="fa fa-cog settings-icon"></i>
+          Settings
+        </button>
+      </div>
       </div>
       <div className="divider"></div>
       <div className="gallery-section">

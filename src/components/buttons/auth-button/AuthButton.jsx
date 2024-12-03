@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import AuthModals from '@components/auth/auth-modals/AuthModals';
+/* import AuthModals from '@components/auth/auth-modals/AuthModals'; */
 import useGlobalScrollLock from '@hooks/useGlobalScrollLock';
 import './AuthButton-style.css';
+import Spinner from '@components/loading-skeletons/Spinner/Spinner';
+
+const AuthModals = lazy(() => import('@components/auth/auth-modals/AuthModals'));
 
 const AuthButton = () => {
     const [showModal, setShowModal] = useState(false);
@@ -16,8 +19,10 @@ const AuthButton = () => {
                 Log in / Sign up
             </button>
             {showModal && ReactDOM.createPortal(
-                <AuthModals onClose={() => setShowModal(false)} />,
-                document.body
+                <Suspense fallback={<Spinner />}>
+                <AuthModals onClose={() => setShowModal(false)} />
+            </Suspense>,
+            document.body
             )}
         </>
     );

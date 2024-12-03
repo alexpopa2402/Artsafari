@@ -8,9 +8,9 @@ const SearchBar = () => {
         placeholder="Search artwork, artist..."
         className="search-input"
       />
-      <button className="search-button">
+      <div className="search-button">
         <i className="fa fa-search"></i>
-      </button>
+      </div>
     </div>
   );
 };

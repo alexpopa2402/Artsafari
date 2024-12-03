@@ -7,6 +7,7 @@ import AuthButton from "@components/buttons/auth-button/AuthButton";
 import { toggleMenu, handleLogout } from '@utils/menuHandlers';
 import useGlobalScrollLock from '@hooks/useGlobalScrollLock';
 import useCloseOnResize from '@hooks/useCloseOnResize';
+import useFocusTrap from '@hooks/useFocusTrap';
 import "./HamburgerMenu-style.css";
 
 const HamburgerMenu = () => {
@@ -38,18 +39,20 @@ const HamburgerMenu = () => {
 
   // Disable scrolling when popup is open
   useGlobalScrollLock(isOpen, false);
-  
+
+  // Trap focus within the hamburger menu when it is open
+  useFocusTrap(menuRef, isOpen);
+
   return (
     <div className="hamburger-menu-container" ref={menuRef}>
       <div className="hamburger-icon" onClick={toggleMenu(isOpen, setIsOpen)}>
         <i className="fa fa-bars"></i>
       </div>
       {isOpen && (
-        <div className="burger-menu">
-
-          <span className="hamburger-close-popup" onClick={toggleMenu(isOpen, setIsOpen)}>
+        <div className="burger-menu"> 
+          <button className="hamburger-close-popup" onClick={toggleMenu(isOpen, setIsOpen)}>
             <FontAwesomeIcon icon={faTimes} />
-          </span>
+          </button>
           <nav className="burger-nav-links">
             <a href="/" className="burger-Home">HOME</a>
             <a href="/gallery" className="burger-gallery">GALLERY</a>

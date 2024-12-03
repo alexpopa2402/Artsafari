@@ -6,11 +6,11 @@ import useScrollToTop from './hooks/useScrollToTop';
 import Footer from '@components/layout/footer/Footer';
 import Header from '@components/layout/header/Header';
 import ProtectedRoute from '@components/auth/protected-route/ProtectedRoute';
-import Spinner from '@components/loading-spinner/Spinner';
+import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
 import HomePage from '@pages/home/HomePage';
-import GalleryPage from '@pages/gallery/GalleryPage';
-import UserProfilePage from '@pages/user-profile/UserProfilePage';
+/* import GalleryPage from '@pages/gallery/GalleryPage'; */
+/* import UserProfilePage from '@pages/user-profile/UserProfilePage'; */
 import UploadFormPage from '@pages/upload-form/UploadFormPage';
 import ArtistsPage from '@pages/artists/ArtistsPage';
 
@@ -19,13 +19,15 @@ const SettingsPage = lazy(() => import('@pages/settings/SettingsPage'));
 const EditProfilePage = lazy(() => import('@pages/settings/edit-profile/EditProfilePage'));
 const EditAccountPage = lazy(() => import('@pages/settings/edit-account/EditAccountPage'));
 const NotFoundPage = lazy(() => import('@pages/not-found/NotFoundPage'));
+const UserProfilePage = lazy(() => import('@pages/user-profile/UserProfilePage'));
+const GalleryPage = lazy(() => import('@pages/gallery/GalleryPage'));
 
 import './assets/styles/App.css';
 
 export default function App() {
   useScrollToTop();
   return (
-    <div className='master-container'>
+    <>
       <Header />
       <div className='central-container'>
         <ResettableErrorBoundary>
@@ -48,7 +50,7 @@ export default function App() {
         </ResettableErrorBoundary>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 

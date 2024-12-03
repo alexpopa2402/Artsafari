@@ -13,9 +13,12 @@ const LoginModal = ({ setPopupType }) => {
     const [errors, setErrors] = useState({ email: '', password: '' });
     const emailRef = useRef(null);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        handleLogin(email, password, setErrors);
+        const success = await handleLogin(email, password, setErrors);
+        if (success) {
+            window.location.reload(); // Refresh the browser on successful login
+        }
     };
 
     useEffect(() => {
@@ -73,4 +76,5 @@ const LoginModal = ({ setPopupType }) => {
 LoginModal.propTypes = {
     setPopupType: PropTypes.func.isRequired,
 };
+console.log('Rendering LoginModal Component');
 export default LoginModal;

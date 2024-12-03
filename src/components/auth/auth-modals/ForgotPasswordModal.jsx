@@ -47,4 +47,5 @@ const ForgotPasswordModal = ({ setPopupType }) => {
 ForgotPasswordModal.propTypes = {
     setPopupType: PropTypes.func.isRequired,
 };
+console.log('Rendering ForgotPasswordModal Component');
 export default ForgotPasswordModal;

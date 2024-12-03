@@ -25,13 +25,19 @@
     opacity: 1;
 }
 
-.carousel-image {
+.carousel-loading-placeholder {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    background-color: #e0e0e0;
+    background: linear-gradient(
+        90deg,
+        var(--gradient-start-color, var(--card-background-color)) 25%,
+        var(--gradient-end-color, var(--secondary-color)) 75%
+    );
+/*     background-color: var(--background-color); */
+    pointer-events: none;
 }
-
+  
 .carousel-caption {
     position: absolute;
     bottom: 20px;

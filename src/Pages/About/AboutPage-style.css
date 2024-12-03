@@ -1,6 +1,7 @@
 .about-container {
     padding: 20px;
     text-align: center;
+    flex-grow: 1;
 }
 
 .about-title {
@@ -20,9 +21,6 @@
 }
 
 @media (max-width: 768px) {
-    .about-container {
-        padding: 10px;
-    }
 
     .about-title {
         font-size: 2rem;

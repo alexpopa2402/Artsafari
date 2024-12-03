@@ -269,14 +269,14 @@ input::placeholder {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1080px) {
 
   .popup-form input {
     padding: var(--padding-small);
   }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 480px) {
   .popup-form {
     width: 100svw;
     height: 100svh;

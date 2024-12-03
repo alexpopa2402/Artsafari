@@ -1,10 +1,10 @@
 .gallery-container {
-max-width: 100rem;
+/* max-width: 100rem; */
 margin-inline: auto;
 padding-inline: 2rem;
 margin: 2rem 0;
 display: flex;
-flex-direction: column;
+/* flex-direction: column; */
 flex-grow: 1;
 color: var(--font-primary-color);
 }

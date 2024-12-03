@@ -2,16 +2,17 @@
 @import "./_reset.css";       /* Importing reset styles */
 @import "./_base.css";        /* Importing base element styles */
 
-.master-container {
+/* .master-container {
   min-height: 100svh;
   display: flex;
-  flex-direction: column;/*  */
-}
+  flex-direction: column;
+  background-color: antiquewhite;
+} */
 
 .central-container {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  min-height: 100svh;
 }
 
 

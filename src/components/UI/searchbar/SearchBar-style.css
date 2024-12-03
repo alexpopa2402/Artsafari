@@ -30,6 +30,7 @@
   
   .search-button {
     border: none;
+    border-radius: none;
     cursor: pointer;
     color: var(--font-accent-color);
     z-index: 12;
@@ -37,10 +38,16 @@
   }
   .search-button:hover {
     background: none;
+    transform: none;
+  }
+
+  .search-button:active {
+    background: none;
+    transform: none;
   }
 
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1080px) {
 /*     .search-container {
       margin: 0 0.5rem 0 0;
     } */

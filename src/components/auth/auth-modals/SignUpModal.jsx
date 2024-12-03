@@ -79,5 +79,5 @@ SignUpModal.propTypes = {
     onClose: PropTypes.func.isRequired,
     setPopupType: PropTypes.func.isRequired,
 };
-
+console.log('Rendering SignUpModal Component');
 export default SignUpModal;

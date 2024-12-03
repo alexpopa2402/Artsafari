@@ -1,14 +1,21 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, lazy, Suspense  } from 'react';
 import PropTypes from 'prop-types';
+import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 import './AuthModals-style.css';
 import { faAngleLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import YBlogo from '@assets/images/logo/YBlogo.png';
-import LoginModal from './LoginModal';
-import ForgotPasswordModal from './ForgotPasswordModal';
-import SignUpModal from './SignUpModal';
+/* import LoginModal from './LoginModal'; */
+/* import ForgotPasswordModal from './ForgotPasswordModal'; */
+/* import SignUpModal from './SignUpModal'; */
+/* import TermsText from './TermsText'; */
 import useFocusTrap from '@hooks/useFocusTrap';
-import TermsText from './TermsText';
+
+
+const LoginModal = lazy(() => import('./LoginModal'));
+const ForgotPasswordModal = lazy(() => import('./ForgotPasswordModal'));
+const SignUpModal = lazy(() => import('./SignUpModal'));
+const TermsText = lazy(() => import('./TermsText'));
 
 const AuthModals = ({ onClose }) => {
     const [modal, setModal] = useState('login');
@@ -59,7 +66,9 @@ const AuthModals = ({ onClose }) => {
                         </button>
                     </div>
                 </div>
-                {renderModalContent()}
+                <Suspense fallback={<Spinner />}>
+                    {renderModalContent()}
+                </Suspense>
             </div>
         </div>
     );
@@ -69,4 +78,5 @@ AuthModals.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
+console.log('Rendering AuthModals Component');
 export default AuthModals;

@@ -7,6 +7,7 @@ import useAuth from '@hooks/useAuth';
 /* import useGlobalScrollLock from '@hooks/useGlobalScrollLock'; */
 import useClickOutside from '@hooks/useClickOutside';
 import useCloseOnResize from '@hooks/useCloseOnResize';
+import useFocusTrap from '@hooks/useFocusTrap';
 import './UserMenu-style.css';
 import DarkThemeButton from '@components/buttons/theme-button/DarkThemeButton';
 
@@ -39,6 +40,9 @@ const UserMenu = (session, setSession) => {
     // Close user menu on window resize above 510px
     useCloseOnResize(isOpen, setIsOpen, 510);
 
+    // Trap focus within the user menu when it is open
+    useFocusTrap(menuRef, isOpen);
+
     return (
         <div className="user-menu" ref={menuRef}>
             <div className="fa fa-user" onClick={toggleMenu(isOpen, setIsOpen)}></div>
@@ -62,20 +66,12 @@ const UserMenu = (session, setSession) => {
                             >View profile
                             </a>
                         </div>
-                        <DarkThemeButton/>
+                        <DarkThemeButton />
                     </div>
                     <div className='user-links'>
                         <div className="collection">
-                            <p>My Collection</p>
                             <a className='collection-item' href="/profile">My Gallery</a>
                             <a className='collection-item' href="/upload-artwork">Upload section</a>
-                        </div>
-                        <div className="favorites">
-                            <p>Favorites</p>
-                            <a className='collection-item' href="/gallery">Artworks</a>
-                            <a className='collection-item' href="/artists">Artists</a>
-                            <a className='collection-item' href="#">Follows</a>
-                            <a className='collection-item' href="#">Alerts</a>
                         </div>
                         <div className="settings">
                             <div className="divider"></div>

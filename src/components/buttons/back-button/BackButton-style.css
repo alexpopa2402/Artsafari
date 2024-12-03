@@ -2,4 +2,5 @@
   cursor: pointer;
   font-size: var(--font-size-medium);
   margin-bottom: 20px;
+  width: fit-content;
 }

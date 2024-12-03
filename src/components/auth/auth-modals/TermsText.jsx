@@ -8,5 +8,5 @@ const TermsText = () => (
         </p>
     </>
 );
-
+console.log('Rendering TermsText Component');
 export default TermsText;

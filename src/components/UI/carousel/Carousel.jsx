@@ -84,7 +84,7 @@ const Carousel = () => {
     }, []);
 
     useEffect(() => {
-        const interval = setInterval(goToNext, 3000);
+        const interval = setInterval(goToNext, 6000);
         return () => clearInterval(interval);
     }, [goToNext]);
 
@@ -131,7 +131,7 @@ const CarouselItem = ({ src, caption, isActive }) => (
         <img
             src={src}
 /*             alt={caption} */
-            className="carousel-image"
+            className="carousel-loading-placeholder"
             loading="lazy"
         />
         <div className="carousel-caption">{caption}</div>

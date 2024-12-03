@@ -1,5 +1,5 @@
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
     color: #000000;
@@ -31,6 +31,7 @@
     --font-size-large: 1.25rem; /* 20px */
     --font-size-xlarge: 1.4rem; /* 22.4px */
   
+
     --padding-small: 0.5rem; /* 8px */
     --padding-medium: 0.625rem; /* 10px */
     --padding-large: 1.25rem; /* 20px */
@@ -39,12 +40,14 @@
     --margin-small: 0.5rem; /* 8px */
     --margin-medium: 0.625rem; /* 10px */
     --margin-large: 1.25rem; /* 20px */
-  
     --border-color: #ccc;
     --border-radius: 0.25rem; /* 4px */
   
     --box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1); /* 0 2px 10px */
-    --ff-primary: "Barlow Semi Condensed", sans-serif;
+
+    --ff-primary: 'Inter', sans-serif;
+    --ff-jomhuria: 'Jomhuria', cursive;
+    --ff-k2d: 'K2D', sans-serif;
   
     --fw-400: 500;
     --fw-700: 600;

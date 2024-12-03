@@ -27,5 +27,5 @@ const SocialLoginModal = () => {
         </>
     );
 };
-
+console.log('Rendering SocialLoginModal Component');
 export default SocialLoginModal;
