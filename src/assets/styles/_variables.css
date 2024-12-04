@@ -1,73 +1,92 @@
 :root {
-    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    color: #000000;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* defaults */
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #000000;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-    --background-color: #fff;
-    --primary-color: #000000;
-    --secondary-color: #ccc;
+  /* FONT VARIABLES */
 
-    --button-active-color: #630000;
-    --button-disabled-color: #999999;
-    --button-hover-color: #000000;
+  /* font sizes */
+  --font-size-xsmall: 0.375rem; /* 6px */
+  --font-size-small: 0.6875rem; /* 11px */
+  --font-size-medium: 0.8125rem; /* 13px */
+  --font-size-intermediate: 1rem; /* 16px */
+  --font-size-large: 1.25rem; /* 20px */
+  --font-size-xlarge: 1.4rem; /* 22.4px */
 
-    --font-primary-color: #000000;
-    --font-primary-opposite-color: rgb(255, 255, 255);
-    --font-secondary-color: #a7a7a7;
-    --font-highlight-color: #007bff;
-    --font-accent-color: #c70000;
+  /* font weights */
+  --fw-400: 500;
+  --fw-700: 600;
+  --fw-900: 700;
+  /* custom fonts */
+  --ff-primary: 'Inter', sans-serif;
+  --ff-jomhuria: 'Jomhuria', cursive;
+  --ff-k2d: 'K2D', sans-serif;
 
-    --card-background-color: #ffffff;
+  /* COLOR VARIABLES */
+
+  /* font colors */
+  --font-primary-color: #000000;
+  --font-primary-opposite-color: rgb(255, 255, 255);
+  --font-secondary-color: #a7a7a7;
+  --font-highlight-color: #007bff;
+  --font-accent-color: #c70000;
+
+  /* main colors */
+  --background-color: #fff;
+  --primary-color: #000000;
+  --secondary-color: #ccc;
+
+  /* button colors */
+  --button-active-color: #630000;
+  --button-disabled-color: #999999;
+  --button-hover-color: #000000;
+
+  /* card colors */
+  --card-background-color: #ffffff;
+
+  /* corner colors */
+  --corner-color: #ccc;
+  --folded-corner-color: #fff;
+  /* border colors */
+  --border-color: #cccccc;
+  --border-color-transparent: rgba(209, 207, 207, 0.592);
+
+/* padding variables */
+  --padding-small: 0.5rem; /* 8px */
+  --padding-medium: 0.625rem;/* 10px */
+  --padding-large: 1.25rem;/* 20px */
+  --padding-xlarge: 2.5rem;/* 40px */
+/* margin variables */
+  --margin-small: 0.5rem; /* 8px */
+  --margin-medium: 0.625rem; /* 10px */
+  --margin-large: 1.25rem; /* 20px */
   
-    --font-size-xsmall: 0.375rem; /* 6px */
-    --font-size-small: 0.6875rem; /* 11px */
-    --font-size-medium: 0.8125rem; /* 13px */
-    --font-size-intermediate: 1rem; /* 16px */
-    --font-size-large: 1.25rem; /* 20px */
-    --font-size-xlarge: 1.4rem; /* 22.4px */
-  
+  /* box shadow */
+  --box-shadow: -3px -3px 7px rgba(0, 0, 0, 0.5);
+}
 
-    --padding-small: 0.5rem; /* 8px */
-    --padding-medium: 0.625rem; /* 10px */
-    --padding-large: 1.25rem; /* 20px */
-    --padding-xlarge: 2.5rem; /* 40px */
-  
-    --margin-small: 0.5rem; /* 8px */
-    --margin-medium: 0.625rem; /* 10px */
-    --margin-large: 1.25rem; /* 20px */
-    --border-color: #ccc;
-    --border-radius: 0.25rem; /* 4px */
-  
-    --box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1); /* 0 2px 10px */
+:root.dark-theme {
+  --background-color: #0f0c40;
+  --primary-color: #ffffff;
+  --secondary-color: #5e66ff;
 
-    --ff-primary: 'Inter', sans-serif;
-    --ff-jomhuria: 'Jomhuria', cursive;
-    --ff-k2d: 'K2D', sans-serif;
-  
-    --fw-400: 500;
-    --fw-700: 600;
-  }
+  --font-primary-color: #ffffff;
+  --font-secondary-color: #999999;
+  --font-highlight-color: #ff8000;
+  --font-accent-color: #4456ff;
 
-  :root.dark-theme {
-    --background-color: #01000e;
-    --primary-color: #ffffff;
-    --secondary-color: #5e66ff;
+  --button-active-color: #000000;
+  --button-hover-color: #7369ad;
+  --button-disabled-color: #d4d4d4;
 
-    --font-primary-color: #ffffff;
-    --font-secondary-color: #999999;
-    --font-highlight-color: #ff8000;
-    --font-accent-color: #4456ff;
-
-    --button-active-color: #000000;
-    --button-hover-color: #7369ad;
-    --button-disabled-color: #d4d4d4;
-
-    --card-background-color: #000455;
-    
-    /* Add other dark theme variables here */
-  }
+  --card-background-color: #171c79;
+  --corner-color: #171c79;
+  --folded-corner-color: #3339b4;
+  --box-shadow: -3px -3px 7px rgba(14, 14, 14, 0.756);
+}

@@ -57,16 +57,7 @@ const UserMenu = (session, setSession) => {
                                 <FontAwesomeIcon icon={faTimes} />
                             </span>
                             <span className="profile-name">{user.user_metadata.name}</span>
-                            <a
-                                className="view-profile"
-                                onClick={() => {
-                                    setIsOpen(false);
-                                    navigate('/profile');
-                                }}
-                            >View profile
-                            </a>
                         </div>
-                        <DarkThemeButton />
                     </div>
                     <div className='user-links'>
                         <div className="collection">
@@ -78,8 +69,11 @@ const UserMenu = (session, setSession) => {
                             <a className='collection-item' href="settings/edit-profile">Settings</a>
                             <a className='collection-item' onClick={() => handleLogout(setSession, navigate)}>Log out</a>
                         </div>
+                        <DarkThemeButton />
+                    <div className="folded-corner">
+                        <div className="corner-bottom-right"></div>
                     </div>
-
+                    </div>
                 </div>
             )}
         </div>

@@ -19,7 +19,7 @@ const GalleryPage = () => {
         setTimeout(() => {
             setArtwork(carData);
             setLoading(false);
-        }, 1000);
+        }, 70000);
     }, []);
 
     return (

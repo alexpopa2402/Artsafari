@@ -71,12 +71,12 @@ const Header = () => {
         <Link to='/artists' className='artists'>Artists</Link>
         <Link to='/about' className="about">About Us</Link>
       </nav>
-      {session ? <UserMenu /> : <AuthButton />}
       {isMobile && (
         <Suspense fallback={<HamburgerMenuSkeleton />}>
           <HamburgerMenu />
         </Suspense>
       )}
+      {session ? <UserMenu /> : <AuthButton />}
     </header>
   );
 };

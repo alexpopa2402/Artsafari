@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const useFocusTrap = (ref, active) => {
   useEffect(() => {
-    if (!active || !ref.current) return;
+    if (!active) return;
 
     const focusableElements = ref.current.querySelectorAll(
       'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'

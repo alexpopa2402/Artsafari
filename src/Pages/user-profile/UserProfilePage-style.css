@@ -45,14 +45,13 @@
   }
 
 .user-page .divider {
-    height: 2px;
+    height: 1px;
     background-color: var(--secondary-color);
     width: 100%;
-    z-index: 100;
 }
 
 .gallery-section {
-/*     margin: 1rem; */
+    margin: 1.5rem 0;
     display: flex;
     flex-direction: column;
     flex-grow: 1;

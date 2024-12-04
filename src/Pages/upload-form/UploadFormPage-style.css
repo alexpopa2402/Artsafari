@@ -92,7 +92,7 @@ form label {
     width: 100%;
     padding: 10px;
     font-size: var(--font-size-medium);
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
 }
 
@@ -260,9 +260,9 @@ button span {
 select {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    background-color: #fff;
+    background-color: var(--background-color);
     appearance: none;
 }
 
