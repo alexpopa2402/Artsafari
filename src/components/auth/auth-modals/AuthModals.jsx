@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import YBlogo from '@assets/images/logo/YBlogo.png';
 import useFocusTrap from '@hooks/useFocusTrap';
 
-
 const LoginModal = lazy(() => import('./LoginModal'));
 const ForgotPasswordModal = lazy(() => import('./ForgotPasswordModal'));
 const SignUpModal = lazy(() => import('./SignUpModal'));
@@ -45,6 +44,7 @@ const AuthModals = ({ onClose }) => {
     return (
         <div className="overlay" onClick={onClose}>
             <div className="popup-form" onClick={(e) => e.stopPropagation()} ref={modalRef}>
+            <Suspense fallback={<Spinner />}>
                 <div className="popup-header">
                     <div className='popup-main-title'>
                         {modal !== 'login' ? (
@@ -62,7 +62,7 @@ const AuthModals = ({ onClose }) => {
                         </button>
                     </div>
                 </div>
-                <Suspense fallback={<Spinner />}>
+                
                     {renderModalContent()}
                 </Suspense>
             </div>

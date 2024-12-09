@@ -9,8 +9,6 @@ import ProtectedRoute from '@components/auth/protected-route/ProtectedRoute';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
 import HomePage from '@pages/home/HomePage';
-/* import GalleryPage from '@pages/gallery/GalleryPage'; */
-/* import UserProfilePage from '@pages/user-profile/UserProfilePage'; */
 import UploadFormPage from '@pages/upload-form/UploadFormPage';
 import ArtistsPage from '@pages/artists/ArtistsPage';
 

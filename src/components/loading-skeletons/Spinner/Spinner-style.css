@@ -31,9 +31,9 @@
     height: 40px;
     border-width: 6px;
   }
-  .spinner-container {
+/*   .spinner-container {
     min-width: 50svh;
-  }
+  } */
 }
 
 @media (min-width: 900px) {

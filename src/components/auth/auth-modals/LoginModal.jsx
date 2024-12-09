@@ -5,20 +5,25 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import SocialLoginModal from './SocialLoginModal';
 import { handleLogin, handlePasswordChange } from '@utils/authHandlers';
 import { validateEmail } from '../../../utils/authValidation';
+import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
 const LoginModal = ({ setPopupType }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({ email: '', password: '' });
+    const [loading, setLoading] = useState(false);
     const emailRef = useRef(null);
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const success = await handleLogin(email, password, setErrors);
-        if (success) {
-            window.location.reload(); // Refresh the browser on successful login
-        }
+        setLoading(true);
+            const success = await handleLogin(email, password, setErrors);
+            if (success) {
+                window.location.reload(); // Refresh the browser on successful login
+            } else {
+                setLoading(false);
+            }
     };
 
     useEffect(() => {
@@ -60,8 +65,8 @@ const LoginModal = ({ setPopupType }) => {
                     </div>
                     {errors.password && <span className="error">{errors.password}</span>}
                 </div>
-                <button type="submit" className="popup-login-button" disabled={!validateEmail(email)}>
-                    {'Login'}
+                <button type="submit" className="popup-login-button" disabled={!validateEmail(email) || loading || !password}>
+                    {loading ? <Spinner /> : 'Login'}
                 </button>
                 <SocialLoginModal />
             </form>
