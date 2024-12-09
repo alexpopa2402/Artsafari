@@ -41,6 +41,7 @@
   --background-color: #fff;
   --primary-color: #000000;
   --secondary-color: #ccc;
+  --usermenu-header-color: #000000;
 
   /* button colors */
   --button-active-color: #630000;
@@ -68,13 +69,15 @@
   --margin-large: 1.25rem; /* 20px */
   
   /* box shadow */
-  --box-shadow: -3px -3px 7px rgba(0, 0, 0, 0.5);
+  --corner-box-shadow: -3px -3px 7px rgba(0, 0, 0, 0.5);
+  --search-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 :root.dark-theme {
   --background-color: #0f0c40;
   --primary-color: #ffffff;
   --secondary-color: #5e66ff;
+  --usermenu-header-color: #3339b4;
 
   --font-primary-color: #ffffff;
   --font-secondary-color: #999999;
@@ -88,5 +91,6 @@
   --card-background-color: #171c79;
   --corner-color: #171c79;
   --folded-corner-color: #3339b4;
-  --box-shadow: -3px -3px 7px rgba(14, 14, 14, 0.756);
+  --corner-box-shadow: -3px -3px 7px rgba(14, 14, 14, 0.756);
+  --search-box-shadow: -2px 5px 25px rgba(255, 255, 255, 0.1);
 }

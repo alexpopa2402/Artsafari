@@ -2,7 +2,6 @@
   position: absolute;
   background-color: var(--card-background-color);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  padding: 1rem;
   right: 17px;
   top: 130%;
   width: 200px;
@@ -18,7 +17,7 @@
   width: 45px;
   height: 45px;
   border-radius: 5px 0 5px 0;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--corner-box-shadow);
   background-color: var(--folded-corner-color);
 }
 
@@ -49,6 +48,9 @@
   display: flex;
   align-items: center;
   position: relative;
+  background-color: var(--usermenu-header-color);
+  padding: 0.5rem 1rem;
+  color: var(--font-primary-opposite-color);
 }
 
 .settings {
@@ -65,12 +67,13 @@
 }
 
 .user-links {
-  margin: 20px 0 10px 0;
+  margin: 20px 0 20px 0;
+  padding: 0 1rem;
 }
 
 .avatar {
-  width: 45px;
-  height: 45px;
+  min-width: 45px;
+  min-height: 45px;
   background-color: transparent;
   border: 1px solid var(--border-color);
   border-radius: 50%;
@@ -85,12 +88,14 @@
 
 .profile-box {
   display: flex;
-  flex-direction: column;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .profile-name {
-  margin-left: 10px;
+  font-size: var(--font-size-intermediate);
   font-weight: bold;
 }
 
@@ -131,14 +136,9 @@
 
 .usermenu-close-popup {
   display: none;
-  position: absolute;
-  top: 1.22em;
-  right: 1.77em;
   cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
-  margin-right: 0.2rem;
-  color: var(--font-primary-color);
+  color: var(--font-primary-opposite-color);
+  font-size: var(--font-size-xlarge);
 }
 
 .collection p,
@@ -174,6 +174,27 @@
     padding: 0px;
     box-shadow: none;
     margin: 0;
+    border-radius: 0;
+  }
+
+  .user-info .avatar {
+    min-width: 60px;
+    min-height: 60px;
+  }
+  .profile-box .profile-name {
+      font-size: var(--font-size-xlarge);
+  }
+
+  .corner-bottom-right {
+    display: none;
+  }
+  
+  .folded-corner {
+    display: none;
+  }
+
+  .dropdown-content .theme-toggle-container {
+    display: none;
   }
 
   .user-info .theme-toggle-container {
@@ -182,17 +203,18 @@
 
   .usermenu-close-popup {
     display: block;
+/*     margin-right: 0.5rem; */
   }
 
   .user-info {
     position: sticky;
     top: 0;
     padding: 1rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 80px;
   }
 
   .user-links {
-    font-size: 30px;
+    font-size: 35px;
     padding: 0 1rem;
     white-space: nowrap;
   }
@@ -209,12 +231,13 @@
 }
 
 @media (max-width: 1080px) {
-  .dropdown-content {
-    right: 0;
-  }
 
-  .usermenu-close-popup {
+/*   .usermenu-close-popup {
     right: 0.88em;
+  } */
+
+  .fa-user {
+    margin: 0 1rem 0 0.5rem;
   }
 }
 

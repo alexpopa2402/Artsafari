@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import SearchBar from '@components/UI/searchbar/SearchBar';
 import AuthButton from '@components/buttons/auth-button/AuthButton';
 import UserMenu from '@components/menus/user-menu/UserMenu';
+import HamburgerMenu from '@components/menus/hamburger-menu/HamburgerMenu';
 import YBlogo from '@assets/images/logo/YBlogo.png';
-import HamburgerMenuSkeleton from '@components/loading-skeletons/HamburgerMenuSkeleton/HamburgerMenuSkeleton';
+/* import HamburgerMenuSkeleton from '@components/loading-skeletons/HamburgerMenuSkeleton/HamburgerMenuSkeleton'; */
 import './Header-style.css';
 
-const HamburgerMenu = lazy(() => import('@components/menus/hamburger-menu/HamburgerMenu'));
+/* const HamburgerMenu = lazy(() => import('@components/menus/hamburger-menu/HamburgerMenu')); */
 
 const Header = () => {
   const [session, setSession] = useState(null);
@@ -72,9 +73,9 @@ const Header = () => {
         <Link to='/about' className="about">About Us</Link>
       </nav>
       {isMobile && (
-        <Suspense fallback={<HamburgerMenuSkeleton />}>
+/*         <Suspense fallback={<HamburgerMenuSkeleton />}> */
           <HamburgerMenu />
-        </Suspense>
+/*         </Suspense> */
       )}
       {session ? <UserMenu /> : <AuthButton />}
     </header>

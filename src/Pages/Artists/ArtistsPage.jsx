@@ -22,15 +22,18 @@ const ArtistsPage = () => {
 
   return (
     <div className="artists-page">
-      <h1>Artists Page</h1>
-      {artists.length === 0 && (
+      {artists.length === 0 ? (
         <Spinner />
+      ) : (
+        <>
+          <h1>Artists Page</h1>
+          <div className="artist-cards-container">
+            {artists.map((artist, index) => (
+              <ArtistCard key={index} name={artist.name} description={artist.description} imageUrl={artist.imageUrl} />
+            ))}
+          </div>
+        </>
       )}
-      <div className="artist-cards-container">
-        {artists.map((artist, index) => (
-          <ArtistCard key={index} name={artist.name} description={artist.description} imageUrl={artist.imageUrl} />
-        ))}
-      </div>
     </div>
   );
 };

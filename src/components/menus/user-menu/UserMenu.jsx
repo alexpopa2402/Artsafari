@@ -53,26 +53,26 @@ const UserMenu = (session, setSession) => {
                     <div className="user-info" >
                         <div className="avatar">A</div>
                         <div className='profile-box'>
+                            <span className="profile-name">{user.user_metadata.name}</span>
                             <span className="usermenu-close-popup" onClick={toggleMenu(isOpen, setIsOpen)}>
                                 <FontAwesomeIcon icon={faTimes} />
                             </span>
-                            <span className="profile-name">{user.user_metadata.name}</span>
                         </div>
                     </div>
                     <div className='user-links'>
                         <div className="collection">
-                            <a className='collection-item' href="/profile">My Gallery</a>
-                            <a className='collection-item' href="/upload-artwork">Upload section</a>
+                            <a className='collection-item' href="/profile">MY GALLERY</a>
+                            <a className='collection-item' href="/upload-artwork">UPLOAD SECTION</a>
                         </div>
                         <div className="settings">
                             <div className="divider"></div>
-                            <a className='collection-item' href="settings/edit-profile">Settings</a>
+                            <a className='collection-item' href="settings/edit-profile">SETTINGS</a>
                             <a className='collection-item' onClick={() => handleLogout(setSession, navigate)}>Log out</a>
                         </div>
                         <DarkThemeButton />
-                    <div className="folded-corner">
-                        <div className="corner-bottom-right"></div>
-                    </div>
+                        <div className="folded-corner">
+                            <div className="corner-bottom-right"></div>
+                        </div>
                     </div>
                 </div>
             )}
