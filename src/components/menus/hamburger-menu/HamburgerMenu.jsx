@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { fetchSession, subscribeToAuthChanges } from '@services/authService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import AuthButton from "@components/buttons/auth-button/AuthButton";
 import { toggleMenu, handleLogout } from '@utils/menuHandlers';
 import useGlobalScrollLock from '@hooks/useGlobalScrollLock';
@@ -51,7 +51,7 @@ const HamburgerMenu = () => {
       {isOpen && (
         <div className="burger-menu"> 
           <button className="hamburger-close-popup" onClick={toggleMenu(isOpen, setIsOpen)}>
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faCircleXmark} />
           </button>
           <nav className="burger-nav-links">
             <a href="/" className="burger-Home">HOME</a>

@@ -4,7 +4,7 @@ import useLocalStorage from '@hooks/useLocalStorage';
 const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
-  const [isDarkTheme, setIsDarkTheme] = useLocalStorage ('isDarkTheme',false)
+  const [isDarkTheme, setIsDarkTheme] = useLocalStorage('isDarkTheme', false);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark-theme', isDarkTheme);
@@ -22,7 +22,7 @@ const ThemeProvider = ({ children }) => {
   );
 };
 ThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export { ThemeContext, ThemeProvider };

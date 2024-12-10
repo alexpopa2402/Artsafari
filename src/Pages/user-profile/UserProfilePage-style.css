@@ -10,14 +10,15 @@
 .profile-section {
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
+    flex-direction: column;
     margin: 0 1rem;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .profile-info {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     color: var(--font-primary-color);
     margin: 1.5rem 0;
@@ -25,15 +26,18 @@
 
 
 .profile-section span {
-    font-size: calc(20px + 0.2vw);
+    font-size: calc(50px + 0.2vw);
     font-weight: bold;
     white-space: nowrap;
+    font-family: var(--ff-jomhuria);
+    line-height: 40px;
 }
 
 .gallery-buttons {
     display: flex;
     align-items: center;
     justify-self: center;
+    margin-bottom: 1.5rem;
 }
 .profile-settings-button {
     font-size: var(--font-size-intermediate);
@@ -73,15 +77,4 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 1rem 0 0;
 }
-
-@media (max-width: 610px) {
-    .profile-section {
-        align-items: center;
-        flex-direction: column;
-    }
-    .gallery-buttons {
-        margin-bottom: 1.5rem;
-    }
-  }

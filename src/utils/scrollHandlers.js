@@ -23,25 +23,3 @@ export const setupScrollListener = () => {
     window.removeEventListener('scroll', handleScroll);
   };
 };
-
-/* let isScrolled = false;
-
-export const handleScroll = (setHeaderVisible) => {
-  if (window.scrollY > 0 && !isScrolled) {
-    setHeaderVisible(true); // Show header when scrolling starts
-    isScrolled = true;
-  } else if (window.scrollY === 0 && isScrolled) {
-    setHeaderVisible(false); // Hide header when at the top
-    isScrolled = false;
-  }
-};
-
-// Exported to be used in the Header component
-export const setupScrollListener = (setHeaderVisible) => {
-  const onScroll = () => handleScroll(setHeaderVisible);
-  window.addEventListener('scroll', onScroll);
-
-  return () => {
-    window.removeEventListener('scroll', onScroll);
-  };
-}; */

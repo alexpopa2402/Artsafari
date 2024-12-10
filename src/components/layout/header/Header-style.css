@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 90px;
   border-bottom: 1px solid var(--border-color-transparent);
 }
 .main-header.scrolled {
@@ -20,13 +20,17 @@
   display: flex;
   align-items: center;
   margin: 0 1rem;
+  position: relative;
 }
 
 .main-title {
-  font-size: calc(25px + 0.8vw);
+  font-size: calc(60px + 0.8vw);
   font-weight: bold;
   white-space: nowrap;
   color: var(--font-accent-color);
+  font-family: var(--ff-jomhuria);
+  line-height: 100%;
+  margin-top: 13px;
 }
 .main-title .logo {
   height: 70px;
@@ -35,10 +39,22 @@
 }
 
 .sub-title {
-  font-size: calc(10px + 0.3vw);
+  font-size: calc(8px + 0.3vw);
   white-space: nowrap;
   color: var(--font-primary-color);
-  margin-left: 1rem;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.804);
+  color: var(--font-accent-color);
+  border-radius: var(--border-radius-small);
+  font-family: var(--ff-k2d);
+  bottom: 7px;
+  right: -5px;
+  padding: 2px 10px;
+  transform: rotate(-10deg);
+}
+
+.sub-title a {
+  color: var(--font-accent-color);
 }
 
 .nav-links {
@@ -70,8 +86,8 @@ font-size: var(--font-size-intermediate);
   .main-header {
     align-items: center;
   }
-  .sub-title {
-    display: none;
+  .main-title .text {
+    font-size: calc(50px + 0.8vw);
   }
   .nav-links {
     width: 100%;
@@ -83,8 +99,89 @@ font-size: var(--font-size-intermediate);
   .main-title .logo {
     display: block;
   }
-
+  .main-title {
+    margin-top: 0;
+  }
   .main-title .text {
     display: none;
+  }
+  .sub-title {
+    display: none;
+  }
+}
+
+@media (min-width: 1081px) {
+  .main-header {
+    flex-direction: column;
+    height: auto;
+    padding: 0 0 1rem 0;
+  }
+  .nav-links {
+    margin: 0;
+    z-index: 10;
+  }
+
+  .title-container {
+    flex-direction: column;
+    position: relative;
+  }
+  .main-title {
+    font-size: 13rem;
+    line-height: 105px;
+    margin-top: 52px;
+  }
+  .main-title:hover{
+    transform: none;
+  }
+
+  .sub-title {
+    right: -1rem;
+    bottom: -1rem;
+    border-radius: var(--border-radius-small);
+    font-size: calc(30px + 0.3vw);
+    padding: 0 1rem;
+    background-color: rgba(0, 0, 0, 0.856);
+    font-family: var(--ff-jomhuria);
+  }
+
+  .sub-title:hover {
+    animation: rotate-shake 0.3s;
+  }
+  
+  @keyframes rotate-shake {
+    0%, 100% {
+      transform: rotate(-5deg);
+    }
+    25% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+    75% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .user-menu {
+    position: absolute;
+    height: 90px;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .user-menu .fa-user {
+    margin: 0 1rem;
+  }
+  .fa-user:hover {
+    color: var(--font-accent-color);
+  }
+
+  .main-header .login-button {
+    position: absolute;
+    right: 0;
+    top: 1rem;
   }
 }

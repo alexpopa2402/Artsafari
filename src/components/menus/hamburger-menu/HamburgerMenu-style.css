@@ -37,7 +37,7 @@
 }
 
 .burger-nav-links a {
-  color: var(--font-primary-color);
+  color: var(--font-accent-color);
   cursor: pointer;
 }
 
@@ -84,6 +84,7 @@
   color: var(--font-primary-color);
   align-self: self-end;
   background-color: rgba(0, 0, 0, 0);
+  font-weight:lighter;
 }
 .hamburger-close-popup:hover {
   background-color: var(--background-color);

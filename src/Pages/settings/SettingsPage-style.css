@@ -52,7 +52,7 @@ align-items: center;
   background-color: var(--background-color);
   color: var(--font-primary-color);
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: var(--border-radius-small);
   min-width: 240px;
   flex-grow: 1;
 }
@@ -102,7 +102,7 @@ align-items: center;
   display: block;
   width: 100%;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: var(--border-radius-small);
   cursor: pointer;
   margin-top: 20px;
 }
@@ -153,7 +153,7 @@ padding: 0 5px;
 font-size: var(--font-size-small);
 pointer-events: none;
 z-index: 1;
-border-radius: 0.5rem;
+border-radius: var(--border-radius-medium);
 }
 
 .email-reset-form input,

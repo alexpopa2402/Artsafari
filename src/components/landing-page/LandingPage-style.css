@@ -270,13 +270,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .big-text-container {
-  }
-.medium-text-container {
-}
-}
-
 @media (max-width: 576px) {
   .letter-container {
     font-size: 200px;

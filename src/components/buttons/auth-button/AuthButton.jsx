@@ -15,7 +15,7 @@ const AuthButton = () => {
     return (
         <>
             <button className="login-button" onClick={() => setShowModal(true)}>
-                Log in / Sign up
+                Log in
             </button>
             {showModal && ReactDOM.createPortal(
                 <Suspense fallback={<Spinner />}>

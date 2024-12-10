@@ -11,7 +11,6 @@ import './Header-style.css';
 
 const Header = () => {
   const [session, setSession] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1081);
   
   // Initialize authentication
   useEffect(() => {
@@ -41,18 +40,6 @@ const Header = () => {
     };
   }, []);
 
-  // Update isMobile state on window resize
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1081);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <header className='main-header'>
       <div className='title-container'>
@@ -60,7 +47,12 @@ const Header = () => {
           <img src={YBlogo} alt="Youngblood Logo" className="logo" />
           <span className="text">YoungBlood 3.0</span>
         </Link>
-        <p className="sub-title">by <a href='https://www.artsafari.ro/'>Artsafari</a></p>
+        <p className="sub-title">
+          by{' '}
+            <a href='https://www.artsafari.ro/'>
+              Artsafari
+            </a>
+        </p>
       </div>
       <SearchBar />
       <nav className="nav-links">
@@ -69,9 +61,7 @@ const Header = () => {
         <Link to='/artists' className='artists'>Artists</Link>
         <Link to='/about' className="about">About Us</Link>
       </nav>
-      {isMobile && (
           <HamburgerMenu />
-      )}
       {session ? <UserMenu /> : <AuthButton />}
     </header>
   );

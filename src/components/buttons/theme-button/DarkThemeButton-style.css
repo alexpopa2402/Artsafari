@@ -1,20 +1,3 @@
-/* .theme-toggle-button {
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 45px;
-    background-color: var(--background-color);
-    color: var(--font-primary-color);
-    margin-right: 1rem;
-    transition: transform 0.2s, background-color 0.2s, color 0.2s;
-  }
-  
-  .theme-toggle-button:hover {
-    color: var(--font-primary-opposite-color);
-    background-color: var(--button-hover-color);
-    transform: scale(0.95);
-  } */
-
-
 .theme-toggle-container {
 padding: 0 10px 0 20px;
 }

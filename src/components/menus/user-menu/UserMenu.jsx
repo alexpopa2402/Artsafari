@@ -61,12 +61,12 @@ const UserMenu = (session, setSession) => {
                     </div>
                     <div className='user-links'>
                         <div className="collection">
-                            <a className='collection-item' href="/profile">MY GALLERY</a>
-                            <a className='collection-item' href="/upload-artwork">UPLOAD SECTION</a>
+                            <a className='collection-item' href="/profile">My profile</a>
+                            <a className='collection-item' href="/upload-artwork">Upload section</a>
                         </div>
                         <div className="settings">
                             <div className="divider"></div>
-                            <a className='collection-item' href="settings/edit-profile">SETTINGS</a>
+                            <a className='collection-item' href="settings/edit-profile">Settings</a>
                             <a className='collection-item' onClick={() => handleLogout(setSession, navigate)}>Log out</a>
                         </div>
                         <DarkThemeButton />

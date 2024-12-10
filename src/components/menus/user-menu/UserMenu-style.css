@@ -5,7 +5,7 @@
   right: 17px;
   top: 130%;
   width: 200px;
-  border-radius: 5px;
+  border-radius: var(--border-radius-medium);
   overflow: hidden;
   z-index: 100;
 }
@@ -272,4 +272,10 @@ body {
   /* Width of the scrollbar */
   scrollbar-color: var(--secondary-color) var(--background-color);
   /* Color of the scrollbar thumb and track */
+}
+
+@media (min-width: 1080px) {
+  .dropdown-content {
+    top: 70%;
+  }
 }
