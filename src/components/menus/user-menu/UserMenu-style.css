@@ -35,10 +35,15 @@
   font-size: var(--font-size-intermediate);
   color: var(--font-primary-color);
   margin: 0 1.5rem;
+  border: none;
+  background-color: transparent;
+}
+
+.fa-user:hover {
+  background-color: transparent;
 }
 
 .user-menu {
-  cursor: pointer;
   position: relative;
   color: var(--font-primary-color);
   z-index: 12;

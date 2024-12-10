@@ -45,7 +45,7 @@ const UserMenu = (session, setSession) => {
 
     return (
         <div className="user-menu" ref={menuRef}>
-            <div className="fa fa-user" onClick={toggleMenu(isOpen, setIsOpen)}></div>
+            <button className="fa fa-user" onClick={toggleMenu(isOpen, setIsOpen)}></button>
 
             {isOpen && (
                 <div className="dropdown-content">

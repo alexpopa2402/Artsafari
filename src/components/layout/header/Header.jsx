@@ -11,7 +11,7 @@ import './Header-style.css';
 
 const Header = () => {
   const [session, setSession] = useState(null);
-  
+
   // Initialize authentication
   useEffect(() => {
     const initializeAuth = async () => {
@@ -42,27 +42,29 @@ const Header = () => {
 
   return (
     <header className='main-header'>
-      <div className='title-container'>
-        <Link to='/' className="main-title">
-          <img src={YBlogo} alt="Youngblood Logo" className="logo" />
-          <span className="text">YoungBlood 3.0</span>
-        </Link>
-        <p className="sub-title">
-          by{' '}
+      <div className='header-container'>
+        <div className='title-container'>
+          <Link to='/' className="main-title">
+            <img src={YBlogo} alt="Youngblood Logo" className="logo" />
+            <span className="text">YoungBlood 3.0</span>
+          </Link>
+          <p className="sub-title">
+            by{' '}
             <a href='https://www.artsafari.ro/'>
               Artsafari
             </a>
-        </p>
+          </p>
+        </div>
+        <SearchBar />
+        <nav className="nav-links">
+          <Link to='/' className="home">Home</Link>
+          <Link to='/gallery' className="gallery">Gallery</Link>
+          <Link to='/artists' className='artists'>Artists</Link>
+          <Link to='/about' className="about">About Us</Link>
+        </nav>
+        <HamburgerMenu />
+        {session ? <UserMenu /> : <AuthButton />}
       </div>
-      <SearchBar />
-      <nav className="nav-links">
-        <Link to='/' className="home">Home</Link>
-        <Link to='/gallery' className="gallery">Gallery</Link>
-        <Link to='/artists' className='artists'>Artists</Link>
-        <Link to='/about' className="about">About Us</Link>
-      </nav>
-          <HamburgerMenu />
-      {session ? <UserMenu /> : <AuthButton />}
     </header>
   );
 };

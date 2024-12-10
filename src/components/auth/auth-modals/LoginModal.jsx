@@ -18,14 +18,18 @@ const LoginModal = ({ setPopupType }) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-            const success = await handleLogin(email, password, setErrors);
-            if (success) {
-                window.location.reload(); // Refresh the browser on successful login
-            } else {
+            try {
+                const success = await handleLogin(email, password, setErrors);
+                if (!success) {
+                    setLoading(false);
+                }
+            } catch (error) {
+                console.error('Login failed:', error);
                 setLoading(false);
             }
     };
 
+    /* when opening modal, it focuses on the email field */
     useEffect(() => {
         emailRef.current?.focus();
     }, []);

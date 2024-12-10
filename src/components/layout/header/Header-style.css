@@ -1,4 +1,12 @@
 
+.header-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
 .main-header {
   background-color: var(--background-color);
   position: sticky;
@@ -111,6 +119,12 @@ font-size: var(--font-size-intermediate);
 }
 
 @media (min-width: 1081px) {
+
+  .header-container {
+    max-width: 1080px;
+    flex-direction: column;
+    position: relative;
+  }
   .main-header {
     flex-direction: column;
     height: auto;
@@ -181,7 +195,7 @@ font-size: var(--font-size-intermediate);
 
   .main-header .login-button {
     position: absolute;
-    right: 0;
-    top: 1rem;
+    right: -4.1rem;
+    top: 1.9rem;
   }
 }
