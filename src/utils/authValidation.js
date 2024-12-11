@@ -34,6 +34,5 @@ export const calculatePasswordStrength = (password) => {
     } else {
         strength = 'weak';
     }
-
     return strength;
 };

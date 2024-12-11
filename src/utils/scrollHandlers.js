@@ -5,6 +5,7 @@
 let isScrolled = false;
 
 export const handleScroll = () => {
+  console.log('scrolling');
   const header = document.querySelector('.main-header');
   if (window.scrollY > 0 && !isScrolled) {
     header.classList.add('scrolled');

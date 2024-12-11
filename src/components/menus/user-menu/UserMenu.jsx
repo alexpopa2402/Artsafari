@@ -2,9 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { toggleMenu, handleLogout } from '@utils/menuHandlers';
+import { toggleMenu } from '@utils/menuHandlers';
+import { handleLogout } from '@utils/authHandlers';
 import useAuth from '@hooks/useAuth';
-/* import useGlobalScrollLock from '@hooks/useGlobalScrollLock'; */
 import useClickOutside from '@hooks/useClickOutside';
 import useCloseOnResize from '@hooks/useCloseOnResize';
 import useFocusTrap from '@hooks/useFocusTrap';

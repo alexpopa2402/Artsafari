@@ -7,19 +7,10 @@ import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 const GalleryPage = () => {
     const [artwork, setArtwork] = useState([]);
     const [loading, setLoading] = useState(true);
-    
-
-/*     useEffect(() => {
-        // Simulate an error for testing purposes
-        throw new Error('Simulated error in Gallery page');
-    }, []); */
 
     useEffect(() => {
-        // Simulate fetching data
-        setTimeout(() => {
             setArtwork(carData);
             setLoading(false);
-        }, 70000);
     }, []);
 
     return (

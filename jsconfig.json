@@ -8,6 +8,7 @@
         "@hooks/*": ["hooks/*"],
         "@utils/*": ["utils/*"],
         "@services/*": ["services/*"],
+        "@store/*": ["store/*"],
       }
     },
     "include": ["src"]
