@@ -246,38 +246,16 @@ font-size: var(--font-size-medium); /* Adjust the size as needed */
   } 
 }
 
-/* @media (max-width: 240px) {
-
-  .settings-title {
-    font-size: var(--font-size-large);
-  }
-  .account-layout {
-    font-size: var(--font-size-small);
-  }
-  .account-layout h2 {
-    font-size: var(--font-size-intermediate);
-  }
-
-  .email-reset-form, .password-reset-form {
-    width: 150px;
-  }
-  .tabs {
-    font-size: var(--font-size-small);
-  }
-  .tab {
-    padding: 2px 5px;
-  }
-
-  .tab-content {
-    font-size: var(--font-size-xsmall);
-  }
-
-  .tab-content .avatar-text {
-    font-size: var(--font-size-xsmall);
-  }
-
-  .account-layout button {
-    font-size: var(--font-size-xsmall);
-    width: 150px;
-  }
-} */
+.error-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff4500; /* Red orange poppy color */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: slideUp 0.5s ease-out;
+}

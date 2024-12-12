@@ -1,21 +1,22 @@
 import { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { toggleMenu } from '@utils/menuHandlers';
 import { handleLogout } from '@utils/authHandlers';
-import useAuth from '@hooks/useAuth';
+import useAuthStore from '@store/useAuthStore';
 import useClickOutside from '@hooks/useClickOutside';
 import useCloseOnResize from '@hooks/useCloseOnResize';
 import useFocusTrap from '@hooks/useFocusTrap';
 import './UserMenu-style.css';
 import DarkThemeButton from '@components/buttons/theme-button/DarkThemeButton';
 
-const UserMenu = (session, setSession) => {
+const UserMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { user } = useAuth();
+    const user = useAuthStore((state) => state.user);
     const menuRef = useRef(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
     // Disable scrolling when popup is open and take into account the scrollbar width
     useEffect(() => {
@@ -42,6 +43,9 @@ const UserMenu = (session, setSession) => {
 
     // Trap focus within the user menu when it is open
     useFocusTrap(menuRef, isOpen);
+    // Check if the current page is the settings page to hide the theme button
+    const isSettingsPage = location.pathname === '/settings/edit-profile' || 
+    location.pathname === '/settings/edit-account';
 
     return (
         <div className="user-menu" ref={menuRef}>
@@ -67,12 +71,19 @@ const UserMenu = (session, setSession) => {
                         <div className="settings">
                             <div className="divider"></div>
                             <a className='collection-item' href="settings/edit-profile">Settings</a>
-                            <a className='collection-item' onClick={() => handleLogout(setSession, navigate)}>Log out</a>
+                            <a className='collection-item' onClick={async () => {
+                                await handleLogout(navigate);
+                                setIsOpen(false);
+                            }}>Log out</a>
                         </div>
-                        <DarkThemeButton />
-                        <div className="folded-corner">
-                            <div className="corner-bottom-right"></div>
-                        </div>
+                        {!isSettingsPage && ( // Hide the theme button and folded corner on the settings page
+                            <>
+                              <DarkThemeButton />
+                              <div className="folded-corner">
+                                <div className="corner-bottom-right"></div>
+                              </div>
+                            </>
+                    )}
                     </div>
                 </div>
             )}

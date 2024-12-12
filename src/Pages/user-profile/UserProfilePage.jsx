@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '@hooks/useAuth';
+import useAuthStore from '@store/useAuthStore';
 import './UserProfilePage-style.css';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
@@ -14,7 +14,8 @@ const images = [
 ];
 
 const UserProfile = () => {
-  const { user, loading } = useAuth();
+  const user = useAuthStore((state) => state.user);
+  const loading = useAuthStore((state) => state.loading);
   const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
   const handleImageClick = (image) => {

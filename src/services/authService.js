@@ -1,23 +1,43 @@
 import { supabase } from './supabaseClient';
 
 export const fetchSession = async () => {
-  const { data: { session } } = await supabase.auth.getSession();   // Destructuring assignment to extract 'session' from the response
-  return session;
+  try {
+    const { data: { session }, error } = await supabase.auth.getSession(); // Destructuring assignment to extract 'session' from the response
+    if (error) {
+      console.error('Error fetching session:', error.message);
+      return null;
+    }
+    return session;
+  } catch (err) {
+    console.error('Unexpected error fetching session:', err);
+    return null;
+  }
 };
 
 export const fetchUser = async () => {
-  const { data: { user } } = await supabase.auth.getUser();   // Destructuring assignment to extract 'user' from the response data
-  return user;
+  try {
+    const { data: { user }, error } = await supabase.auth.getUser(); // Destructuring assignment to extract 'user' from the response data
+    if (error) {
+      console.error('Error fetching user:', error.message);
+      return null;
+    }
+    return user;
+  } catch (err) {
+    console.error('Unexpected error fetching user:', err);
+    return null;
+  }
 };
 
 /**
- * Listens for changes in authentication state
- * @param {function} setSession - Function to update the session state
+ * Listens for changes in authentication state and updates the session state.
+ * @param {function} setSession - Function to update the session state in the store.
  */
 
 export const subscribeToAuthChanges = (setSession) => {
   const { data: authListener } = supabase.auth.onAuthStateChange((_, session) => {
     setSession(session);
   });
-  return authListener;
+  return () => {
+    authListener.subscription.unsubscribe();
+  };
 };

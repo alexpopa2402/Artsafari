@@ -116,6 +116,7 @@
 
 .collection-item:hover {
   position: relative;
+  cursor: pointer;
 }
 
 .collection-item:hover::after {
@@ -282,5 +283,12 @@ body {
 @media (min-width: 1080px) {
   .dropdown-content {
     top: 70%;
+  }
+}
+
+@media (min-width: 1427px) {
+  .dropdown-content {
+    top: 70%;
+    right: -240%;
   }
 }

@@ -1,15 +1,16 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import useAuth from '@hooks/useAuth';
+import useAuthStore from '@store/useAuthStore';
 import './SettingsPage-style.css';
 import BackButton from '@components/buttons/back-button/BackButton';
 import DarkThemeButton from '@components/buttons/theme-button/DarkThemeButton';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
 const SettingsPage = () => {
-  const user = useAuth();
+  const loading = useAuthStore((state) => state.loading);
   const location = useLocation();
   const activeTab = location.pathname.split('/').pop();
-  if (!user) {
+
+  if (loading) {
     return <Spinner />;
   }
 

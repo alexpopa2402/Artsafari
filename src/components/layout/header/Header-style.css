@@ -140,7 +140,7 @@ font-size: var(--font-size-intermediate);
     position: relative;
   }
   .main-title {
-    font-size: 13rem;
+    font-size: 12rem;
     line-height: 105px;
     margin-top: 52px;
   }
@@ -152,7 +152,7 @@ font-size: var(--font-size-intermediate);
     right: -1rem;
     bottom: -1rem;
     border-radius: var(--border-radius-small);
-    font-size: calc(30px + 0.3vw);
+    font-size: 35px;
     padding: 0 1rem;
     background-color: rgba(0, 0, 0, 0.856);
     font-family: var(--ff-jomhuria);
@@ -195,7 +195,7 @@ font-size: var(--font-size-intermediate);
 
   .main-header .login-button {
     position: absolute;
-    right: -4.1rem;
+    right: 0;
     top: 1.9rem;
   }
 }
