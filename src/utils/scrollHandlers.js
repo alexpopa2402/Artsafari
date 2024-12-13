@@ -24,3 +24,9 @@ export const setupScrollListener = () => {
     window.removeEventListener('scroll', handleScroll);
   };
 };
+
+//exported to be used in the useScrollLock hook
+export const setScrollbarWidth = () => {
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+};

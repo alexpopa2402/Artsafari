@@ -249,11 +249,6 @@
   }
 }
 
-/* Hide scrollbar for all browsers */
-.no-scroll {
-  overflow: hidden;
-}
-
 /* WebKit browsers */
 body::-webkit-scrollbar {
   width: 12px;

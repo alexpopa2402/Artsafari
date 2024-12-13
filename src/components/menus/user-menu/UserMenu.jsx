@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { toggleMenu } from '@utils/menuHandlers';
 import { handleLogout } from '@utils/authHandlers';
 import useAuthStore from '@store/useAuthStore';
+import useGlobalScrollLock from '@hooks/useGlobalScrollLock';
 import useClickOutside from '@hooks/useClickOutside';
 import useFocusTrap from '@hooks/useFocusTrap';
 import './UserMenu-style.css';
@@ -17,22 +17,7 @@ const UserMenu = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Disable scrolling when popup is open and take into account the scrollbar width
-    useEffect(() => {
-        const handleScrollLock = () => {
-            const centralContainer = document.querySelector('.central-container');
-            if (isOpen) {
-                const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-                centralContainer.style.paddingRight = `${scrollbarWidth}px`;
-                document.body.classList.add('no-scroll');
-            } else {
-                centralContainer.style.paddingRight = '';
-                document.body.classList.remove('no-scroll');
-            }
-        };
-
-        handleScrollLock();
-    }, [isOpen]);
+    useGlobalScrollLock(isOpen);
 
     // Close the popup when clicking outside of it
     useClickOutside(menuRef, () => setIsOpen(false));
@@ -45,7 +30,7 @@ const UserMenu = () => {
 
     return (
         <div className="user-menu" ref={menuRef}>
-            <button className="fa fa-user" onClick={toggleMenu(isOpen, setIsOpen)}></button>
+            <button className="fa fa-user" onClick={() => setIsOpen(!isOpen)}></button>
 
             {isOpen && (
                 <div className="dropdown-content">
@@ -54,7 +39,7 @@ const UserMenu = () => {
                         <div className="avatar">A</div>
                         <div className='profile-box'>
                             <span className="profile-name">{user.user_metadata.name}</span>
-                            <span className="usermenu-close-popup" onClick={toggleMenu(isOpen, setIsOpen)}>
+                            <span className="usermenu-close-popup" onClick={() => setIsOpen(false)}>
                                 <FontAwesomeIcon icon={faTimes} />
                             </span>
                         </div>

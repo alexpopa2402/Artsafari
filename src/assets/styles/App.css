@@ -2,13 +2,6 @@
 @import "./_reset.css";       /* Importing reset styles */
 @import "./_base.css";        /* Importing base element styles */
 
-/* .master-container {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  background-color: antiquewhite;
-} */
-
 .central-container {
   display: flex;
   flex-direction: column;

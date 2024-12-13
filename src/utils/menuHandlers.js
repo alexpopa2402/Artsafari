@@ -5,7 +5,3 @@ export const handleClickOutside = (menuRef, setIsOpen) => (event) => {
     setIsOpen(false);
   }
 };
-
-export const toggleMenu = (isOpen, setIsOpen) => () => {
-  setIsOpen(!isOpen);
-};

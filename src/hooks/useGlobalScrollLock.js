@@ -1,42 +1,33 @@
-/**
- * Custom hook to lock the body scroll when a menu or authentication modal is open.
- * 
- * @param {boolean} isMenuOpen - Indicates if the menu is open.
- * @param {boolean} isAuthModalOpen - Indicates if the authentication modal is open.
- * @param {boolean} [takeScrollbarWidthIntoAccount=false] - Whether to take the scrollbar width into account.
- */
+// Desc: Custom hook to lock/unlock global scroll. Used in AuthButton, HamburgerMenu and Usemenu components.
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import useScrollLockStore from '@store/useScrollLockStore';
+import { setScrollbarWidth } from '@utils/scrollHandlers';
 
-const useGlobalScrollLock = (isMenuOpen, isAuthModalOpen, takeScrollbarWidthIntoAccount = false) => {
-  useEffect(() => {
-    const handleScrollLock = () => {
-      if (isMenuOpen || isAuthModalOpen) {
-        document.body.classList.add('no-scroll');
-        if (takeScrollbarWidthIntoAccount) {
-          const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-          document.body.style.paddingRight = `${scrollbarWidth}px`;
+const useScrollLock = (isLocked) => {
+    const { lockScroll, unlockScroll } = useScrollLockStore();
+    const wasLocked = useRef(false); // Ref to track if scroll was locked previously
+
+    useEffect(() => {
+        if (isLocked) {
+            setScrollbarWidth(); // Adjust scrollbar width
+            lockScroll();
+            wasLocked.current = true; // Track that scroll is locked
+        } else {
+            // Unlock only if it was previously locked
+            if (wasLocked.current) {
+                unlockScroll();
+                wasLocked.current = false; // Track that scroll is unlocked
+            }
         }
-      } else {
-        document.body.classList.remove('no-scroll');
-        if (takeScrollbarWidthIntoAccount) {
-          document.body.style.paddingRight = '';
-        }
-      }
-    };
 
-    handleScrollLock();
-
-    return () => {
-      document.body.classList.remove('no-scroll');
-      if (takeScrollbarWidthIntoAccount) {
-        document.body.style.paddingRight = '';
-      }
-    };
-  }, [isMenuOpen, isAuthModalOpen, takeScrollbarWidthIntoAccount]);
+        return () => {
+            // Cleanup: Unlock scroll if it was previously locked
+            if (wasLocked.current) {
+                unlockScroll();
+            }
+        };
+    }, [isLocked, lockScroll, unlockScroll]);
 };
 
-export default useGlobalScrollLock;
-
-
-
+export default useScrollLock;

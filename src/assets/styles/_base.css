@@ -83,3 +83,18 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+
+body.scroll-locked {
+  overflow: hidden;
+  padding-right: var(--scrollbar-width);
+  transition: background-color 0.2s ease; /* Smooth theme transitions */
+}
+
+body.scroll-locked[data-theme="dark"] {
+  background-color: #121212; /* Dark theme */
+}
+
+body.scroll-locked[data-theme="light"] {
+  background-color: #ffffff; /* Light theme */
+}

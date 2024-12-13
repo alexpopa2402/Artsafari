@@ -106,18 +106,19 @@
   font-weight:lighter;
 }
 .hamburger-close-popup:hover {
-  background-color: var(--background-color);
+  background-color: transparent;
   color: var(--font-accent-color);
   transform: scale(0.90);
   transition: none;
 }
 
 /* Media query for screens with max height of 400px */
-@media (max-height: 400px), (max-width: 768px) {
+@media (max-height: 400px), (max-width: 856px) {
   .burger-menu {
     top: 0;
     height: 100vh;
     overflow-y: auto;
+    position: fixed;
   }
  /*  .burger-menu .divider {
     margin: 1rem 0;

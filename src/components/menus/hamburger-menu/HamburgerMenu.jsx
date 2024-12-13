@@ -2,9 +2,8 @@ import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import AuthButton from "@components/buttons/auth-button/AuthButton";
-import { toggleMenu } from '@utils/menuHandlers';
 import { handleLogout } from '@utils/authHandlers';
+import AuthButton from "@components/buttons/auth-button/AuthButton";
 import useAuthStore from '@store/useAuthStore';
 import useGlobalScrollLock from '@hooks/useGlobalScrollLock';
 import useCloseOnResize from '@hooks/useCloseOnResize';
@@ -17,23 +16,23 @@ const HamburgerMenu = () => {
   const menuRef = useRef(null);
   const navigate = useNavigate();
 
-  // Close hamburger menu on window resize above 855px
-  useCloseOnResize(isOpen, setIsOpen, 855);
+  // Disable scrolling when the hamburger menu is open and account for scrollbar width
+  useGlobalScrollLock(isOpen);
 
-  // Disable scrolling when popup is open
-  useGlobalScrollLock(isOpen, false);
+  // Close hamburger menu on window resize above 856px
+  useCloseOnResize(isOpen, setIsOpen, 856);
 
   // Trap focus within the hamburger menu when it is open
   useFocusTrap(menuRef, isOpen);
 
   return (
     <div className="hamburger-menu-container" ref={menuRef}>
-      <div className="hamburger-icon" onClick={toggleMenu(isOpen, setIsOpen)}>
+      <div className="hamburger-icon" onClick={() => setIsOpen(!isOpen)}>
         <i className="fa fa-bars"></i>
       </div>
       {isOpen && (
         <div className="burger-menu"> 
-          <button className="hamburger-close-popup" onClick={toggleMenu(isOpen, setIsOpen)}>
+          <button className="hamburger-close-popup" onClick={() => setIsOpen(!isOpen)}>
             <FontAwesomeIcon icon={faCircleXmark} />
           </button>
           <nav className="burger-nav-links">
