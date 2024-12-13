@@ -46,8 +46,8 @@
     transform: none;
   }
 
-/* when over 1080px */
-  @media (min-width: 1081px) {
+/* when over 856px */
+  @media (min-width: 856px) {
     .search-container {
       position: absolute;
       right: 7rem;

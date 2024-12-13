@@ -6,7 +6,6 @@ import { toggleMenu } from '@utils/menuHandlers';
 import { handleLogout } from '@utils/authHandlers';
 import useAuthStore from '@store/useAuthStore';
 import useClickOutside from '@hooks/useClickOutside';
-import useCloseOnResize from '@hooks/useCloseOnResize';
 import useFocusTrap from '@hooks/useFocusTrap';
 import './UserMenu-style.css';
 import DarkThemeButton from '@components/buttons/theme-button/DarkThemeButton';
@@ -37,9 +36,6 @@ const UserMenu = () => {
 
     // Close the popup when clicking outside of it
     useClickOutside(menuRef, () => setIsOpen(false));
-
-    // Close user menu on window resize above 510px
-    useCloseOnResize(isOpen, setIsOpen, 510);
 
     // Trap focus within the user menu when it is open
     useFocusTrap(menuRef, isOpen);

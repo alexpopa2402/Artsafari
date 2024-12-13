@@ -21,9 +21,9 @@ a {
   transition: transform 0.2s, background-color 0.2s, color 0.2s;
 }
 a:hover {
-  /* background-color: rgb(37, 37, 37); */
+  cursor: pointer;
   color: var(--font-accent-color);
-  transform: scale(1.1);
+  transform: scale(0.95);
 }
 
 h1 {

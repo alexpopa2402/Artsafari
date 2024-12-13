@@ -32,7 +32,7 @@
 }
 
 .main-title {
-  font-size: calc(60px + 0.8vw);
+  font-size: 60px;
   font-weight: bold;
   white-space: nowrap;
   color: var(--font-accent-color);
@@ -47,7 +47,7 @@
 }
 
 .sub-title {
-  font-size: calc(8px + 0.3vw);
+  font-size: 11px;
   white-space: nowrap;
   color: var(--font-primary-color);
   position: absolute;
@@ -55,7 +55,7 @@
   color: var(--font-accent-color);
   border-radius: var(--border-radius-small);
   font-family: var(--ff-k2d);
-  bottom: 7px;
+  bottom: 4px;
   right: -5px;
   padding: 2px 10px;
   transform: rotate(-10deg);
@@ -83,14 +83,14 @@ font-size: var(--font-size-intermediate);
 }
 
 
-@media (max-width: 1080px) {
+@media (max-width: 855px) {
   .nav-links,
   .login-button {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 855px) {
   .main-header {
     align-items: center;
   }
@@ -117,13 +117,14 @@ font-size: var(--font-size-intermediate);
     display: none;
   }
 }
-
-@media (min-width: 1081px) {
+ /* change this media query width first, now 856px, all the others in here will be -1px  */
+@media (min-width: 856px) {
 
   .header-container {
-    max-width: 1080px;
+    max-width: 856px;
     flex-direction: column;
     position: relative;
+    height: 180px;
   }
   .main-header {
     flex-direction: column;
@@ -140,19 +141,19 @@ font-size: var(--font-size-intermediate);
     position: relative;
   }
   .main-title {
-    font-size: 12rem;
+    font-size: 9rem;
     line-height: 105px;
     margin-top: 52px;
   }
   .main-title:hover{
-    transform: none;
+    transform: scale(0.98);
   }
 
   .sub-title {
     right: -1rem;
-    bottom: -1rem;
+    bottom: -0.5rem;
     border-radius: var(--border-radius-small);
-    font-size: 35px;
+    font-size: 30px;
     padding: 0 1rem;
     background-color: rgba(0, 0, 0, 0.856);
     font-family: var(--ff-jomhuria);
@@ -177,25 +178,20 @@ font-size: var(--font-size-intermediate);
     }
   }
 
-  .user-menu {
-    position: absolute;
-    height: 90px;
-    right: 0;
-    top: 0;
-    display: flex;
-    align-items: center;
+}
+
+@media (min-width: 992px) {
+
+  .header-container {
+    height: 202px;
+    max-width: 992px;
+  }
+  .main-title {
+    font-size: 11rem;
   }
 
-  .user-menu .fa-user {
-    margin: 0 1rem;
-  }
-  .fa-user:hover {
-    color: var(--font-accent-color);
-  }
-
-  .main-header .login-button {
-    position: absolute;
-    right: 0;
-    top: 1.9rem;
+  .sub-title {
+    bottom: -1rem;
+    font-size: 35px;
   }
 }

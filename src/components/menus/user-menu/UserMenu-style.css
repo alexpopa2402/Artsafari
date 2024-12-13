@@ -1,9 +1,9 @@
 .dropdown-content {
+  top: 140%;
   position: absolute;
   background-color: var(--card-background-color);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   right: 17px;
-  top: 130%;
   width: 200px;
   border-radius: var(--border-radius-medium);
   overflow: hidden;
@@ -34,13 +34,21 @@
 .fa-user {
   font-size: var(--font-size-intermediate);
   color: var(--font-primary-color);
-  margin: 0 1.5rem;
+  margin: 0 1rem 0 0.5rem;
   border: none;
+  border-radius: 0;
   background-color: transparent;
+  padding: 0;
 }
 
 .fa-user:hover {
   background-color: transparent;
+  color: var(--font-accent-color);
+}
+
+.fa-user:active {
+  color: var(--font-accent-color);
+  transform: scale(0.95);
 }
 
 .user-menu {
@@ -114,10 +122,10 @@
   font-size: 12px;
 }
 
-.collection-item:hover {
+/* .collection-item:hover {
   position: relative;
   cursor: pointer;
-}
+} */
 
 .collection-item:hover::after {
   content: '';
@@ -128,6 +136,10 @@
   height: 1px;
   background-color: var(--font-accent-color);
   animation: underline 0.2s ease-in-out forwards;
+}
+.collection-item:active {
+  color: var(--font-accent-color);
+  transform: scale(0.95);
 }
 
 @keyframes underline {
@@ -158,6 +170,7 @@
   padding: 5px 0;
   text-decoration: none;
   color: var(--font-primary-color);
+  cursor: pointer;
 }
 
 .settings .divider {
@@ -187,14 +200,15 @@
     min-width: 60px;
     min-height: 60px;
   }
+
   .profile-box .profile-name {
-      font-size: var(--font-size-xlarge);
+    font-size: var(--font-size-xlarge);
   }
 
   .corner-bottom-right {
     display: none;
   }
-  
+
   .folded-corner {
     display: none;
   }
@@ -209,7 +223,6 @@
 
   .usermenu-close-popup {
     display: block;
-/*     margin-right: 0.5rem; */
   }
 
   .user-info {
@@ -233,17 +246,6 @@
 
   .settings .divider {
     margin: 0;
-  }
-}
-
-@media (max-width: 1080px) {
-
-/*   .usermenu-close-popup {
-    right: 0.88em;
-  } */
-
-  .fa-user {
-    margin: 0 1rem 0 0.5rem;
   }
 }
 
@@ -280,15 +282,39 @@ body {
   /* Color of the scrollbar thumb and track */
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 856px) {
   .dropdown-content {
-    top: 70%;
+    top: 75%;
+    right: -55px;
+  }
+
+  .user-menu {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 90px;
+    right: 72px;
+    top: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .fa-user {
+    margin-right: 1rem;
+    padding: 0;
   }
 }
 
-@media (min-width: 1427px) {
+@media (min-width: 1200px) {
   .dropdown-content {
-    top: 70%;
-    right: -240%;
+    top: 75%;
+    right: -159px;
   }
 }
+@media (min-width: 768px) {
+  .login-button {
+    position: absolute;
+    right: 0;
+    top: 1.9rem;
+  }
+  }

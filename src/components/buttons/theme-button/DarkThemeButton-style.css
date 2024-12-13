@@ -1,5 +1,5 @@
 .theme-toggle-container {
-padding: 0 10px 0 20px;
+  padding: 0 10px 0 20px;
 }
 
 .theme-toggle {
@@ -9,34 +9,34 @@ padding: 0 10px 0 20px;
   align-items: center;
   font-size: var(--font-size-xlarge);
 }
-  
-  .theme-toggle-container button {
-    color: var(--primary-color);
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
 
-  .theme-toggle-container button:hover {
-    border: none;
-    background: none;
-    color: var(--font-highlight-color);
-  }
+.theme-toggle-container button {
+  color: var(--primary-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
-  .theme-toggle-container button:active {
-    border: none;
-    background: none;
-    color: var(--font-highlight-color);
-  }
+.theme-toggle-container button:hover {
+  border: none;
+  background: none;
+  color: var(--font-highlight-color);
+}
 
-  @media (max-width: 480px) {
-    .theme-toggle {
-      font-size: var(--font-size-large);
-    }
-  }
+.theme-toggle-container button:active {
+  border: none;
+  background: none;
+  color: var(--font-highlight-color);
+}
 
-  @media (max-width: 240px) {
-    .theme-toggle {
-      font-size: var(--font-size-small);
-    }
+@media (max-width: 480px) {
+  .theme-toggle {
+    font-size: var(--font-size-large);
   }
+}
+
+@media (max-width: 240px) {
+  .theme-toggle {
+    font-size: var(--font-size-small);
+  }
+}
