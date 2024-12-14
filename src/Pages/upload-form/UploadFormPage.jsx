@@ -49,7 +49,7 @@ export default function UploadForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission logic here
+        // will handle form submission logic here
         console.log({
             title,
             medium,
@@ -66,7 +66,7 @@ export default function UploadForm() {
 
     const handleNumericInput = (e) => {
         const charCode = e.keyCode || e.which;
-        // Allow backspace, delete, arrow keys, etc.
+        // allows backspace, delete, arrow keys, ecc.
         if (
             charCode === 8 || // Backspace
             charCode === 46 || // Delete
