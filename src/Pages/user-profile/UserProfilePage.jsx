@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import useAuthStore from '@store/useAuthStore';
 import './UserProfilePage-style.css';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
+import PIC from '@assets/PIC.png'; // Import the image
+
 
 const images = [
   '/src/assets/images/carousel images/81.jpg',
@@ -40,7 +42,10 @@ const UserProfile = () => {
         <div className='profile-info'>
           <label htmlFor="avatar" className="avatar-label">
             <div className="profile-avatar-circle">
-              <i className="fa fa-camera"></i>
+              <div className='profile-picture'>
+                <img src={PIC} alt="Avatar" />
+                  <button className="fa fa-camera"></button>                 
+              </div>
             </div>
           </label>
           <span>

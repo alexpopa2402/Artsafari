@@ -15,7 +15,7 @@
   .search-input {
     border: none;
     outline: none;
-    font-size: var(--font-size-intermediate);
+    font-size: var(--font-size-medium);
     width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;

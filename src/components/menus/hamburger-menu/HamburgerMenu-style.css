@@ -60,7 +60,7 @@
 
 /* Divider line within the burger menu */
 .burger-menu .divider {
-  width: 100%;
+  width: 93%;
   height: 1px;
   background-color: var(--primary-color);
   margin: 1rem 0;

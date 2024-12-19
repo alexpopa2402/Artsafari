@@ -11,19 +11,22 @@ import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 import HomePage from '@pages/home/HomePage';
 import UploadFormPage from '@pages/upload-form/UploadFormPage';
 import ArtistsPage from '@pages/artists/ArtistsPage';
+import GalleryPage from '@pages/gallery/GalleryPage';
+import UserProfilePage from '@pages/user-profile/UserProfilePage';
 
 const AboutPage = lazy(() => import('@pages/about/AboutPage'));
 const SettingsPage = lazy(() => import('@pages/settings/SettingsPage'));
 const EditProfilePage = lazy(() => import('@pages/settings/edit-profile/EditProfilePage'));
 const EditAccountPage = lazy(() => import('@pages/settings/edit-account/EditAccountPage'));
 const NotFoundPage = lazy(() => import('@pages/not-found/NotFoundPage'));
-const UserProfilePage = lazy(() => import('@pages/user-profile/UserProfilePage'));
-const GalleryPage = lazy(() => import('@pages/gallery/GalleryPage'));
 
 import './assets/styles/App.css';
 
 export default function App() {
+
   useScrollToTop();
+  console.log('Rendering App component');
+
   return (
     <>
       <Header />
