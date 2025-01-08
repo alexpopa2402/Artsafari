@@ -51,11 +51,24 @@ const UserMenu = () => {
                         </div>
                         <div className="settings">
                             <div className="divider"></div>
-                            <a className='collection-item' href="settings/edit-profile">Settings</a>
-                            <a className='collection-item' onClick={async () => {
-                                await handleLogout(navigate);
-                                setIsOpen(false);
-                            }}>Log out</a>
+                            <button
+                                className='collection-item'
+                                onClick={() => {
+                                    navigate('/settings/edit-profile');
+                                    setIsOpen(false);
+                                }}
+                            >
+                                Settings
+                            </button>
+                            <button
+                                className='collection-item'
+                                onClick={async () => {
+                                    await handleLogout(navigate);
+                                    setIsOpen(false);
+                                }}
+                            >
+                                Log out
+                            </button>
                         </div>
                         {!isSettingsPage && ( // Hide the theme button and folded corner on the settings page
                             <>

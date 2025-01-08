@@ -164,11 +164,11 @@
         flex-direction: row;
         margin: 1rem 100px 1rem 0;
     }
+    .profile-text-info {
+        flex-direction: column;
+        margin-left: 13px;
+    }
     .gallery-buttons {
         margin-bottom: 0;
-    }
-
-    .profile-section span {
-        margin-left: 13px;
     }
 }

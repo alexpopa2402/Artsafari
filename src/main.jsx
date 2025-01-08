@@ -1,14 +1,17 @@
+import "@components/layout/header/Header-style.css";
+import "@components/layout/footer/Footer-style.css";
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
-import './assets/styles/index.css';
 
-import { BrowserRouter as Router } from 'react-router-dom';
-import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom';
 
-createRoot(document.getElementById('root')).render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
-        <Router>
-          <App />
-        </Router>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );

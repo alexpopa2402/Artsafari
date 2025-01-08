@@ -1,27 +1,21 @@
-import { useState, useRef, useEffect, FormEvent } from 'react';
-
+import { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-
-import { handleLogin, handlePasswordChange } from '@utils/authHandlers';
-import { validateEmail } from '../../../utils/authValidation';
 import SocialLoginModal from './SocialLoginModal';
+import { handleLogin, handlePasswordChange } from '@utils/authHandlers';
+import { validateEmail } from '@utils/authValidation';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
-interface LoginModalProps {
-    setPopupType: (type: 'login' | 'forgotPassword' | 'signUp') => void;
-    onClose: () => void;
-}
-
-const LoginModal: React.FC<LoginModalProps> = ({ setPopupType }) => {
+const LoginModal = ({ setPopupType }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({ email: '', password: '' });
     const [loading, setLoading] = useState(false);
-    const emailRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef(null);
 
-    const onSubmit = async (e: FormEvent) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
             try {
@@ -88,5 +82,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ setPopupType }) => {
     );
 };
 
+LoginModal.propTypes = {
+    setPopupType: PropTypes.func.isRequired,
+};
 console.log('Rendering LoginModal Component');
 export default LoginModal;

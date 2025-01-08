@@ -28,6 +28,25 @@ export const fetchUser = async () => {
   }
 };
 
+export const fetchUserProfile = async (userId) => {
+  try {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('full_name')
+      .eq('id', userId)
+      .single();
+
+    if (error) {
+      console.error('Error fetching user profile:', error.message);
+      return null;
+    }
+    return data;
+  } catch (err) {
+    console.error('Unexpected error fetching user profile:', err);
+    return null;
+  }
+};
+
 /**
  * Listens for changes in authentication state and updates the session state.
  * @param {function} setSession - Function to update the session state in the store.
@@ -38,6 +57,6 @@ export const subscribeToAuthChanges = (setSession) => {
     setSession(session);
   });
   return () => {
-    authListener.subscription.unsubscribe();
+    authListener.subscription.unsubscribe(); // Unsubscribe from the auth listener
   };
 };

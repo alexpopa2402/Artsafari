@@ -1,4 +1,4 @@
-const TermsText: React.FC = () => (
+const TermsText = () => (
     <>
         <p className="terms-text">
             By clicking Login or Continue with Apple, Google, or Facebook, you agree to Artsafari&apos;s Terms and Conditions and Privacy Policy.

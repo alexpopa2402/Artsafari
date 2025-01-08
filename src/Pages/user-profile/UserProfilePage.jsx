@@ -44,29 +44,34 @@ const UserProfile = () => {
             <div className="profile-avatar-circle">
               <div className='profile-picture'>
                 <img src={PIC} alt="Avatar" />
-                  <button className="fa fa-camera"></button>                 
+                <button className="fa fa-camera"></button>
               </div>
             </div>
           </label>
-          <span>
-            Welcome, {user.user_metadata.name} !
-          </span>
+          <div className='profile-text-info'>
+            <span>
+              Welcome, {user.user_metadata.name} !
+            </span>
+            <div>Profession: </div>
+            <div>About: </div>
+            <div>Other relevant positions:</div>
+          </div>
         </div>
         <div className='gallery-buttons'>
-        <button
-          className="profile-upload-button"
-          onClick={() => navigate('/upload-artwork')}>
-          Upload Your Artwork
-        </button>
-        <button
-          className="profile-settings-button"
-          onClick={() => navigate('/settings/edit-profile')}
-          aria-label="Settings"
-        >
-          <i className="fa fa-cog settings-icon"></i>
-          Settings
-        </button>
-      </div>
+          <button
+            className="profile-upload-button"
+            onClick={() => navigate('/upload-artwork')}>
+            Upload Your Artwork
+          </button>
+          <button
+            className="profile-settings-button"
+            onClick={() => navigate('/settings/edit-profile')}
+            aria-label="Settings"
+          >
+            <i className="fa fa-cog settings-icon"></i>
+            Settings
+          </button>
+        </div>
       </div>
       <div className="divider"></div>
       <div className="gallery-section">

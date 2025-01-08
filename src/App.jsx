@@ -3,8 +3,7 @@ import { Suspense, lazy } from 'react';
 import ResettableErrorBoundary from '@components/error-boundary/ResettableErrorBoundary';
 import useScrollToTop from './hooks/useScrollToTop';
 
-import Footer from '@components/layout/footer/Footer';
-import Header from '@components/layout/header/Header';
+import MainLayout from '@components/layout/MainLayout';
 import ProtectedRoute from '@components/auth/protected-route/ProtectedRoute';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
@@ -19,6 +18,7 @@ const SettingsPage = lazy(() => import('@pages/settings/SettingsPage'));
 const EditProfilePage = lazy(() => import('@pages/settings/edit-profile/EditProfilePage'));
 const EditAccountPage = lazy(() => import('@pages/settings/edit-account/EditAccountPage'));
 const NotFoundPage = lazy(() => import('@pages/not-found/NotFoundPage'));
+const ResetPasswordPage = lazy(() => import('@pages/reset-password/ResetPasswordPage'));
 
 import './assets/styles/App.css';
 
@@ -29,11 +29,11 @@ export default function App() {
 
   return (
     <>
-      <Header />
-      <div className='central-container'>
+      <MainLayout>
         <ResettableErrorBoundary>
           <Suspense fallback={<Spinner />}>
             <Routes>
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/about" element={<AboutPage />} />
@@ -49,8 +49,7 @@ export default function App() {
             </Routes>
           </Suspense>
         </ResettableErrorBoundary>
-      </div>
-      <Footer />
+        </MainLayout>
     </>
   );
 }

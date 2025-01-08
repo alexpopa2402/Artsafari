@@ -43,20 +43,31 @@ export const handleNameChange = (e, setName, setErrors, errors) => {
     }
 };
 
-//this is the function that handles the submit event of the form
-export const handleSubmit = async (e, popupType, email, password, name, setErrors, handleSignUp, handleLogin, setIsLoading, setShowThankYouMessage) => {
+//this is a reusable function that handles the submit event of the form (for now just in the SignUp Modal)
+export const handleSubmit = async (
+    e,
+    popupType,
+    email,
+    password,
+    name,
+    setErrors,
+    handleSignUp,
+    handleLogin,
+    setIsLoading,
+    setShowThankYouMessage
+    ) => {
     e.preventDefault();
-    let valid = true;
-    let newErrors = { email: '', password: '', name: '' };
+    let valid = true; // Initialize a new errors object
+    let newErrors = { email: '', password: '', name: '' }; // Clear errors
 
     if (!validateEmail(email)) {
-        newErrors.email = 'Invalid email format';
-        valid = false;
+        newErrors.email = 'Invalid email format'; // Update the error message for invalid email format
+        valid = false; // Set valid to false if email is invalid
     }
 
-    if (popupType === 'signUp') {
+    if (popupType === 'signUp') { // If the popup type is 'signUp', validate the name and password
         if (!validateName(name)) {
-            newErrors.name = 'Name can only contain letters and spaces';
+            newErrors.name = 'Name can only contain letters and spaces'; // Update the error message for invalid name format
             valid = false;
         }
 
@@ -87,13 +98,15 @@ export const handleSubmit = async (e, popupType, email, password, name, setError
  * @param {function} setErrors - Function to set error messages.
  * @param {function} setShowThankYouMessage - Function to display a thank-you message on success.
  */
-export const handleSignUp = async (email, password, metadata, setIsLoading, setErrors, setShowThankYouMessage) => {
+export const handleSignUp = async (email, password, name, setIsLoading, setErrors, setShowThankYouMessage) => {
     try {
         setIsLoading(true);
         const { error } = await supabase.auth.signUp({
             email,
             password,
-            options: { data: metadata },
+            options: {
+                data: { name }, // in supabase, options.data is an object, so keep this is as an object!!!
+            },
         });
 
         if (error) {
@@ -135,13 +148,11 @@ export const handleLogin = async (email, password, setErrors) => {
 
 /**
  * Handles user logout, clears session, and navigates to home page.
- * @param {function} setSession - Function to clear session state in the store.
- * @param {function} navigate - Function to redirect user to a specified route.
  */
 export const handleLogout = async (navigate) => {
     try {
         await supabase.auth.signOut();
-        useAuthStore.getState().clearAuthData(); // Clear session in the store
+        useAuthStore.getState().clearAuthData(); // Clear session in the useAuthStore
         navigate('/');
     } catch (err) {
         console.error('Logout error:', err);

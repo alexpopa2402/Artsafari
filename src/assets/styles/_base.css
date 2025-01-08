@@ -88,7 +88,7 @@ button:focus-visible {
 body.scroll-locked {
   overflow: hidden;
   padding-right: var(--scrollbar-width);
-  transition: background-color 0.2s ease; /* Smooth theme transitions */
+  /* transition: background-color 0.2s ease; */ /* Smooth theme transitions */
 }
 
 body.scroll-locked[data-theme="dark"] {

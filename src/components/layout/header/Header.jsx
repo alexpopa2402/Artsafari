@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from 'react';
 import { setupScrollListener } from '@utils/scrollHandlers';
 import { Link } from 'react-router-dom';
@@ -6,11 +7,11 @@ import AuthButton from '@components/buttons/auth-button/AuthButton';
 import UserMenu from '@components/menus/user-menu/UserMenu';
 import HamburgerMenu from '@components/menus/hamburger-menu/HamburgerMenu';
 import YBlogo from '@assets/images/logo/YBlogo.png';
-import './Header-style.css';
+/* import './Header-style.css'; */
 import useAuthStore from '@store/useAuthStore';
 
 const Header = () => {
-  const {session, fetchAuthData, initializeAuthListener } = useAuthStore();
+  const {session, fetchAuthData, initializeAuthListener, loading } = useAuthStore();
 
   useEffect(() => {
     fetchAuthData();
@@ -52,10 +53,10 @@ const Header = () => {
           <Link to='/about' className="about">About Us</Link>
         </nav>
         <HamburgerMenu />
-        {session ? <UserMenu /> : <AuthButton />}
+        {!loading && (session ? <UserMenu /> : <AuthButton />)}
       </div>
     </header>
   );
 };
 console.log('Rendering Header component');
-export default Header;
+export default React.memo(Header);

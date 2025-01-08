@@ -1,29 +1,36 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { handleForgotPasswordClick } from '../../../utils/authHandlers';
-import { validateEmail } from '../../../utils/authValidation';
+import { supabase } from '@services/supabaseClient';
+import { validateEmail } from '@utils/authValidation';
+import './AuthModals-style.css';
 
-interface ForgotPasswordModalProps {
-    setPopupType: (type: 'login' | 'forgotPassword' | 'signUp') => void;
-    onClose: () => void;
-}
-
-const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ setPopupType }) => {
+const ForgotPasswordModal = ({ setPopupType }) => {
     const [email, setEmail] = useState('');
     const [errors, setErrors] = useState({ email: '' });
+    const [successMessage, setSuccessMessage] = useState('');
 
-    const onSubmit = (e: FormEvent) => {
-        e.preventDefault();
-        if (!validateEmail(email)) {
-            setErrors({ email: 'Invalid email format' });
+const recoverPassword = async (e) => {
+    e.preventDefault();
+    if (!validateEmail(email)) {
+        setErrors({ email: 'Invalid email format' });
+        return;
+    }
+
+    try {
+        let { error } = await supabase.auth.resetPasswordForEmail(email);
+        if (error) {
+            setErrors({ email: error.message });
         } else {
-            handleForgotPasswordClick(email);
+            setSuccessMessage('We\'ve sent a link to reset your password if an account is associated with this email.');
         }
-    };
+    } catch {
+        setErrors({ email: 'An unexpected error occurred. Please try again later.' });
+    }
+};
 
     return (
         <div className="popup-body">
-            <form onSubmit={onSubmit}>
+            <form onSubmit={recoverPassword}>
             <div className='popup-sub-title'> Reset your password</div>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
@@ -36,6 +43,7 @@ const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ setPopupType 
                     />
                     {errors.email && <span className="error">{errors.email}</span>}
                 </div>
+                {successMessage && <div className="password-reset-success-message">{successMessage}</div>}
                 <button
                     type="submit"
                     disabled={!validateEmail(email)}

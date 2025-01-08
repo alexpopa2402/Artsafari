@@ -2,12 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faApple, faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { supabase } from '@services/supabaseClient';
 
+const SocialLoginModal = () => {
 
-const SocialLoginModal: React.FC = () => {
-
-    function handleLogin(provider: 'apple' | 'facebook' | 'google') {
+    function handleLogin() {
         supabase.auth.signInWithOAuth({
-            provider,
+            provider: 'google',
         })
     };
 

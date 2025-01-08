@@ -44,3 +44,72 @@ const useAuthStore = create((set, get) => ({
 }));
 
 export default useAuthStore;
+
+/* import { create } from "zustand";
+import { supabase } from '@services/supabaseClient';
+
+const useAuthStore = create((set, get) => ({
+  session: null,
+  profile: null,
+  loading: false,
+  error: null,
+
+  // Fetch session and profile data
+  fetchAuthData: async () => {
+    set({ loading: true, error: null });
+
+    try {
+      const {
+        data: { session },
+        error: sessionError,
+      } = await supabase.auth.getSession();
+
+      if (sessionError) throw sessionError;
+
+      if (session) {
+        const userId = session.user.id;
+
+        const { data: profile, error: profileError } = await supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", userId)
+          .single();
+
+        if (profileError) throw profileError;
+
+        set({ session, profile });
+      } else {
+        set({ session: null, profile: null });
+      }
+    } catch (error) {
+      console.error("Error fetching auth data:", error);
+      set({ session: null, profile: null, error });
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  // Initialize authentication state listener
+  initializeAuthListener: () => {
+    const {
+      data: authListener,
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session) {
+        set({ session });
+        get().fetchAuthData(); // Fetch profile on session change
+      } else {
+        set({ session: null, profile: null });
+      }
+    });
+
+    // Cleanup function to unsubscribe
+    return () => authListener.unsubscribe();
+  },
+
+  // Clear authentication state
+  clearAuthData: () => {
+    set({ session: null, profile: null, loading: false, error: null });
+  },
+}));
+
+export default useAuthStore; */

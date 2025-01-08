@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '@hooks/useAuth';
+import useAuthStore from '@store/useAuthStore';
 import { supabase } from '@services/supabaseClient';
 import '@pages/settings/SettingsPage-style.css';
 
 const EditProfilePage = () => {
-  const user = useAuth();
+  const user = useAuthStore((state) => state.user);
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
 
