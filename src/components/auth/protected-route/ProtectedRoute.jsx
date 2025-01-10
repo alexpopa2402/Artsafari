@@ -1,9 +1,8 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import useAuthStore from '@store/useAuthStore';
-import PropTypes from 'prop-types';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = () => {
   const user = useAuthStore((state) => state.user);
   const loading = useAuthStore((state) => state.loading);
 
@@ -15,11 +14,7 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/" />;
   }
 
-  return children;
-};
-
-ProtectedRoute.propTypes = {
-  children: PropTypes.node.isRequired,
+  return <Outlet />;
 };
 
 export default ProtectedRoute;

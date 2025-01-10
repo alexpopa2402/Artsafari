@@ -55,7 +55,7 @@ export const handleSubmit = async (
     handleLogin,
     setIsLoading,
     setShowThankYouMessage
-    ) => {
+) => {
     e.preventDefault();
     let valid = true; // Initialize a new errors object
     let newErrors = { email: '', password: '', name: '' }; // Clear errors
@@ -89,15 +89,7 @@ export const handleSubmit = async (
     }
 };
 
-/**
- * Handles user sign-up with email, password, and metadata (e.g., name).
- * @param {string} email
- * @param {string} password
- * @param {object} metadata - User metadata, such as name.
- * @param {function} setIsLoading - Function to toggle the loading state.
- * @param {function} setErrors - Function to set error messages.
- * @param {function} setShowThankYouMessage - Function to display a thank-you message on success.
- */
+
 export const handleSignUp = async (email, password, name, setIsLoading, setErrors, setShowThankYouMessage) => {
     try {
         setIsLoading(true);
@@ -121,16 +113,10 @@ export const handleSignUp = async (email, password, name, setIsLoading, setError
     }
 };
 
-/**
- * Handles user login with email and password.
- * @param {string} email
- * @param {string} password
- * @param {function} setErrors - Function to set error messages.
- * @returns {boolean} - Indicates if login was successful.
- */
+
 export const handleLogin = async (email, password, setErrors) => {
     try {
-        const { error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
@@ -138,6 +124,10 @@ export const handleLogin = async (email, password, setErrors) => {
             setErrors({ password: 'Invalid credentials' });
             return false;
         } else {
+            useAuthStore.setState({
+                session: data.session,
+                user: data.session?.user || null
+            });
             return true;
         }
     } catch (error) {
@@ -146,13 +136,13 @@ export const handleLogin = async (email, password, setErrors) => {
     }
 };
 
-/**
- * Handles user logout, clears session, and navigates to home page.
- */
 export const handleLogout = async (navigate) => {
     try {
         await supabase.auth.signOut();
-        useAuthStore.getState().clearAuthData(); // Clear session in the useAuthStore
+        useAuthStore.setState({
+            session: null,
+            user: null,
+        });
         navigate('/');
     } catch (err) {
         console.error('Logout error:', err);

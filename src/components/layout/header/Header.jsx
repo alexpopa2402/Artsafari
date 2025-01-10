@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { setupScrollListener } from '@utils/scrollHandlers';
 import { Link } from 'react-router-dom';
 import SearchBar from '@components/UI/searchbar/SearchBar';
@@ -11,21 +10,12 @@ import YBlogo from '@assets/images/logo/YBlogo.png';
 import useAuthStore from '@store/useAuthStore';
 
 const Header = () => {
-  const {session, fetchAuthData, initializeAuthListener, loading } = useAuthStore();
-
-  useEffect(() => {
-    fetchAuthData();
-    const cleanup = initializeAuthListener();
-    return cleanup;
-  }, [fetchAuthData, initializeAuthListener]);
-
+  const { session } = useAuthStore();
   
   // listens for scroll events and adds/removes the 'scrolled' class to the header
   useEffect(() => {
     const scrollListener = setupScrollListener();
-
-    // Cleanup the scroll listener
-    return () => {
+    return () => { //returns a cleanup function that removes the event listener
       scrollListener();
     };
   }, []);
@@ -53,7 +43,7 @@ const Header = () => {
           <Link to='/about' className="about">About Us</Link>
         </nav>
         <HamburgerMenu />
-        {!loading && (session ? <UserMenu /> : <AuthButton />)}
+        {session ? <UserMenu /> : <AuthButton />}
       </div>
     </header>
   );

@@ -22,9 +22,26 @@ const ResetPasswordPage = lazy(() => import('@pages/reset-password/ResetPassword
 
 import './assets/styles/App.css';
 
+import useAuthStore from '@store/useAuthStore';
+import { useEffect } from 'react';
+
+
+
 export default function App() {
 
+  const { fetchAuthData, initializeAuthListener } = useAuthStore();
+
+  useEffect(() => {
+    fetchAuthData(); // Fetch user data when app loads
+    const unsubscribeAuthListener = initializeAuthListener(); // Set up listener to handle session changes
+
+    return () => {
+      unsubscribeAuthListener(); // Clean up listener on component unmount
+    };
+  }, [fetchAuthData, initializeAuthListener]);
+
   useScrollToTop();
+
   console.log('Rendering App component');
 
   return (
@@ -33,19 +50,22 @@ export default function App() {
         <ResettableErrorBoundary>
           <Suspense fallback={<Spinner />}>
             <Routes>
-            <Route path="/reset-password" element={<ResetPasswordPage />} />
+              <Route path="/reset-password" element={<ResetPasswordPage />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/gallery" element={<GalleryPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/profile" element={<ProtectedRoute><UserProfilePage /></ProtectedRoute>} />
-              <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>}>
-                <Route index element={<Navigate to="edit-profile" />} />
-                <Route path="edit-profile" element={<ProtectedRoute><EditProfilePage /></ProtectedRoute>} />
-                <Route path="edit-account" element={<ProtectedRoute><EditAccountPage /></ProtectedRoute>} />
-              </Route>
-              <Route path="/upload-artwork" element={<ProtectedRoute><UploadFormPage /></ProtectedRoute>} />
               <Route path="/artists" element={<ArtistsPage />} />
+              <Route path="/about" element={<AboutPage />} />
               <Route path="*" element={<NotFoundPage />} />
+
+              <Route element={<ProtectedRoute />}>
+                <Route path="/upload-artwork" element={<UploadFormPage />} />
+                <Route path="/profile" element={<UserProfilePage />} />
+                <Route path="/settings" element={<SettingsPage />}>
+                  <Route index element={<Navigate to="edit-profile" />} />
+                  <Route path="edit-profile" element={<EditProfilePage />} />
+                  <Route path="edit-account" element={<EditAccountPage />} />
+                </Route>
+              </Route>
             </Routes>
           </Suspense>
         </ResettableErrorBoundary>

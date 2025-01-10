@@ -5,7 +5,6 @@ import { faEye, faEyeSlash, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import SocialLoginModal from './SocialLoginModal';
 import { handlePasswordChange, handleNameChange, handleSubmit, handleSignUp } from '@utils/authHandlers';
 import { validateEmail, validatePassword } from '@utils/authValidation';
-/* import ThankYouMessage from './ThankYouMessage'; */
 
 const SignUpModal = ({ setShowThankYouMessage }) => {
     const [name, setName] = useState('');
@@ -15,7 +14,6 @@ const SignUpModal = ({ setShowThankYouMessage }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [passwordStrength, setPasswordStrength] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-/*     const [showThankYouMessage, setShowThankYouMessage] = useState(false); */
 
     return (
         <>
