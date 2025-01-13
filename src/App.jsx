@@ -22,23 +22,7 @@ const ResetPasswordPage = lazy(() => import('@pages/reset-password/ResetPassword
 
 import './assets/styles/App.css';
 
-import useAuthStore from '@store/useAuthStore';
-import { useEffect } from 'react';
-
-
-
 export default function App() {
-
-  const { fetchAuthData, initializeAuthListener } = useAuthStore();
-
-  useEffect(() => {
-    fetchAuthData(); // Fetch user data when app loads
-    const unsubscribeAuthListener = initializeAuthListener(); // Set up listener to handle session changes
-
-    return () => {
-      unsubscribeAuthListener(); // Clean up listener on component unmount
-    };
-  }, [fetchAuthData, initializeAuthListener]);
 
   useScrollToTop();
 

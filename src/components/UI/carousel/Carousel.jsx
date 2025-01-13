@@ -64,7 +64,7 @@ const CarouselItem = ({ src, caption, isActive }) => (
     <div className={`carousel-item ${isActive ? 'active' : ''}`} role="tabpanel" aria-hidden={!isActive}>
         <img
             src={src}
-            alt={caption}
+            /* alt={caption} */ //if you uncomment this line, upon refresh the caption briefly flashes before the image is loaded, which is not ideal
             className="carousel-loading-placeholder"
             loading="lazy"
         />

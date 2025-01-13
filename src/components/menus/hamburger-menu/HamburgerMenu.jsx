@@ -2,19 +2,23 @@ import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { handleLogout } from '@utils/authHandlers';
-import AuthButton from "@components/buttons/auth-button/AuthButton";
-import useAuthStore from '@store/useAuthStore';
+import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
+
+import AuthButton from '@components/buttons/auth-button/AuthButton';
+
 import useGlobalScrollLock from '@hooks/useGlobalScrollLock';
 import useCloseOnResize from '@hooks/useCloseOnResize';
 import useFocusTrap from '@hooks/useFocusTrap';
+
 import "./HamburgerMenu-style.css";
 
 const HamburgerMenu = () => {
+
   const [isOpen, setIsOpen] = useState(false);
-  const session = useAuthStore((state) => state.session);
+  const session = useSession();
   const menuRef = useRef(null);
   const navigate = useNavigate();
+  const supabaseClient = useSupabaseClient();
 
   // Disable scrolling when the hamburger menu is open and account for scrollbar width
   useGlobalScrollLock(isOpen);
@@ -24,6 +28,20 @@ const HamburgerMenu = () => {
 
   // Trap focus within the hamburger menu when it is open
   useFocusTrap(menuRef, isOpen);
+
+  const handleLogout = async () => {
+    const { error } = await supabaseClient.auth.signOut();
+    if (error) {
+      console.error('Error logging out:', error.message);
+      return false;
+    }
+    return true;
+  };
+
+  const handleNavigate = (path) => {
+    navigate(path);
+    setIsOpen(false);
+  };
 
   return (
     <div className="hamburger-menu-container" ref={menuRef}>
@@ -36,23 +54,23 @@ const HamburgerMenu = () => {
             <FontAwesomeIcon icon={faCircleXmark} />
           </button>
           <nav className="burger-nav-links">
-            <a href="/" className="burger-Home">HOME</a>
-            <a href="/gallery" className="burger-gallery">GALLERY</a>
-            <a href="/artists" className="burger-artists">ARTISTS</a>
-            <a href="/about" className="burger-about">ABOUT US</a>
+            <button onClick={() => handleNavigate('/')} className="burger-Home">HOME</button>
+            <button onClick={() => handleNavigate('/gallery')} className="burger-gallery">GALLERY</button>
+            <button onClick={() => handleNavigate('/artists')} className="burger-artists">ARTISTS</button>
+            <button onClick={() => handleNavigate('/about')} className="burger-about">ABOUT US</button>
           </nav>
           <div className="divider"></div>
           <nav className="burger-nav-links">
             {session && (
-              <a href="/settings/edit-profile" className="burger-settings">
+              <button onClick={() => handleNavigate('/settings/edit-profile')} className="burger-settings">
                 SETTINGS
-              </a>
+              </button>
             )}
             {session ? (
-              <a className='burger-logout' onClick={async () => {
-                await handleLogout(navigate);
+              <button className='burger-logout' onClick={async () => {
+                await handleLogout();
                 setIsOpen(false);
-              }}>Log out</a>
+              }}>Log out</button>
             ) : (
               <AuthButton />
             )}

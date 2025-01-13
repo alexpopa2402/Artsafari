@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { setupScrollListener } from '@utils/scrollHandlers';
 import { Link } from 'react-router-dom';
+import { useUser } from '@supabase/auth-helpers-react';
+
 import SearchBar from '@components/UI/searchbar/SearchBar';
 import AuthButton from '@components/buttons/auth-button/AuthButton';
 import UserMenu from '@components/menus/user-menu/UserMenu';
 import HamburgerMenu from '@components/menus/hamburger-menu/HamburgerMenu';
 import YBlogo from '@assets/images/logo/YBlogo.png';
-/* import './Header-style.css'; */
-import useAuthStore from '@store/useAuthStore';
+
+import './Header-style.css';
+
 
 const Header = () => {
-  const { session } = useAuthStore();
+  const user = useUser();
+
   
   // listens for scroll events and adds/removes the 'scrolled' class to the header
   useEffect(() => {
@@ -43,10 +47,10 @@ const Header = () => {
           <Link to='/about' className="about">About Us</Link>
         </nav>
         <HamburgerMenu />
-        {session ? <UserMenu /> : <AuthButton />}
+        {user ? <UserMenu /> : <AuthButton />}
       </div>
     </header>
   );
 };
 console.log('Rendering Header component');
-export default React.memo(Header);
+export default Header;

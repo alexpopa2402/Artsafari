@@ -28,7 +28,7 @@ const SignUpModal = ({ setShowThankYouMessage }) => {
                             name,
                             setErrors,
                             handleSignUp,
-                            null,   //this is important to be here as it keeps the correct argument order (where handleLogin is null) */
+                           /*  null,   */ //this is important to be here as it keeps the correct argument order (where handleLogin is null) */
                             setIsLoading,
                             setShowThankYouMessage
                         )}

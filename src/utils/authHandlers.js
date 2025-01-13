@@ -1,5 +1,4 @@
 import { supabase } from '../services/supabaseClient';
-import useAuthStore from '@store/useAuthStore';
 import { validateName, validateEmail, validatePassword, calculatePasswordStrength } from './authValidation';
 
 //this function is used to handle the click event of the login button
@@ -52,7 +51,7 @@ export const handleSubmit = async (
     name,
     setErrors,
     handleSignUp,
-    handleLogin,
+/*     handleLogin, */
     setIsLoading,
     setShowThankYouMessage
 ) => {
@@ -116,20 +115,14 @@ export const handleSignUp = async (email, password, name, setIsLoading, setError
 
 export const handleLogin = async (email, password, setErrors) => {
     try {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
         if (error) {
             setErrors({ password: 'Invalid credentials' });
             return false;
-        } else {
-            useAuthStore.setState({
-                session: data.session,
-                user: data.session?.user || null
-            });
-            return true;
-        }
+        } 
     } catch (error) {
         setErrors({ password: error.message });
         return false;
@@ -139,10 +132,6 @@ export const handleLogin = async (email, password, setErrors) => {
 export const handleLogout = async (navigate) => {
     try {
         await supabase.auth.signOut();
-        useAuthStore.setState({
-            session: null,
-            user: null,
-        });
         navigate('/');
     } catch (err) {
         console.error('Logout error:', err);

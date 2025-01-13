@@ -1,13 +1,11 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, Suspense } from "react";
 import ReactDOM from "react-dom";
 import useGlobalScrollLock from "@hooks/useGlobalScrollLock";
 import "./AuthButton-style.css";
 import Spinner from "@components/loading-skeletons/Spinner/Spinner";
 import AuthModals from "@components/auth/auth-modals/AuthModals";
-/* 
-const AuthModals = lazy(() => import("@components/auth/auth-modals/AuthModals")); */
 
-const AuthButton: React.FC = () => {
+const AuthButton = () => {
   const [showModal, setShowModal] = useState(false);
 
   useGlobalScrollLock(showModal);

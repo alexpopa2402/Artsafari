@@ -1,10 +1,15 @@
-import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useState, useRef, useEffect } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import SocialLoginModal from './SocialLoginModal';
-import { handleLogin, handlePasswordChange } from '@utils/authHandlers';
+
+import { handlePasswordChange } from '@utils/authHandlers';
 import { validateEmail } from '@utils/authValidation';
+
+import SocialLoginModal from './SocialLoginModal';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
 const LoginModal = ({ setPopupType }) => {
@@ -14,6 +19,26 @@ const LoginModal = ({ setPopupType }) => {
     const [errors, setErrors] = useState({ email: '', password: '' });
     const [loading, setLoading] = useState(false);
     const emailRef = useRef(null);
+
+    const supabase = useSupabaseClient();
+
+    const handleLogin = async (email, password, setErrors) => {
+        try {
+            const { error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+            if (error) {
+                setErrors({ password: 'Invalid credentials' });
+                return false;
+            }
+            return true;
+            } 
+        catch (error) {
+            setErrors({ password: error.message });
+            return false;
+        }
+    };
 
     const onSubmit = async (e) => {
         e.preventDefault();

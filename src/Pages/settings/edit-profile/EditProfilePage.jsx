@@ -1,238 +1,272 @@
-/* import { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useAuthStore from '@store/useAuthStore';
-import { supabase } from '@services/supabaseClient';
-import '@pages/settings/SettingsPage-style.css';
+import { useState, useEffect } from 'react';
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { getAvatarUrl } from '@utils/storageHelpers';
 
+import DOMPurify from 'dompurify';
 
-const EditProfilePage = () => {
-  const { user } = useAuthStore();
+import ButtonSpinner from '@components/loading-skeletons/ButtonSpinner/ButtonSpinner';
 
-
-
-  return (
-    <div className="edit-profile-page">
-      <div className="form-layout">
-        <div className="form-group">
-          <div className="avatar-group">
-            <div className="avatar-circle">
-              <i className="fa fa-camera"></i>
-            </div>
-            <div 
-              className='avatar-text' 
-              >Choose an Image</div>
-            <input
-              type="file"
-              id="avatar"
-              accept="image/*"
-              style={{ display: 'none' }}
-            />
-          </div>
-        </div>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="profession">Profession</label>
-          <input
-            type="text"
-            id="profession"
-
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="positions">Other Relevant Positions</label>
-          <input
-            type="text"
-            id="positions"
-
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="about">About</label>
-          <textarea
-            id="about"
-
-          ></textarea>
-        </div>
-      </div>
-      <button type="submit" className="save-button">
-        Save
-      </button>
-    </div>
-  );
-};
-export default EditProfilePage; */
-
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { supabase } from '@services/supabaseClient';
-import useAuthStore from '@store/useAuthStore';
-import '@pages/settings/SettingsPage-style.css';
-import PIC from '@assets/PIC.png';
-
-const EditProfilePage = () => {
-  const { user, setUser, profile } = useAuthStore(); // Assuming `setUser` updates the global state
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: profile.full_name || '',
-    profession: profile.profession || '',
-    positions: profile.positions || '',
-    about: profile.about || '',
-    avatar: profile.avatar_url || null,
-    avatarPreview: PIC,
+export default function EditProfilePage() {
+  const [profile, setProfile] = useState({
+    full_name: '',
+    profession: '',
+    positions: '',
+    about: '',
+    avatar_url: '',
   });
-  const [isSaving, setIsSaving] = useState(false);
+  const [avatarFile, setAvatarFile] = useState(null);
+  const [avatarPreview, setAvatarPreview] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const user = useUser();
+  const supabaseClient = useSupabaseClient();
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const previewUrl = URL.createObjectURL(file);
-      setFormData((prev) => ({
-        ...prev,
-        avatar: file,
-        avatarPreview: previewUrl,
-      }));
-    }
-  };
-
-  const handleSave = async () => {
-    setIsSaving(true);
-
-    let avatarUrl = user?.formData.avatar_url;
-
-    // Upload avatar if a new file is selected
-    if (formData.avatar instanceof File) {
-      const { data, error } = await supabase.storage
-        .from('avatars')
-        .upload(`public/${formData.avatar.name}`, formData.avatar, { upsert: true });
-
-      if (error) {
-        alert('Error uploading avatar');
-        setIsSaving(false);
+  // Fetch profile data
+  useEffect(() => {
+    const fetchProfile = async () => {
+      if (!user) {
+        setFetchError('User not authenticated');
         return;
       }
-      avatarUrl = data.path;
-    }
 
-    // Update profile data in Supabase
-    const updates = {
-      full_name: formData.name,
-      profession: formData.profession,
-      positions: formData.positions,
-      about: formData.about,
-      avatar_url: avatarUrl,
+      try {
+        const { data, error } = await supabaseClient
+          .from('profiles')
+          .select('*')
+          .eq('id', user.id)
+          .single();
+
+        if (error) {
+          setFetchError('Error fetching profile.');
+          return;
+        }
+
+        const avatarUrl = data.avatar_url
+          ? await getAvatarUrl(data.avatar_url)
+          : null;
+
+        setProfile({ ...data, avatar_url: avatarUrl });
+        setFetchError(null);
+      } catch (err) {
+        console.error(err);
+        setFetchError('Failed to load profile.');
+      }
     };
 
-    const { error } = await supabase
-      .from('profiles')
-      .update(updates)
-      .eq('id', user.id);
+    fetchProfile();
+  }, [user, supabaseClient]);
 
-    if (error) {
-      alert('Error updating profile');
-      setIsSaving(false);
-      return;
-    }
 
-    // Update global state
-    setUser((prevUser) => ({
-      ...prevUser,
-      user_metadata: {
-        ...prevUser.user_metadata,
-        ...updates,
-      },
-    }));
-
-    alert('Profile updated successfully!');
-    setIsSaving(false);
-    navigate(0); // Refresh the current page
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const sanitizedValue = DOMPurify.sanitize(value);
+    setProfile((prevProfile) => ({ ...prevProfile, [name]: sanitizedValue }));
   };
+
+  // Handle avatar file selection
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        alert('File size must be less than 5MB');
+        return;
+      }
+      setAvatarFile(file);
+      setAvatarPreview(URL.createObjectURL(file));
+    }
+  };
+
+  // Handle saving the profile
+  const handleSave = async () => {
+    setLoading(true);
+    setFetchError(null);
+    setSuccess(false);
+
+    try {
+      let avatar_url = profile.avatar_url;
+
+      // Upload new avatar if a file is selected
+      if (avatarFile) {
+        if (profile.avatar_url) {
+          // Delete the old avatar
+          const oldFileName = profile.avatar_url.split('/').pop();
+          const { error: deleteError } = await supabaseClient.storage
+            .from('avatars')
+            .remove([`public/${oldFileName}`]);
+
+          if (deleteError) throw deleteError;
+        }
+
+        // Upload the new avatar
+        const { data: uploadData, error: uploadError } = await supabaseClient.storage
+          .from('avatars')
+          .upload(`public/${avatarFile.name}`, avatarFile, {
+            cacheControl: '3600',
+            upsert: true,
+          });
+
+        if (uploadError) throw uploadError;
+
+        // Get the public URL of the uploaded avatar
+        const { data: publicUrlData } = supabaseClient.storage
+          .from('avatars')
+          .getPublicUrl(uploadData.path);
+
+        avatar_url = publicUrlData.publicUrl;
+      }
+
+      // Update profile in the database
+      const { error: updateError } = await supabaseClient
+        .from('profiles')
+        .update({
+          full_name: profile.full_name,
+          profession: profile.profession,
+          positions: profile.positions,
+          about: profile.about,
+          avatar_url,
+        })
+        .eq('id', user.id);
+
+      if (updateError) throw updateError;
+
+      setSuccess(true);
+    } catch (err) {
+      console.error(err);
+      setFetchError('Failed to update profile.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  console.log('EditProfilePage rendered');
 
   return (
     <div className="edit-profile-page">
-      <div className="form-layout">
+
+      {fetchError && <p className="error">{fetchError}</p>}
+      {success && <p className="success">Profile updated successfully!</p>}
+
+      <form className='form-layout'>
+
         <div className="form-group">
-          <div className="avatar-group">
-            <div className="avatar-circle">
-              {formData.avatar ? (
-                <img src={formData.avatarPreview} alt="Avatar" />
-              ) : (
-                <img src={formData.avatarPreview} alt="Avatar Preview" />
+          <div className='avatar-group'>
+            {avatarPreview &&
+              (
+                <div className='avatar-circle'>
+                <img
+                  className='avatar-circle'
+                  src={avatarPreview}
+                  alt="Avatar preview"
+                  width="100"
+                  height="100"
+                />
+                </div>
               )}
+            {profile.avatar_url &&
+              !avatarPreview &&
+              (
+                <div className='avatar-circle'>
+                  <img
+                    src={profile.avatar_url}
+                    alt="Current avatar"
+                  />
+                </div>
+              )}
+
+            <div
+              className="avatar-text"
+              onClick={() =>
+                document
+                  .getElementById('avatar')
+                  .click()
+              }
+            >
+              Change Avatar
             </div>
-            <div className="avatar-text" onClick={() => document.getElementById('avatar').click()}>
-              Choose an Image
-            </div>
+
             <input
               type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-              style={{ display: 'none' }}
               id="avatar"
+              accept='image/*'
+              style={{ display: 'none' }}
+              onChange={handleAvatarChange}
             />
           </div>
         </div>
+
+
         <div className="form-group">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="full_name">Name</label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
+            id="full_name"
+            name="full_name"
+            value={profile.full_name}
+            onChange={handleChange}
+            placeholder="Enter your name - field cannot be empty"
+            maxLength="30"
+            pattern="[A-Za-z\s]*"
+            title="Name can only contain letters and spaces"
+            required
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="profession">Profession</label>
           <input
             type="text"
             id="profession"
             name="profession"
-            value={formData.profession}
-            onChange={handleInputChange}
+            value={profile.profession}
+            onChange={handleChange}
+            placeholder="Enter your profession"
+            maxLength="30"
+            pattern="[A-Za-z\s]*"
+            title="Profession can only contain letters and spaces"
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="positions">Other Relevant Positions</label>
           <input
             type="text"
             id="positions"
             name="positions"
-            value={formData.positions}
-            onChange={handleInputChange}
+            value={profile.positions}
+            onChange={handleChange}
+            placeholder="Enter your positions"
+            maxLength="30"
+            pattern="[A-Za-z\s]*"
+            title="Positions can only contain letters and spaces"
           />
         </div>
+
         <div className="form-group">
-          <label htmlFor="about">About</label>
+          <label htmlFor="about">About (200 characters max.)  </label>
           <textarea
             id="about"
             name="about"
-            value={formData.about}
-            onChange={handleInputChange}
+            value={profile.about}
+            onChange={handleChange}
+            placeholder="Tell us about yourself"
+            maxLength="200"
+            pattern="[A-Za-z0-9\s.,!?@#&()\-]*"
+            title="About can contain letters, numbers, and common symbols"
           />
         </div>
-      </div>
-      <button
-        type="button"
-        className="save-button"
-        onClick={handleSave}
-        disabled={isSaving}
-      >
-        {isSaving ? 'Saving...' : 'Save'}
-      </button>
+
+        <button
+          type="button"
+          className="save-button"
+          onClick={handleSave}
+          disabled={loading}
+        >
+          {loading ? <ButtonSpinner /> : 'Save'}
+        </button>
+      </form>
     </div>
   );
-};
-
-export default EditProfilePage;
+}
