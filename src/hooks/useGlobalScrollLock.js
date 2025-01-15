@@ -2,11 +2,17 @@
 
 import { useEffect, useRef } from 'react';
 import useScrollLockStore from '@store/useScrollLockStore';
-import { setScrollbarWidth } from '@utils/scrollHandlers';
+/* import { setScrollbarWidth } from '@utils/scrollHandlers'; */
 
 const useScrollLock = (isLocked) => {
     const { lockScroll, unlockScroll } = useScrollLockStore();
     const wasLocked = useRef(false); // Ref to track if scroll was locked previously
+
+    const setScrollbarWidth = () => {
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+      };
+
 
     useEffect(() => {
         if (isLocked) {

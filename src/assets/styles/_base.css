@@ -63,12 +63,12 @@ button {
 button:hover {
   background-color: var(--button-hover-color);
   color: var(--font-primary-opposite-color);
-  transform: scale(0.95);
+/*   transform: scale(0.95); */
 }
 button:active {
   background-color: var(--button-active-color);
   color: var(--font-primary-opposite-color);
-  transform: scale(0.96);
+  transform: scale(0.95);
   border: none;
 }
 button:disabled {

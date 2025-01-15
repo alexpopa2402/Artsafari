@@ -113,7 +113,7 @@ export const handleSignUp = async (email, password, name, setIsLoading, setError
 };
 
 
-export const handleLogin = async (email, password, setErrors) => {
+/* export const handleLogin = async (email, password, setErrors) => {
     try {
         const { error } = await supabase.auth.signInWithPassword({
             email,
@@ -136,4 +136,4 @@ export const handleLogout = async (navigate) => {
     } catch (err) {
         console.error('Logout error:', err);
     }
-};
+}; */

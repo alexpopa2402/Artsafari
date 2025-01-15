@@ -71,8 +71,11 @@ const UserProfile = () => {
           <label htmlFor="avatar" className="avatar-label">
             <div className="profile-avatar-circle">
               <div className='profile-picture'>
-                <img src={profile.avatar_url} alt="Avatar" />
-                {/* <button className="fa fa-camera"></button> */}
+              {profile.avatar_url ? (
+                  <img src={profile.avatar_url} alt="Avatar" />
+                ) : (
+                  <i className="fa fa-camera camera-icon"></i>
+                )}
               </div>
             </div>
           </label>

@@ -1,39 +1,62 @@
 import { useState, useEffect } from 'react';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import ArtistCard from '@components/UI/artist-card/ArtistCard';
 import './ArtistsPage-style.css';
-import { placeholderArtists } from './artistsDatabase';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
 const ArtistsPage = () => {
   const [artists, setArtists] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(null);
+
+  const supabaseClient = useSupabaseClient();
 
   useEffect(() => {
-    // Simulate fetching data
-    setTimeout(() => {
-      setArtists(placeholderArtists);
-    }, 1000);
-    // Replace the URL with your actual data source
-    //fetch('/api/artists')
-    //.then(response => response.json())
-    //.then(data => setArtists(data))
-    //.catch(error => console.error('Error fetching artist data:', error));
-  }, []);
+    const fetchArtists = async () => {
+      try {
+        const { data, error } = await supabaseClient
+          .from('profiles')
+          .select('*');
 
+        if (error) {
+          setFetchError('Error fetching artist data');
+          setArtists([]);
+        } else {
+          setArtists(data);
+        }
+      } catch (error) {
+        setFetchError('An error occurred while fetching artist data');
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArtists();
+  }, [supabaseClient]);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (fetchError) {
+    return <p>{fetchError}</p>;
+  }
 
   return (
     <div className="artists-page">
-      {artists.length === 0 ? (
-        <Spinner />
-      ) : (
-        <>
-          <h1>Artists Page</h1>
-          <div className="artist-cards-container">
-            {artists.map((artist, index) => (
-              <ArtistCard key={index} name={artist.name} description={artist.description} imageUrl={artist.imageUrl} />
-            ))}
-          </div>
-        </>
-      )}
+      <div className="artist-cards-container">
+        {artists.map((artist) => (
+          <ArtistCard
+            key={artist.id}
+            name={artist.full_name}
+            description={artist.about}
+            imageUrl={artist.avatar_url}
+            profession={artist.profession}
+            positions={artist.positions}
+          />
+        ))}
+      </div>
     </div>
   );
 };

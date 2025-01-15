@@ -18,15 +18,30 @@ const Carousel = () => {
     }, []);
 
     useEffect(() => {
+
+        // Preload all images when the component mounts
+        images.forEach(image => {
+            const img = new Image();
+            img.src = image.src;
+        });
+
         const interval = setInterval(goToNext, 6000);
         return () => clearInterval(interval);
     }, [goToNext]);
 
-    useEffect(() => {
+/*     useEffect(() => {
         // Only preload next image for smoother transitions
         const nextImage = new Image();
         nextImage.src = images[(currentIndex + 1) % images.length].src;
-    }, [currentIndex]);
+    }, [currentIndex]); */
+
+/*     useEffect(() => {
+        // Preload all images when the component mounts
+        images.forEach(image => {
+            const img = new Image();
+            img.src = image.src;
+        });
+    }, []); */
 
     return (
         <div className="carousel-container" aria-roledescription="carousel">

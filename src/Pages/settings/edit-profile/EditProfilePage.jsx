@@ -78,6 +78,31 @@ export default function EditProfilePage() {
       setAvatarPreview(URL.createObjectURL(file));
     }
   };
+  // Handle deleting the avatar
+  const deleteAvatar = async () => {
+    if (profile.avatar_url) {
+      const oldFileName = profile.avatar_url.split('/').pop();
+      const { error: deleteError } = await supabaseClient.storage
+        .from('avatars')
+        .remove([`public/${oldFileName}`]);
+
+      if (deleteError) {
+        console.error('Error deleting avatar:', deleteError);
+        return;
+      }
+
+      setProfile((prevProfile) => ({ ...prevProfile, avatar_url: null }));
+    }
+    setAvatarPreview(null);
+    setAvatarFile(null);
+  };
+
+  const handleSuccess = () => {
+    setSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+    }, 5000);
+  };
 
   // Handle saving the profile
   const handleSave = async () => {
@@ -92,12 +117,7 @@ export default function EditProfilePage() {
       if (avatarFile) {
         if (profile.avatar_url) {
           // Delete the old avatar
-          const oldFileName = profile.avatar_url.split('/').pop();
-          const { error: deleteError } = await supabaseClient.storage
-            .from('avatars')
-            .remove([`public/${oldFileName}`]);
-
-          if (deleteError) throw deleteError;
+          await deleteAvatar();
         }
 
         // Upload the new avatar
@@ -132,7 +152,7 @@ export default function EditProfilePage() {
 
       if (updateError) throw updateError;
 
-      setSuccess(true);
+      handleSuccess(); 
     } catch (err) {
       console.error(err);
       setFetchError('Failed to update profile.');
@@ -153,9 +173,8 @@ export default function EditProfilePage() {
 
         <div className="form-group">
           <div className='avatar-group'>
-            {avatarPreview &&
-              (
-                <div className='avatar-circle'>
+            {avatarPreview ? (
+              <div className='avatar-circle'>
                 <img
                   className='avatar-circle'
                   src={avatarPreview}
@@ -163,38 +182,51 @@ export default function EditProfilePage() {
                   width="100"
                   height="100"
                 />
-                </div>
-              )}
-            {profile.avatar_url &&
-              !avatarPreview &&
-              (
-                <div className='avatar-circle'>
-                  <img
-                    src={profile.avatar_url}
-                    alt="Current avatar"
-                  />
-                </div>
-              )}
+              </div>
+            ) : profile.avatar_url ? (
+              <div className='avatar-circle'>
+                <img
+                  src={profile.avatar_url}
+                  alt="Current avatar"
+                />
+              </div>
+            ) : (
+              <div className='empty-avatar-circle'>
+                <i className="fa fa-camera camera-icon"></i>
+              </div>
+            )}
 
             <div
-              className="avatar-text"
+              className="select-avatar-text"
               onClick={() =>
                 document
                   .getElementById('avatar')
                   .click()
               }
             >
-              Change Avatar
+              Select Avatar
             </div>
 
             <input
               type="file"
               id="avatar"
+              name='avatar'
               accept='image/*'
               style={{ display: 'none' }}
               onChange={handleAvatarChange}
             />
+
+            {(profile.avatar_url || avatarPreview) &&  (
+              <div
+                className="delete-avatar-text"
+                onClick={deleteAvatar}
+                style={{ cursor: 'pointer', fontSize: 'small', color: 'red' }}
+              >
+                or Delete
+              </div>
+            )}
           </div>
+
         </div>
 
 

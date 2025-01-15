@@ -1,66 +1,88 @@
-//exported to be used in the Header component
+/* //exported to be used in the Header component
 export const setupScrollListener = () => {
   const header = document.querySelector('.main-header');
+  const title = document.querySelector('.main-title');
+  const subtitle = document.querySelector('.sub-title');
   const observer = new IntersectionObserver(
     ([entry]) => {
-      header.classList.toggle('scrolled', !entry.isIntersecting);
+      const isIntersecting = entry.isIntersecting;
+      header.classList.toggle('shrunk', !isIntersecting);
+      header.classList.toggle('scrolled', !isIntersecting);
+      title.classList.toggle('shrunk', !isIntersecting);
+      subtitle.classList.toggle('shrunk', !isIntersecting);
     },
     { threshold: 1 }
   );
-  
+
   // Create sentinel element
   const sentinel = document.createElement('div');
   sentinel.style.position = 'absolute';
   sentinel.style.top = '0';
   sentinel.style.height = '1px';
   document.body.prepend(sentinel);
-  
+
   observer.observe(sentinel);
-  
+
   return () => {
     observer.disconnect();
     sentinel.remove();
   };
 };
 
-//exported to be used in the useScrollLock hook
+//exported to be used in the useGlobalScrollLock hook
 export const setScrollbarWidth = () => {
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
   document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
-};
+}; */
 
 
-//old version
+/* export const setupScrollListener = () => {
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      document.querySelector('header').classList.add('shrink');
+    } else {
+      document.querySelector('header').classList.remove('shrink');
+    }
+  };
 
-/* 
-//handleScroll only triggers once when window.scrollY > 0 and resets when window.scrollY = 0. 
-//This prevents unnecessary re-triggering of the function.
-
-let isScrolled = false;
-
-export const handleScroll = () => {
-  console.log('scrolling');
-  const header = document.querySelector('.main-header');
-  if (window.scrollY > 0 && !isScrolled) {
-    header.classList.add('scrolled');
-    isScrolled = true;
-  } else if (window.scrollY === 0 && isScrolled) {
-    header.classList.remove('scrolled');
-    isScrolled = false;
-  }
-};
-
-//exported to be used in the Header component
-export const setupScrollListener = () => {
   window.addEventListener('scroll', handleScroll);
 
+  // Return a cleanup function to remove the event listener
   return () => {
     window.removeEventListener('scroll', handleScroll);
   };
 };
 
-//exported to be used in the useScrollLock hook
 export const setScrollbarWidth = () => {
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
   document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
 }; */
+
+
+export const setupScrollListener = () => {
+  const header = document.querySelector('header');
+  const sentinel = document.createElement('div');
+  sentinel.style.position = 'absolute';
+  sentinel.style.top = '100px';
+  sentinel.style.width = '1px';
+  sentinel.style.height = '1px';
+  document.body.appendChild(sentinel);
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.boundingClientRect.top < 0) {
+        header.classList.add('shrink');
+      } else {
+        header.classList.remove('shrink');
+      }
+    },
+    { threshold: [0] }
+  );
+
+  observer.observe(sentinel);
+
+  return () => {
+    observer.disconnect();
+    sentinel.remove();
+  };
+};

@@ -20,47 +20,54 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 100%;
   height: 100svh;
-  padding: 1.5rem 1rem 0 2.5rem;
+  width: 100svw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 35px;
   z-index: 100;
+  padding: 2rem;
+}
+
+.burger-nav-links {
+position: relative;
+width: 100%;
 }
 
 /* Navigation links within the burger menu */
-.burger-nav-links {
-  display: flex;
-  flex-direction: column;
-  white-space: nowrap;
+.burger-nav-links button{
+  margin: 0;
+  padding: 0.5rem 0 0.5rem 1rem;
+  border-radius: 0;
+  border: none;
   width: 100%;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-xlarge);
 }
 
-.burger-nav-links > a:hover::after {
+.burger-nav-links button::after {
   content: '';
   position: absolute;
+  bottom: 0;
   left: 0;
-  bottom: -2px;
   width: 100%;
-  height: 1px;
+  height: 3px;
   background-color: var(--font-accent-color);
-  animation: underline 0.2s ease-in-out forwards;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
 }
 
-@keyframes underline {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 98%;
-  }
+.burger-nav-links button:hover::after {
+  transform: scaleX(1);
 }
 
 
 /* Divider line within the burger menu */
 .burger-menu .divider {
-  width: 93%;
+  width: 100%;
   height: 1px;
   background-color: var(--primary-color);
   margin: 1rem 0;

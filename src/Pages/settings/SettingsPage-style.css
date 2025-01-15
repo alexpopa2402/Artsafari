@@ -1,4 +1,5 @@
 /* styling for the overall settings page */
+
 .settings-page {
   padding: 20px;
   background-color: var(--background-color);
@@ -48,40 +49,38 @@ align-items: center;
 }
 
 .tab-content {
-  padding: 20px;
   background-color: var(--background-color);
   color: var(--font-primary-color);
-  border: 1px solid #ccc;
-  border-radius: var(--border-radius-small);
-  min-width: 240px;
+  min-width: 330px;
   flex-grow: 1;
 }
 
 /* edit profile page styles */
 
 .success {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: lightgreen;
-  padding: 10px 20px;
+  background-color: rgb(69, 187, 98);
+  padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  animation: slideUp 0.5s forwards, /* fadeOut 0.5s 1.5s forwards */;
+  animation: slideUp 0.5s forwards, fadeOut 0.5s 1.5s forwards;
+  z-index: 100;
 }
 
 @keyframes slideUp {
   to {
-    bottom: 20px;
+    bottom: 50px;
   }
 }
 
-/* @keyframes fadeOut {
+@keyframes fadeOut {
   to {
     opacity: 0;
   }
-} */
+}
 
 .edit-profile-page {
   max-width: 500px;
@@ -104,16 +103,21 @@ align-items: center;
   flex-direction: row;
   align-items: center;
   gap: 10px;
-/*   border: 1px solid var(--secondary-color); */
 }
-.avatar-text {
-  font-size: var(--font-size-intermediate);
+.select-avatar-text {
+  font-size: var(--font-size-large);
   color: var(--font-primary-color);
   cursor: pointer;
   white-space: nowrap;
 }
+.delete-avatar-text {
+  font-size: var(--font-size-small);
+  color: var(--font-accent-color);
+  cursor: pointer;
+  white-space: nowrap;
+}
 
-.avatar-text:hover {
+.select-avatar-text:hover, .delete-avatar-text:hover {
   text-decoration: underline;
 }
 
@@ -145,6 +149,19 @@ align-items: center;
   align-items: center;
   justify-content: center;
   background-color: var(--background-color);
+  text-align: center;
+}
+
+.empty-avatar-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden; /* Ensure the image doesn't overflow the container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
 }
 
 .avatar-circle img {

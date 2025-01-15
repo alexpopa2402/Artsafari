@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { setupScrollListener } from '@utils/scrollHandlers';
 import { Link } from 'react-router-dom';
-import { useUser } from '@supabase/auth-helpers-react';
+import { useNavigate } from 'react-router-dom';
+import { useSession } from '@supabase/auth-helpers-react';
 
 import SearchBar from '@components/UI/searchbar/SearchBar';
 import AuthButton from '@components/buttons/auth-button/AuthButton';
@@ -13,7 +14,8 @@ import './Header-style.css';
 
 
 const Header = () => {
-  const user = useUser();
+  const session = useSession();
+  const navigate = useNavigate();
 
   
   // listens for scroll events and adds/removes the 'scrolled' class to the header
@@ -28,10 +30,10 @@ const Header = () => {
     <header className='main-header'>
       <div className='header-container'>
         <div className='title-container'>
-          <Link to='/' className="main-title">
+          <h1 className="main-title" onClick={() => navigate('/')}>
             <img src={YBlogo} alt="Youngblood Logo" className="logo" />
             <span className="text">YoungBlood 3.0</span>
-          </Link>
+          </h1>
           <p className="sub-title">
             by{' '}
             <a href='https://www.artsafari.ro/'>
@@ -47,7 +49,7 @@ const Header = () => {
           <Link to='/about' className="about">About Us</Link>
         </nav>
         <HamburgerMenu />
-        {user ? <UserMenu /> : <AuthButton />}
+        {session ? <UserMenu /> : <AuthButton />}
       </div>
     </header>
   );
