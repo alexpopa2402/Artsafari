@@ -1,5 +1,5 @@
  footer {
-   background: #060030;
+   background: var(--background-color);
    position: relative;
    bottom: 0;
    width: 100%;

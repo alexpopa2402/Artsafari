@@ -67,7 +67,8 @@ const UserMenu = () => {
     useFocusTrap(menuRef, isOpen);
 
     // Check if the current page is the settings page to hide the theme button
-    const isSettingsPage = location.pathname === '/settings/edit-profile' ||
+    const isSettingsPage = 
+        location.pathname === '/settings/edit-profile' ||
         location.pathname === '/settings/edit-account';
 
     return (
@@ -75,7 +76,7 @@ const UserMenu = () => {
             <button className="fa fa-user" onClick={() => setIsOpen(!isOpen)}></button>
 
             {isOpen && (
-                <div className={`dropdown-content ${isOpen ? 'open' : 'close'}`}>
+                <div className="dropdown-content">
 
                     <div className="user-info" >
                         <div className='menu-avatar-circle' alt="Avatar">
@@ -120,7 +121,7 @@ const UserMenu = () => {
                             </button>
                             <button
                                 className='collection-item-button'
-                                style={{ width: isSettingsPage && '100%' }}
+                                
                                 onClick={async () => {
                                     await handleLogout(navigate);
                                     setIsOpen(false);
@@ -145,6 +146,7 @@ const UserMenu = () => {
 };
 console.log('Rendering User Menu component');
 export default UserMenu;
+
 
 
 //THIS SOLUTION RERENDERS THE COMPONENT EACH TIME THE USER CLICKS ON THE MENU BUTTON. THIS avoids the complexity of global state management.

@@ -1,26 +1,30 @@
 
-.error-fallback {
-    text-align: center;
-    padding: 50px;
-    background-color: var(--background-color);
+.error-fallback-container {
+    background: var(--background-color);
     color: var(--font-primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-align: center;
+    flex-direction: column;
   }
   
-  .error-fallback h1 {
+  .error-fallback-container h1 {
     font-size: 3rem;
     margin-bottom: 20px;
   }
   
-  .error-fallback p {
+  .error-fallback-container p {
     font-size: 1.5rem;
     margin-bottom: 20px;
   }
   
-  .error-fallback button {
+  .error-fallback-container button {
     margin-top: 20px;
     font-size: 1.2rem;
     color: var(--font-highlight-color);
-    background-color: transparent;
+    background: transparent;
     border: 1px solid var(--font-highlight-color);
     padding: 10px 20px;
     cursor: pointer;
@@ -28,7 +32,7 @@
     border-radius: var(--border-radius-small);
   }
   
-  .error-fallback button:hover {
-    background-color: var(--font-highlight-color);
+  .error-fallback-container button:hover {
+    background: var(--font-highlight-color);
     color: var(--background-color);
   }

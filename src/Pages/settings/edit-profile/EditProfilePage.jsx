@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { getAvatarUrl } from '@utils/storageHelpers';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import DOMPurify from 'dompurify';
 
-import ButtonSpinner from '@components/loading-skeletons/ButtonSpinner/ButtonSpinner';
-
+/* import ButtonSpinner from '@components/loading-skeletons/ButtonSpinner/ButtonSpinner';
+ */
 export default function EditProfilePage() {
   const [profile, setProfile] = useState({
     full_name: '',
@@ -296,7 +298,7 @@ export default function EditProfilePage() {
           onClick={handleSave}
           disabled={loading}
         >
-          {loading ? <ButtonSpinner /> : 'Save'}
+          {loading ? <FontAwesomeIcon icon={faSpinner} spin/> : 'Save'}
         </button>
       </form>
     </div>

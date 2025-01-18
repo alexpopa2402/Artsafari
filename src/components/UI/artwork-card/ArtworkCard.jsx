@@ -1,29 +1,43 @@
-
 import PropTypes from 'prop-types';
-import './ArtworkCard-style.css';
+import { useNavigate } from 'react-router-dom';
+import './Artworkcard-style.css';
 
-const ArtworkCard = ({ car }) => {
-    return (
-        <div className={`card stacked ${car.featured ? 'featured' : ''}`}>
-            <img src={car.image} alt={car.title} className="card__img" />
-            <div className="card__content">
-                <h2 className="card__title">{car.title}</h2>
-                <p className="card__price">{car.price}</p>
-                <p className="card__description">{car.description}</p>
-            </div>
-        </div>
-    );
+const ArtworkCard = ({ artwork, artistName }) => {
+  const navigate = useNavigate();
+
+  const generateSlug = (title, year) => {
+    return `${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${year}`;
+  };
+
+  const handleClick = () => {
+    const slug = generateSlug(artwork.title, artwork.year);
+    navigate(`/artwork/${slug}`);
+  };
+
+  return (
+    <div className={`artwork stacked ${artwork.featured ? 'featured' : ''}`} onClick={handleClick}>
+      <img 
+        src={artwork.image_urls[0]} 
+        alt={artwork.title} 
+        className="artwork__img" 
+      />
+      <div className="artwork__content">
+      <h2 className="artwork__title">{artwork.title}</h2>
+      <p className="artwork__author">{artistName}</p>
+      <p className="artwork__year">{artwork.year}</p>
+      </div>
+    </div>
+  );
 };
 
 ArtworkCard.propTypes = {
-    car: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        price: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        featured: PropTypes.bool,
-    }).isRequired,
+  artwork: PropTypes.shape({
+    image_urls: PropTypes.arrayOf(PropTypes.string).isRequired,
+    title: PropTypes.string.isRequired,
+    year: PropTypes.string.isRequired,
+    featured: PropTypes.bool,
+  }).isRequired,
+  artistName: PropTypes.string.isRequired,
 };
 
 export default ArtworkCard;

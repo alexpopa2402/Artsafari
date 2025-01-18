@@ -2,6 +2,7 @@
     padding: 20px;
     text-align: center;
     flex-grow: 1;
+    align-content: center;
 }
 
 .about-title {

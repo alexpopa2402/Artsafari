@@ -19,6 +19,7 @@ const EditProfilePage = lazy(() => import('@pages/settings/edit-profile/EditProf
 const EditAccountPage = lazy(() => import('@pages/settings/edit-account/EditAccountPage'));
 const NotFoundPage = lazy(() => import('@pages/not-found/NotFoundPage'));
 const ResetPasswordPage = lazy(() => import('@pages/reset-password/ResetPasswordPage'));
+const ArtworkDetailPage = lazy(() => import('@pages/artwork-detail/ArtworkDetailPage'));
 
 import './assets/styles/App.css';
 
@@ -39,6 +40,7 @@ export default function App() {
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/artists" element={<ArtistsPage />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/artwork/:slug" element={<ArtworkDetailPage />} />
               <Route path="*" element={<NotFoundPage />} />
 
               <Route element={<ProtectedRoute />}>

@@ -34,7 +34,7 @@
         var(--gradient-start-color, var(--card-background-color)) 25%,
         var(--gradient-end-color, var(--secondary-color)) 75%
     );
-/*     background-color: var(--background-color); */
+/*     background: var(--background-color); */
     pointer-events: none;
 }
   
@@ -42,7 +42,7 @@
     position: absolute;
     bottom: 20px;
     left: 1%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     padding: 10px;
     font-size: clamp(0.8rem, 1vw + 0.5rem, 1rem);
@@ -55,7 +55,7 @@
     transform: translateY(-50%);
     font-size: 2rem;
     color: white;
-    background-color: rgba(0, 0, 0, 0.293);
+    background: rgba(0, 0, 0, 0.293);
     padding: 10px;
     cursor: pointer;
     z-index: 1;
@@ -65,7 +65,7 @@
 
 .carousel-arrow:hover {
     transform: none;
-    background-color: rgba(0, 0, 0, 0.293);
+    background: rgba(0, 0, 0, 0.293);
     color: white;
     transform: translateY(-50%);
 }
@@ -90,7 +90,7 @@
 .carousel-line {
     width: 50px;
     height: 2px;
-    background-color: white;
+    background: white;
     opacity: 0.5;
 }
 

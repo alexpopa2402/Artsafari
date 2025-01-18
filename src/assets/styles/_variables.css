@@ -83,7 +83,7 @@
 }
 
 :root.dark-theme {
-  --background-color: #0f0c40;
+  --background-color:linear-gradient(-90deg, #000A21 0%, #25272b 100%);
   --primary-color: #ffffff;
   --secondary-color: #5e66ff;
   --usermenu-header-color: #060030;
@@ -98,7 +98,7 @@
   --button-hover-color: #060524;
   --button-disabled-color: #d4d4d4;
 
-  --card-background-color: #0f0c40;
+  --card-background-color: #111;
   --corner-color: #171c79;
   --folded-corner-color: #3339b4;
   --corner-box-shadow: -3px -3px 7px rgba(14, 14, 14, 0.756);

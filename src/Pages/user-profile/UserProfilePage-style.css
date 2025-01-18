@@ -1,7 +1,6 @@
 .user-page {
     max-width: 100%;
     min-width: 300px;
-    padding: 0 0.5em;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -9,79 +8,22 @@
 
 .profile-section {
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    margin: 1rem;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 0 1rem 1rem 1rem;
     flex-wrap: wrap;
     align-items: center;
 }
-
-.profile-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--font-primary-color);
-/*     margin: 1rem 0; */
-}
-
-
-.profile-section span {
-    font-size: 40px;
-    white-space: nowrap;
-    font-family: var(--ff-jomhuria);
-/*     line-height: 40px; */
-}
-
-.gallery-buttons {
-    display: flex;
-    align-items: center;
-/*     margin-bottom: 1.5rem; */
-}
- .profile-upload-button {
-    font-size: var(--font-size-medium);
-    text-align: center;
-}
-
-.profile-settings-button {
-    font-size: var(--font-size-medium);
-    text-align: center;
-    margin-left: 1rem;
-}
-.settings-icon {
-    margin-right: 8px; /* Adjust the value as needed */
-  }
-
-.user-page .divider {
-    height: 1px;
-    background-color: var(--secondary-color);
-    width: 100%;
-}
-
-.gallery-section {
-    margin: 1.5rem 0;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    align-items: center;
-}
-
-.empty-gallery-message {
-    text-align: center;
-    font-size: var(--font-size-intermediate);
-    color: var(--font-secondary-color);
-}
-
 
 .profile-avatar-circle {
     position: relative;
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: var(--background-color);
+    background: var(--background-color);
     display: flex;
     align-items: center;
     justify-content: center;
-/*     margin: 1rem 0; */
     overflow: hidden;
 }
 
@@ -111,7 +53,6 @@
 .profile-picture {
     position: absolute;
     inset: 4px;
-/*     border: 2px solid rgb(188, 188, 188); */
     border-radius: 50%;
     z-index: 3;
     display: flex;
@@ -138,7 +79,7 @@
     border: none;
     margin: 0;
     padding: 0;
-    background-color: transparent;
+    background: transparent;
     }
 
 .profile-avatar-circle:hover .profile-picture img, .profile-avatar-circle:active .profile-picture img {
@@ -147,31 +88,122 @@
     transition: 1s;
 } */
 
+.profile-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--font-primary-color);
+}
+
+.profile-text-container {
+    flex-direction: column;
+    margin-left: 13px;
+}
+
+.profile-greeting {
+    font-size: var(--font-size-large);
+    white-space: nowrap;
+    /*     font-family: var(--ff-jomhuria); */
+}
+
+.profile-details {
+    margin-bottom: 1rem;
+}
+
+.profile-details>* {
+    margin-top: 0.5rem;
+    font-size: var(--font-size-medium);
+}
+
+.gallery-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.profile-upload-button {
+    font-size: var(--font-size-medium);
+    text-align: center;
+}
+
+.profile-settings-button {
+    font-size: var(--font-size-medium);
+    text-align: center;
+    margin-left: 1rem;
+}
+
+.settings-icon {
+    margin-right: 8px;
+}
+
+.user-page .divider {
+    height: 1px;
+    background: var(--secondary-color);
+    width: 100%;
+}
+
+/* profile gallery layout, serves to the ArtistCard component */
+
+.gallery-container {
+    margin-inline: auto;
+    padding-inline: 2rem;
+    margin: 2rem 0;
+    display: flex;
+    flex-grow: 1;
+    color: var(--font-primary-color);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    margin: 1rem;
+}
+
+.artwork-details {
+    color: var(--font-secondary-color);
+}
+
+.empty-gallery-message {
+    text-align: center;
+    font-size: var(--font-size-intermediate);
+    color: var(--font-secondary-color);
+}
+
+
+
+
+
+/* Animations */
+
 @keyframes animate {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
 }
 
+/* Media Queries for user profile section */
+
 @media (min-width: 856px) {
     .profile-section {
         flex-direction: row;
         max-width: 856px;
-        margin: auto;
+        margin: 0 auto;
     }
 
     .profile-info {
         flex-direction: row;
         margin: 1rem 100px 1rem 0;
     }
-    .profile-text-info {
-        flex-direction: column;
-        margin-left: 13px;
-    }
+
     .gallery-buttons {
         margin-bottom: 0;
     }
 }
+

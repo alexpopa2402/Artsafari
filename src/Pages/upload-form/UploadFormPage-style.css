@@ -1,7 +1,7 @@
 .upload-artwork {
     margin: 0 auto;
     width: 100%;
-    background-color: var(--background-color);
+    background: var(--background-color);
     color: var(--font-primary-color);
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -38,14 +38,14 @@
 .form-group textarea {
     width: 100%;
     padding: 8px;
-    background-color: var(--background-color);
+    background: var(--background-color);
     color: var(--font-primary-color);
     border: 1px solid var(--secondary-color);
     border-radius: var(--border-radius-small);
 }
 
 .select-wrapper #medium {
-    background-color: var(--background-color);
+    background: var(--background-color);
     color: var(--font-primary-color);
     border: 1px solid var(--secondary-color);
 }
@@ -75,9 +75,20 @@ form label {
     color: var(--secondary-color);
 }
 
+.file-button-container {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin-top: var(--margin-large);
+}
+
 .add-artwork-button {
     font-size: var(--font-size-medium);
-    margin-top: var(--margin-large);
+}
+.artwork-upload-error-message {
+    color: red;
+    font-size: var(--font-size-medium);
+    margin-left: 10px;
 }
 
 .file-list {
@@ -108,7 +119,7 @@ form label {
     justify-content: center;
     min-width: 100px;
     height: 100px;
-    background-color: var(--secondary-color);
+    background: var(--secondary-color);
     margin-right: 10px;
 }
 
@@ -142,7 +153,7 @@ form label {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: var(--secondary-color);
+    background: var(--secondary-color);
     color: var(--font-primary-opposite-color);
     border: none;
     border-radius: var(--border-radius-small);
@@ -152,14 +163,14 @@ form label {
 }
 
 .artwork-submit-button:disabled {
-    background-color: var(--button-disabled-color);
+    background: var(--button-disabled-color);
     color: var(--font-secondary-color);
     cursor: not-allowed;
     transform: none; 
 }
 
 /* .artwork-submit-button:disabled:hover {
-    background-color: grey;
+    background: grey;
     cursor: not-allowed;
     pointer-events: none;
     opacity: 0.6;
@@ -168,7 +179,7 @@ form label {
 
 .completion-bar {
     height: 100%;
-    background-color: var(--secondary-color);
+    background: var(--secondary-color);
     position: absolute;
     top: 0;
     left: 0;
@@ -177,11 +188,11 @@ form label {
     /* Ensure the completion bar is below the button text */
 }
 .completion-bar.exceeded {
-    background-color: rgba(255, 0, 0, 0.397);
+    background: rgba(255, 0, 0, 0.397);
   }
 
   .completion-bar.valid {
-    background-color: green;
+    background: green;
   }
 
 button span {
@@ -262,7 +273,7 @@ select {
     padding: 8px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-small);
-    background-color: var(--background-color);
+    background: var(--background-color);
     appearance: none;
 }
 

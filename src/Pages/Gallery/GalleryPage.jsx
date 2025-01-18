@@ -29,3 +29,5 @@ const GalleryPage = () => {
 };
 console.log('Rendering Gallery component');
 export default GalleryPage;
+
+

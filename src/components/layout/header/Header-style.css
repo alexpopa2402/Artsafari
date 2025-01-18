@@ -56,7 +56,7 @@
   white-space: nowrap;
   color: var(--font-primary-color);
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.804);
+  background: rgba(0, 0, 0, 0.804);
   color: var(--font-accent-color);
   border-radius: var(--border-radius-small);
   font-family: var(--ff-k2d);
@@ -160,7 +160,7 @@ font-size: var(--font-size-intermediate);
     border-radius: var(--border-radius-small);
     font-size: 30px;
     padding: 0 1rem;
-    background-color: rgba(0, 0, 0, 0.856);
+    background: rgba(0, 0, 0, 0.856);
     font-family: var(--ff-jomhuria);
   }
 
