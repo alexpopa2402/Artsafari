@@ -158,8 +158,6 @@ align-items: center;
   border-radius: 50%;
   overflow: hidden; /* Ensure the image doesn't overflow the container */
   display: flex;
-  align-items: center;
-  justify-content: center;
   background: var(--background-color);
   border: 1px solid var(--border-color);
 }
@@ -169,6 +167,9 @@ align-items: center;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  text-align: center;
+  align-content: center;
+  font-size: var(--font-size-small);
 }
 
 

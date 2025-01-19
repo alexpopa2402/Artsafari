@@ -16,9 +16,9 @@
   z-index: 9999;
   top: 0; 
   position: sticky;
-/* 
-  padding: 30px 0px; */
-  /* animation magic */
+/* padding: 30px 0px; */
+
+/* animation magic */
 /*   transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out; */

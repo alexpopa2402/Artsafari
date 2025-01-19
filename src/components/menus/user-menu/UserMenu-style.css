@@ -124,7 +124,11 @@
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
+  align-content: center;
+  text-align: center;
+  font-size: var(--font-size-small);
 }
+
 
 .menu-avatar-circle .fa-camera {
   color: var(--font-primary-color);

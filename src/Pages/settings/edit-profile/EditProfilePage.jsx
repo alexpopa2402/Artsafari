@@ -6,8 +6,8 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import DOMPurify from 'dompurify';
 
-/* import ButtonSpinner from '@components/loading-skeletons/ButtonSpinner/ButtonSpinner';
- */
+/* import ButtonSpinner from '@components/loading-skeletons/ButtonSpinner/ButtonSpinner'; */
+
 export default function EditProfilePage() {
   const [profile, setProfile] = useState({
     full_name: '',
@@ -154,7 +154,7 @@ export default function EditProfilePage() {
 
       if (updateError) throw updateError;
 
-      handleSuccess(); 
+      handleSuccess();
     } catch (err) {
       console.error(err);
       setFetchError('Failed to update profile.');
@@ -189,7 +189,7 @@ export default function EditProfilePage() {
               <div className='avatar-circle'>
                 <img
                   src={profile.avatar_url}
-                  alt="Current avatar"
+                  alt="Avatar"
                 />
               </div>
             ) : (
@@ -218,7 +218,7 @@ export default function EditProfilePage() {
               onChange={handleAvatarChange}
             />
 
-            {(profile.avatar_url || avatarPreview) &&  (
+            {(profile.avatar_url || avatarPreview) && (
               <div
                 className="delete-avatar-text"
                 onClick={deleteAvatar}
@@ -298,7 +298,7 @@ export default function EditProfilePage() {
           onClick={handleSave}
           disabled={loading}
         >
-          {loading ? <FontAwesomeIcon icon={faSpinner} spin/> : 'Save'}
+          {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Save'}
         </button>
       </form>
     </div>

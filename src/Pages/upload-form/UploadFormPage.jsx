@@ -27,6 +27,8 @@ const UploadImages = () => {
   const CDNURL = 'https://lnaxrtumnyzyegjcwlcs.supabase.co/storage/v1/object/public/artworks/';
 
 
+/* original working version */
+
 /*       const handleFileChange = (e) => {
         const newFiles = Array.from(e.target.files);
         const uniqueNewFiles = newFiles.filter(newFile => !files.some(file => file.name === newFile.name && file.size === newFile.size));
@@ -35,6 +37,8 @@ const UploadImages = () => {
         setPreviews(prevPreviews => [...prevPreviews, ...uniqueNewFiles.map(file => URL.createObjectURL(file))]);
         setTotalSize(newTotalSize);
     }; */
+
+/* working version with invalid format feature implementation */
 
     const handleFileChange = (e) => {
       const selectedFiles = Array.from(e.target.files);

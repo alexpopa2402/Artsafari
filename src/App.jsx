@@ -35,6 +35,7 @@ export default function App() {
         <ResettableErrorBoundary>
           <Suspense fallback={<Spinner />}>
             <Routes>
+              
               <Route path="/reset-password" element={<ResetPasswordPage />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/gallery" element={<GalleryPage />} />
@@ -52,6 +53,7 @@ export default function App() {
                   <Route path="edit-account" element={<EditAccountPage />} />
                 </Route>
               </Route>
+
             </Routes>
           </Suspense>
         </ResettableErrorBoundary>

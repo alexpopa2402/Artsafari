@@ -68,6 +68,8 @@
     object-position: center;
     border-radius: 50%;
     position: absolute;
+    text-align: center;
+    align-content: center;
 }
 
 /* .profile-picture .fa-camera {

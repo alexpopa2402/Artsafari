@@ -5,14 +5,17 @@ import './DarkThemeButton-style.css';
 
 const DarkThemeButton: React.FC = () => {
   // Read the current theme state from Zustand store
-  const isDarkTheme = useThemeStore((state) => state.isDarkTheme);
-  const toggleTheme = useThemeStore((state) => state.toggleTheme);
+  const isDarkTheme = useThemeStore((state: { isDarkTheme: boolean }) => state.isDarkTheme);
+  const toggleTheme = useThemeStore((state: { toggleTheme: () => void }) => state.toggleTheme);
 
   return (
     <div className="theme-toggle-container">
       <Around
         toggled={isDarkTheme}
         toggle={toggleTheme}
+        placeholder="Toggle theme"
+        onPointerEnterCapture={() => {}}
+        onPointerLeaveCapture={() => {}}
         duration={500}
         aria-label="Toggle dark/light mode"
       />
