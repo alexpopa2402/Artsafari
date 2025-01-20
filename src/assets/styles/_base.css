@@ -54,7 +54,7 @@ button {
   font-size: var(--font-size-intermediate);
   font-weight: 500;
   font-family: inherit;
-  background: var(--background-color);
+  background: transparent;
   color: var(--font-primary-color);
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s, color 0.2s;

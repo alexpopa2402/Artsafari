@@ -18,8 +18,9 @@ const Header = () => {
   const navigate = useNavigate();
 
   
-  // listens for scroll events and adds/removes the 'scrolled' class to the header
+  // listens for scroll events and adds/removes the 'shrink' class to the header
   useEffect(() => {
+    console.log('scrollListener effect');
     const scrollListener = setupScrollListener();
     return () => { //returns a cleanup function that removes the event listener
       scrollListener();

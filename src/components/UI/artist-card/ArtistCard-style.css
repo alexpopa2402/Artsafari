@@ -18,8 +18,11 @@
   align-items: center;
   border-radius: var(--border-radius-medium);
   background: var(--card-background-color);
-  margin: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 1.25rem 1.25rem 0 0;
+}
+.card:nth-of-type(2n+1) {
+  margin-right: 1.25rem;
 }
 
 .card__img {
@@ -35,12 +38,14 @@
   position: absolute;
   width: 114px;
   height: 114px;
-  background: var(--bg-color);
+  background: var(--card-background-color);
   border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   top: calc(50% - 57px);
+  object-fit: cover;
+  object-position: center;
 }
 
 .card__avatar svg {
