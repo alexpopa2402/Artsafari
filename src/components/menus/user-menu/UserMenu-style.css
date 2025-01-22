@@ -113,7 +113,7 @@
   background: var(--font-accent-color);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 .user-links .collection-item-button:hover {
   background: none;
@@ -182,6 +182,14 @@
   cursor: pointer;
   color: var(--font-primary-opposite-color);
   font-size: var(--font-size-xlarge);
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  border: none;
+}
+.usermenu-close-popup:hover, .usermenu-close-popup:active {
+  color: var(--font-accent-color);
+  transform: scale(0.9);
 }
 
 .collection p,

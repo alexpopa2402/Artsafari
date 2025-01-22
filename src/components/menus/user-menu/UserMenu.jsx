@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 import useGlobalScrollLock from '@hooks/useGlobalScrollLock';
 import useClickOutside from '@hooks/useClickOutside';
@@ -91,9 +91,9 @@ const UserMenu = () => {
                         </div>
                         <div className='profile-box'>
                             <span className="profile-name">{profile.full_name}</span>
-                            <span className="usermenu-close-popup" onClick={() => setIsOpen(false)}>
-                                <FontAwesomeIcon icon={faTimes} />
-                            </span>
+                            <button className="usermenu-close-popup" onClick={() => setIsOpen(false)}>
+                                <FontAwesomeIcon icon={faCircleXmark} />
+                            </button>
                         </div>
                     </div>
                     <div className='user-links'>

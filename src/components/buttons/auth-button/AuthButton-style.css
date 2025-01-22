@@ -1,8 +1,11 @@
-.login-button {
-  padding: 0 25px;
-  height: 30px;
+.auth-login-button {
+/*   padding: 0 25px; */
+/*   height: 30px; */
   cursor: pointer;
   white-space: nowrap; 
   font-size: var(--font-size-medium);
-  margin: 0 1rem;
+}
+
+.fa-sign-out-alt {
+margin-left: 0;
 }

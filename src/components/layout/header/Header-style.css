@@ -67,7 +67,7 @@
   color: var(--font-accent-color);
 }
 
-.login-button {
+.auth-login-button {
   display: none;
 }
 
@@ -143,10 +143,10 @@
     display: block;
   }
 
-  .header-container .login-button {
+  .header-container .auth-login-button {
     display: block;
     position: absolute;
-    right: -4rem;
+    right: 0;
     top: 0;
     height: 35px;
   }
