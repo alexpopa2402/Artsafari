@@ -1,15 +1,3 @@
-
-    .artwork{
-/*     height: 2rem;
-    width: 2rem; */
-    background: #11111100;
-    border-radius: 2px;
-    }
-   /*  .artwork:hover {
-    width: 4rem;
-    transition: 1s;
-    } */
-
     .stacked {
     display: grid;
     }
@@ -25,7 +13,7 @@
     
     .artwork__content {
      z-index: 10;
-    background: #111111b7;
+    background: var(--card-background-color);
     color: var(--font-primary-color);
     align-self: end;
     margin: .5rem .5rem 1rem;

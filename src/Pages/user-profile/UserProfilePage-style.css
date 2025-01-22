@@ -8,17 +8,15 @@
 
 .profile-section {
     display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    margin: 0 1rem 1rem 1rem;
-    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .profile-avatar-circle {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background: var(--background-color);
     display: flex;
@@ -32,27 +30,27 @@
     content: '';
     position: absolute;
     inset: -20px;
-    background: linear-gradient(315deg, #00ccff, #d400d4);
+    background: linear-gradient(315deg, #002b81, #25272b );
     transition: 0.5s;
 }
 
 .profile-avatar-circle:hover::before {
     animation: animate 4s linear infinite;
-    inset: -10px 20px;
+    inset: -10px 10px;
 }
 
 .profile-avatar-circle::after {
     content: '';
     position: absolute;
-    inset: 4px;
+    inset: 3px;
     background: var(--background-color);
     border-radius: 50%;
     z-index: 1;
 }
 
 .profile-picture {
-    position: absolute;
-    inset: 4px;
+    position: absolute; /* remove this to hide the rotation animation effect - see if you like it better that way */
+    inset: 3px;
     border-radius: 50%;
     z-index: 3;
     display: flex;
@@ -95,51 +93,47 @@
     flex-direction: row;
     align-items: center;
     color: var(--font-primary-color);
+    margin: 1rem;
 }
 
 .profile-text-container {
-    flex-direction: column;
-    margin-left: 13px;
+    text-align: left;
+    margin-left: 1rem;
+    line-height: 1;
 }
 
 .profile-greeting {
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-xlarge);
     white-space: nowrap;
-    /*     font-family: var(--ff-jomhuria); */
+    font-family: var(--ff-k2d);
 }
 
 .profile-details {
     margin-bottom: 1rem;
 }
 
-.profile-details>* {
+.profile-details > * {
     margin-top: 0.5rem;
     font-size: var(--font-size-medium);
+    font-style: italic;
+    color: var(--font-secondary-color);
 }
 
-.gallery-buttons {
+.profile-page-buttons {
     display: flex;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
-.profile-upload-button {
+.profile-upload-button, .profile-settings-button {
     font-size: var(--font-size-medium);
     text-align: center;
-}
-
-.profile-settings-button {
-    font-size: var(--font-size-medium);
-    text-align: center;
-    margin-left: 1rem;
-}
-
-.settings-icon {
-    margin-right: 8px;
+    border: none;
 }
 
 .user-page .divider {
     height: 1px;
-    background: var(--secondary-color);
+    background: var(--border-color);
     width: 100%;
 }
 
@@ -172,6 +166,7 @@
     text-align: center;
     font-size: var(--font-size-intermediate);
     color: var(--font-secondary-color);
+    margin: auto;
 }
 
 
@@ -192,20 +187,25 @@
 
 /* Media Queries for user profile section */
 
-@media (min-width: 856px) {
-    .profile-section {
-        flex-direction: row;
-        max-width: 856px;
-        margin: 0 auto;
-    }
-
-    .profile-info {
-        flex-direction: row;
-        margin: 1rem 100px 1rem 0;
-    }
-
-    .gallery-buttons {
+@media (min-width: 557px) {
+    .profile-page-buttons {
         margin-bottom: 0;
+        margin-right: 1rem;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .profile-section {
+        justify-content: space-between;
+    }
+    .profile-avatar-circle {
+        width: 100px;
+        height: 100px;
+    }
+    .profile-page-buttons {
+        margin-bottom: 0;
+        margin-right: 1rem;
     }
 }
 

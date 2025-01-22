@@ -5,19 +5,25 @@
   border-radius: var(--border-radius-small);
   height: 35px;
   width: 35px;
-  margin-right: 0.3rem;
+  margin-right: 0.5rem;
 }
 
 .dropdown-content {
-  top: 62px;
+  top: 65px;
   position: absolute;
   background: var(--background-color);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  right: 20px;
+  right: 30px;
   width: 200px;
   border-radius: var(--border-radius-medium);
   overflow: hidden;
   z-index: 100;
+}
+
+.dropdown-content .user-info,
+.dropdown-content .user-links {
+  position: relative;
+  z-index: 999;
 }
 
 .folded-corner {
@@ -41,16 +47,14 @@
   background: var(--corner-color);
 }
 
-.fa-user {
+.user-menu > .fa-user {
   font-size: var(--font-size-intermediate);
   color: var(--font-primary-color);
-/*   margin: 0 1rem 0 0.5rem; */
   border: none;
   border-radius: 0;
   background: transparent;
   padding: 0;
   margin: 0;
-/*   position: absolute; */
 }
 
 .fa-user:hover {
@@ -74,7 +78,7 @@
 }
 
 .user-links {
-  margin: 1rem;
+  padding: 1rem;
 }
 
 .dropdown-content .theme-toggle-container {
@@ -87,8 +91,8 @@
 }
 
 .user-links .collection-item-button {
-  margin: 0;
-  padding: 0.5rem 0 0.5rem 1rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
   border-radius: 0;
   border: none;
   width: 100%;
@@ -96,6 +100,7 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--border-radius-small);
+  color: var(--font-primary-opposite-color);
 }
 
 .user-links .collection-item-button::after {
@@ -109,6 +114,9 @@
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.2s ease-in-out;
+}
+.user-links .collection-item-button:hover {
+  background: none;
 }
 
 .user-links .collection-item-button:hover::after {
@@ -183,10 +191,10 @@
 }
 
 .user-links .divider {
-  width: 100%;
+  width: 90%;
   height: 1px;
-  background: var(--primary-color);
-  margin: 1rem 0;
+  background: var(--font-primary-opposite-color);
+  margin: auto ;
   padding-top: 1px;
 }
 
@@ -206,6 +214,77 @@
     margin: 0;
     border-radius: 0;
   }
+
+
+  /* //////////////////////////////ANIMATION CONTAINER/////////////////////////////////// */
+
+.dropdown-content .animation-container {
+  position: absolute;
+  border-radius: 50%;
+  animation: gradient 4s infinite;
+  z-index: 1;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+  }
+  70% {
+    transform: scale(1.2) translate(50px, 50px);
+  }
+}
+
+.dropdown-content .animation-container:nth-child(1) {
+  height: 90%;
+  width: 80%;
+  background: #ff057c;
+  background: #25272b;
+  left: -29%;
+  top: -10%;
+}
+
+.dropdown-content .animation-container:nth-child(2) {
+  height: 80%;
+  width: 70%;
+  background: #800f86;
+  background: #000A21;
+  top: -12%;
+  right: -12%;
+  animation-delay: 8s;
+}
+
+.dropdown-content .animation-container:nth-child(3) {
+  height: 65%;
+  width: 80%;
+  background: #1619b9;
+  background: #25272b;
+/*   bottom: -15%; */
+  right: -18%;
+  animation-delay: 0.3s;
+}
+
+.dropdown-content .animation-container:nth-child(4) {
+  height: 50%;
+  width: 75%;
+  background: #1ba8e9;
+  background: #000A21;
+/*   bottom: -10%; */
+  left: -18%;
+  animation-delay: 1.2s;
+}
+
+.dropdown-content:after {
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(80px);
+  z-index: 2;
+}
+
+/* ///////////////////////////////////////////////////////////////// */
 
   .menu-avatar-circle {
     min-width: 70px;
@@ -253,9 +332,8 @@
     padding: 0;
   }
 
-  .user-links button {
-    font-size: 35px;
-    padding: 0 1rem;
+  .user-links .collection-item-button {
+    font-size: var(--font-size-xlarge);
     white-space: nowrap;
   }
 
@@ -302,6 +380,17 @@ body {
 
 /* media queries for positioning small menu as screen gets resized horizontally */
 
+
+@media (min-width: 510px) {
+  .user-links .collection-item-button {
+    color: var(--font-primary-color);
+  }
+
+}
+
+
+
+
 @media (min-width: 992px) {
   .dropdown-content {
     top: 70px;
@@ -311,21 +400,13 @@ body {
     top: 0;
     right: 0rem;
     position: absolute;
+    margin-right: 0;
   }
 
 }
 
 @media (min-width: 1200px) {
   .dropdown-content {
-/*     top: 70px; */
     right: -78px;
   }
 }
-@media (min-width: 768px) {
-  .login-button {
-    position: absolute;
-    right: 0;
-    top: 0;
-/*     top: 1.9rem; */
-  }
-  }

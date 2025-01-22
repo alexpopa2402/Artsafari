@@ -1,8 +1,7 @@
 /* Container for the hamburger menu */
 
 
-.hamburger-menu-container,
-.burger-menu .login-button {
+.hamburger-menu-container {
   display: block;
 }
 
@@ -11,9 +10,7 @@
   cursor: pointer;
   color: var(--font-primary-color);
   font-size: var(--font-size-large);
-/*   margin: 0 1.1rem 0 1rem; */
   line-height: 1;
-/*   position: absolute; */
   top: 0;
   right: 0;
   height: 35px;
@@ -28,16 +25,88 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: var(--background-color);
+/*   background: var(--background-color); */
   position: absolute;
   top: 0;
   right: 0;
   height: 100svh;
   width: 100svw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  padding: 2rem;
+  z-index: 9999;
+  padding: 1rem;
 }
+
+
+/* //////////////////////////////ANIMATION CONTAINER/////////////////////////////////// */
+
+.burger-menu .animation-container {
+  position: absolute;
+  border-radius: 50%;
+  animation: gradient 4s infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+  }
+  70% {
+    transform: scale(1.2) translate(50px, 50px);
+  }
+}
+
+.burger-menu .animation-container:nth-child(1) {
+  height: 90%;
+  width: 80%;
+  background: #ff057c;
+  background: #25272b;
+  left: -29%;
+  top: -10%;
+}
+
+.burger-menu .animation-container:nth-child(2) {
+  height: 80%;
+  width: 70%;
+  background: #800f86;
+  background: #000A21;
+  top: -12%;
+  right: -12%;
+  animation-delay: 8s;
+}
+
+.burger-menu .animation-container:nth-child(3) {
+  height: 65%;
+  width: 80%;
+  background: #1619b9;
+  background: #25272b;
+  bottom: -15%;
+  right: -18%;
+  animation-delay: 0.3s;
+}
+
+.burger-menu .animation-container:nth-child(4) {
+  height: 50%;
+  width: 75%;
+  background: #1ba8e9;
+  background: #000A21;
+  bottom: -10%;
+  left: -18%;
+  animation-delay: 1.2s;
+}
+
+.burger-menu:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(80px);
+  z-index: 99;
+}
+
+
+/* ///////////////////////////////////////////////////////////////// */
+
 
 .burger-nav-links {
 position: relative;
@@ -45,9 +114,8 @@ width: 100%;
 }
 
 /* Navigation links within the burger menu */
-.burger-nav-links button{
+.burger-nav-links > button {
   margin: 0;
-  padding: 0.5rem 0 0.5rem 1rem;
   border-radius: 0;
   border: none;
   width: 100%;
@@ -56,6 +124,7 @@ width: 100%;
   overflow: hidden;
   border-radius: var(--border-radius-small);
   font-size: var(--font-size-xlarge);
+  z-index: 100;
 }
 
 .burger-nav-links button::after {
@@ -71,8 +140,16 @@ width: 100%;
   transition: transform 0.5s ease-in-out;
 }
 
+.burger-nav-links button:hover {
+  background: none;
+}
+
 .burger-nav-links button:hover::after {
   transform: scaleX(1);
+}
+
+.burger-nav-links .burger-settings, .burger-nav-links .burger-logout{
+  padding-left: 0;
 }
 
 
@@ -85,13 +162,14 @@ width: 100%;
   padding-top: 1px;
 }
 .burger-menu .login-button {
+  display: block;
   position: relative; /* must be specified because otherwise it inherits absolute from header auth button */
   top: 0; /* must be nulled because otherwise it inherits value from header auth button */
   margin: 0.5rem 0;
   font-size: 25px;
   height: fit-content;
-  line-height: 2;
-  width: fit-content;
+/*   line-height: 2;
+  width: fit-content; */
   align-items: center;
 }
 
@@ -122,6 +200,7 @@ width: 100%;
   align-self: self-end;
   background: rgba(0, 0, 0, 0);
   font-weight:lighter;
+  z-index: 100;
 }
 .hamburger-close-popup:hover {
   background: transparent;

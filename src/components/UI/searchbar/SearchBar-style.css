@@ -9,6 +9,7 @@
     padding: 0 7px;
     height: 35px;
     justify-content: center;
+/*     margin-left: 1rem; */
   }
   
   .search-input {
@@ -42,6 +43,10 @@
   .search-button:active {
     background: none;
     transform: none;
+  }
+
+.search-button .fa {
+    margin: 0;
   }
 
   @media (min-width: 992px) {

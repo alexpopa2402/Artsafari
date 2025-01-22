@@ -10,9 +10,9 @@ import { handlePasswordChange } from '@utils/authHandlers';
 import { validateEmail } from '@utils/authValidation';
 
 import SocialLoginModal from './SocialLoginModal';
-import Spinner from '@components/loading-skeletons/Spinner/Spinner';
+import ButtonSpinner from '@components/loading-skeletons/ButtonSpinner/ButtonSpinner';
 
-const LoginModal = ({ setPopupType }) => {
+const LoginModal = ({ setPopupType }) => { // setPopupType is a function that changes the modal type. It is passed as a prop from the AuthModals parent component.
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -95,7 +95,7 @@ const LoginModal = ({ setPopupType }) => {
                     {errors.password && <span className="error">{errors.password}</span>}
                 </div>
                 <button type="submit" className="popup-login-button" disabled={!validateEmail(email) || loading || !password}>
-                    {loading ? <Spinner /> : 'Login'}
+                    {loading ? <ButtonSpinner /> : 'Login'}
                 </button>
                 <SocialLoginModal />
             </form>

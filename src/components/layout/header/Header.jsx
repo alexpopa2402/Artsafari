@@ -33,7 +33,7 @@ const Header = () => {
         <div className='title-container'>
           <h1 className="main-title" onClick={() => navigate('/')}>
             <img src={YBlogo} alt="Youngblood Logo" className="logo" />
-            <span className="text">YoungBlood 3.0</span>
+            <span className="text">Young Blood 3.0</span>
           </h1>
           <p className="sub-title">
             by{' '}

@@ -49,28 +49,36 @@ const HamburgerMenu = () => {
         <i className="fa fa-bars"></i>
       </div>
       {isOpen && (
-        <div className="burger-menu"> 
+        <div className="burger-menu">
+          <div className="animation-container"></div>
+          <div className="animation-container"></div>
+          <div className="animation-container"></div>
+          <div className="animation-container"></div>
           <button className="hamburger-close-popup" onClick={() => setIsOpen(!isOpen)}>
             <FontAwesomeIcon icon={faCircleXmark} />
           </button>
           <nav className="burger-nav-links">
-            <button onClick={() => handleNavigate('/')} className="burger-Home">HOME</button>
-            <button onClick={() => handleNavigate('/gallery')} className="burger-gallery">GALLERY</button>
-            <button onClick={() => handleNavigate('/artists')} className="burger-artists">ARTISTS</button>
-            <button onClick={() => handleNavigate('/about')} className="burger-about">ABOUT US</button>
+            <button onClick={() => handleNavigate('/')} className="burger-Home">Home</button>
+            <button onClick={() => handleNavigate('/gallery')} className="burger-gallery">Gallery</button>
+            <button onClick={() => handleNavigate('/artists')} className="burger-artists">Artists</button>
+            <button onClick={() => handleNavigate('/about')} className="burger-about">About us</button>
           </nav>
           <div className="divider"></div>
           <nav className="burger-nav-links">
             {session && (
               <button onClick={() => handleNavigate('/settings/edit-profile')} className="burger-settings">
-                SETTINGS
+                <i className="fa fa-cog settings-icon"></i>
+                Settings
               </button>
             )}
             {session ? (
               <button className='burger-logout' onClick={async () => {
                 await handleLogout();
                 setIsOpen(false);
-              }}>Log out</button>
+              }}>
+                <i className="fa fa-sign-out-alt"></i>
+                Log out
+              </button>
             ) : (
               <AuthButton />
             )}

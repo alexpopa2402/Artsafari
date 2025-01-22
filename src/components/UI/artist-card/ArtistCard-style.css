@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--border-radius-small);
   background: var(--card-background-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 1.25rem 1.25rem 0 0;
@@ -28,7 +28,7 @@
 .card__img {
   height: 192px;
   width: 100%;
-  border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+  border-radius: var(--border-radius-small) var(--border-radius-small) 0 0;
   object-fit: cover;
   object-position: center;
 }

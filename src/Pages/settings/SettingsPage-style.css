@@ -2,13 +2,13 @@
 
 .settings-page {
   padding: 20px;
-  background: var(--background-color);
+  background: transparent;
   color: var(--font-primary-color);
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   position: relative;
-  min-width: 240px;
+  min-width: 320px;
 }
 
 .settings-title {
@@ -44,7 +44,7 @@ align-items: center;
 }
 
 .tab.active {
-  border-bottom: 2px solid #007bff;
+  border-bottom: 2px solid var(--font-accent-color);
   font-weight: bold;
 }
 
@@ -84,7 +84,6 @@ align-items: center;
 
 .edit-profile-page {
   max-width: 500px;
-  background: var(--background-color);
   color: var(--font-primary-color);
 }
 
@@ -104,8 +103,10 @@ align-items: center;
   align-items: center;
   gap: 10px;
 }
+
+
 .select-avatar-text {
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-intermediate);
   color: var(--font-primary-color);
   cursor: pointer;
   white-space: nowrap;
@@ -127,12 +128,13 @@ align-items: center;
 }
 
 .save-button {
-  display: block;
+  display: flex;
   width: 100%;
-  padding: 10px;
+  height: 45px;
   border-radius: var(--border-radius-small);
   cursor: pointer;
   margin-top: 20px;
+  justify-content: center;
 }
 
 .save-button:disabled {
@@ -141,8 +143,8 @@ align-items: center;
 }
 
 .avatar-circle {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   overflow: hidden; /* Ensure the image doesn't overflow the container */
   display: flex;
@@ -153,13 +155,15 @@ align-items: center;
 }
 
 .empty-avatar-circle {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   overflow: hidden; /* Ensure the image doesn't overflow the container */
   display: flex;
-  background: var(--background-color);
   border: 1px solid var(--border-color);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .avatar-circle img {
@@ -251,9 +255,9 @@ font-size: var(--font-size-medium); /* Adjust the size as needed */
 
 /* media queries for mobile */
 @media (max-width: 480px) {
-  .settings-title {
+/*   .settings-title {
     font-size: var(--font-size-xlarge);
-  }
+  } */
   .tabs {
     font-size: var(--font-size-intermediate);
   }
@@ -269,26 +273,6 @@ font-size: var(--font-size-medium); /* Adjust the size as needed */
   .account-layout button {
     font-size: var(--font-size-medium);
   }
-}
-
-@media (max-width: 375px) {
-  .tabs {
-    font-size: var(--font-size-intermediate);
-  }
-  .tab-content {
-    font-size: var(--font-size-medium);
-  }
-
-  .tab-content .avatar-text {
-    font-size: var(--font-size-medium);
-  }
-
-  .account-layout button {
-    font-size: var(--font-size-medium);
-  }
-  .theme-toggle {
-    font-size: var(--font-size-intermediate);
-  } 
 }
 
 .error-popup {
@@ -296,7 +280,7 @@ font-size: var(--font-size-medium); /* Adjust the size as needed */
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: #ff4500; /* Red orange poppy color */
+  background: #ff4500;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;

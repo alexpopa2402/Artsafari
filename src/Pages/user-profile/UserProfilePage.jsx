@@ -226,7 +226,7 @@ const UserProfile = () => {
           <label htmlFor="avatar" className="avatar-label">
             <div className="profile-avatar-circle">
               <div className='profile-picture'>
-              {profile.avatar_url ? (
+                {profile.avatar_url ? (
                   <img src={profile.avatar_url} alt="Avatar" />
                 ) : (
                   <i className="fa fa-camera camera-icon"></i>
@@ -236,18 +236,19 @@ const UserProfile = () => {
           </label>
           <div className="profile-text-container">
             <div className='profile-greeting'>{profile.full_name || 'User'}</div>
-              <div className='profile-details'>
-                <div className=''>Profession: {profile.profession || 'N/A'}</div>
-                <div className=''>About: {profile.about || 'N/A'}</div>
-                <div className=''>Other relevant positions: {profile.positions || 'N/A'}</div>
+            <div className='profile-details'>
+{/*                 <div className=''>Profession: {profile.profession || 'N/A'}</div> */}
+                <div className='profile-about-info'>{profile.about || 'N/A'}</div>
+{/*                 <div className=''>Other relevant positions: {profile.positions || 'N/A'}</div> */}
               </div>
           </div>
         </div>
-        <div className='gallery-buttons'>
+        <div className='profile-page-buttons'>
           <button
             className="profile-upload-button"
             onClick={() => navigate('/upload-artwork')}>
-            Upload Your Artwork
+            <i className="fa fa-solid fa-upload"></i>
+            Upload Artwork
           </button>
           <button
             className="profile-settings-button"
@@ -260,23 +261,23 @@ const UserProfile = () => {
         </div>
       </div>
       <div className="divider"></div>
-        <div className="gallery-container">
-          {artworks.length === 0 ? (
-            <div className="empty-gallery-message">
-              Nothing to see here - click upload to start sharing your artwork with the world!
-            </div>
-          ) : (
-            <div className="product-grid">
+      <div className="gallery-container">
+        {artworks.length === 0 ? (
+          <div className="empty-gallery-message">
+            Nothing to see here - click upload to start sharing your artwork with the world!
+          </div>
+        ) : (
+          <div className="product-grid">
             {artworks.map((artwork) => (
-              <ArtworkCard 
-              key={artwork.id} 
-              artwork={artwork} 
-              artistName={profile.full_name} 
-            />
+              <ArtworkCard
+                key={artwork.id}
+                artwork={artwork}
+                artistName={profile.full_name}
+              />
             ))}
           </div>
-          )}
-        </div>
+        )}
+      </div>
     </div>
   );
 };

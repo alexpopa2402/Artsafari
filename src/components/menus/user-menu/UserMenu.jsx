@@ -67,7 +67,7 @@ const UserMenu = () => {
     useFocusTrap(menuRef, isOpen);
 
     // Check if the current page is the settings page to hide the theme button
-    const isSettingsPage = 
+    const isSettingsPage =
         location.pathname === '/settings/edit-profile' ||
         location.pathname === '/settings/edit-account';
 
@@ -77,7 +77,10 @@ const UserMenu = () => {
 
             {isOpen && (
                 <div className="dropdown-content">
-
+                    <div className="animation-container"></div>
+                    <div className="animation-container"></div>
+                    <div className="animation-container"></div>
+                    <div className="animation-container"></div>
                     <div className="user-info" >
                         <div className='menu-avatar-circle' alt="Avatar">
                             {profile.avatar_url ? (
@@ -99,12 +102,14 @@ const UserMenu = () => {
                                 setIsOpen(false);
                                 navigate('/profile');
                             }}>
+                                <i className="fa fa-user"></i>
                                 My profile
                             </button>
                             <button className='collection-item-button' onClick={() => {
                                 setIsOpen(false);
                                 navigate('/upload-artwork');
                             }}>
+                                <i className="fa fa-solid fa-upload"></i>
                                 Upload Section
                             </button>
                         </div>
@@ -117,16 +122,18 @@ const UserMenu = () => {
                                     setIsOpen(false);
                                 }}
                             >
+                                <i className="fa fa-cog settings-icon"></i>
                                 Settings
                             </button>
                             <button
                                 className='collection-item-button'
-                                
+
                                 onClick={async () => {
                                     await handleLogout(navigate);
                                     setIsOpen(false);
                                 }}
                             >
+                                <i className="fa fa-sign-out-alt"></i>
                                 Log out
                             </button>
                         </div>

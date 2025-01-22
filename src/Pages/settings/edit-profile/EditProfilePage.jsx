@@ -279,14 +279,14 @@ export default function EditProfilePage() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="about">About (200 characters max.)  </label>
+          <label htmlFor="about">About (150 characters max.)  </label>
           <textarea
             id="about"
             name="about"
             value={profile.about}
             onChange={handleChange}
             placeholder="Tell us about yourself"
-            maxLength="200"
+            maxLength="150"
             pattern="[A-Za-z0-9\s.,!?@#&()\-]*"
             title="About can contain letters, numbers, and common symbols"
           />

@@ -85,6 +85,10 @@ button:focus-visible {
 }
 
 
+.fa {
+  margin: 0 10px;
+}
+
 body.scroll-locked {
   overflow: hidden;
   padding-right: var(--scrollbar-width);
