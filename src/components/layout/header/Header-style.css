@@ -8,6 +8,10 @@
   flex-direction: row;
 }
 
+.header-container.shrink {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
 .main-header, .title-container, .main-title, .sub-title, .nav-links {
   transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;

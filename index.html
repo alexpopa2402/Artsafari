@@ -3,30 +3,17 @@
 
 <head>
   <meta charset="UTF-8" />
-<!--   <link rel="icon" type="image/svg+xml" href="src/assets/logo.webp" /> -->
+  <link rel="icon" type="image/svg+xml" href="src/assets/logo.webp" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Jomhuria&family=K2D:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/assets/fonts/fonts.css" />
   <title>Young Blood 3.0</title>
   
-  <script>
-    // Apply theme from localStorage before the React app loads to avoid FOUC
-    try {
-      const isDarkTheme = JSON.parse(localStorage.getItem('isDarkTheme'));
-      if (isDarkTheme) {
-        document.documentElement.classList.add('dark-theme');
-      } else {
-        document.documentElement.classList.remove('dark-theme');
-      }
-    } catch {
-      // If localStorage parsing fails, fallback to light theme
-      document.documentElement.classList.remove('dark-theme');
-    }
-  </script>
   <!-- CSP -->
   <!--     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com;">
  -->
+  
 </head>
 
 <body>
