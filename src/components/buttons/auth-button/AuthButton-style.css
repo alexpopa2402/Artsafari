@@ -1,11 +1,7 @@
 .auth-login-button {
-/*   padding: 0 25px; */
+  padding: 0 25px;
 /*   height: 30px; */
   cursor: pointer;
   white-space: nowrap; 
   font-size: var(--font-size-medium);
-}
-
-.fa-sign-out-alt {
-margin-left: 0;
 }

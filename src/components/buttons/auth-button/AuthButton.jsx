@@ -13,7 +13,6 @@ const AuthButton = () => {
   return (
     <>
       <button className="auth-login-button" onClick={() => setShowModal(true)}>
-      <i className="fa fa-sign-out-alt"></i>
         Log in
       </button>
       {showModal &&

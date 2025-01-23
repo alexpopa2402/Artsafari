@@ -12,6 +12,7 @@ body {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    font-family: "Unica77 LL", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   
 a {

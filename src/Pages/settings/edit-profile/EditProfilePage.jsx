@@ -6,8 +6,6 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import DOMPurify from 'dompurify';
 
-/* import ButtonSpinner from '@components/loading-skeletons/ButtonSpinner/ButtonSpinner'; */
-
 export default function EditProfilePage() {
   const [profile, setProfile] = useState({
     full_name: '',

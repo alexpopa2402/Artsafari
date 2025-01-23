@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'LL Unica77';
+    src: url('fonts/LLUnica77/LLUnica77-Regular.woff2') format('woff2'),
+         url('fonts/LLUnica77/LLUnica77-Regular.woff') format('woff'),
+         url('fonts/LLUnica77/LLUnica77-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'LL Unica77';
+    src: url('fonts/LLUnica77/LLUnica77-Bold.woff2') format('woff2'),
+         url('fonts/LLUnica77/LLUnica77-Bold.woff') format('woff'),
+         url('fonts/LLUnica77/LLUnica77-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Unica77 LL";
+    src: url("https://db.onlinewebfonts.com/t/b785851e8b09ba75618fcc06d8bcae6b.eot");
+    src: url("https://db.onlinewebfonts.com/t/b785851e8b09ba75618fcc06d8bcae6b.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/b785851e8b09ba75618fcc06d8bcae6b.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/b785851e8b09ba75618fcc06d8bcae6b.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/b785851e8b09ba75618fcc06d8bcae6b.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/b785851e8b09ba75618fcc06d8bcae6b.svg#Unica77 LL")format("svg");
+}

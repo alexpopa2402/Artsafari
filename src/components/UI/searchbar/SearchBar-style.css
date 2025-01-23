@@ -52,7 +52,7 @@
   @media (min-width: 992px) {
     .search-container {
       position: absolute;
-      right: 6rem;
+      right: 7rem;
       top: 0;
       transition: width 0.3s ease;
       box-shadow: none;
