@@ -87,17 +87,27 @@ align-items: center;
   color: var(--font-primary-color);
 }
 
-.form-layout, .account-layout {
+.settings-page .form-layout, .settings-page .account-layout {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.form-group {
+.settings-page .form-group {
   margin-bottom: 15px;
 }
 
-.form-group .avatar-group {
+.settings-page input, textarea {
+  width: 100%;
+  padding: 8px;
+  background: var(--background-color);
+  color: var(--font-primary-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  font-size: small;
+}
+
+.settings-page .form-group .avatar-group {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -105,13 +115,13 @@ align-items: center;
 }
 
 
-.select-avatar-text {
+.settings-page .select-avatar-text {
   font-size: var(--font-size-intermediate);
   color: var(--font-primary-color);
   cursor: pointer;
   white-space: nowrap;
 }
-.delete-avatar-text {
+.settings-page .delete-avatar-text {
   font-size: var(--font-size-small);
   color: var(--font-accent-color);
   cursor: pointer;
@@ -122,9 +132,9 @@ align-items: center;
   text-decoration: underline;
 }
 
-#about {
-  resize: vertical;
-  height: 150px;
+ #about {
+  resize: none;
+  height: 80px;
 }
 
 .save-button {

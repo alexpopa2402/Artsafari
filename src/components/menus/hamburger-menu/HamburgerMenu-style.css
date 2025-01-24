@@ -179,6 +179,10 @@ width: 100%;
   align-items: center;
 }
 
+.burger-menu .logout-button-component {
+  padding-left: 0;
+}
+
 /* Logout button active state */
 .burger-logout:active {
   background: var(--background-color);

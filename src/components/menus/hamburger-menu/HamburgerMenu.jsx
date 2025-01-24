@@ -5,6 +5,7 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 
 import AuthButton from '@components/buttons/auth-button/AuthButton';
+import LogoutButton from '@components/buttons/logout-button/LogoutButton';
 
 import useGlobalScrollLock from '@hooks/useGlobalScrollLock';
 import useCloseOnResize from '@hooks/useCloseOnResize';
@@ -72,13 +73,7 @@ const HamburgerMenu = () => {
               </button>
             )}
             {session ? (
-              <button className='burger-logout' onClick={async () => {
-                await handleLogout();
-                setIsOpen(false);
-              }}>
-                <i className="fa fa-sign-out-alt"></i>
-                Log out
-              </button>
+              <LogoutButton closeMenu={() => setIsOpen(false)} />
             ) : (
               <AuthButton />
             )}

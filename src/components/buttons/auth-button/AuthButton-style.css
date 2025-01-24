@@ -1,6 +1,6 @@
 .auth-login-button {
   padding: 0 25px;
-/*   height: 30px; */
+  height: 30px;
   cursor: pointer;
   white-space: nowrap; 
   font-size: var(--font-size-medium);

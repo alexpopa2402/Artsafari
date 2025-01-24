@@ -153,6 +153,9 @@
     right: 1rem;
     top: 0;
     height: 35px;
+    text-align: center;
+    padding: 0 25px;
+    font-size: var(--font-size-medium);
   }
 
   .title-container {

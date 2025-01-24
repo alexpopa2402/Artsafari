@@ -237,9 +237,9 @@ const UserProfile = () => {
           <div className="profile-text-container">
             <div className='profile-greeting'>{profile.full_name || 'User'}</div>
             <div className='profile-details'>
-{/*                 <div className=''>Profession: {profile.profession || 'N/A'}</div> */}
-                <div className='profile-about-info'>{profile.about || 'N/A'}</div>
-{/*                 <div className=''>Other relevant positions: {profile.positions || 'N/A'}</div> */}
+{/*                 <p className=''>Profession: {profile.profession || 'N/A'}</p> */}
+{/*                 <p className='profile-about-info'>{profile.about || 'N/A'}</p> */}
+{/*                 <p className=''>Other relevant positions: {profile.positions || 'N/A'}</p> */}
               </div>
           </div>
         </div>

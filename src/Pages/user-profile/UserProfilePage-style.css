@@ -9,7 +9,7 @@
 .profile-section {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     margin-bottom: 1rem;
 }
@@ -110,8 +110,11 @@
     font-family: var(--ff-k2d);
     line-height: 1;
 }
-
-.profile-details {
+.profile-about-info {
+    font-size: var(--font-size-medium);
+    font-style: italic;
+    color: var(--font-secondary-color);
+    margin-top: 0.5rem;
     margin-bottom: 1rem;
 }
 
@@ -131,7 +134,11 @@
 .profile-settings-button {
     font-size: var(--font-size-medium);
     text-align: center;
-    border: none;
+    margin-left: 1rem;
+}
+.profile-upload-button .fa,
+.profile-settings-button .fa {
+    margin-left: 0;
 }
 
 .user-page .divider {
@@ -214,5 +221,6 @@
         font-size: 40px;
         line-height: 48px;
         letter-spacing: -0.01rem;
+        margin-bottom: 15px;
     }
 }
