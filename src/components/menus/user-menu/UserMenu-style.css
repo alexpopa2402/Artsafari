@@ -78,7 +78,7 @@
 }
 
 .user-links {
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .dropdown-content .theme-toggle-container {
@@ -391,7 +391,7 @@ body {
 /* media queries for positioning small menu as screen gets resized horizontally */
 
 
-@media (min-width: 510px) {
+@media (min-width: 511px) {
   .user-links .collection-item-button {
     color: var(--font-primary-color);
   }

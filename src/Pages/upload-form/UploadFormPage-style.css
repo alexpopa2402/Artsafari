@@ -23,12 +23,31 @@
 
 .form-group {
     margin-bottom: 15px;
+    position: relative;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
+    position: absolute;
+    top: -9px;
+    background: #25272b;
+    padding: 0 5px;
+    font-size: var(--font-size-small);
+    pointer-events: none;
+    z-index: 100;
+    border-radius: var(--border-radius-medium);
 }
+
+.form-group > :nth-child(2n+1) {
+    left: 10px;
+}
+
+.form-group #height,
+.form-group #width,
+.form-group #depth {
+    margin-left: 10px;
+}
+
 
 .form-group-upload {
     margin-top: 20px;
@@ -43,21 +62,19 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-small);
     font-size: small;
+    height: 50px;
 }
 
 .select-wrapper #medium {
     background: var(--background-color);
     color: var(--font-primary-color);
-    border: 1px solid var(--secondary-color);
+    height: 50px;
+    position: relative;
 }
 
 .form-group textarea {
     resize: vertical;
     height: 100px;
-}
-
-form label {
-    font-size: var(--font-size-small);
 }
 
 .drop-zone {
@@ -253,6 +270,7 @@ button span {
 
     .dimensions-group {
         grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .full-width {

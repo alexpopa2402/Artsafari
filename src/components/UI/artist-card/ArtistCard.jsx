@@ -1,7 +1,7 @@
 import './ArtistCard-style.css';
 import PropTypes from 'prop-types';
 
-const ArtistCard = ({ name, description, imageUrl }) => {
+const ArtistCard = ({ name, profession, imageUrl }) => {
 
   return (
 
@@ -9,7 +9,7 @@ const ArtistCard = ({ name, description, imageUrl }) => {
       <img className='card__img' src={imageUrl} alt={`${name}'s avatar`} />
       <img className='card__avatar' src={imageUrl} alt={`${name}'s avatar`} />
       <div className="card__title">{name}</div>
-      <div className="card__subtitle">{description}</div>
+      <div className="card__subtitle">{profession}</div>
       <div className="card__wrapper">
         <button className="card__btn">profile</button>
         <button className="card__btn card__btn-solid">Follow</button>

@@ -26,20 +26,6 @@ const UploadImages = () => {
 
   const CDNURL = 'https://lnaxrtumnyzyegjcwlcs.supabase.co/storage/v1/object/public/artworks/';
 
-
-/* original working version */
-
-/*       const handleFileChange = (e) => {
-        const newFiles = Array.from(e.target.files);
-        const uniqueNewFiles = newFiles.filter(newFile => !files.some(file => file.name === newFile.name && file.size === newFile.size));
-        const newTotalSize = uniqueNewFiles.reduce((acc, file) => acc + file.size, totalSize);
-        setFiles(prevFiles => [...prevFiles, ...uniqueNewFiles]);
-        setPreviews(prevPreviews => [...prevPreviews, ...uniqueNewFiles.map(file => URL.createObjectURL(file))]);
-        setTotalSize(newTotalSize);
-    }; */
-
-/* working version with invalid format feature implementation */
-
     const handleFileChange = (e) => {
       const selectedFiles = Array.from(e.target.files);
       const supportedFormats = ['image/jpeg', 'image/png', 'image/heic', 'image/webp'];
@@ -87,7 +73,7 @@ const UploadImages = () => {
     };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevents page reload on form submission
+    e.preventDefault();
     if (!files.length || !user) return;
 
     setIsUploading(true);
@@ -183,8 +169,8 @@ const completionPercentage = (totalSize / (5 * 1024 * 1024)) * 100;
             <h2>Upload Your Artwork</h2>
             <div className="form-grid">
                 <div className="form-group">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+                    <label id="title" htmlFor="title">Title</label>
+                    <input type="text"  value={title} onChange={(e) => setTitle(e.target.value)} required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="medium">Medium</label>
@@ -229,21 +215,21 @@ const completionPercentage = (totalSize / (5 * 1024 * 1024)) * 100;
                 </div>
                 <div className="form-group dimensions-group">
                     <div className="dimension">
-                        <label htmlFor="height">Height</label>
+                        <label id="height" htmlFor="height">Height</label>
                         <div className="input-with-unit">
-                            <input type="text" maxLength="4" id="height" value={height} onChange={(e) => setHeight(e.target.value)} onKeyDown={handleNumericInput} required />
+                            <input type="text" maxLength="4" value={height} onChange={(e) => setHeight(e.target.value)} onKeyDown={handleNumericInput} required />
                         </div>
                     </div>
                     <div className="dimension"> 
-                        <label htmlFor="width">Width</label>
+                        <label id="width" htmlFor="width">Width</label>
                         <div className="input-with-unit">
-                            <input type="text" id="width" maxLength="4" value={width} onChange={(e) => setWidth(e.target.value)} onKeyDown={handleNumericInput} required />
+                            <input type="text" maxLength="4" value={width} onChange={(e) => setWidth(e.target.value)} onKeyDown={handleNumericInput} required />
                         </div>
                     </div>
                     <div className="dimension">
-                        <label htmlFor="depth">Depth</label>
+                        <label id="depth" htmlFor="depth">Depth</label>
                         <div className="input-with-unit">
-                            <input type="text" id="depth" maxLength="4" value={depth} onChange={(e) => setDepth(e.target.value)} onKeyDown={handleNumericInput} required />
+                            <input type="text" maxLength="4" value={depth} onChange={(e) => setDepth(e.target.value)} onKeyDown={handleNumericInput} required />
                         </div>
                     </div>
                 </div>
