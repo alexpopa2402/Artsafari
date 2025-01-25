@@ -8,12 +8,12 @@
   flex-direction: column;
   flex-grow: 1;
   position: relative;
-  min-width: 320px;
+/*   min-width: 320px; */
 }
 
 .settings-title {
   margin-bottom: 20px;
-  font-size: 2rem;
+  font-size: var(--font-size-xxlarge)
 }
 
 .settings-shelf {
@@ -51,7 +51,7 @@ align-items: center;
 .tab-content {
   background: var(--background-color);
   color: var(--font-primary-color);
-  min-width: 330px;
+/*   min-width: 330px; */
   flex-grow: 1;
 }
 
@@ -102,9 +102,7 @@ align-items: center;
   padding: 8px;
   background: var(--background-color);
   color: var(--font-primary-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-small);
-  font-size: small;
+  height: 50px;
 }
 
 .settings-page .form-group .avatar-group {
@@ -156,7 +154,7 @@ align-items: center;
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  overflow: hidden; /* Ensure the image doesn't overflow the container */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -168,7 +166,7 @@ align-items: center;
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  overflow: hidden; /* Ensure the image doesn't overflow the container */
+  overflow: hidden;
   display: flex;
   border: 1px solid var(--border-color);
   text-align: center;
@@ -221,7 +219,6 @@ width: 100%;
 padding: var(--padding-medium);
 border: 1px solid var(--border-color);
 border-radius: var(--border-radius);
-font-size: var(--font-size-intermediate);
 outline: none;
 box-sizing: border-box;
 background: var(--background-color);
@@ -229,45 +226,15 @@ background: var(--background-color);
 
 .email-reset-form input::placeholder,
 .password-reset-form input::placeholder {
-font-size: var(--font-size-medium); /* Adjust the size as needed */
+font-size: var(--font-size-medium);
 }
 
 
-
-@media (max-width: 1080px) {
-  .account-layout button {
-    font-size: var(--font-size-intermediate);
-  }
-}
-
-@media (max-width: 480px) {
-.email-reset-form input,
-.password-reset-form input {
-  padding: var(--padding-small);
-}
-}
-
-@media (max-width: 320px) {
-.email-reset-form input,
-.password-reset-form input {
-  padding: var(--padding-small);
-  font-size: var(--font-size-small);
-}
-}
-
-@media (max-width: 270px) {
-.email-reset-form input,
-.password-reset-form input {
-  padding: 6px 13px;
-  font-size: 10px;
-}
-}
-
-/* media queries for mobile */
-@media (max-width: 480px) {
-/*   .settings-title {
+/* media queries */
+@media (max-width: 400px) {
+  .settings-title {
     font-size: var(--font-size-xlarge);
-  } */
+  }
   .tabs {
     font-size: var(--font-size-intermediate);
   }

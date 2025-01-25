@@ -50,7 +50,7 @@ const Header = () => {
           <Link to='/about' className="about">About Us</Link>
         </nav>
         <HamburgerMenu />
-        {session ? <UserMenu /> : <AuthButton />}
+        {!session ? <AuthButton /> : <UserMenu />}
       </div>
     </header>
   );

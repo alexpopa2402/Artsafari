@@ -30,7 +30,7 @@
     display: block;
     position: absolute;
     top: -9px;
-    background: #25272b;
+    background: var(--background-color);
     padding: 0 5px;
     font-size: var(--font-size-small);
     pointer-events: none;
