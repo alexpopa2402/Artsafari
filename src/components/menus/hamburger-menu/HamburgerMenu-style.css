@@ -3,6 +3,15 @@
 
 .hamburger-menu-container {
   display: block;
+/*   margin: 7px 15px; */
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 35px;
+  width: 35px;
 }
 
 /* Hamburger icon styles */
@@ -10,14 +19,10 @@
   cursor: pointer;
   color: var(--font-primary-color);
   font-size: var(--font-size-large);
-  line-height: 1;
-  top: 0;
-  right: 0;
-  height: 35px;
-  width: 35px;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
+}
+
+.hamburger-icon .fa {
+  margin: 0;
 }
 
 .hamburger-icon:hover, .hamburger-icon:active {
@@ -171,12 +176,7 @@ width: 100%;
   display: block;
   position: relative; /* must be specified because otherwise it inherits absolute from header auth button */
   top: 0; /* must be nulled because otherwise it inherits value from header auth button */
-  margin: 0.5rem 0;
-  font-size: 25px;
-  height: fit-content;
-/*   line-height: 2;
-  width: fit-content; */
-  align-items: center;
+  width: fit-content;
 }
 
 .burger-menu .logout-button-component {

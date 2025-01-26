@@ -88,7 +88,6 @@ button:focus-visible {
 input, textarea {
   border-radius: var(--border-radius-medium);
   border: 1px solid var(--font-primary-color-transparent);
-  padding: 0.6em 0.6em;
   font-size: var(--font-size-intermediate);
   font-weight: 500;
   font-family: inherit;
@@ -98,12 +97,13 @@ input, textarea {
   transition: transform 0.2s, background-color 0.2s, color 0.2s;
   white-space: normal;
   word-wrap: break-word;
+  height: 50px;
 }
 
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: salmon;
+  border-color: #5e66ff;
 
 }
 

@@ -113,7 +113,7 @@
   .header-container.shrink {
     justify-content: center;
     align-items: center;
-    text-align: center;
+/*     text-align: center; */
   }
   
   .main-title.shrink {
@@ -150,7 +150,7 @@
   .header-container .auth-login-button {
     display: block;
     position: absolute;
-    right: 1rem;
+    right: 2rem;
     top: 0;
     height: 35px;
     text-align: center;

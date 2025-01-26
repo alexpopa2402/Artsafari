@@ -9,7 +9,6 @@
     padding: 0 7px;
     height: 35px;
     justify-content: center;
-/*     margin-left: 1rem; */
   }
   
   .search-input {
@@ -25,7 +24,7 @@
   }
 
   .search-container:focus-within {
-    border: 1px solid rgba(255, 166, 0, 0.484);
+    border: 1px solid var(--font-accent-color);
   }
   
   .search-button {
@@ -52,7 +51,7 @@
   @media (min-width: 992px) {
     .search-container {
       position: absolute;
-      right: 7rem;
+      right: 8rem;
       top: 0;
       transition: width 0.3s ease;
       box-shadow: none;

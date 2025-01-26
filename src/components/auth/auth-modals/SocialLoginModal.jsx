@@ -12,7 +12,7 @@ const SocialLoginModal = () => {
 
     return (
         <>
-            <span className="continue-with">or continue with</span>
+            <span className="continue-with">Or continue with</span>
             <div className="social-login-buttons">
                 <button className="social-button apple-button" onClick={() => handleLogin('apple')}>
                     <FontAwesomeIcon icon={faApple} />

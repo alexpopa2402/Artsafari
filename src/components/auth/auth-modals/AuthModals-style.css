@@ -126,7 +126,6 @@
   z-index: 100;
   display: flex;
   flex-direction: column;
-  gap: 1em;
 }
 .popup-sub-title {
   display: flex;
@@ -193,13 +192,15 @@ input::placeholder {
   width: 100%;
   color: var(--font-primary-opposite-color);
   background: var(--button-hover-color);
+  height: 50px;
 }
 .popup-login-button .spinner-container {
   min-height: 30px;
+  height: 50px;
 }
 .popup-login-button .spinner-container .spinner {
   width: 30px;
-  height: 30px;
+  height: 50px;
 }
 
 .popup-form button:disabled {
@@ -220,7 +221,7 @@ input::placeholder {
 
 
 .popup-links {
-  margin-top: 10px;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -260,12 +261,16 @@ input::placeholder {
 }
 
 .terms-text, .recaptcha-text {
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-medium);
   color: var(--font-secondary-color);
   margin-top: 10px;
   text-align: center;
   position: relative;
   z-index: 100;
+}
+
+.terms-text {
+  margin-top: 4rem;
 }
 
 .error {
@@ -325,7 +330,7 @@ input::placeholder {
 
 .password-strength-text {
   margin-top: 5px;
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-medium);
   color: var(--font-primary-color);
 }
 
@@ -372,9 +377,6 @@ input::placeholder {
     padding: var(--padding-small);
   }
 
-  .popup-form button {
-    font-size: calc(0.8rem + 0.1vw);
-  }
   .popup-main-title button {
     font-size: var(--font-size-large);
   }
@@ -445,24 +447,24 @@ input::placeholder {
 
 .continue-with {
   display: block;
-  margin: 15px 0;
+  margin-top: 25px;
   text-align: center;
   font-size: var(--font-size-medium);
   color: var(--font-secondary-color);
 }
 
 .social-login-buttons {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
 }
 
 .social-button {
-  padding: 0.7em 20px;
   border: 1px solid var(--font-primary-color-transparent);
   border-radius: var(--border-radius-rounded);
   cursor: pointer;
   width: 100%;
-/*   background: var(--card-background-color); */
+  height: 50px;
 }
 
 .apple-button, .google-button {
