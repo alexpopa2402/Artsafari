@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
+import { useAuthStore } from "stores/useAuthStore";
 
 import AuthButton from '@components/buttons/auth-button/AuthButton';
 import LogoutButton from '@components/buttons/logout-button/LogoutButton';
@@ -16,10 +16,9 @@ import "./HamburgerMenu-style.css";
 const HamburgerMenu = () => {
 
   const [isOpen, setIsOpen] = useState(false);
-  const session = useSession();
+  const user = useAuthStore(state => state.user);
   const menuRef = useRef(null);
   const navigate = useNavigate();
-  const supabaseClient = useSupabaseClient();
 
   // Disable scrolling when the hamburger menu is open and account for scrollbar width
   useGlobalScrollLock(isOpen);
@@ -30,14 +29,14 @@ const HamburgerMenu = () => {
   // Trap focus within the hamburger menu when it is open
   useFocusTrap(menuRef, isOpen);
 
-  const handleLogout = async () => {
+/*   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
     if (error) {
       console.error('Error logging out:', error.message);
       return false;
     }
     return true;
-  };
+  }; */
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -66,13 +65,13 @@ const HamburgerMenu = () => {
           </nav>
           <div className="divider"></div>
           <nav className="burger-nav-links">
-            {session && (
+            {user && (
               <button onClick={() => handleNavigate('/settings/edit-profile')} className="burger-settings">
                 <i className="fa fa-cog settings-icon"></i>
                 Settings
               </button>
             )}
-            {session ? (
+            {user ? (
               <LogoutButton closeMenu={() => setIsOpen(false)} />
             ) : (
               <AuthButton />

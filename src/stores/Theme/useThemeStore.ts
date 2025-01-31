@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { toggleDarkThemeClass, getStoredTheme, storeThemePreference, syncThemeAcrossTabs } from '@store/Theme/themeUtils';
+import { toggleDarkThemeClass, getStoredTheme, storeThemePreference, syncThemeAcrossTabs } from 'stores/Theme/themeUtils';
 
 interface ThemeState {
   isDarkTheme: boolean;

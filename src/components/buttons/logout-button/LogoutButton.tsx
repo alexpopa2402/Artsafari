@@ -1,19 +1,24 @@
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
-
+import { supabase } from '@services/supabaseClient';
+import { useAuthStore } from 'stores/useAuthStore';
 interface LogoutButtonProps {
     closeMenu: () => void;
 }
 
 const LogoutButton: React.FC<LogoutButtonProps> = ({ closeMenu }) => {
-    const supabaseClient = useSupabaseClient();
+    const setUser = useAuthStore((state) => state.setUser);
+    const setProfile = useAuthStore((state) => state.setProfile);
+    const setIsLoading = useAuthStore((state) => state.setIsLoading);
 
     const handleLogout = async () => {
-        const { error } = await supabaseClient.auth.signOut();
+        const { error } = await supabase.auth.signOut();
         if (error) {
             console.error('Error logging out:', error.message);
             return;
         }
         closeMenu();
+        setUser(null);
+        setProfile(null);
+        setIsLoading(false);
     };
 
     return (

@@ -34,7 +34,7 @@ ArtworkCard.propTypes = {
   artwork: PropTypes.shape({
     image_urls: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
     featured: PropTypes.bool,
   }).isRequired,
   artistName: PropTypes.string.isRequired,

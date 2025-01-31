@@ -1,7 +1,7 @@
 // Desc: Custom hook to lock/unlock global scroll. Used in AuthButton, HamburgerMenu and Usemenu components.
 
 import { useEffect, useRef } from 'react';
-import useScrollLockStore from '@store/useScrollLockStore';
+import useScrollLockStore from 'stores/useScrollLockStore';
 /* import { setScrollbarWidth } from '@utils/scrollHandlers'; */
 
 const useScrollLock = (isLocked) => {

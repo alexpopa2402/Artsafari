@@ -1,6 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+/* import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'; */
+import { useAuthStore } from 'stores/useAuthStore';
+/* import { supabase } from '@services/supabaseClient'; */
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
@@ -16,22 +18,21 @@ import './UserMenu-style.css';
 
 const UserMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [profile, setProfile] = useState(null);
+/*     const [profile, setProfile] = useState(null); */
+const profile = useAuthStore(state => state.profile);
 
-    const user = useUser();
-    const supabaseClient = useSupabaseClient();
 
     const menuRef = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
 
 
-    useEffect(() => {
+/*     useEffect(() => {
         const fetchProfile = async () => {
             if (!user) {
                 return;
             }
-            const { data, error } = await supabaseClient
+            const { data, error } = await supabase
                 .from('profiles')
                 .select('*')
                 .eq('id', user.id)
@@ -46,7 +47,7 @@ const UserMenu = () => {
         };
 
         fetchProfile();
-    }, [user, supabaseClient]);
+    }, [user]); */
 
 
     // Lock the scroll when the user menu is open

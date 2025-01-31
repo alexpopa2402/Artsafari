@@ -3,13 +3,13 @@ import './SettingsPage-style.css';
 import BackButton from '@components/buttons/back-button/BackButton';
 import DarkThemeButton from '@components/buttons/theme-button/DarkThemeButton';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
-import { useUser } from '@supabase/auth-helpers-react';
+import { useAuthStore } from 'stores/useAuthStore';
 
 const SettingsPage = () => {
 
   const location = useLocation();
   const activeTab = location.pathname.split('/').pop();
-  const user = useUser();
+  const user = useAuthStore(state => state.user);
 
   if (!user) {
     return <Spinner />;

@@ -1,4 +1,4 @@
-import useThemeStore from '@store/Theme/useThemeStore'
+import useThemeStore from 'stores/Theme/useThemeStore'
 import { Around } from '@theme-toggles/react';
 import '@theme-toggles/react/css/Around.css';
 import './DarkThemeButton-style.css';

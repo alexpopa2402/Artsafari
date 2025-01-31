@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
+/* import { useSupabaseClient } from '@supabase/auth-helpers-react'; */
+import {supabase} from '@services/supabaseClient';
+
 import ArtistCard from '@components/UI/artist-card/ArtistCard';
 import './ArtistsPage-style.css';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
@@ -9,12 +11,12 @@ const ArtistsPage = () => {
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState(null);
 
-  const supabaseClient = useSupabaseClient();
+/*   const supabaseClient = useSupabaseClient(); */
 
   useEffect(() => {
     const fetchArtists = async () => {
       try {
-        const { data, error } = await supabaseClient
+        const { data, error } = await supabase
           .from('profiles')
           .select('*');
 
@@ -33,7 +35,7 @@ const ArtistsPage = () => {
     };
 
     fetchArtists();
-  }, [supabaseClient]);
+  }, []);
 
   if (loading) {
     return <Spinner />;

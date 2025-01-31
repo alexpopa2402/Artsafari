@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { setupScrollListener } from '@utils/scrollHandlers';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useSession } from '@supabase/auth-helpers-react';
+import { useAuthStore } from 'stores/useAuthStore';
 
 import SearchBar from '@components/UI/searchbar/SearchBar';
 import AuthButton from '@components/buttons/auth-button/AuthButton';
@@ -14,8 +14,8 @@ import './Header-style.css';
 
 
 const Header = () => {
-  const session = useSession();
   const navigate = useNavigate();
+  const user = useAuthStore(state => state.user);
 
   
   // listens for scroll events and adds/removes the 'shrink' class to the header
@@ -50,7 +50,7 @@ const Header = () => {
           <Link to='/about' className="about">About Us</Link>
         </nav>
         <HamburgerMenu />
-        {!session ? <AuthButton /> : <UserMenu />}
+        {!user ? <AuthButton /> : <UserMenu />}
       </div>
     </header>
   );
