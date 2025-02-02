@@ -9,12 +9,12 @@ const ArtistsPage = () => {
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState(null);
 
-  const supabaseClient = useSupabaseClient();
+  const supabase = useSupabaseClient();
 
   useEffect(() => {
     const fetchArtists = async () => {
       try {
-        const { data, error } = await supabaseClient
+        const { data, error } = await supabase
           .from('profiles')
           .select('*');
 
@@ -33,7 +33,7 @@ const ArtistsPage = () => {
     };
 
     fetchArtists();
-  }, [supabaseClient]);
+  }, [supabase]);
 
   if (loading) {
     return <Spinner />;

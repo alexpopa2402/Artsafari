@@ -21,7 +21,7 @@ export default function EditProfilePage() {
   const [success, setSuccess] = useState(false);
 
   const user = useUser();
-  const supabaseClient = useSupabaseClient();
+  const supabase = useSupabaseClient();
 
   // Fetch profile data
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function EditProfilePage() {
       }
 
       try {
-        const { data, error } = await supabaseClient
+        const { data, error } = await supabase
           .from('profiles')
           .select('*')
           .eq('id', user.id)
@@ -56,7 +56,7 @@ export default function EditProfilePage() {
     };
 
     fetchProfile();
-  }, [user, supabaseClient]);
+  }, [user, supabase]);
 
 
   // Handle input changes
@@ -82,7 +82,7 @@ export default function EditProfilePage() {
   const deleteAvatar = async () => {
     if (profile.avatar_url) {
       const oldFileName = profile.avatar_url.split('/').pop();
-      const { error: deleteError } = await supabaseClient.storage
+      const { error: deleteError } = await supabase.storage
         .from('avatars')
         .remove([`public/${oldFileName}`]);
 
@@ -121,7 +121,7 @@ export default function EditProfilePage() {
         }
 
         // Upload the new avatar
-        const { data: uploadData, error: uploadError } = await supabaseClient.storage
+        const { data: uploadData, error: uploadError } = await supabase.storage
           .from('avatars')
           .upload(`public/${avatarFile.name}`, avatarFile, {
             cacheControl: '3600',
@@ -131,7 +131,7 @@ export default function EditProfilePage() {
         if (uploadError) throw uploadError;
 
         // Get the public URL of the uploaded avatar
-        const { data: publicUrlData } = supabaseClient.storage
+        const { data: publicUrlData } = supabase.storage
           .from('avatars')
           .getPublicUrl(uploadData.path);
 
@@ -139,7 +139,7 @@ export default function EditProfilePage() {
       }
 
       // Update profile in the database
-      const { error: updateError } = await supabaseClient
+      const { error: updateError } = await supabase
         .from('profiles')
         .update({
           full_name: profile.full_name,
@@ -166,8 +166,8 @@ export default function EditProfilePage() {
   return (
     <div className="edit-profile-page">
 
-      {fetchError && <p className="error">{fetchError}</p>}
-      {success && <p className="success">Profile updated successfully!</p>}
+      {fetchError && <p className="error-popup">{fetchError}</p>}
+      {success && <p className="success-popup">Profile updated successfully!</p>}
 
       <form className='form-layout'>
 

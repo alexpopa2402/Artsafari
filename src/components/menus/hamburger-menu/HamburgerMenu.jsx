@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
+import { useSession } from "@supabase/auth-helpers-react";
 
 import AuthButton from '@components/buttons/auth-button/AuthButton';
 import LogoutButton from '@components/buttons/logout-button/LogoutButton';
@@ -19,7 +19,6 @@ const HamburgerMenu = () => {
   const session = useSession();
   const menuRef = useRef(null);
   const navigate = useNavigate();
-  const supabaseClient = useSupabaseClient();
 
   // Disable scrolling when the hamburger menu is open and account for scrollbar width
   useGlobalScrollLock(isOpen);
@@ -30,14 +29,14 @@ const HamburgerMenu = () => {
   // Trap focus within the hamburger menu when it is open
   useFocusTrap(menuRef, isOpen);
 
-  const handleLogout = async () => {
+/*   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
     if (error) {
       console.error('Error logging out:', error.message);
       return false;
     }
     return true;
-  };
+  }; */
 
   const handleNavigate = (path) => {
     navigate(path);
