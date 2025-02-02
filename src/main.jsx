@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { SessionContextProvider } from '@supabase/auth-helpers-react';
-import { supabase } from '@services/supabaseClient.jsx';
+import { supabase } from '@services/supabaseClient.tsx'
 
 import App from './App.jsx';
 

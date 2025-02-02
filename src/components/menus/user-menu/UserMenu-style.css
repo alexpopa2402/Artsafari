@@ -100,12 +100,6 @@
   overflow: hidden;
   color: var(--font-primary-opposite-color);
 }
-.user-links .settings .logout-button-component {
-  border: none;
-  padding-left: 0;
-  font-size: var(--font-size-xlarge);
-  color: var(--font-primary-opposite-color);
-}
 
 .user-links .collection-item-button::after {
   content: '';
@@ -127,10 +121,37 @@
   transform: scaleX(1);
 }
 
-.settings .collection-item-button:nth-child(2){
-  width: 76%;
+.user-links .settings .logout-button-component {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
+  border: none;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  color: var(--font-primary-opposite-color);
+  font-size: var(--font-size-large);
 }
 
+.user-links .settings .logout-button-component::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--font-accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+.user-links .settings .logout-button-component:hover::after {
+  transform: scaleX(1);
+}
+
+.user-links .settings .logout-button-component:hover {
+  background: none;
+}
 .menu-avatar-circle {
   width: 50px;
   height: 50px;
@@ -399,12 +420,11 @@ body {
   }
   .user-links .settings .logout-button-component {
     font-size: var(--font-size-intermediate);
-    color: var(--font-primary-color);
+    width: 76%;
   }
   .user-links .divider {
     background: var(--font-primary-color-transparent);
   }
-
 }
 
 

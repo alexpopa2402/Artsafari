@@ -19,8 +19,10 @@
       "@services/*": ["services/*"],
       "@stores/*": ["stores/*"]
     },
-    "typeRoots": ["./types", "./node_modules/@types"]
+    "typeRoots": ["./types", "./node_modules/@types"],
+    //"allowSyntheticDefaultImports": true,
+    //"allowJs": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["dist", /* "build", */ "node_modules"]
 }
