@@ -27,6 +27,7 @@ const UserMenu = () => {
 
 
     useEffect(() => {
+        console.log('UserMenu: useEffect');
         const fetchProfile = async () => {
             if (!user) {
                 return;

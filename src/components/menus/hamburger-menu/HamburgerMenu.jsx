@@ -1,7 +1,5 @@
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { useSession } from "@supabase/auth-helpers-react";
 
 import AuthButton from '@components/buttons/auth-button/AuthButton';
@@ -29,14 +27,14 @@ const HamburgerMenu = () => {
   // Trap focus within the hamburger menu when it is open
   useFocusTrap(menuRef, isOpen);
 
-/*   const handleLogout = async () => {
-    const { error } = await supabaseClient.auth.signOut();
-    if (error) {
-      console.error('Error logging out:', error.message);
-      return false;
-    }
-    return true;
-  }; */
+  /*   const handleLogout = async () => {
+      const { error } = await supabaseClient.auth.signOut();
+      if (error) {
+        console.error('Error logging out:', error.message);
+        return false;
+      }
+      return true;
+    }; */
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -54,14 +52,16 @@ const HamburgerMenu = () => {
           <div className="animation-container"></div>
           <div className="animation-container"></div>
           <div className="animation-container"></div>
-          <button className="hamburger-close-popup" onClick={() => setIsOpen(!isOpen)}>
-            <FontAwesomeIcon icon={faCircleXmark} />
-          </button>
+          <div className="close-popup-container">
+            <button className="hamburger-close-popup" onClick={() => setIsOpen(!isOpen)}>
+              <i className="fa fa-solid fa-circle-xmark"></i>
+            </button>
+          </div>
           <nav className="burger-nav-links">
-            <button onClick={() => handleNavigate('/')} className="burger-Home">Home</button>
-            <button onClick={() => handleNavigate('/gallery')} className="burger-gallery">Gallery</button>
-            <button onClick={() => handleNavigate('/artists')} className="burger-artists">Artists</button>
-            <button onClick={() => handleNavigate('/about')} className="burger-about">About us</button>
+            <button onClick={() => handleNavigate('/')} className="burger-Home"><i className="fa fa-solid fa-igloo"></i>Home</button>
+            <button onClick={() => handleNavigate('/gallery')} className="burger-gallery"><i className="fa fa-solid fa-palette"></i>Gallery</button>
+            <button onClick={() => handleNavigate('/artists')} className="burger-artists"><i className="fa fa-regular fa-id-card"></i> Artists</button>
+            <button onClick={() => handleNavigate('/about')} className="burger-about"><i className="fa fa-solid fa-wand-sparkles"></i>About us</button>
           </nav>
           <div className="divider"></div>
           <nav className="burger-nav-links">

@@ -20,7 +20,7 @@ const ArtistCard = ({ name, profession, imageUrl }) => {
 
 ArtistCard.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
   profession: PropTypes.string,
   positions: PropTypes.string,

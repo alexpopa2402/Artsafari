@@ -1,5 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 /* import { useAuthStore } from 'stores/useAuthStore'; */
 /* import SessionLoader from '@components/auth/sessionLoader'; */

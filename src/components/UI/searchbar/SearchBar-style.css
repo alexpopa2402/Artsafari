@@ -7,8 +7,9 @@
     flex-grow: 1;
     border-radius: 4px;
     padding: 0 7px;
-    height: 35px;
+    height: 40px;
     justify-content: center;
+    margin-right: 0.5rem;
   }
   
   .search-input {
@@ -21,10 +22,12 @@
     white-space: nowrap;
     overflow: hidden;
     color: var(--font-primary-color);
+    height: auto;
   }
 
   .search-container:focus-within {
     border: 1px solid var(--font-accent-color);
+    opacity: 0.9;
   }
   
   .search-button {
@@ -56,6 +59,8 @@
       transition: width 0.3s ease;
       box-shadow: none;
       border: none;
+      height: 35px;
+      margin-right: 0;
     }
     
     .search-input {

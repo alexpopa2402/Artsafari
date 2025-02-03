@@ -35,7 +35,7 @@
     font-size: var(--font-size-small);
     pointer-events: none;
     z-index: 100;
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--border-radius-small);
 }
 
 .form-group > :nth-child(2n+1) {
@@ -62,13 +62,13 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-small);
     font-size: small;
-    height: 50px;
+    height: 40px;
 }
 
 .select-wrapper #medium {
     background: var(--card-background-color);
     color: var(--font-primary-color);
-    height: 50px;
+    height: 40px;
     position: relative;
 }
 
