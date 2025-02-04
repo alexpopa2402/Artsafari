@@ -1,85 +1,134 @@
 import { useState, useEffect } from 'react';
-import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useParams } from 'react-router-dom';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import BackButton from '@components/buttons/back-button/BackButton';
 
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
+import './ArtworkDetailPage-style.css';
 
-const UserProfile = () => {
-
+const ArtworkDetailPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState(null);
-  const [artworks, setArtworks] = useState([]);
+  const [artwork, setArtwork] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const user = useUser();
+  const { slug } = useParams();
   const supabase = useSupabaseClient();
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (!user) {
-        setFetchError('User not authenticated');
-        setIsLoading(false);
-        return;
-      }
+    const fetchArtwork = async () => {
+      const [id] = slug.split('-');
 
       try {
-        // Fetch the artworks using the user's ID
-        const { data: artworksData, error: artworksError } = await supabase
+        // Fetch the artwork using the artwork ID
+        const { data: artworkData, error: artworkError } = await supabase
           .from('artworks')
           .select('*')
-          .eq('user_id', user.id);
+          .eq('id', id)
+          .single();
 
-        if (artworksError) {
-          console.error('Error fetching artwork:', artworksError);
+        if (artworkError) {
+          setFetchError('Error fetching artwork');
+          console.error('Error fetching artwork:', artworkError);
         } else {
-          setArtworks(artworksData);
+          setArtwork(artworkData);
         }
       } catch (error) {
         setFetchError('An error occurred while fetching data');
-        console.log(error);
+        console.error(error);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchData();
-  }, [user, supabase]);
+    fetchArtwork();
+  }, [slug, supabase]);
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % artwork.image_urls.length);
+  };
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + artwork.image_urls.length) % artwork.image_urls.length);
+  };
 
   if (isLoading) {
-    return <Spinner />
+    return <Spinner />;
   }
-  if (fetchError) return <p>{fetchError}</p>;
+
+  if (fetchError) {
+    return <p>{fetchError}</p>;
+  }
+
+  if (!artwork) {
+    return <p>No artwork found</p>;
+  }
 
   return (
-      <div className="gallery-section">
-        <div className="gallery-container">
-          {artworks.length === 0 ? (
-            <div className="empty-gallery-message">
-              Nothing to see here - click upload to start sharing your artwork with the world!
-            </div>
-          ) : (
-            artworks.map((artwork) => (
-              <div key={artwork.id} className="gallery-item">
-                <div className="artwork-details">
-                  <h3>{artwork.title}</h3>
-                  <p><strong>Medium:</strong> {artwork.medium}</p>
-                  <p><strong>Year:</strong> {artwork.year}</p>
-                  <p><strong>Materials:</strong> {artwork.materials}</p>
-                  <p><strong>Dimensions:</strong> {artwork.height} x {artwork.width} x {artwork.depth} cm</p>
-                  <p><strong>Notes:</strong> {artwork.notes}</p>
-                </div>
-                {artwork.image_urls.map((url, index) => (
-                  <img
-                    key={index}
-                    src={url}
-                    alt={`Artwork ${index + 1}`}
-                    style={{ width: "200px", height: "auto" }}
-                  />
-                ))}
-              </div>
-            ))
+    <>
+
+      <div className="artwork__detail__page">
+      <BackButton />
+      <div className='dummybox_placeholder'></div>
+        <div className="image__slider">
+          {artwork.image_urls.length > 1 && (
+            <button className="slider__button prev" onClick={handlePrevImage}>
+              <i className="fa-solid fa-chevron-left"></i>
+            </button>
           )}
+          <button className='clickable__image__zoom'>
+            <img src={artwork.image_urls[currentImageIndex]} alt={artwork.title} className="artwork__detail__img" />
+          </button>
+          {artwork.image_urls.length > 1 && (
+            <button className="slider__button next" onClick={handleNextImage}>
+              <i className="fa-solid fa-chevron-right"></i>
+            </button>
+          )}
+          <div className="image__indicators">
+            {artwork.image_urls.map((_, index) => (
+              <span
+                key={index}
+                className={`indicator ${index === currentImageIndex ? 'active' : ''}`}
+              ></span>
+            ))}
+          </div>
+        </div>
+        <div className="artwork__details">
+          {/* <p className="artwork__detail__author">{artwork.full_name}</p> */}
+          <p className="artwork__detail__title__year">
+            <p className="artwork__detail__title">{artwork.title},&nbsp;
+              <p className="artwork__detail__year">{artwork.year} </p>  
+            </p>
+          </p>
+          <div className='artwork__details__divider'></div>
+          <p className="artwork__detail">
+            <p className="artwork__detail__label">
+              Medium:
+            </p>
+            {artwork.medium}
+          </p>
+          <p className="artwork__detail">
+            <p className="artwork__detail__label">
+              Materials:
+            </p>
+            {artwork.materials}
+          </p>
+          <p className="artwork__detail">
+            <p className="artwork__detail__label">
+              Dimensions:
+            </p>
+            {`${artwork.width} x ${artwork.height} x ${artwork.depth}`}
+          </p>
+          <p className="artwork__detail">
+            <p className="artwork__detail__label">
+              Notes:
+            </p>
+            {artwork.notes || 'N/A'}
+          </p>
         </div>
       </div>
+    </>
   );
 };
 
-export default UserProfile;
+export default ArtworkDetailPage;

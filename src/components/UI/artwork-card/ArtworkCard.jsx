@@ -5,13 +5,13 @@ import './Artworkcard-style.css';
 const ArtworkCard = ({ artwork, artistName }) => {
   const navigate = useNavigate();
 
-  const generateSlug = (title, year) => {
-    return `${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${year}`;
+  const generateSlug = (id, title, year) => {
+    return `${id}-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${year}`;
   };
 
   const handleClick = () => {
-    const slug = generateSlug(artwork.title, artwork.year);
-    navigate(`/artwork/${slug}`);
+    const slug = generateSlug(artwork.id,artwork.title, artwork.year);
+    navigate(`/artwork/${slug}`, { state: { artistName } }); // Pass artistName to the next route using location state (to be dismantled once Zustand store is implemented)
   };
 
   return (
@@ -33,6 +33,7 @@ const ArtworkCard = ({ artwork, artistName }) => {
 ArtworkCard.propTypes = {
   artwork: PropTypes.shape({
     image_urls: PropTypes.arrayOf(PropTypes.string).isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     featured: PropTypes.bool,
