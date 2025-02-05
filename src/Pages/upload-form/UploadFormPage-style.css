@@ -16,40 +16,38 @@
     margin-bottom: 20px;
 }
 
-.form-container {
+.upload-artwork .form-container {
     flex-grow: 1;
     align-content: space-evenly;
 }
 
-.form-group {
+.upload-artwork .form-group {
     margin-bottom: 15px;
     position: relative;
 }
 
-.form-group label {
-    display: block;
-    position: absolute;
-    top: -9px;
+.upload-artwork .form-group label {
     background: var(--card-background-color);
-    padding: 0 5px;
-    font-size: var(--font-size-small);
-    pointer-events: none;
-    z-index: 100;
-    border-radius: var(--border-radius-small);
 }
 
-.form-group > :nth-child(2n+1) {
+.upload-artwork .form-group > :nth-child(2n+1) {
     left: 10px;
 }
 
-.form-group #height,
-.form-group #width,
-.form-group #depth {
+.required-label {
+    position: relative;
+    margin: 0;
+    line-height: 0;
+}
+
+.upload-artwork .form-group #height,
+.upload-artwork .form-group #width,
+.upload-artwork .form-group #depth {
     margin-left: 10px;
 }
 
 
-.form-group-upload {
+.upload-artwork .form-group-upload {
     margin-top: 20px;
 }
 
@@ -62,7 +60,6 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-small);
     font-size: small;
-    height: 40px;
 }
 
 .select-wrapper #medium {
@@ -72,7 +69,7 @@
     position: relative;
 }
 
-.form-group textarea {
+.upload-artwork .form-group textarea {
     resize: vertical;
     height: 100px;
 }

@@ -7,7 +7,7 @@ const BackButton: React.FC = () => {
   return (
     <div onClick={() => navigate('/profile')} className="back-button" style={{ cursor: 'pointer' }}>
       <span>&lt; </span> 
-      Profile
+      Back to Profile
     </div>
   );
 };

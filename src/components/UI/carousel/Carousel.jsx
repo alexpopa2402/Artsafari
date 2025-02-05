@@ -35,14 +35,6 @@ const Carousel = () => {
         nextImage.src = images[(currentIndex + 1) % images.length].src;
     }, [currentIndex]);
 
-/*     useEffect(() => {
-        // Preload all images when the component mounts
-        images.forEach(image => {
-            const img = new Image();
-            img.src = image.src;
-        });
-    }, []); */
-
     return (
         <div className="carousel-container" aria-roledescription="carousel">
             <button className="carousel-arrow left-arrow" onClick={goToPrevious} aria-label="Previous slide">

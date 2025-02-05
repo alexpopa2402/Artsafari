@@ -11,7 +11,7 @@ const ArtworkCard = ({ artwork, artistName }) => {
 
   const handleClick = () => {
     const slug = generateSlug(artwork.id,artwork.title, artwork.year);
-    navigate(`/artwork/${slug}`, { state: { artistName } }); // Pass artistName to the next route using location state (to be dismantled once Zustand store is implemented)
+    navigate(`/artwork/${slug}`);
   };
 
   return (

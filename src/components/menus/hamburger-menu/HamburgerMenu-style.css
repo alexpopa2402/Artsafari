@@ -8,7 +8,7 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  line-height: 1;
+/*   line-height: 1; */
   height: 35px;
   width: 35px;
   border-radius: var(--border-radius-small);
@@ -128,14 +128,15 @@ width: 100%;
 
 /* Navigation links within the burger menu */
 .burger-nav-links > button {
-  margin: 1rem;
+  display: flex;
+  margin: 0 0.5rem;
   border-radius: 0;
   border: none;
   text-align: left;
   position: relative;
   overflow: hidden;
   border-radius: var(--border-radius-small);
-  font-size: var(--font-size-xlarge);
+  font-size: 18px;
   color: var(--font-primary-color);
   z-index: 100;
   padding-left: 0;
@@ -171,8 +172,8 @@ width: 100%;
 .burger-menu .divider {
   position: relative;
   width: 100%;
-  height: 1px;
-  background: var(--font-secondary-color);
+  height: 10px;
+  background: #a7a7a71f;
   margin: 1rem 0;
   padding-top: 1px;
   z-index: 100;
@@ -222,6 +223,7 @@ width: 100%;
   background: rgba(0, 0, 0, 0);
   font-weight:lighter;
   z-index: 100;
+  line-height: 1;
 }
 .hamburger-close-popup .fa {
   margin: 0;

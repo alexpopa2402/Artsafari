@@ -231,7 +231,7 @@ export default function EditProfilePage() {
 
 
         <div className="form-group">
-          <label htmlFor="full_name">Name</label>
+          <label htmlFor="full_name">Name*</label>
           <input
             type="text"
             id="full_name"
@@ -241,7 +241,7 @@ export default function EditProfilePage() {
             placeholder="Enter your name - field cannot be empty"
             maxLength="30"
             pattern="[A-Za-z\s]*"
-            title="Name can only contain letters and spaces"
+            title="Required field - can only contain letters and spaces"
             required
           />
         </div>
@@ -277,14 +277,14 @@ export default function EditProfilePage() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="about">About (150 characters max.)  </label>
+          <label htmlFor="about">About</label>
           <textarea
             id="about"
             name="about"
             value={profile.about}
             onChange={handleChange}
-            placeholder="Tell us about yourself"
-            maxLength="150"
+            placeholder="Tell us about yourself - max 1200 characters"
+            maxLength="1200"
             pattern="[A-Za-z0-9\s.,!?@#&()\-]*"
             title="About can contain letters, numbers, and common symbols"
           />

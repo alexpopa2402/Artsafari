@@ -223,4 +223,8 @@
         letter-spacing: -0.01rem;
         margin-bottom: 15px;
     }
+
+    .profile-section {
+        justify-content: space-between;
+    }
 }

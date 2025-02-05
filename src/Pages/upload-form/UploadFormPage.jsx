@@ -178,11 +178,11 @@ const UploadImages = () => {
                 <h2>Upload Your Artwork</h2>
                 <div className="form-grid">
                     <div className="form-group">
-                        <label id="title" htmlFor="title">Title</label>
-                        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+                        <label id="title" htmlFor="title">Title*</label>
+                        <input type="text" maxLength="50" value={title} onChange={(e) => setTitle(e.target.value)} required />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="medium">Medium</label>
+                        <label htmlFor="medium">Medium*</label>
                         <div className="select-wrapper">
                             <select id="medium" value={medium} onChange={(e) => setMedium(e.target.value)} required>
                                 <option value="" disabled>Select</option>
@@ -211,7 +211,7 @@ const UploadImages = () => {
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="year">Year</label>
+                        <label htmlFor="year">Year*</label>
                         <input type="number" id="year" value={year} onChange={handleYearChange}
                             onKeyDown={handleNumericInput}
                             maxLength="4"
@@ -219,24 +219,24 @@ const UploadImages = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="materials">Materials</label>
-                        <input type="text" id="materials" value={materials} onChange={(e) => setMaterials(e.target.value)} required />
+                        <label htmlFor="materials">Materials*</label>
+                        <input type="text" id="materials" maxLength="100" value={materials} onChange={(e) => setMaterials(e.target.value)} required />
                     </div>
                     <div className="form-group dimensions-group">
                         <div className="dimension">
-                            <label id="height" htmlFor="height">Height</label>
+                            <label id="height" htmlFor="height">Height*</label>
                             <div className="input-with-unit">
                                 <input type="text" maxLength="4" value={height} onChange={(e) => setHeight(e.target.value)} onKeyDown={handleNumericInput} required />
                             </div>
                         </div>
                         <div className="dimension">
-                            <label id="width" htmlFor="width">Width</label>
+                            <label id="width" htmlFor="width">Width*</label>
                             <div className="input-with-unit">
                                 <input type="text" maxLength="4" value={width} onChange={(e) => setWidth(e.target.value)} onKeyDown={handleNumericInput} required />
                             </div>
                         </div>
                         <div className="dimension">
-                            <label id="depth" htmlFor="depth">Depth</label>
+                            <label id="depth" htmlFor="depth">Depth*</label>
                             <div className="input-with-unit">
                                 <input type="text" maxLength="4" value={depth} onChange={(e) => setDepth(e.target.value)} onKeyDown={handleNumericInput} required />
                             </div>
@@ -244,8 +244,9 @@ const UploadImages = () => {
                     </div>
                     <div className="form-group full-width">
                         <label htmlFor="notes">Notes</label>
-                        <textarea id="notes" maxLength="200" placeholder="max 200 characters" value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
+                        <textarea id="notes" maxLength="500" placeholder="max 500 characters" value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
                     </div>
+                    <label className="required-label" htmlFor="required">* Required</label>
                 </div>
                 <div className="form-group form-group-upload">
                     <label htmlFor="photos">Upload Photos</label>

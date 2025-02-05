@@ -73,8 +73,9 @@
   position: relative;
   height: 80px;
   padding: 0 1rem;
-  background: var(--usermenu-header-color);
-  color: var(--font-primary-opposite-color);
+/*   background: var(--usermenu-header-color); */
+  background: #a7a7a71f;
+  color: var(--font-primary-color);
   font-family: var(--ff-k2d);
 }
 
@@ -83,6 +84,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  opacity: 0.9;
 }
 
 .dropdown-content .theme-toggle-container {
@@ -136,7 +138,6 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--border-radius-small);
-  /*   font-size: var(--font-size-xlarge); */
   color: var(--font-primary-color);
   z-index: 100;
   padding-left: 0;
@@ -206,17 +207,17 @@
 
 }
 
-.view-profile {
+/* .view-profile {
   margin-left: 10px;
   font-size: 12px;
-}
+} */
 
 
 
 .usermenu-close-popup {
   display: none;
   cursor: pointer;
-  color: var(--font-primary-opposite-color);
+  color: var(--font-primary-color);
   font-size: var(--font-size-xlarge);
   padding: 0;
   margin-left: 1rem;
@@ -239,7 +240,7 @@
 .user-links .divider {
   width: 100%;
   height: 1px;
-  background: var(--font-secondary-color);
+  background: #a7a7a71f;
   margin: 1rem auto;
   padding-top: 1px;
 }
@@ -262,18 +263,17 @@
     background: transparent;
   }
 
-  .user-links .settings .logout-button-component {
-    margin: 1rem;
-    font-size: var(--font-size-xlarge);
-    line-height: 1;
+
+  .user-links .settings .logout-button-component,
+  .user-links .collection-item-button {
+    margin: 0 0.5rem;
+    width: auto;
+    font-size: 18px;
+    white-space: nowrap;
   }
 
-  .user-links .collection-item-button {
-    margin: 1rem;
-    width: auto;
-    font-size: var(--font-size-xlarge);
-    white-space: nowrap;
-    line-height: 1;
+  .user-links .divider {
+    height: 10px;
   }
 
   /* //////////////////////////////ANIMATION CONTAINER/////////////////////////////////// */
@@ -406,6 +406,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+  }
+
+  .collection {
+    margin-top: 1rem;
   }
 
 }

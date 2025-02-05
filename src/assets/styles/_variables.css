@@ -50,7 +50,7 @@
   --header-footer-color: #060030;
   --primary-color: #000000;
   --secondary-color: #ccc;
-  --usermenu-header-color:#000A21;
+  --usermenu-header-color:#000a2111;
 
   /* button colors */
   --button-active-color: #630000;
@@ -107,7 +107,7 @@
   --background-color: linear-gradient(-90deg, #000A21 0%, #25272b 100%);
   --primary-color: #ffffff;
   --secondary-color: #5e66ff;
-  --usermenu-header-color: #000A21;
+  --usermenu-header-color:#000a2167;
 
   --font-primary-color: #ffffff;
   --font-primary-color-transparent: #ffffff84;

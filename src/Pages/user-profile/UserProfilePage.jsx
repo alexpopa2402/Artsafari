@@ -73,7 +73,6 @@ const UserProfile = () => {
     <div className="user-page">
       <div className="profile-section">
         <div className='profile-info'>
-          <label htmlFor="avatar" className="avatar-label">
             <div className="profile-avatar-circle">
               <div className='profile-picture'>
                 {profile.avatar_url ? (
@@ -83,7 +82,6 @@ const UserProfile = () => {
                 )}
               </div>
             </div>
-          </label>
           <div className="profile-text-container">
             <div className='profile-greeting'>{profile.full_name || 'User'}</div>
             <div className='profile-details'>
