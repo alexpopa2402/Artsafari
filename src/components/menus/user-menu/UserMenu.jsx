@@ -69,7 +69,7 @@ const UserMenu = () => {
             <button className="fa fa-user" onClick={() => setIsOpen(!isOpen)}></button>
 
             {isOpen && (
-                <div className="dropdown-content">
+                    <div className={`dropdown-content ${isOpen ? 'show' : ''}`}>
                     <div className="animation-container"></div>
                     <div className="animation-container"></div>
                     <div className="animation-container"></div>

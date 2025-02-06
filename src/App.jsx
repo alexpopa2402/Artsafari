@@ -22,12 +22,12 @@ const AboutPage = lazy(() => import('@pages/about/AboutPage'));
 const NotFoundPage = lazy(() => import('@pages/not-found/NotFoundPage'));
 
 // Auth-protected components
-import UploadFormPage from '@pages/upload-form/UploadFormPage';
+import ArtworkUploadPage from '@pages/artwork-upload/ArtworkUploadPage';
 import UserProfilePage from '@pages/user-profile/UserProfilePage';
 import EditProfilePage from '@pages/settings/edit-profile/EditProfilePage';
 import EditAccountPage from '@pages/settings/edit-account/EditAccountPage';
 import SettingsPage from '@pages/settings/SettingsPage';
-const ResetPasswordPage = lazy(() => import('@pages/reset-password/ResetPasswordPage'));
+const ResetPasswordPage = lazy(() => import('@pages/password-reset/ResetPasswordPage'));
 
 
 
@@ -50,10 +50,11 @@ export default function App() {
             <Route path="/artists" element={<ArtistsPage />} />
             <Route path="/about" element={<Suspense fallback={<Spinner />}><AboutPage /></Suspense>} />
             <Route path="/artwork/:slug" element={<ArtworkDetailPage />} />
-            <Route path="*" element={<Suspense fallback={<Spinner />}><NotFoundPage /></Suspense>} />
+{/*             <Route path="/artwork/:slug/edit" element={<EditArtworkPage />} />
+ */}            <Route path="*" element={<Suspense fallback={<Spinner />}><NotFoundPage /></Suspense>} />
 
             <Route element={<ProtectedRoute />}>
-              <Route path="/upload-artwork" element={<UploadFormPage />} />
+              <Route path="/upload-artwork" element={<ArtworkUploadPage />} />
               <Route path="/profile" element={<UserProfilePage />} />
               <Route path="/settings" element={<SettingsPage />}>
                 <Route index element={<Navigate to="edit-profile" />} />

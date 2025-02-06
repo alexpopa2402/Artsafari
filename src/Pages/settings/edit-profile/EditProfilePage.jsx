@@ -3,8 +3,10 @@ import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { getAvatarUrl } from '@utils/storageHelpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import './EditProfilePage-style.css';
 
 import DOMPurify from 'dompurify';
+
 
 export default function EditProfilePage() {
   const [profile, setProfile] = useState({

@@ -53,106 +53,18 @@ align-items: center;
   flex-grow: 1;
 }
 
-.settings-page .form-layout, .settings-page .account-layout {
+.settings-page .form-layout {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.settings-page .form-group {
-  margin-bottom: 15px;
-}
-
-.settings-page input, textarea {
+.settings-page .tab-content input, textarea {
   width: 100%;
   padding: 8px;
-  background: var(--background-color);
-  color: var(--font-primary-color);
 }
 
-.settings-page .form-group .avatar-group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-
-
-.settings-page .select-avatar-text {
-  font-size: var(--font-size-intermediate);
-  color: var(--font-primary-color);
-  cursor: pointer;
-  white-space: nowrap;
-}
-.settings-page .delete-avatar-text {
-  font-size: var(--font-size-small);
-  color: var(--font-accent-color);
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.select-avatar-text:hover, .delete-avatar-text:hover {
-  text-decoration: underline;
-}
-
- #about {
-  resize: none;
-  height: 300px;
-}
-
-.save-button {
-  display: flex;
-  width: 100%;
-  height: 45px;
-  border-radius: var(--border-radius-small);
-  cursor: pointer;
-  margin-top: 20px;
-  justify-content: center;
-}
-
-.save-button:disabled {
-  background: var(--secondary-color);
-  cursor: not-allowed;
-}
-
-.avatar-circle {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--background-color);
-  text-align: center;
-}
-
-.empty-avatar-circle {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  border: 1px solid var(--border-color);
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
-
-.avatar-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  text-align: center;
-  align-content: center;
-  font-size: var(--font-size-small);
-}
-
-
-/* edit profile page styles */
-
-.success-popup {
+.settings-page .success-popup {
   position: fixed;
   bottom: 0px;
   left: 50%;
@@ -165,7 +77,7 @@ align-items: center;
   z-index: 100;
 }
 
-.error-popup {
+.settings-page .error-popup {
   position: fixed;
   bottom: 0px;
   left: 50%;
@@ -199,54 +111,10 @@ align-items: center;
   margin-left: 10px;
 }
 
-/* edit account page styles */
-
-.edit-account-page {
-  max-width: 1000px;
-  background: var(--background-color);
-  color: var(--font-primary-color);
-}
-
-.email-reset-form,
-.password-reset-form {
-margin-bottom: 15px;
-position: relative;
-}
-
-.email-reset-form label,
-.password-reset-form label {
-display: block;
-position: absolute;
-top: -10px;
-left: 10px;
-background: var(--background-color);
-padding: 0 5px;
-font-size: var(--font-size-small);
-pointer-events: none;
-z-index: 1;
-border-radius: var(--border-radius-medium);
-}
-
-.email-reset-form input,
-.password-reset-form input {
-width: 100%;
-padding: var(--padding-medium);
-border: 1px solid var(--border-color);
-border-radius: var(--border-radius);
-outline: none;
-box-sizing: border-box;
-background: var(--background-color);
-}
-
-.email-reset-form input::placeholder,
-.password-reset-form input::placeholder,
-textarea::placeholder {
-font-size: var(--font-size-medium);
-}
-
 
 /* media queries */
 @media (max-width: 400px) {
+
   .settings-title {
     font-size: var(--font-size-xlarge);
   }
@@ -262,7 +130,8 @@ font-size: var(--font-size-medium);
     font-size: var(--font-size-medium);
   }
 
-  .account-layout button {
+  .settings-page .tab-content input, 
+  .settings-page .tab-content textarea {
     font-size: var(--font-size-medium);
   }
 }

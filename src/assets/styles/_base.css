@@ -92,7 +92,7 @@ input, textarea {
   font-family: inherit;
   background: transparent;
   color: var(--font-primary-color);
-  cursor: pointer;
+  cursor: text;
   transition: transform 0.2s, background-color 0.2s, color 0.2s;
   white-space: normal;
   word-wrap: break-word;
@@ -115,7 +115,7 @@ label {
   padding: 0 5px;
   font-size: var(--font-size-small);
   pointer-events: none;
-  z-index: 100;
+  z-index: 10;
   border-radius: var(--border-radius-small);
 /*   margin-left: 10px; */
 }

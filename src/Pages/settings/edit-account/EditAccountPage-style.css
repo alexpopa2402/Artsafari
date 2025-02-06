@@ -1,0 +1,16 @@
+/* edit account page styles */
+.edit-account-page {
+    max-width: 1000px;
+  }
+  
+.edit-account-page button,
+.edit-account-page input,
+.edit-account-page h2 {
+    margin-bottom: 20px;
+    background: none;
+    width: 100%;
+  }
+
+  .edit-account-page label {
+    margin-left: 10px;
+  }

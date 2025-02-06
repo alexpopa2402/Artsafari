@@ -68,6 +68,7 @@ const LoginModal = ({ setPopupType }) => { // setPopupType is a function that ch
                     <input
                         type="email"
                         id="email"
+                        placeholder='Enter your email address'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         ref={emailRef}

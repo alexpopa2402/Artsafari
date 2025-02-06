@@ -3,22 +3,62 @@
     width: 100%;
     background: var(--card-background-color);
     color: var(--font-primary-color);
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    max-width: 1000px;
+/*     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); */
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.upload-artwork h2 {
-    text-align: center;
+.home-link {
+    width: 100%;
+    color: var(--font-accent-color);
+    font-family: var(--ff-jomhuria);
+    line-height: 1;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 0 40px;
+}
+
+.upload-header-wrapper-sticky {
+    position: sticky;
+    top: 0;
     margin-bottom: 20px;
+    z-index: 100;
+    box-shadow: 0 5px 6px rgba(199, 199, 199, 0.1); /* Add this line for the box shadow */
+}
+
+.upload-header-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+    padding: 0 40px;
+    background: var(--card-background-color);
+
+}
+
+.upload-header-buttons .back-button {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.upload-footer-wrapper-sticky .artwork-submit-button {
+    display: none;
+}
+
+
+.upload-artwork h2 {
+/*     text-align: center; */
+    margin-bottom: 40px;
 }
 
 .upload-artwork .form-container {
     flex-grow: 1;
     align-content: space-evenly;
+    padding: 0 40px;
+    margin-bottom: 20px;
 }
 
 .upload-artwork .form-group {
@@ -164,58 +204,6 @@
     margin: 0 var(--margin-large);
 }
 
-.artwork-submit-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background: var(--secondary-color);
-    color: var(--font-primary-opposite-color);
-    border: none;
-    border-radius: var(--border-radius-small);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.artwork-submit-button:disabled {
-    background: var(--button-disabled-color);
-    color: var(--font-secondary-color);
-    cursor: not-allowed;
-    transform: none; 
-}
-
-/* .artwork-submit-button:disabled:hover {
-    background: grey;
-    cursor: not-allowed;
-    pointer-events: none;
-    opacity: 0.6;
-    transform: none; 
-  } */
-
-.completion-bar {
-    height: 100%;
-    background: var(--secondary-color);
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: width 0.3s ease;
-    z-index: 1;
-    /* Ensure the completion bar is below the button text */
-}
-.completion-bar.exceeded {
-    background: rgba(255, 0, 0, 0.397);
-  }
-
-  .completion-bar.valid {
-    background: green;
-  }
-
-button span {
-    position: relative;
-    z-index: 2;
-    /* Ensure the button text is above the completion bar */
-}
-
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -261,6 +249,7 @@ button span {
 }
 
 @media (max-width: 600px) {
+    
     .form-grid {
         grid-template-columns: 1fr;
     }
@@ -277,6 +266,40 @@ button span {
     .form-group {
         grid-column: span 1;
     }
+
+    
+    .upload-header-buttons,
+    .upload-artwork .form-container,
+    .home-link {
+        padding: 0 20px;
+    }
+
+    .upload-header-buttons .artwork-submit-button{
+        display: none;
+    }
+
+    .upload-footer-wrapper-sticky{
+        display: flex;
+        position: sticky;
+        bottom: 0;
+        background: var(--card-background-color);
+        height: 80px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        z-index: 100;
+        box-shadow: 0 -4px 6px rgba(199, 199, 199, 0.1); /* Add this line for the box shadow */
+    }
+    .upload-footer-wrapper-sticky .artwork-submit-button {
+        display: block;
+        width: 100%;
+        margin: 0 20px;
+    }
+    .success-popup, 
+    .error-popup {
+            transform: translate(-50%,-80%);
+            transform: translate(-50%, 0%);
+      }
 }
 
 .select-wrapper {
@@ -331,26 +354,26 @@ select {
 
 .success-popup {
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%,-80%);
     background: rgb(69, 187, 98);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    animation: slideUp 0.5s forwards, fadeOut 0.5s 1.5s forwards;
+    animation: slideUp 0.5s forwards, fadeOut 0.5s 3s forwards;
     z-index: 100;
   }
   
   .error-popup {
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%,-80%);
     background: #ff4500;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    animation: slideUp 0.5s forwards, fadeOut 0.5s 1.5s forwards;
+    animation: slideUp 0.5s forwards, fadeOut 0.5s 3s forwards;
     z-index: 100;
   }

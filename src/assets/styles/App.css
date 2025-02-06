@@ -10,6 +10,9 @@
   margin-top: 80px;
 }
 
+.central-container.no-margin { /* this is used to remove the margin top when on the upload artwork component */
+  margin-top: 0;
+}
 
 @media (min-width: 992px) {
   .central-container {

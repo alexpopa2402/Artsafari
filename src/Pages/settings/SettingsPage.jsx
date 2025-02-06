@@ -1,9 +1,9 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import './SettingsPage-style.css';
 import BackButton from '@components/buttons/back-button/BackButton';
 import DarkThemeButton from '@components/buttons/theme-button/DarkThemeButton';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 import { useUser } from '@supabase/auth-helpers-react';
+import './SettingsPage-style.css';
 
 const SettingsPage = () => {
 

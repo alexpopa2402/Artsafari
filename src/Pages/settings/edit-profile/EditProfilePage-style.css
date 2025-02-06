@@ -1,0 +1,67 @@
+.settings-page .form-group .avatar-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .settings-page .select-avatar-text {
+    font-size: var(--font-size-intermediate);
+    color: var(--font-primary-color);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .settings-page .delete-avatar-text {
+    font-size: var(--font-size-small);
+    color: var(--font-accent-color);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .select-avatar-text:hover, .delete-avatar-text:hover {
+    text-decoration: underline;
+  }
+  
+   #about {
+    height: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .save-button:disabled {
+    background: var(--secondary-color);
+    cursor: not-allowed;
+  }
+  
+  .avatar-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background-color);
+    text-align: center;
+  }
+  
+  .empty-avatar-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    text-align: center;
+    align-content: center;
+    font-size: var(--font-size-small);
+  }
