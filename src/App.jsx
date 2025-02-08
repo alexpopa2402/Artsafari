@@ -40,9 +40,8 @@ export default function App() {
   console.log('Rendering App component');
 
   return (
-    <>
-      <MainLayout>
-        <ResettableErrorBoundary>
+    <MainLayout>
+          <ResettableErrorBoundary>
           <Routes>
             <Route path="/reset-password" element={<Suspense fallback={<Spinner />}><ResetPasswordPage /></Suspense>} />
             <Route path="/" element={<HomePage />} />
@@ -66,6 +65,5 @@ export default function App() {
           </Routes>
         </ResettableErrorBoundary>
       </MainLayout>
-    </>
   );
 }
