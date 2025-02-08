@@ -8,7 +8,7 @@ const MainLayout = ({ children }) => {
   const isUploadPage = location.pathname === '/upload-artwork';
   return (
     <>
-      {!isUploadPage && <Header />}
+{/*       {!isUploadPage && <Header />} */}
       <div className={`central-container ${isUploadPage ? 'no-margin' : ''}`}>
         {children}
       </div>

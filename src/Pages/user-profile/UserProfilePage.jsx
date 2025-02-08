@@ -1,4 +1,38 @@
-import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { fetchProfile } from '@api/fetchSingleProfile'
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
+
+const UserProfile = () => {
+  const supabase = useSupabaseClient();
+  const user = useUser();
+
+  const { data: fetchedProfile, isLoading, error } = useQuery({
+    queryKey: ['profile', user.id],
+    queryFn: () => fetchProfile(supabase, user.id),
+    staleTime: 1000 * 60 * 5,
+    refetchOnWindowFocus: false,
+    enabled: !!user,
+    onSuccess: (data) => {
+      console.log('Fetched profile:', data);
+    },
+  });
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading profile</p>;
+
+  if (!fetchedProfile) return <p>No profile data found</p>;
+
+  return (
+    <div>
+      <h1>{fetchedProfile.full_name}</h1>
+      <img src={fetchedProfile.avatar_url} alt="avatar" />
+    </div>
+  );
+};
+
+export default UserProfile;
+
+/* import { useState, useEffect } from 'react';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -128,4 +162,4 @@ const UserProfile = () => {
 };
 console.log('Rendering User Profile component');
 
-export default UserProfile;
+export default UserProfile; */
