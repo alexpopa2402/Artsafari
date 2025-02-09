@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useFetchSingleProfile } from '@hooks/api/useFetchSingleProfile';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
@@ -16,39 +16,11 @@ import './UserMenu-style.css';
 
 const UserMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [profile, setProfile] = useState(null);
-
-    const user = useUser();
-    const supabaseClient = useSupabaseClient();
+    const { data: profile} = useFetchSingleProfile();
 
     const menuRef = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
-
-
-    useEffect(() => {
-        console.log('UserMenu: useEffect');
-        const fetchProfile = async () => {
-            if (!user) {
-                return;
-            }
-            const { data, error } = await supabaseClient
-                .from('profiles')
-                .select('*')
-                .eq('id', user.id)
-                .single();
-
-            if (error) {
-                setProfile(null);
-                console.log(error);
-            } else {
-                setProfile(data);
-            }
-        };
-
-        fetchProfile();
-    }, [user, supabaseClient]);
-
 
     // Lock the scroll when the user menu is open
     useGlobalScrollLock(isOpen);

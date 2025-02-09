@@ -27,15 +27,7 @@ const HamburgerMenu = () => {
   // Trap focus within the hamburger menu when it is open
   useFocusTrap(menuRef, isOpen);
 
-  /*   const handleLogout = async () => {
-      const { error } = await supabaseClient.auth.signOut();
-      if (error) {
-        console.error('Error logging out:', error.message);
-        return false;
-      }
-      return true;
-    }; */
-
+ // Function to handle navigation and close the hamburger menu
   const handleNavigate = (path) => {
     navigate(path);
     setIsOpen(false);

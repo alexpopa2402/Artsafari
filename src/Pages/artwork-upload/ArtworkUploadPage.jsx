@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import BackButton from '@components/buttons/back-button/BackButton';
 import UploadButton from '@components/buttons/upload-button/UploadButton';
-/* import ButtonSpinner from '@components/loading-skeletons/ButtonSpinner/ButtonSpinner'; */
 
 import './ArtworkUploadPage-style.css'
 
@@ -14,6 +13,7 @@ const UploadImages = () => {
     const user = useUser();
     const navigate = useNavigate();
 
+    // state variables for form data and upload status
     const [files, setFiles] = useState([]);
     const [isUploading, setIsUploading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -26,36 +26,13 @@ const UploadImages = () => {
     const [width, setWidth] = useState('');
     const [depth, setDepth] = useState('');
     const [notes, setNotes] = useState('');
-
+    // state variables for file previews and validation
     const [previews, setPreviews] = useState([]);
     const [totalSize, setTotalSize] = useState(0);
     const [invalidFileFormat, setInvalidFileFormat] = useState(false);
     const CDNURL = 'https://lnaxrtumnyzyegjcwlcs.supabase.co/storage/v1/object/public/artworks/';
 
-    const handleFileChange = (e) => {
-        const selectedFiles = Array.from(e.target.files);
-        const supportedFormats = ['image/jpeg', 'image/png', 'image/heic', 'image/webp'];
-        const validFiles = [];
-        let newTotalSize = totalSize;
-
-        selectedFiles.forEach(file => {
-            if (supportedFormats.includes(file.type)) {
-                const isDuplicate = files.some(existingFile => existingFile.name === file.name && existingFile.size === file.size);
-                if (!isDuplicate) {
-                    validFiles.push(file);
-                    newTotalSize += file.size;
-                }
-            } else {
-                setInvalidFileFormat(true);
-                setTimeout(() => setInvalidFileFormat(false), 3000);
-            }
-        });
-
-        setFiles([...files, ...validFiles]);
-        setTotalSize(newTotalSize);
-        setPreviews([...previews, ...validFiles.map(file => URL.createObjectURL(file))]);
-    };
-
+    // function for handling file drop
     const handleDrop = (e) => {
         e.preventDefault();
         const newFiles = Array.from(e.dataTransfer.files);
@@ -69,10 +46,35 @@ const UploadImages = () => {
         setTotalSize(newTotalSize);
     };
 
+    // function for handling file input change
+    const handleFileChange = (e) => {
+        const selectedFiles = Array.from(e.target.files);
+        const supportedFormats = ['image/jpeg', 'image/png', 'image/heic', 'image/webp']; 
+        const validFiles = [];
+        let newTotalSize = totalSize; 
+
+        selectedFiles.forEach(file => {
+            if (supportedFormats.includes(file.type)) { //first check if the file format is supported
+                const isDuplicate = files.some(existingFile => existingFile.name === file.name && existingFile.size === file.size); // then check for duplicate files based on name and size and prevent adding them
+                if (!isDuplicate) {
+                    validFiles.push(file);
+                    newTotalSize += file.size;
+                }
+            } else {
+                setInvalidFileFormat(true); // Show error message if file format is not supported
+                setTimeout(() => setInvalidFileFormat(false), 3000); // Show error message for 3 seconds
+            }
+        });
+
+        setFiles([...files, ...validFiles]);
+        setTotalSize(newTotalSize);
+        setPreviews([...previews, ...validFiles.map(file => URL.createObjectURL(file))]);
+    };
+    // function for removing a file from the list before upload 
     const handleRemoveFile = (index) => {
-        const removedFileSize = files[index].size;
-        const newFiles = files.filter((_, i) => i !== index);
-        const newPreviews = previews.filter((_, i) => i !== index);
+        const removedFileSize = files[index].size; // Get the size of the file being removed
+        const newFiles = files.filter((_, i) => i !== index); // Remove the file from the list
+        const newPreviews = previews.filter((_, i) => i !== index); // Remove the preview from the list
         setFiles(newFiles);
         setPreviews(newPreviews);
         setTotalSize(totalSize - removedFileSize);
@@ -80,7 +82,7 @@ const UploadImages = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!files.length || !user) return;
+        if (!files.length || !user) return; // redundancy check
         setIsUploading(true);
         setError(null);
         setSuccess(false);
@@ -120,7 +122,7 @@ const UploadImages = () => {
                     setSuccess(true);
                     setTimeout(() => {
                         navigate('/profile');
-                      }, 3000);
+                      }, 3000); // Redirect to profile page after 3 seconds, gives time for success message to show
                 }
             }
 
@@ -134,10 +136,11 @@ const UploadImages = () => {
             setTotalSize(0);
         }
     };
+    // will only allow numeric input for year, height, width, and depth, while allowing some special keys. 
+    // Tab is especially allowed to enable tab navigation between fields
 
     const handleNumericInput = (e) => {
         const charCode = e.keyCode || e.which;
-        // allows backspace, delete, arrow keys, ecc.
         if (
             charCode === 8 || // Backspace
             charCode === 46 || // Delete
@@ -151,7 +154,8 @@ const UploadImages = () => {
         }
         e.preventDefault();
     };
-    // Handle year input
+
+    // will only allow 4 digits for year
     const handleYearChange = (e) => {
         const value = e.target.value;
         if (value.length <= 4 && !/^0/.test(value)) {
@@ -159,6 +163,7 @@ const UploadImages = () => {
         }
     };
 
+    // will not allow form submission if any of the required fields are missing
     const isFormValid = () => {
         return (
             title &&
@@ -173,6 +178,7 @@ const UploadImages = () => {
         );
     };
 
+    // calculate upload completion percentage, useful for progress bar
     const completionPercentage = (totalSize / (5 * 1024 * 1024)) * 100;
 
     return (
@@ -198,7 +204,7 @@ const UploadImages = () => {
                 <h2>Upload Your Artwork</h2>
                 <div className="form-grid">
                     <div className="form-group">
-                        <label id="title" htmlFor="title">Title*</label>
+                        <label htmlFor="title">Title*</label>
                         <input type="text" maxLength="50" value={title} onChange={(e) => setTitle(e.target.value)} required />
                     </div>
                     <div className="form-group">

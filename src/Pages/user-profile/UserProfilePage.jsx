@@ -1,40 +1,27 @@
-import { useQuery } from '@tanstack/react-query';
-import { fetchProfile } from '@api/fetchSingleProfile'
-import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
+/* import { useFetchProfile} from '@hooks/api/useFetchSingleProfile';
 
 const UserProfile = () => {
-  const supabase = useSupabaseClient();
-  const user = useUser();
 
-  const { data: fetchedProfile, isLoading, error } = useQuery({
-    queryKey: ['profile', user.id],
-    queryFn: () => fetchProfile(supabase, user.id),
-    staleTime: 1000 * 60 * 5,
-    refetchOnWindowFocus: false,
-    enabled: !!user,
-    onSuccess: (data) => {
-      console.log('Fetched profile:', data);
-    },
-  });
+  const { data: profile, isLoading, error } = useFetchSingleProfile();
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading profile</p>;
-
-  if (!fetchedProfile) return <p>No profile data found</p>;
+  if (isLoading) return <div>Loading profile...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
-      <h1>{fetchedProfile.full_name}</h1>
-      <img src={fetchedProfile.avatar_url} alt="avatar" />
+      <h1>{profile.full_name}</h1>
+      <img src={profile.avatar_url} alt="Profile" />
     </div>
   );
 };
 
-export default UserProfile;
+export default UserProfile; */
 
 /* import { useState, useEffect } from 'react';
-import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'; */
 import { useNavigate } from 'react-router-dom';
+import { useFetchSingleProfile } from '@hooks/api/useFetchSingleProfile';
+import { useFetchArtworks } from '@hooks/api/useFetchArtworks';
 
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 import ArtworkCard from '@components/UI/artwork-card/ArtworkCard';
@@ -42,66 +29,38 @@ import ArtworkCard from '@components/UI/artwork-card/ArtworkCard';
 import './UserProfilePage-style.css';
 
 const UserProfile = () => {
-  const [profile, setProfile] = useState(null);
+/*   const [profile, setProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState(null);
-  const [artworks, setArtworks] = useState([]);
+  const [artworks, setArtworks] = useState([]); */
 
-  const user = useUser();
-  const supabase = useSupabaseClient();
+/*   const user = useUser();
+  const supabase = useSupabaseClient(); */
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!user) {
-        setFetchError('User not authenticated');
-        setIsLoading(false);
-        return;
-      }
+  const { data: profile, isLoading: profileLoading, error: profileError } = useFetchSingleProfile();
+  const {
+    data: artworksData,
+    isLoading: artworksLoading,
+    error: artworksError,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useFetchArtworks();
 
-      try {
-        // Fetch the profile using the user's ID
-        const { data: profileData, error: profileError } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', user.id)
-          .single(); // Use .single() to get a single profile
-
-        if (profileError) {
-          setFetchError('Could not fetch profile data');
-          setProfile(null);
-          console.log(profileError);
-        } else {
-          setProfile(profileData);
-          setFetchError(null);
-        }
-
-        // Fetch the artworks using the user's ID
-        const { data: artworksData, error: artworksError } = await supabase
-          .from('artworks')
-          .select('*')
-          .eq('user_id', user.id);
-
-        if (artworksError) {
-          console.error('Error fetching artwork:', artworksError);
-        } else {
-          setArtworks(artworksData);
-        }
-      } catch (error) {
-        setFetchError('An error occurred while fetching data');
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [user, supabase]);
-
-  if (isLoading) {
-    return <Spinner />
+  if (profileLoading || artworksLoading) {
+    return <Spinner />;
   }
-  if (fetchError) return <p>{fetchError}</p>;
+
+  if (profileError) {
+    return <p>Error fetching profile: {profileError.message}</p>;
+  }
+
+  if (artworksError) {
+    return <p>Error fetching artworks: {artworksError.message}</p>;
+  }
+
+  const artworks = artworksData?.pages.flat() || [];
 
   return (
     <div className="user-page">
@@ -157,9 +116,18 @@ const UserProfile = () => {
           </div>
         )}
       </div>
+      {hasNextPage && (
+          <button
+            className="load-more-button"
+            onClick={() => fetchNextPage()}
+            disabled={isFetchingNextPage}
+          >
+            {isFetchingNextPage ? 'Loading more...' : 'Load More'}
+          </button>
+        )}
     </div>
   );
 };
 console.log('Rendering User Profile component');
 
-export default UserProfile; */
+export default UserProfile;

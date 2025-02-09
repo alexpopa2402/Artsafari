@@ -1,62 +1,39 @@
-import { useState, useEffect } from 'react';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import ArtistCard from '@components/UI/artist-card/ArtistCard';
 import './ArtistsPage-style.css';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
+import { useFetchAllProfiles } from '@hooks/api/useFetchAllProfiles';
 
 const ArtistsPage = () => {
-  const [artists, setArtists] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [fetchError, setFetchError] = useState(null);
 
-  const supabase = useSupabaseClient();
+  const { data, isLoading, error, fetchNextPage, hasNextPage } = useFetchAllProfiles();
 
-  useEffect(() => {
-    const fetchArtists = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('profiles')
-          .select('*');
-
-        if (error) {
-          setFetchError('Error fetching artist data');
-          setArtists([]);
-        } else {
-          setArtists(data);
-        }
-      } catch (error) {
-        setFetchError('An error occurred while fetching artist data');
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchArtists();
-  }, [supabase]);
-
-  if (loading) {
+  if (isLoading) {
     return <Spinner />;
   }
 
-  if (fetchError) {
-    return <p>{fetchError}</p>;
-  }
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="artists-page">
       <div className="artist-cards-container">
-        {artists.map((artist) => (
-          <ArtistCard
-            key={artist.id}
-            name={artist.full_name}
-            description={artist.about}
-            imageUrl={artist.avatar_url}
-            profession={artist.profession}
-            positions={artist.positions}
-          />
-        ))}
+        {data.pages.map((page) =>
+          page.map((artist) => (
+            <ArtistCard
+              key={artist.id}
+              name={artist.full_name}
+              description={artist.about}
+              imageUrl={artist.avatar_url}
+              profession={artist.profession}
+              positions={artist.positions}
+            />
+          ))
+        )}
       </div>
+      {hasNextPage && (
+        <button onClick={() => fetchNextPage()} className="load-more-button">
+          Load More
+        </button>
+      )}
     </div>
   );
 };

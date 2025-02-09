@@ -22,7 +22,7 @@ const AboutPage = lazy(() => import('@pages/about/AboutPage'));
 const NotFoundPage = lazy(() => import('@pages/not-found/NotFoundPage'));
 
 // Auth-protected components
-import ArtworkUploadPage from '@pages/artwork-upload/ArtworkUploadPage';
+import ArtworkUploadPage from '@pages/artwork-upload/ArtworkUploadPageTs';
 import UserProfilePage from '@pages/user-profile/UserProfilePage';
 import EditProfilePage from '@pages/settings/edit-profile/EditProfilePage';
 import EditAccountPage from '@pages/settings/edit-account/EditAccountPage';
