@@ -179,7 +179,12 @@
     margin: auto;
 }
 
-
+.load-more-button {
+    width: clamp(200px, 50%, 300px);
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
 
 
 
@@ -195,14 +200,7 @@
     }
 }
 
-/* Media Queries for user profile section */
-
-/* @media (min-width: 461px) {
-    .profile-section {
-        margin: 0 1rem 0 0;
-        justify-content: space-between;
-    }
-} */
+/* Media Queries */
 
 
 @media (min-width: 992px) {

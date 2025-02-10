@@ -54,18 +54,18 @@
 
   /* button colors */
   --button-active-color: #630000;
-  --button-disabled-color: #999999;
+  --button-disabled-color: rgb(194, 194, 194);
   --button-hover-color: #000000;
 
   /* card colors */
-  --card-background-color: #ffffff;
+  --card-background-color: #ebebebaa;
 
   /* corner colors */
   --corner-color: #ccc;
   --folded-corner-color: #fff;
   /* border colors */
   --border-color: #cccccc;
-  --border-color-transparent: rgba(209, 207, 207, 0.592);
+  --border-color-transparent: rgba(201, 12, 12, 0.592);
   /* animation colors */
   --animation-color-one: #ffffff;
   --animation-color-two: #00000041;
@@ -116,8 +116,8 @@
   --font-accent-color: #C3FF1C;
 
   --button-active-color: #000000;
-  --button-hover-color: #060524;
-  --button-disabled-color: #d4d4d4;
+  --button-hover-color: #3339b4;
+  --button-disabled-color: rgb(194, 194, 194);
 
   --card-background-color: #111;
   --corner-color: #171c79;

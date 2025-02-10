@@ -25,6 +25,7 @@ const UploadImages = () => {
   const supabase = useSupabaseClient();
   const user = useUser();
   const navigate = useNavigate();
+  const [isDragging, setIsDragging] = useState(false);
 
   // Consolidated form state
   const [formData, setFormData] = useState<ArtworkFormData>({
@@ -114,7 +115,7 @@ const UploadImages = () => {
         const batch = uploadQueue.splice(0, MAX_CONCURRENT_UPLOADS);
         const results = await Promise.all(
           batch.map(file => {
-            const filePath = `${user.id}/${uuidv4()}_${sanitizeFileName(file.name)}`;
+            const filePath = `${user.id}/${uuidv4()}`;
             return supabase.storage
               .from("artworks")
               .upload(filePath, file)
@@ -130,18 +131,17 @@ const UploadImages = () => {
       }
 
       // Save artwork data
+      const CDNURL = "https://lnaxrtumnyzyegjcwlcs.supabase.co/storage/v1/object/public/artworks/";
       const { error } = await supabase.from("artworks").insert({
         ...formData,
         user_id: user.id,
-        image_urls: uploadedPaths.map(path =>
-          `https://lnaxrtumnyzyegjcwlcs.supabase.co/storage/v1/object/public/artworks/${path}`
-        )
+        image_urls: uploadedPaths.map(path => `${CDNURL}${path}`)
       });
 
       if (error) throw error;
 
       setStatus({ loading: false, error: '', success: true });
-      setTimeout(() => navigate('/profile'), 3000);
+      navigate('/profile');
     } catch (err) {
       setStatus(prev => ({ ...prev, error: err instanceof Error ? err.message : 'Upload failed' }));
     } finally {
@@ -180,7 +180,7 @@ const UploadImages = () => {
             loading={status.loading}
             disabled={!isFormValid}
             totalSize={totalSize}
-            progress={(totalSize / MAX_FILE_SIZE) * 100}
+            completionPercentage={(totalSize / MAX_FILE_SIZE) * 100}
           />
         </div>
       </div>
@@ -323,45 +323,54 @@ const UploadImages = () => {
                         <label htmlFor="notes">Notes</label>
                         <textarea 
                           id="notes" 
-                          maxLength={500} 
-                          placeholder="max 500 characters" 
+                          maxLength={1000} 
+                          placeholder="max 1000 characters" 
                           value={formData.notes} 
                           onChange={handleInputChange('notes')}>
                         </textarea>
-                    </div>
-                    <label className="required-label" htmlFor="required">* Required</label>
+          </div>
+          <label className="required-label" htmlFor="required">* Required</label>
 
           {/* File Upload Section */}
-          <div className="form-group form-group-upload">
+          <div className="form-group form-group-upload full-width">
             <label htmlFor="photos">Upload Photos</label>
             <div
-              className="drop-zone"
+              className={`drop-zone ${isDragging ? 'dragging' : ''}`}
+              onDragEnter={() => setIsDragging(true)}
+              onDragLeave={() => setIsDragging(false)}
               onDrop={e => {
                 e.preventDefault();
+                e.stopPropagation();
+                setIsDragging(false);
                 handleFileAdd(Array.from(e.dataTransfer.files));
               }}
-              onDragOver={e => e.preventDefault()}
+              onDragOver={e => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
               aria-describedby="upload-instructions"
             >
-                Drag and drop photos here
+              {isDragging ? 'Drop to upload' : 'Drag and drop photos here'}       
+                <input
+                  type="file"
+                  id="photos"
+                  accept={SUPPORTED_MIME_TYPES.join(',')}
+                  multiple
+                  onChange={e => handleFileAdd(Array.from(e.target.files || []))}
+                  hidden
+              />
               <span>Supported formats: JPG, PNG, HEIC, WEBP</span> 
               <span>Max total size: {MAX_FILE_SIZE / 1024 / 1024}MB</span>
               <span>You&apos;re currently at: {totalSize > 0 ? (totalSize / 1024).toFixed(2) : 0} KB</span>
-              <input
-                type="file"
-                id="photos"
-                accept={SUPPORTED_MIME_TYPES.join(',')}
-                multiple
-                onChange={e => handleFileAdd(Array.from(e.target.files || []))}
-                hidden
-              />
-              <button
-                type="button"
-                className="add-artwork-button"
-                onClick={() => document.getElementById('photos')?.click()}
-              >
-                Or Add Photos
-              </button>
+              <div className="file-button-container">
+                <button
+                  type="button"
+                  className="add-artwork-button"
+                  onClick={() => document.getElementById('photos')?.click()}
+                >
+                  Or Add Photos
+                </button>
+              </div>
             </div>
 
             {/* File Previews */}
@@ -383,7 +392,7 @@ const UploadImages = () => {
               loading={status.loading}
               disabled={!isFormValid}
               totalSize={totalSize}
-              progress={(totalSize / MAX_FILE_SIZE) * 100}
+              completionPercentage={(totalSize / MAX_FILE_SIZE) * 100}
             />
         </div>
     </form>
@@ -410,42 +419,8 @@ const FilePreview = ({ preview, file, onRemove }: {
       <span className="file-name">{file.name}</span>
       <span className="file-size">{(file.size / 1024).toFixed(1)}KB</span>
     </div>
-    <button
-      type="button"
-      onClick={onRemove}
-      aria-label={`Remove ${file.name}`}
-    >
-      Remove
-    </button>
+    <button type="button" onClick={onRemove} aria-label={`Remove ${file.name}`}>Remove</button>
   </div>
 );
 
-// Helper functions
-const sanitizeFileName = (name: string) =>
-  name.replace(/[^a-z0-9.]/gi, '_').toLowerCase();
-
-// Error Boundary
-class UploadErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean }> {
-  state = { hasError: false };
-
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-
-  render() {
-    return this.state.hasError ? (
-      <div role="alert" className="error-container">
-        <h2>Something went wrong</h2>
-        <button onClick={() => window.location.reload()}>
-          Try Again
-        </button>
-      </div>
-    ) : this.props.children;
-  }
-}
-
-export default () => (
-  <UploadErrorBoundary>
-    <UploadImages />
-  </UploadErrorBoundary>
-);
+export default UploadImages;

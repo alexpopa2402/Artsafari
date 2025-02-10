@@ -39,6 +39,12 @@
 
 }
 
+.upload-header-buttons .artwork-submit-button{
+    border-radius: var(--border-radius-rounded);
+    width: 300px;
+    height: 50px;
+}
+
 .upload-header-buttons .back-button {
     margin: 0;
     white-space: nowrap;
@@ -100,18 +106,21 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-small);
     font-size: small;
+    height: 50px;
 }
 
 .select-wrapper #medium {
     background: var(--card-background-color);
     color: var(--font-primary-color);
-    height: 40px;
+    height: 50px;
     position: relative;
 }
 
 .upload-artwork .form-group textarea {
     resize: vertical;
-    height: 100px;
+    height: 200px;
+    padding: 8px;
+    overflow: auto;
 }
 
 .drop-zone {
@@ -123,6 +132,12 @@
     text-align: center;
     font-size: var(--font-size-xlarge);
 }
+
+.dragging {
+    border-color: #5e66ff;
+    backdrop-filter: blur(10px);
+ 
+  }
 
 .drop-zone span {
     margin-top: 10px;
@@ -294,6 +309,8 @@
         display: block;
         width: 100%;
         margin: 0 20px;
+        border-radius: var(--border-radius-rounded);
+        height: 50px;
     }
     .success-popup, 
     .error-popup {

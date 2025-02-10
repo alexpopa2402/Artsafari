@@ -1,40 +1,21 @@
-.artwork-submit-button {
+/* .artwork-submit-button {
     display: block;
-    width: 300px;
-    padding: 10px;
     background: var(--secondary-color);
     color: var(--font-primary-opposite-color);
     border: none;
-    border-radius: var(--border-radius-rounded);
-    cursor: pointer;
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
-}
+} */
 
-.artwork-submit-button:disabled {
-    background: var(--button-disabled-color);
-    color: var(--font-secondary-color);
-    cursor: not-allowed;
-    transform: none; 
-}
-
-/* .artwork-submit-button:disabled:hover {
-    background: grey;
-    cursor: not-allowed;
-    pointer-events: none;
-    opacity: 0.6;
-    transform: none; 
-  } */
-
-.completion-bar {
+/* .completion-bar {
     height: 100%;
     background: var(--secondary-color);
     position: absolute;
     top: 0;
     left: 0;
     transition: width 0.3s ease;
-    z-index: 1;     /* Ensure the completion bar is below the button text */
+    z-index: 1;
 }
 .completion-bar.exceeded {
     background: rgba(255, 0, 0, 0.397);
@@ -46,5 +27,5 @@
 
 .artwork-submit-button span {
     position: relative;
-    z-index: 2;     /* Ensure the button text is above the completion bar */
-}
+    z-index: 2;
+} */

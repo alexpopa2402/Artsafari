@@ -1,24 +1,3 @@
-/* import { useFetchProfile} from '@hooks/api/useFetchSingleProfile';
-
-const UserProfile = () => {
-
-  const { data: profile, isLoading, error } = useFetchSingleProfile();
-
-  if (isLoading) return <div>Loading profile...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-
-  return (
-    <div>
-      <h1>{profile.full_name}</h1>
-      <img src={profile.avatar_url} alt="Profile" />
-    </div>
-  );
-};
-
-export default UserProfile; */
-
-/* import { useState, useEffect } from 'react';
-import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'; */
 import { useNavigate } from 'react-router-dom';
 import { useFetchSingleProfile } from '@hooks/api/useFetchSingleProfile';
 import { useFetchArtworks } from '@hooks/api/useFetchArtworks';
@@ -29,16 +8,11 @@ import ArtworkCard from '@components/UI/artwork-card/ArtworkCard';
 import './UserProfilePage-style.css';
 
 const UserProfile = () => {
-/*   const [profile, setProfile] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [fetchError, setFetchError] = useState(null);
-  const [artworks, setArtworks] = useState([]); */
 
-/*   const user = useUser();
-  const supabase = useSupabaseClient(); */
   const navigate = useNavigate();
 
   const { data: profile, isLoading: profileLoading, error: profileError } = useFetchSingleProfile();
+
   const {
     data: artworksData,
     isLoading: artworksLoading,

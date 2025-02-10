@@ -14,8 +14,8 @@ const DarkThemeButton: React.FC = () => {
         toggled={isDarkTheme}
         toggle={toggleTheme}
         placeholder="Toggle theme"
-        onPointerEnterCapture={() => {}}
-        onPointerLeaveCapture={() => {}}
+        onPointerEnter={() => {}}
+        onPointerLeave={() => {}}
         duration={500}
         aria-label="Toggle dark/light mode"
       />

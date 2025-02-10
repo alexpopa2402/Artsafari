@@ -5,21 +5,16 @@
     gap: 10px;
   }
   
-  .settings-page .select-avatar-text {
+  .settings-page .choose-avatar-text {
     font-size: var(--font-size-intermediate);
     color: var(--font-primary-color);
     cursor: pointer;
     white-space: nowrap;
   }
-  .settings-page .delete-avatar-text {
-    font-size: var(--font-size-small);
-    color: var(--font-accent-color);
-    cursor: pointer;
-    white-space: nowrap;
-  }
   
-  .select-avatar-text:hover, .delete-avatar-text:hover {
+  .choose-avatar-text:hover, .delete-avatar-text:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
   
    #about {
@@ -32,9 +27,9 @@
     cursor: not-allowed;
   }
   
-  .avatar-circle {
-    width: 70px;
-    height: 70px;
+  .avatar-circle, .avatar-upload-spinner-container {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
@@ -42,6 +37,7 @@
     justify-content: center;
     background: var(--background-color);
     text-align: center;
+    object-fit: cover;
   }
   
   .empty-avatar-circle {
@@ -55,13 +51,15 @@
     align-items: center;
     justify-content: center;
   }
-  
-  .avatar-circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    text-align: center;
-    align-content: center;
-    font-size: var(--font-size-small);
-  }
+
+
+.personal-data-disclaimer{
+    font-size: 14px;
+    color: var(--font-primary-color);
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    background: var(--card-background-color);
+    margin-bottom: 20px;
+    width: fit-content;
+}

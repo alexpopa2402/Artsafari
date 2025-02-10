@@ -16,6 +16,9 @@
     align-items: center;
     justify-content: center;
 /*     max-width: 756px; */
+    background: linear-gradient(to right, rgba(230, 230, 230, 0.315), rgb(230, 230, 230));
+    border-radius: var(--border-radius-small);
+    overflow: hidden;
 }
 
 .image__slider img {
@@ -119,8 +122,8 @@ margin-top: 30px;
     display: flex;
     margin-bottom: 15px;
     flex-direction: row;
-    line-height: 26px;
     hyphens: auto;
+    word-wrap: anywhere;
 }
 
 .artwork__detail__title__year {

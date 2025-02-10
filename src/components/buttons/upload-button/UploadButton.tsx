@@ -4,7 +4,7 @@ interface UploadButtonProps {
   loading: boolean;
   disabled: boolean;
   totalSize: number;
-  progress: number;
+  completionPercentage: number;
 }
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
@@ -12,10 +12,10 @@ const UploadButton: React.FC<UploadButtonProps> = ({
   loading, 
   disabled,
   totalSize,
-  progress 
+  completionPercentage 
 }) => {
   const exceededLimit = totalSize > MAX_FILE_SIZE;
-  const percentage = Math.min(progress, 100);
+  const percentage = Math.min(completionPercentage, 100);
 
   return (
     <button

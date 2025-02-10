@@ -63,7 +63,6 @@ button {
 button:hover {
   background: var(--button-hover-color);
   color: var(--font-primary-opposite-color);
-/*   transform: scale(0.95); */
 }
 button:active {
   background: var(--button-active-color);
@@ -72,8 +71,9 @@ button:active {
   border: none;
 }
 button:disabled {
-  background: var(--button-disabled-color, #666); 
-  color: var(--font-secondary-color);
+  background: var(--button-disabled-color, rgb(194, 194, 194));
+  border: none;
+  color: rgb(255, 255, 255);
   cursor: not-allowed;
   pointer-events: none; 
   transform: none; 
@@ -85,7 +85,7 @@ button:focus-visible {
 }
 
 input, textarea {
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--border-radius-small);
   border: 1px solid var(--font-primary-color-transparent);
   font-size: var(--font-size-intermediate);
   font-weight: 500;
@@ -96,14 +96,18 @@ input, textarea {
   transition: transform 0.2s, background-color 0.2s, color 0.2s;
   white-space: normal;
   word-wrap: break-word;
-  height: 40px;
+  height: 44px;
 }
 
 input:focus,
 textarea:focus {
   outline: none;
   border-color: #5e66ff;
+}
 
+input:hover {
+  border-color: var(--font-primary-color);
+  transition: border-color 0.5s;
 }
 
 label {
