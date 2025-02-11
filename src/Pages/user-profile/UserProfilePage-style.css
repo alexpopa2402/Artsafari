@@ -16,8 +16,8 @@
 
 .profile-avatar-circle {
     position: relative;
-    width: 80px;
-    height: 80px;
+    min-width: 100px;
+    height: 100px;
     border-radius: 50%;
     background: var(--background-color);
     display: flex;
@@ -105,8 +105,8 @@
 }
 
 .profile-greeting {
-    font-size: var(--font-size-xlarge);
-    white-space: nowrap;
+    font-size: 30px;
+    /* white-space: nowrap; */
     font-family: var(--ff-k2d);
     line-height: 1;
 }
@@ -132,13 +132,16 @@
 
 .profile-upload-button,
 .profile-settings-button {
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-intermediate);
     text-align: center;
     margin-left: 1rem;
 }
 .profile-upload-button .fa,
 .profile-settings-button .fa {
     margin-left: 0;
+}
+.profile-settings-button{
+    margin-right: 1rem;
 }
 
 .user-page .divider {
@@ -206,8 +209,8 @@
 @media (min-width: 992px) {
 
     .profile-avatar-circle {
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
     }
 
     .profile-page-buttons {
@@ -219,7 +222,7 @@
         font-size: 40px;
         line-height: 48px;
         letter-spacing: -0.01rem;
-        margin-bottom: 15px;
+        /* margin-bottom: 15px; */
     }
 
     .profile-section {
