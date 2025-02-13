@@ -39,6 +39,6 @@ export const useFetchSingleProfile = (): UseQueryResult<Profile, Error> => {
     },
     enabled: !!user?.id, // Fetch only if user exists
     //retry: 2, // Retry twice before failing
-    staleTime: 1000 * 60 * 5, // 5 minutes
+/*     staleTime: 1000 * 60 * 5, // 5 minutes */
   });
 };

@@ -43,7 +43,7 @@
   --font-primary-opposite-color: rgb(255, 255, 255);
   --font-secondary-color: #a7a7a7;
   --font-highlight-color: #007bff;
-  --font-accent-color: #c70000;
+  --font-accent-color: #3339b4;
 
   /* main colors */
   --background-color: #fff;
@@ -53,12 +53,13 @@
   --usermenu-header-color:#000a2111;
 
   /* button colors */
-  --button-active-color: #630000;
+  --button-background-color: #000000;
+  --button-active-color: #3339b4;
   --button-disabled-color: rgb(194, 194, 194);
-  --button-hover-color: #000000;
+  --button-hover-color: #3339b4;
 
   /* card colors */
-  --card-background-color: #ebebebaa;
+  --card-background-color: #ffffff;
 
   /* corner colors */
   --corner-color: #ccc;
@@ -106,7 +107,7 @@
 :root.dark-theme {
   --background-color: linear-gradient(-90deg, #000A21 0%, #25272b 100%);
   --primary-color: #ffffff;
-  --secondary-color: #5e66ff;
+  --secondary-color: #111;
   --usermenu-header-color:#000a2167;
 
   --font-primary-color: #ffffff;
@@ -115,7 +116,8 @@
   --font-highlight-color: #bbff00;
   --font-accent-color: #C3FF1C;
 
-  --button-active-color: #000000;
+  --button-background-color: rgba(255, 255, 255, 0);
+  --button-active-color: #3339b4; 
   --button-hover-color: #3339b4;
   --button-disabled-color: rgb(194, 194, 194);
 

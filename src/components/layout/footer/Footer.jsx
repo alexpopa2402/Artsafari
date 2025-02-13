@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="top">
           <li className="logo-details">
             <i className="fa fa-qrcode"></i>
-            <span className="logo_name">Youngblood 3.0</span>
+            <span className="logo_name">Youngblood</span>
           </li>
         </div>
         <div className="link-boxes">

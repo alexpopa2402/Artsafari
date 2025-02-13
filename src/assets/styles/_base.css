@@ -54,8 +54,8 @@ button {
   font-size: var(--font-size-intermediate);
   font-weight: 500;
   font-family: inherit;
-  background: transparent;
-  color: var(--font-primary-color);
+  background: var(--button-background-color);
+  color: var(--font-primary-opposite-color);
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s, color 0.2s;
   white-space: nowrap;
@@ -63,6 +63,7 @@ button {
 button:hover {
   background: var(--button-hover-color);
   color: var(--font-primary-opposite-color);
+  border-color: #5e66ff;
 }
 button:active {
   background: var(--button-active-color);

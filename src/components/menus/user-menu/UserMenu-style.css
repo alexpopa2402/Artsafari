@@ -124,6 +124,7 @@
   overflow: hidden;
   border-radius: var(--border-radius-small);
   color: var(--font-primary-color);
+  background-color: transparent;
   z-index: 100;
   padding-left: 0;
 }
@@ -158,6 +159,7 @@
   overflow: hidden;
   border-radius: var(--border-radius-small);
   color: var(--font-primary-color);
+  background-color: transparent;
   z-index: 100;
   padding-left: 0;
 }
@@ -208,6 +210,7 @@
 
 .menu-avatar-circle .fa-camera {
   color: var(--font-primary-color);
+  font-size: var(--font-size-small);
 }
 
 .profile-box {
@@ -486,7 +489,7 @@ body {
 @media (min-width: 992px) {
   .dropdown-content {
     top: 70px;
-    right: 20px;
+    right: 0px;
   }
 
   .user-menu {
@@ -500,6 +503,6 @@ body {
 
 @media (min-width: 1200px) {
   .dropdown-content {
-    right: -78px;
+    right: -160px;
   }
 }

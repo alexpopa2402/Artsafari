@@ -142,7 +142,7 @@
 .drop-zone span {
     margin-top: 10px;
     font-size: var(--font-size-medium);
-    color: var(--secondary-color);
+    color: #5e66ff;
 }
 
 .file-button-container {

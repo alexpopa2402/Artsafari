@@ -6,7 +6,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => {
     return (
       <div role="alert" className='error-fallback-container'>
         <p>Something went wrong:</p>
-        <pre>{error.message}</pre>
+        <div>{error.message}</div>
         <button onClick={resetErrorBoundary}>Try again</button>
       </div>
     );

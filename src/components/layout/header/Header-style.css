@@ -190,12 +190,13 @@
   .sub-title {
     border-radius: var(--border-radius-small);
     font-size: 30px;
-    padding: 0 1rem;
-    background: rgba(0, 0, 0, 0.856);
+    padding: 0 0.5rem;
+/*     background: rgba(0, 0, 0, 0.856); */
     font-family: var(--ff-jomhuria);
     rotate: -10deg;
     bottom: 15px;
-    display: block  ;
+    right: -25px;
+    display: block;
   }
 
 

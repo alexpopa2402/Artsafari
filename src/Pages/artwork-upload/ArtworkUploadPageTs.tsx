@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+/* import { useFetchSingleProfile } from "@hooks/api/useFetchSingleProfile"; */
 import { v4 as uuidv4 } from "uuid";
 import { Link, useNavigate } from 'react-router-dom';
 import BackButton from '@components/buttons/back-button/BackButton';
@@ -24,6 +25,7 @@ const SUPPORTED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/heic', 'image/we
 const UploadImages = () => {
   const supabase = useSupabaseClient();
   const user = useUser();
+/*   const { data: profile} = useFetchSingleProfile(); */
   const navigate = useNavigate();
   const [isDragging, setIsDragging] = useState(false);
 
@@ -102,7 +104,7 @@ const UploadImages = () => {
   // Form submission
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isFormValid || !user) return;
+    if (!isFormValid || !user ) return;
 
     setStatus({ loading: true, error: '', success: false });
 
@@ -180,7 +182,6 @@ const UploadImages = () => {
             loading={status.loading}
             disabled={!isFormValid}
             totalSize={totalSize}
-            completionPercentage={(totalSize / MAX_FILE_SIZE) * 100}
           />
         </div>
       </div>
@@ -256,6 +257,7 @@ const UploadImages = () => {
           <div className="form-group">
             <label htmlFor="year">Year*</label>
             <input
+              title="Specify the year the artwork was created"
               id="year"
               type="number"
               value={formData.year}
@@ -272,6 +274,7 @@ const UploadImages = () => {
             <label htmlFor="materials">Materials*</label>
             <input 
               id="materials"
+              title="Specify the materials used in the artwork"
               type="text"
               value={formData.materials}
               onChange={handleInputChange('materials')}
@@ -284,7 +287,8 @@ const UploadImages = () => {
                         <div className="dimension">
                             <label id="height" htmlFor="height">Height*</label>
                             <div className="input-with-unit">
-                                <input 
+                                <input
+                                  title="Specify the height of the artwork" 
                                   type="text" 
                                   maxLength={4} 
                                   value={formData.height} 
@@ -296,7 +300,8 @@ const UploadImages = () => {
                         <div className="dimension">
                             <label id="width" htmlFor="width">Width*</label>
                             <div className="input-with-unit">
-                                <input 
+                                <input
+                                  title="Specify the width of the artwork" 
                                   type="text" 
                                   maxLength={4} 
                                   value={formData.width} 
@@ -308,7 +313,8 @@ const UploadImages = () => {
                         <div className="dimension">
                             <label id="depth" htmlFor="depth">Depth*</label>
                             <div className="input-with-unit">
-                                <input 
+                                <input
+                                  title="Specify the depth of the artwork"
                                   type="text" 
                                   maxLength={4} 
                                   value={formData.depth} 
@@ -321,7 +327,8 @@ const UploadImages = () => {
           {/* Notes Input */}
           <div className="form-group full-width">
                         <label htmlFor="notes">Notes</label>
-                        <textarea 
+                        <textarea
+                          title="Add any additional notes or information about the artwork"
                           id="notes" 
                           maxLength={1000} 
                           placeholder="max 1000 characters" 
@@ -392,7 +399,6 @@ const UploadImages = () => {
               loading={status.loading}
               disabled={!isFormValid}
               totalSize={totalSize}
-              completionPercentage={(totalSize / MAX_FILE_SIZE) * 100}
             />
         </div>
     </form>
