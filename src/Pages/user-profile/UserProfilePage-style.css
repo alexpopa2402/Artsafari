@@ -16,8 +16,8 @@
 
 .profile-avatar-circle {
     position: relative;
-    min-width: 100px;
-    height: 100px;
+    min-width: 90px;
+    height: 90px;
     border-radius: 50%;
     background: var(--background-color);
     display: flex;
@@ -132,9 +132,11 @@
 
 .profile-upload-button,
 .profile-settings-button {
-    font-size: var(--font-size-intermediate);
+    font-size: var(--font-size-medium);
     text-align: center;
     margin-left: 1rem;
+    border-radius: var(--border-radius-rounded);
+    padding: 0.5rem 1rem;
 }
 .profile-upload-button .fa,
 .profile-settings-button .fa {
@@ -142,6 +144,8 @@
 }
 .profile-settings-button{
     margin-right: 1rem;
+    background: transparent;
+    color: var(--font-primary-color);
 }
 
 .user-page .divider {
