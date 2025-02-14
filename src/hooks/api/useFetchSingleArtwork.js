@@ -7,6 +7,7 @@ export const useFetchSingleArtwork = (artworkId) => {
   return useQuery({
     queryKey: ['artwork', artworkId],
     queryFn: async () => {
+      console.log('Fetching artwork:', artworkId);
       const { data, error } = await supabase
         .from('artworks')
         .select('*')

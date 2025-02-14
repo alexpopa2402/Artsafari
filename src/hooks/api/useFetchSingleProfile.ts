@@ -18,6 +18,7 @@ export const useFetchSingleProfile = (): UseQueryResult<Profile, Error> => {
   return useQuery<Profile, Error>({
     queryKey: ['profile', user?.id], // Unique key per user
     queryFn: async () => {
+      console.log('Fetching profile data...');
 
       if (!user) throw new Error('User not authenticated');
 

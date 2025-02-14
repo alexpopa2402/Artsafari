@@ -10,6 +10,7 @@ export const useFetchArtworks = () => {
   return useInfiniteQuery({
     queryKey: ['artworks', user?.id],
     queryFn: async ({ pageParam = 0 }) => {
+      console.log('Fetching page:', pageParam);
       const { data, error } = await supabase
         .from('artworks')
         .select('*')
