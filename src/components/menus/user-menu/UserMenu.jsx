@@ -49,7 +49,7 @@ const UserMenu = () => {
                     <div className="user-info" >
                         <div className='menu-avatar-circle' alt="Avatar">
                             {profile.avatar_url ? (
-                                <img src={profile.avatar_url} alt="Avatar" />
+                                <img src={profile.avatar_url} />
                             ) : (
                                 <i className="fa fa-camera camera-icon"></i>
                             )}

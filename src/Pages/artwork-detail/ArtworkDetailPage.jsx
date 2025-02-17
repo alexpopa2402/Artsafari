@@ -88,6 +88,7 @@ const ArtworkDetailPage = () => {
             <p className="artwork__detail__label">
               Notes:
             </p>
+            <br style={{ marginTop: '1.5rem' }} />
             {artwork.notes || 'N/A'}
           </p>
         </div>
