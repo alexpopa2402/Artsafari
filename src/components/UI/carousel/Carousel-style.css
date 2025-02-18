@@ -123,6 +123,7 @@
     hyphens: auto;
     background-color: var(--card-background-color);
     padding: 0 2rem;
+    z-index: 2;
 }
 
 .homepage-img1 {

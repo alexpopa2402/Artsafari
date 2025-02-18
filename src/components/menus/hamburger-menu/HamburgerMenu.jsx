@@ -52,7 +52,7 @@ const HamburgerMenu = () => {
           <nav className="burger-nav-links">
             <button onClick={() => handleNavigate('/')} className="burger-Home"><i className="fa fa-solid fa-igloo"></i>Home</button>
             <button onClick={() => handleNavigate('/gallery')} className="burger-gallery"><i className="fa fa-solid fa-palette"></i>Gallery</button>
-            <button onClick={() => handleNavigate('/artists')} className="burger-artists"><i className="fa fa-regular fa-id-card"></i> Artists</button>
+            <button onClick={() => handleNavigate('/artists')} className="burger-artists"><i className="fa fa-solid fa-id-card"></i> Artists</button>
             <button onClick={() => handleNavigate('/about')} className="burger-about"><i className="fa fa-solid fa-wand-sparkles"></i>About us</button>
           </nav>
           <div className="divider"></div>

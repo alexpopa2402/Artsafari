@@ -93,7 +93,7 @@ const ArtworkDetailPage = () => {
             <p className="artwork__detail__label">
               Dimensions:
             </p>
-            {`${artwork.width} x ${artwork.height} x ${artwork.depth}`}
+            {`${artwork.width} x ${artwork.height} x ${artwork.depth} cm`}
           </p>
           <p className="artwork__detail">
             <p className="artwork__detail__label">

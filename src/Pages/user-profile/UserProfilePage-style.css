@@ -166,7 +166,11 @@
 }
 
 .product-grid {
-    display: grid;
+    /* display: grid; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     gap: 1rem;
 }
