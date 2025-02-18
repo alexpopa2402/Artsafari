@@ -8,6 +8,8 @@ import { useFetchSingleArtwork } from '@hooks/api/useFetchSingleArtwork';
 const ArtworkDetailPage = () => {
   const { slug } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
   const artworkId = parseInt(slug.split('-')[0]);
   const { data: artwork, isLoading, error } = useFetchSingleArtwork(artworkId);
 
@@ -17,6 +19,15 @@ const ArtworkDetailPage = () => {
 
   const handlePrevImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + artwork.image_urls.length) % artwork.image_urls.length);
+  };
+
+  const handleImageClick = () => {
+    setIsOverlayOpen(true);
+  };
+
+  const handleOverlayClose = () => {
+    setIsOverlayOpen(false);
+    setZoomLevel(1);
   };
 
   if (isLoading) {
@@ -42,7 +53,7 @@ const ArtworkDetailPage = () => {
               <i className="fa-solid fa-chevron-left"></i>
             </button>
           )}
-          <button className='clickable__image__zoom'>
+          <button className='clickable__image__zoom' onClick={handleImageClick}>
             <img src={artwork.image_urls[currentImageIndex]} alt={artwork.title} className="artwork__detail__img" />
           </button>
           {artwork.image_urls.length > 1 && (
@@ -93,6 +104,31 @@ const ArtworkDetailPage = () => {
           </p>
         </div>
       </div>
+      {isOverlayOpen && (
+        <div className="overlay">
+          <button className="overlay__close" onClick={handleOverlayClose}>X</button>
+          <div className="overlay__content" onClick={(e) => e.stopPropagation()}>
+            
+            <img
+              src={artwork.image_urls[currentImageIndex]}
+              alt={artwork.title}
+              style={{ transform: `scale(${zoomLevel})` }}
+              className="overlay__image"
+            />
+
+          </div>
+
+          <input
+              type="range"
+              min="1"
+              max="3"
+              step="0.1"
+              value={zoomLevel}
+              onChange={(e) => setZoomLevel(e.target.value)}
+              className="overlay__zoom__slider"
+            />
+        </div>
+      )}
     </>
   );
 };

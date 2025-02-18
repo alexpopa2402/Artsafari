@@ -20,7 +20,7 @@ const UserProfile = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useFetchArtworks();
+  } = useFetchArtworks(false);
 
   if (profileLoading || artworksLoading) {
     return <Spinner />;
@@ -84,7 +84,7 @@ const UserProfile = () => {
               <ArtworkCard
                 key={artwork.id}
                 artwork={artwork}
-                artistName={profile.full_name}
+                artistName={artwork.artist_name}
               />
             ))}
           </div>

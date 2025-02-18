@@ -143,7 +143,7 @@ const UploadImages = () => {
       if (error) throw error;
 
       setStatus({ loading: false, error: '', success: true });
-      navigate('/profile');
+      setTimeout(() => {navigate('/profile'); }, 3000);
     } catch (err) {
       setStatus(prev => ({ ...prev, error: err instanceof Error ? err.message : 'Upload failed' }));
     } finally {
@@ -152,7 +152,7 @@ const UploadImages = () => {
       setFiles([]);
       setPreviews([]);
     }
-  }, [isFormValid, user, files, formData, supabase, navigate, previews]);
+  }, [isFormValid, user, files, formData, supabase, navigate, previews, status]);
 
   // Year input validation
   const handleYearChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {

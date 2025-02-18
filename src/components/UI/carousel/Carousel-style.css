@@ -29,15 +29,13 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    background: linear-gradient(
-        90deg,
-        var(--gradient-start-color, var(--card-background-color)) 25%,
-        var(--gradient-end-color, var(--secondary-color)) 75%
-    );
-/*     background: var(--background-color); */
+    background: linear-gradient(90deg,
+            var(--gradient-start-color, var(--card-background-color)) 25%,
+            var(--gradient-end-color, var(--secondary-color)) 75%);
+    /*     background: var(--background-color); */
     pointer-events: none;
 }
-  
+
 .carousel-caption {
     position: absolute;
     bottom: 20px;
@@ -85,13 +83,15 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    mix-blend-mode: difference;
     gap: 5px;
 }
 
 .carousel-line {
-    width: 100px;
+    width: 200px;
     height: 2px;
     background: white;
+
     opacity: 0.5;
 }
 
@@ -99,13 +99,89 @@
     opacity: 1;
 }
 
-@media (max-width: 768px) {
+
+.homepage-title {
+    padding: 0 0 2rem 0;
+    font-size: 3em;
+    text-align: left;
+    font-family: var(--ff-k2d);
+    text-align: left;
+}
+
+.homepage-section {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.homepage-text {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    word-wrap: break-word;
+    hyphens: auto;
+    background-color: var(--card-background-color);
+    padding: 0 2rem;
+}
+
+.homepage-img1 {
+    width: 50%;
+    object-fit: cover;
+    height: 100%;
+}
+
+.homepage-text p {
+    font-size: 1.3rem;
+    font-family: var(--ff-k2d);
+    margin-bottom: 2rem;
+}
+
+.homepage-text button {
+    width: 250px;
+/*     margin: 0 auto; */
+    border-radius: 45px;
+    font-size: var(--font-size-large);
+}
+
+@media (max-width: 1000px) {
+
+    .homepage-title {
+        padding: 2rem 0;
+        font-size: 2em;
+        text-align: left;
+        font-family: var(--ff-k2d);
+    }
+
+    .homepage-section {
+        flex-direction: column;
+    }
+
+    
+    .homepage-text {
+        width: 100%;
+        height: 50%;
+    }
+
+    .homepage-text p {
+        font-size: clamp(1rem, 1vw + 1rem, 1rem);
+        font-family: var(--ff-k2d);
+        margin-bottom: 2rem;
+    }
+    
+    .homepage-img1 {
+        width: 100%;
+        object-fit: cover;
+    }
+
+
+
     .carousel-arrow {
         font-size: 1.5rem;
         padding: 5px;
     }
 
     .carousel-line {
-        width: 15px;
+        width: 70px;
     }
 }

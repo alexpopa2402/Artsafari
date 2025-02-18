@@ -184,6 +184,13 @@ width: 100%;
   position: relative; /* must be specified because otherwise it inherits absolute from header auth button */
   display: block;
   top: 0; /* must be nulled because otherwise it inherits value from header auth button */
+  border: 1px solid var(--font-secondary-color);
+  border-radius: var(--border-radius-medium);
+  width: fit-content;
+  padding: 0.5rem 1.5rem;
+  margin: 0 1rem;
+  background: var(--button-background-color);
+  color: var(--font-primary-opposite-color);
 }
 
 .burger-menu .logout-button-component {
