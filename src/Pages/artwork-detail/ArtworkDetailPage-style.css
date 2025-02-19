@@ -51,8 +51,11 @@
 
 .slider__button.prev,
 .slider__button.next {
-    background-color: rgba(0, 0, 0, 0.348);
+    background-color: transparent;
+    color: white;
     border-radius: var(--border-radius-small);
+    font-size: 40px;
+    mix-blend-mode: difference;
 }
 
 .clickable__image__zoom {

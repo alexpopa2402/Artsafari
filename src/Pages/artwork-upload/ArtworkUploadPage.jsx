@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Link, useNavigate } from 'react-router-dom';
 
 import BackButton from '@components/buttons/back-button/BackButton';
-import UploadButton from '@components/buttons/upload-button/UploadButton';
+import UploadButton from '@components/buttons/upload-submit-button/UploadButton';
 
 import './ArtworkUploadPage-style.css'
 

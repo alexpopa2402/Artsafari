@@ -76,7 +76,7 @@
   color: var(--font-accent-color);
 }
 
-.auth-login-button {
+.header-container .auth-login-button {
   display: none;
 }
 
@@ -171,6 +171,7 @@
     text-align: center;
     padding: 0 25px;
     font-size: var(--font-size-medium);
+    border-radius: 45px;
     margin-top: 1rem;
   }
 

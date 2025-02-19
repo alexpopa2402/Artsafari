@@ -1,42 +1,18 @@
-import ButtonSpinner from '@components/loading-skeletons/ButtonSpinner/ButtonSpinner';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-interface UploadButtonProps {
-  loading: boolean;
-  disabled: boolean;
-  totalSize: number;
-}
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const UploadButton: React.FC = () => {
+    const navigate = useNavigate();
 
-const UploadButton: React.FC<UploadButtonProps> = ({ 
-  loading, 
-  disabled,
-  totalSize,
-}) => {
-  const exceededLimit = totalSize > MAX_FILE_SIZE;
+    const handleClick = () => {
+        navigate('/upload-artwork');
+    };
 
-  return (
-    <button
-      type="submit"
-      className="artwork-submit-button"
-      disabled={disabled || exceededLimit || loading}
-      aria-disabled={disabled || exceededLimit || loading}
-      aria-live="polite"
-      aria-describedby="upload-status"
-    >
-    
-      <span id="upload-status">
-        {loading ? (
-          <ButtonSpinner aria-label="Uploading artwork" />
-        ) : exceededLimit ? (
-          <span className="status-error">
-            Limit Exceeded ({Math.round(totalSize / 1024 / 1024)}MB)
-          </span>
-        ) : (
-          'Upload Artwork'
-        )}
-      </span>
-    </button>
-  );
+    return (
+        <button onClick={handleClick}>
+            Upload Artwork
+        </button>
+    );
 };
 
 export default UploadButton;

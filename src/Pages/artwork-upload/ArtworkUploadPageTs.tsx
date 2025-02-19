@@ -4,7 +4,7 @@ import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import { v4 as uuidv4 } from "uuid";
 import { Link, useNavigate } from 'react-router-dom';
 import BackButton from '@components/buttons/back-button/BackButton';
-import UploadButton from '@components/buttons/upload-button/UploadButton';
+import UploadSubmitButton from '@components/buttons/upload-submit-button/UploadSubmitButton';
 import './ArtworkUploadPage-style.css';
 
 interface ArtworkFormData {
@@ -178,7 +178,7 @@ const UploadImages = () => {
       <div className="upload-header-wrapper-sticky">
         <div className="upload-header-buttons">
           <BackButton />
-          <UploadButton
+          <UploadSubmitButton
             loading={status.loading}
             disabled={!isFormValid}
             totalSize={totalSize}
@@ -395,7 +395,7 @@ const UploadImages = () => {
         </div>
       </div>
         <div className="upload-footer-wrapper-sticky">
-        <UploadButton
+        <UploadSubmitButton
               loading={status.loading}
               disabled={!isFormValid}
               totalSize={totalSize}
