@@ -7,4 +7,6 @@
     background: var(--background-color);
     color: var(--font-primary-color);
     flex-grow: 1;
+    padding-left: 20px;
+    padding-right: 20px;
 }

@@ -79,6 +79,12 @@
     transform: none;
 }
 
+.clickable__image__zoom img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
 .image__indicators {
     position: absolute;
     bottom: 10px;

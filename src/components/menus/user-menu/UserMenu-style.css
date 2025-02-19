@@ -91,7 +91,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  height: 80px;
+  height: fit-content;
   padding: 0 1rem;
   background: #a7a7a71f;
   color: var(--font-primary-color);
@@ -186,7 +186,7 @@
 }
 
 .menu-avatar-circle {
-  width: 50px;
+  min-width: 50px;
   height: 50px;
   border-radius: 50%;
   overflow: hidden;
@@ -194,6 +194,7 @@
   align-items: center;
   justify-content: center;
   background: var(--background-color);
+  margin: 14px 0;
 }
 
 .menu-avatar-circle img {
@@ -221,7 +222,7 @@
 
 .profile-name {
   font-size: var(--font-size-intermediate);
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 .profile-box a:hover {

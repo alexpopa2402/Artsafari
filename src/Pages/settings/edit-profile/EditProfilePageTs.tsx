@@ -188,6 +188,7 @@ const EditProfilePage = () => {
             {...register('full_name', { required: true })}
             id="full_name"
             placeholder="Enter your full name"
+            maxLength={30}
           />
         </div>
 
