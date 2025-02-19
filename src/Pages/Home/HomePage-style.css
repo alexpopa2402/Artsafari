@@ -1,7 +1,7 @@
 .homepage-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+/*     align-items: center; */
 /*     justify-content: center; */
 /*     margin: 0 auto; */
     background: var(--background-color);
@@ -9,4 +9,42 @@
     flex-grow: 1;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.homepage-contento{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+.homepage-contento h2{
+    margin: 2rem 1rem;
+}
+
+.dummy-home-box {
+    height: 100px;
+    width: 100%;
+}
+
+.featured-box-container, .editorial-box-container{
+    display: flex;
+    flex-direction: row;
+    margin : 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.featured-box, .editorial-box{
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.editorial-box{
+    height: 400px;
 }

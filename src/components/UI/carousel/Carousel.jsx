@@ -108,7 +108,7 @@ const CarouselItem = ({ src, title, artistName, year, isActive, isWelcomeSection
   return (
     <div className={`carousel-item ${isActive ? 'active' : ''}`} role="tabpanel" aria-hidden={!isActive} onClick={handleClick}>
       {isWelcomeSection ? (
-        <section className="homepage-section">
+        <div className="homepage-section">
           <img src={src} alt="carousel-image" className="homepage-img1" />
           <div className="homepage-text">
             <h1 className="homepage-title">{title}</h1>
@@ -124,7 +124,7 @@ const CarouselItem = ({ src, title, artistName, year, isActive, isWelcomeSection
               <AuthButton />
             )}
           </div>
-        </section>
+        </div>
       ) : (
         <>
           <img

@@ -107,7 +107,8 @@
     font-size: 2.3em;
     text-align: left;
     font-family: var(--ff-k2d);
-    white-space: nowrap;
+    width: fit-content;
+    /* white-space: nowrap; */
 }
 
 .homepage-section {
@@ -135,7 +136,7 @@
 }
 
 .homepage-text p {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 3svw, 1rem);
     font-family: var(--ff-k2d);
 }
 
@@ -165,8 +166,8 @@
     }
 
     .homepage-title {
-        padding: 1rem 0;
-        font-size: 4.5vw;
+        margin: 1rem 0;
+        font-size: clamp(1.6rem, 4svw, 3.2rem);
     }
 
     .homepage-text {
@@ -179,7 +180,6 @@
 
     .carousel-text-short {
         display: block;
-        padding: 0.5rem 0;
         margin: 0;
     }
     
@@ -197,12 +197,12 @@
 
     .homepage-text button {
         width: fit-content;
-        margin-top: 1rem;
+        margin-top: 2rem;
         margin-bottom: 1rem;
         border-radius: 45px;
         height: 40px;
         padding: 0 40px;
-        font-size: var(--font-size-intermediate);
+        font-size: 15px;
     }
 
 }
@@ -211,7 +211,7 @@
 
     .homepage-title {
         padding: 1rem 0;
-        font-size: 1.7rem;
+        font-size: clamp(1.7rem, 3.5svw, 2rem);
         text-align: left;
         font-family: var(--ff-k2d);
         word-wrap:break-word;
@@ -254,9 +254,13 @@
     .homepage-text p {
         font-size: 1.2rem;
     }
+
+    .homepage-title {
+        white-space: nowrap;
+    }
 }
 
-@media (min-width: 1301px) {
+@media (min-width: 1302px) {
     .homepage-text {
         padding: 0 6rem;
     }
