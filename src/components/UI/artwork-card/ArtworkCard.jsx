@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import './Artworkcard-style.css';
+import './ArtworkCard-style.css';
 
 const ArtworkCard = ({ artwork, artistName }) => {
   const navigate = useNavigate();
