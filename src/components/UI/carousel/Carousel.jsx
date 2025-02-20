@@ -1,12 +1,16 @@
-import { useFetchArtworks } from '@hooks/api/useFetchArtworks';
-import { useMemo } from 'react';
-import { useState, useEffect, useCallback } from 'react';
-import './Carousel-style.css';
-import PropTypes from 'prop-types';
+
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useSession } from '@supabase/auth-helpers-react';
-import { useNavigate } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
+
+import { useFetchArtworks } from '@hooks/api/useFetchArtworks';
+
+import PropTypes from 'prop-types';
+
 import AuthButton from '@components/buttons/auth-button/AuthButton';
 import UploadButton from '@components/buttons/upload-button/UploadButton';
+
+import './Carousel-style.css';
 
 const Carousel = () => {
   const { data, isLoading, isError } = useFetchArtworks(true); // Fetch all artworks
@@ -30,17 +34,25 @@ const Carousel = () => {
   }, [artworks.length]);
 
   // Automatically go to the next slide every 6 seconds
-/*   useEffect(() => {
-    const interval = setInterval(goToNext, 6000);
+  useEffect(() => {
+    const interval = setInterval(goToNext, 7000);
     return () => clearInterval(interval);
-  }, [goToNext]); */
+  }, [goToNext]);
+
+  // Swipe handlers
+  const handlers = useSwipeable({
+    onSwipedLeft: goToNext,
+    onSwipedRight: goToPrevious,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
 
   // If there is no data, display a loading message
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading artworks</div>;
 
   return (
-    <div className="carousel-container" aria-roledescription="carousel">
+    <div className="carousel-container" aria-roledescription="carousel" {...handlers}>
       <div className="carousel-slide">
         <CarouselItem
           key="welcome-section"
@@ -58,7 +70,6 @@ const Carousel = () => {
             artistName={artwork.artist_name}
             year={artwork.year}
             isActive={index + 1 === currentIndex}
-            artworkId={artwork.id}
           />
         ))}
       </div>
@@ -91,22 +102,10 @@ const Carousel = () => {
 };
 
 // CarouselItem component
-const CarouselItem = ({ src, title, artistName, year, isActive, isWelcomeSection, session, artworkId }) => {
-  const navigate = useNavigate();
-
-  const generateSlug = (id, title, year) => {
-    return `${id}-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${year}`;
-  };
-
-  const handleClick = () => {
-    if (!isWelcomeSection) {
-      const slug = generateSlug(artworkId, title, year);
-      navigate(`/artwork/${slug}`);
-    }
-  };
+const CarouselItem = ({ src, title, artistName, year, isActive, isWelcomeSection, session }) => {
 
   return (
-    <div className={`carousel-item ${isActive ? 'active' : ''}`} role="tabpanel" aria-hidden={!isActive} onClick={handleClick}>
+    <div className={`carousel-item ${isActive ? 'active' : ''}`} role="tabpanel" aria-hidden={!isActive}>
       {isWelcomeSection ? (
         <div className="homepage-section">
           <img src={src} alt="carousel-image" className="homepage-img1" />
@@ -150,7 +149,6 @@ CarouselItem.propTypes = {
   isActive: PropTypes.bool.isRequired,
   isWelcomeSection: PropTypes.bool,
   session: PropTypes.object,
-  artworkId: PropTypes.number, // Add prop type for the artwork ID
 };
 
 export default Carousel;

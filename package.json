@@ -21,12 +21,15 @@
     "@theme-toggles/react": "^4.1.0",
     "browser-image-compression": "^2.0.2",
     "dompurify": "^3.2.3",
+    "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-draggable": "^4.4.6",
     "react-error-boundary": "^4.1.2",
     "react-hook-form": "^7.54.2",
     "react-router-dom": "^6.26.2",
-    "tsup": "^8.3.6",
+    "react-swipeable": "^7.0.2",
+    "tsup": "^2.0.3",
     "uuid": "^11.0.5",
     "zustand": "^5.0.2"
   },
@@ -34,7 +37,7 @@
     "@eslint/js": "^9.9.0",
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^1.3.2",
     "eslint": "^9.9.0",
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
@@ -42,7 +45,7 @@
     "globals": "^15.9.0",
     "supabase": "^1.204.3",
     "typescript": "^5.7.2",
-    "vite": "^5.4.1",
+    "vite": "^6.1.1",
     "vite-tsconfig-paths": "^5.0.1"
   }
 }

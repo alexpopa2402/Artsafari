@@ -48,3 +48,10 @@
 .editorial-box{
     height: 400px;
 }
+
+/* @media screen and (max-width: 768px){
+    .homepage-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+} */

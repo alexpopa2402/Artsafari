@@ -76,7 +76,7 @@
   color: var(--font-accent-color);
 }
 
-.header-container .auth-login-button {
+.header-container > .auth-login-button {
   display: none;
 }
 
