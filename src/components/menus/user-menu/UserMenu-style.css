@@ -241,12 +241,16 @@
   margin-left: 1rem;
   line-height: 1;
   border: none;
+  background: transparent;
+  border-radius: 50%;
 }
 
 .usermenu-close-popup:hover,
 .usermenu-close-popup:active {
   color: var(--font-accent-color);
   transform: scale(0.9);
+  border: none;
+  background: transparent;
 }
 
 .collection p,
