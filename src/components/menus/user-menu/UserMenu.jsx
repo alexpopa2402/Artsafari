@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useFetchSingleProfile } from '@hooks/api/useFetchSingleProfile';
+import { useFetchSingleProfile } from '@hooks/apiHooks/useFetchSingleProfile';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';

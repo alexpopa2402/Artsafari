@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useSession } from '@supabase/auth-helpers-react';
 import { useSwipeable } from 'react-swipeable';
 
-import { useFetchArtworks } from '@hooks/api/useFetchArtworks';
+import { useFetchArtworks } from '@hooks/apiHooks/useFetchArtworks';
 
 import PropTypes from 'prop-types';
 

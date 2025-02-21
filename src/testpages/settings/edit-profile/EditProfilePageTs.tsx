@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import imageCompression from 'browser-image-compression';
 import { useForm } from 'react-hook-form';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
-import { useFetchSingleProfile } from '@hooks/api/useFetchSingleProfile';
+import { useFetchSingleProfile } from '@hooks/apiHooks/useFetchSingleProfile';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import ButtonSpinner from '@components/loaders/spinners/ButtonSpinner/ButtonSpinner';
 import './EditProfilePage-style.css';

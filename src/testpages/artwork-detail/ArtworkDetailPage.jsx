@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import BackButton from '@components/buttons/back-button/BackButton';
 import Spinner from '@components/loaders/spinners/globalSpinner/Spinner';
 import './ArtworkDetailPage-style.css';
-import { useFetchSingleArtwork } from '@hooks/api/useFetchSingleArtwork';
+import { useFetchSingleArtwork } from '@hooks/apiHooks/useFetchSingleArtwork';
 import useScrollLock from '@hooks/useGlobalScrollLock';
 import useFocusTrap from '@hooks/useFocusTrap';
 

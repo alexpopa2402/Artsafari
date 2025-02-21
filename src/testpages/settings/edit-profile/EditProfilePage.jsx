@@ -299,7 +299,7 @@ export default function EditProfilePage() {
   import { getAvatarUrl } from '@utils/storageHelpers';
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
   import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-  import { useFetchSingleProfile } from '@hooks/api/useFetchSingleProfile';
+  import { useFetchSingleProfile } from '@hooks/apiHooks/useFetchSingleProfile';
   import './EditProfilePage-style.css';
   
   export default function EditProfilePage() {

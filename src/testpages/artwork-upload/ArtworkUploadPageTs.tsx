@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
-/* import { useFetchSingleProfile } from "@hooks/api/useFetchSingleProfile"; */
+/* import { useFetchSingleProfile } from "@hooks/apiHooks/useFetchSingleProfile"; */
 import { v4 as uuidv4 } from "uuid";
 import { Link, useNavigate } from 'react-router-dom';
 import BackButton from '@components/buttons/back-button/BackButton';

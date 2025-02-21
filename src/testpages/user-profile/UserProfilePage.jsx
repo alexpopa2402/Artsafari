@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { useFetchSingleProfile } from '@hooks/api/useFetchSingleProfile';
-import { useFetchArtworks } from '@hooks/api/useFetchArtworks';
+import { useFetchSingleProfile } from '@hooks/apiHooks/useFetchSingleProfile';
+import { useFetchArtworks } from '@hooks/apiHooks/useFetchArtworks';
 
 import Spinner from '@components/loaders/spinners/globalSpinner/Spinner';
 import ArtworkCard from '@components/UI/artwork-card/ArtworkCard';
