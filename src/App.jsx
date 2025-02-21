@@ -15,20 +15,20 @@ import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 import ResettableErrorBoundary from '@components/error-boundary/ResettableErrorBoundary';
 
 // Public pages
-import HomePage from '@pages/home/HomePage';
-import ArtistsPage from '@pages/artists/ArtistsPage';
-import GalleryPage from '@pages/gallery/GalleryPage';
-import ArtworkDetailPage from '@pages/artwork-detail/ArtworkDetailPage';
-const AboutPage = lazy(() => import('@pages/about/AboutPage'));
-const NotFoundPage = lazy(() => import('@pages/not-found/NotFoundPage'));
+import HomePage from '@testpages/home/HomePage';
+import ArtistsPage from '@testpages/artists/ArtistsPage';
+import GalleryPage from '@testpages/gallery/GalleryPage';
+import ArtworkDetailPage from '@testpages/artwork-detail/ArtworkDetailPage';
+const AboutPage = lazy(() => import('@testpages/about/AboutPage'));
+const NotFoundPage = lazy(() => import('@testpages/not-found/NotFoundPage'));
 
 // Auth-protected pages
-import ArtworkUploadPage from '@pages/artwork-upload/ArtworkUploadPageTs';
-import UserProfilePage from '@pages/user-profile/UserProfilePage';
-import EditProfilePage from '@pages/settings/edit-profile/EditProfilePageTs';
-import EditAccountPage from '@pages/settings/edit-account/EditAccountPage';
-import SettingsPage from '@pages/settings/SettingsPage';
-const ResetPasswordPage = lazy(() => import('@pages/password-reset/ResetPasswordPage'));
+import ArtworkUploadPage from '@testpages/artwork-upload/ArtworkUploadPageTs';
+import UserProfilePage from '@testpages/user-profile/UserProfilePage';
+import EditProfilePage from '@testpages/settings/edit-profile/EditProfilePageTs';
+import EditAccountPage from '@testpages/settings/edit-account/EditAccountPage';
+import SettingsPage from '@testpages/settings/SettingsPage';
+const ResetPasswordPage = lazy(() => import('@testpages/password-reset/ResetPasswordPage'));
 
 
 export default function App() {

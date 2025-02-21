@@ -13,7 +13,7 @@
     "paths": {
       "@api/*": ["api/*"],
       "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
+      "@testpages/*": ["testpages/*"],
       "@assets/*": ["assets/*"],
       "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"],
