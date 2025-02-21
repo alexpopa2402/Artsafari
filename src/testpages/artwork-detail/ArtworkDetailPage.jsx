@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import BackButton from '@components/buttons/back-button/BackButton';
-import Spinner from '@components/loading-skeletons/Spinner/Spinner';
+import Spinner from '@components/loaders/spinners/globalSpinner/Spinner';
 import './ArtworkDetailPage-style.css';
 import { useFetchSingleArtwork } from '@hooks/api/useFetchSingleArtwork';
 import useScrollLock from '@hooks/useGlobalScrollLock';

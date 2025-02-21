@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import './ArtworkCard-style.css';
 
-const ArtworkCard = ({ artwork, artistName }) => {
+const ArtworkCard = ({ artwork }) => {
   const navigate = useNavigate();
 
   const generateSlug = (id, title, year) => {
@@ -22,8 +22,8 @@ const ArtworkCard = ({ artwork, artistName }) => {
         className="artwork__img" 
       />
       <div className="artwork__content">
-      <h2 className="artwork__title">{artwork.title}</h2>
-      <p className="artwork__author">{artistName}</p>
+      <h1 className="artwork__author">{artwork.artist_name}</h1>
+      <p className="artwork__title">{artwork.title}</p>
       <p className="artwork__year">{artwork.year}</p>
       </div>
     </div>
@@ -32,13 +32,13 @@ const ArtworkCard = ({ artwork, artistName }) => {
 
 ArtworkCard.propTypes = {
   artwork: PropTypes.shape({
-    image_urls: PropTypes.arrayOf(PropTypes.string).isRequired,
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
+    image_urls: PropTypes.arrayOf(PropTypes.string),
+    id: PropTypes.number,
+    title: PropTypes.string,
+    year: PropTypes.number,
     featured: PropTypes.bool,
+    artist_name: PropTypes.string,
   }).isRequired,
-  artistName: PropTypes.string.isRequired,
 };
 
 export default ArtworkCard;

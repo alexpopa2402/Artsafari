@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import useFocusTrap from '@hooks/useFocusTrap';
 
 import YBlogo from '@assets/images/logo/YBlogo.png';
-import Spinner from '@components/loading-skeletons/Spinner/Spinner';
+import Spinner from '@components/loaders/spinners/globalSpinner/Spinner';
 
 // lazy loading components to avoid blocking the main thread during initial render.
 const LoginModal = lazy(() => import('./LoginModal'));

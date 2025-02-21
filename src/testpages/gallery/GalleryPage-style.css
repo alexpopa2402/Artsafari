@@ -1,15 +1,12 @@
 .gallery-container {
-margin-inline: auto;
-padding-inline: 2rem;
-margin: 2rem 0;
-display: flex;
-flex-grow: 1;
-color: var(--font-primary-color);
-}
-
-.product-grid {
-display: grid;
-grid-template-columns: 
-repeat( auto-fit, minmax(15rem, 1fr));
-gap: 0.25rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    flex-grow: 1;
+    color: var(--font-primary-color);
 }

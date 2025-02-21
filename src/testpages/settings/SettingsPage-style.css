@@ -64,7 +64,7 @@ align-items: center;
   padding: 8px;
 }
 
-.settings-page .success-popup {
+.settings-page-success-popup {
   position: fixed;
   bottom: 0px;
   left: 50%;
@@ -73,11 +73,12 @@ align-items: center;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  animation: slideUp 0.5s forwards, fadeOut 0.5s 1.5s forwards;
+  animation: slideUp 0.5s forwards, fadeOut 0.5s 3s forwards;
   z-index: 100;
+  width: max-content;
 }
 
-.settings-page .error-popup {
+.settings-page-error-popup {
   position: fixed;
   bottom: 0px;
   left: 50%;
@@ -86,8 +87,9 @@ align-items: center;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  animation: slideUp 0.5s forwards, fadeOut 0.5s 1.5s forwards;
+  animation: slideUp 0.5s forwards, fadeOut 0.5s 3s forwards;
   z-index: 100;
+  width: max-content;
 }
 
 @keyframes slideUp {

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFetchSingleProfile } from '@hooks/api/useFetchSingleProfile';
 import { useFetchArtworks } from '@hooks/api/useFetchArtworks';
 
-import Spinner from '@components/loading-skeletons/Spinner/Spinner';
+import Spinner from '@components/loaders/spinners/globalSpinner/Spinner';
 import ArtworkCard from '@components/UI/artwork-card/ArtworkCard';
 
 import './UserProfilePage-style.css';
@@ -40,19 +40,19 @@ const UserProfile = () => {
     <div className="user-page">
       <div className="profile-section">
         <div className='profile-info'>
-            <div className="profile-avatar-circle">
-              <div className='profile-picture'>
-                {profile.avatar_url ? (
-                  <img src={profile.avatar_url} alt="Avatar" />
-                ) : (
-                  <i className="fa fa-camera camera-icon"></i>
-                )}
-              </div>
+          <div className="profile-avatar-circle">
+            <div className='profile-picture'>
+              {profile.avatar_url ? (
+                <img src={profile.avatar_url} alt="Avatar" />
+              ) : (
+                <i className="fa fa-camera camera-icon"></i>
+              )}
             </div>
+          </div>
           <div className="profile-text-container">
             <div className='profile-greeting'>{profile.full_name || 'User'}</div>
             <div className='profile-details'>
-              </div>
+            </div>
           </div>
         </div>
         <div className='profile-page-buttons'>
@@ -73,13 +73,13 @@ const UserProfile = () => {
         </div>
       </div>
       <div className="divider"></div>
-      <div className="gallery-container">
+      <div className="user-gallery-container">
         {artworks.length === 0 ? (
-          <div className="empty-gallery-message">
+          <div className="empty-user-gallery-message">
             Nothing to see here - click upload to start sharing your artwork with the world!
           </div>
         ) : (
-          <div className="product-grid">
+          <div className='user-gallery'>
             {artworks.map((artwork) => (
               <ArtworkCard
                 key={artwork.id}
@@ -91,14 +91,14 @@ const UserProfile = () => {
         )}
       </div>
       {hasNextPage && (
-          <button
-            className="load-more-button"
-            onClick={() => fetchNextPage()}
-            disabled={isFetchingNextPage}
-          >
-            {isFetchingNextPage ? 'Loading more...' : 'Load More'}
-          </button>
-        )}
+        <button
+          className="load-more-button"
+          onClick={() => fetchNextPage()}
+          disabled={isFetchingNextPage}
+        >
+          {isFetchingNextPage ? 'Loading more...' : 'Load More'}
+        </button>
+      )}
     </div>
   );
 };

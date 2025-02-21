@@ -1,7 +1,7 @@
 import { useState, Suspense } from "react";
 import ReactDOM from "react-dom";
 import useGlobalScrollLock from "@hooks/useGlobalScrollLock";
-import Spinner from "@components/loading-skeletons/Spinner/Spinner";
+import Spinner from '@components/loaders/spinners/globalSpinner/Spinner';
 import AuthModals from "@components/auth/auth-modals/AuthModals";
 
 const AuthButton = () => {
@@ -12,7 +12,6 @@ const AuthButton = () => {
   return (
     <>
       <button className="auth-login-button" onClick={() => setShowModal(true)}>
-{/*       <i className="fa fa-solid fa-arrow-right-to-bracket"></i> */}
         Log in
       </button>
       {showModal &&

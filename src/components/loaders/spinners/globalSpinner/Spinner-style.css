@@ -6,42 +6,6 @@
   min-height: 50svh;
 }
 
-/* .spinner {
-  width: 32px;
-  height: 32px;
-  position: relative;
-  animation: rotate 1.5s ease-in infinite alternate;
-}
-
-.spinner::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  color: var(--font-accent-color);
-  background: currentColor;
-  width: 32px;
-  height: 16px;
-  border-radius: 0 0 50px 50px;
-
-}
-.spinner::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  background: var(--font-primary-color);
-  width: 4px;
-  height: 32px;
-  animation: rotate 1.2s linear infinite alternate-reverse;
-}
-
-@keyframes rotate {
-  100% { transform: rotate(360deg)}
-} */
-
-
-/* HTML: <div class="loader"></div> */
 .spinner {
   width: 18px;
   aspect-ratio: 1;

@@ -50,8 +50,7 @@
 }
 
 .profile-picture {
-    position: absolute;
-    /* remove this to hide the rotation animation effect - see if you like it better that way */
+    /* position: absolute; */ /* toggle this to hide the rotation animation effect - see if you like it better that way */
     inset: 3px;
     border-radius: 50%;
     z-index: 3;
@@ -71,24 +70,6 @@
     text-align: center;
     align-content: center;
 }
-
-/* .profile-picture .fa-camera {
-    position: relative;
-    text-align: center;
-    color: var(--font-primary-color);
-    z-index: -1;
-    cursor: pointer;
-    border: none;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    }
-
-.profile-avatar-circle:hover .profile-picture img, .profile-avatar-circle:active .profile-picture img {
-    opacity: 0.3;
-    z-index: -2;
-    transition: 1s;
-} */
 
 .profile-info {
     display: flex;
@@ -156,34 +137,20 @@
 
 /* profile gallery layout, serves to the ArtistCard component */
 
-.gallery-container {
+.user-gallery {
     margin-inline: auto;
-    padding-inline: 2rem;
-    margin: 2rem 0;
-    display: flex;
-    flex-grow: 1;
-    color: var(--font-primary-color);
-}
-
-.product-grid {
-    /* display: grid; */
+    padding-inline: 1rem;
+    margin: 1rem 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     gap: 1rem;
+    flex-grow: 1;
+    color: var(--font-primary-color);
 }
 
-.gallery-item {
-    margin: 1rem;
-}
-
-.artwork-details {
-    color: var(--font-secondary-color);
-}
-
-.empty-gallery-message {
+.empty-user-gallery-message {
     text-align: center;
     font-size: var(--font-size-intermediate);
     color: var(--font-secondary-color);
@@ -196,8 +163,6 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
 }
-
-
 
 /* Animations */
 

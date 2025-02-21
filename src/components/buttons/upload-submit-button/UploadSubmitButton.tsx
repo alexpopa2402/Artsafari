@@ -1,5 +1,4 @@
-import ButtonSpinner from '@components/loading-skeletons/ButtonSpinner/ButtonSpinner';
-
+import ButtonSpinner from '@components/loaders/spinners/ButtonSpinner/ButtonSpinner';
 interface UploadButtonProps {
   loading: boolean;
   disabled: boolean;

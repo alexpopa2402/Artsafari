@@ -1,6 +1,6 @@
 import ArtistCard from '@components/UI/artist-card/ArtistCard';
 import './ArtistsPage-style.css';
-import Spinner from '@components/loading-skeletons/Spinner/Spinner';
+import Spinner from '@components/loaders/spinners/globalSpinner/Spinner';
 import { useFetchAllProfiles } from '@hooks/api/useFetchAllProfiles';
 
 const ArtistsPage = () => {

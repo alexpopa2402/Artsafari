@@ -1,6 +1,6 @@
 import './GalleryPage-style.css';
 import ArtworkCard from '@components/UI/artwork-card/ArtworkCard';
-import Spinner from '@components/loading-skeletons/Spinner/Spinner';
+import Spinner from '@components/loaders/spinners/globalSpinner/Spinner';
 import { useFetchArtworks } from '@hooks/api/useFetchArtworks';
 
 const GalleryPage = () => {
@@ -16,13 +16,11 @@ const GalleryPage = () => {
 
   return (
     <div className="gallery-container">
-      <div className="product-grid">
         {data.pages.map((page) =>
           page.map((artwork) => (
             <ArtworkCard key={artwork.id} artwork={artwork} artistName={artwork.artistName} />
           ))
         )}
-      </div>
       {hasNextPage && (
         <button onClick={() => fetchNextPage()} className="load-more-button">
           Load More
