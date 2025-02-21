@@ -1,21 +1,6 @@
 import './AboutPage-style.css';
-/* import  { useState, useEffect } from 'react';
-import Spinner from '@components/loading-skeletons/Spinner/Spinner'; */
 
 const About = () => {
-/*     const [loading, setLoading] = useState(true);
-
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 200000); // Simulate a 2-second loading time
-
-        return () => clearTimeout(timer);
-    }, []);
-    if (loading) {
-        return <Spinner />;
-    } */
 
     return (
          <div className="about-container">
