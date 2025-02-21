@@ -62,9 +62,10 @@ const ArtworkDetailPage = () => {
 
   const handleMouseUp = () => {
     setIsDragging(false);
+    setPosition({ x: 0, y: 0 }); // Snap picture back to center
   };
 
-  const handleTouchStart = (e) => {
+/*   const handleTouchStart = (e) => {
     setIsDragging(true);
     const touch = e.touches[0];
     setStartPosition({ x: touch.clientX - position.x, y: touch.clientY - position.y });
@@ -79,7 +80,7 @@ const ArtworkDetailPage = () => {
 
   const handleTouchEnd = () => {
     setIsDragging(false);
-  };
+  }; */
 
 
   if (isLoading) {
@@ -157,7 +158,7 @@ const ArtworkDetailPage = () => {
         </div>
       </div>
       {isOverlayOpen && (
-        <div ref={overlayRef} className="overlay" onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+        <div ref={overlayRef} className="overlay" onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp} >
           <button className="overlay__close" onClick={handleOverlayClose}>X</button>
             <img
               src={artwork.image_urls[currentImageIndex]}
@@ -165,7 +166,6 @@ const ArtworkDetailPage = () => {
               style={{ transform: `scale(${zoomLevel}) translate(${position.x}px, ${position.y}px)` }}
               className="overlay__image"
               onMouseDown={handleMouseDown}
-              onTouchStart={handleTouchStart}
             />
           <div className="overlay__zoom__controls">
             <button
