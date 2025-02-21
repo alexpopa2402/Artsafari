@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 
 import AuthButton from '@components/buttons/auth-button/AuthButton';
 import UploadButton from '@components/buttons/upload-button/UploadButton';
+import carouselImage from '@assets/images/propagart.png';
 
 import './Carousel-style.css';
 
@@ -108,7 +109,7 @@ const CarouselItem = ({ src, title, artistName, year, isActive, isWelcomeSection
     <div className={`carousel-item ${isActive ? 'active' : ''}`} role="tabpanel" aria-hidden={!isActive}>
       {isWelcomeSection ? (
         <div className="homepage-section">
-          <img src="./src/assets/images/propagart.png" alt="carousel-image" className="homepage-img1" />
+          <img src={carouselImage}  alt="carousel-image" className="homepage-img1" />
           <div className="homepage-text">
             <h1 className="homepage-title">{title}</h1>
             <p className="carousel-text-full">
