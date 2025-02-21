@@ -14,7 +14,7 @@ import carouselImage from '@assets/images/propagart.png';
 import './Carousel-style.css';
 
 const Carousel = () => {
-  const { data, isLoading, isError } = useFetchArtworks(true); // Fetch all artworks
+  const { data, isError } = useFetchArtworks(true); // Fetch all artworks
   const [currentIndex, setCurrentIndex] = useState(0);
   const session = useSession();
 
@@ -34,7 +34,7 @@ const Carousel = () => {
     setCurrentIndex(prevIndex => (prevIndex === artworks.length ? 0 : prevIndex + 1));
   }, [artworks.length]);
 
-  // Automatically go to the next slide every 6 seconds
+  // Automatically go to the next slide every 7 seconds
   useEffect(() => {
     const interval = setInterval(goToNext, 7000);
     return () => clearInterval(interval);
@@ -49,19 +49,17 @@ const Carousel = () => {
   });
 
   // If there is no data, display a loading message
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading artworks</div>;
+  if (isError) return { error: 'An error occurred while fetching the data' };
 
   return (
     <div className="carousel-container" aria-roledescription="carousel" {...handlers}>
       <div className="carousel-slide">
         <CarouselItem
           key="welcome-section"
-/*           src="./src/assets/images/propagart.png" */
-          title="Welcome to Youngblood"
-          isActive={currentIndex === 0}
+          title="Welcome to Youngblood" // Title for the welcome section
+          isActive={currentIndex === 0} // The welcome section is always the first slide
           isWelcomeSection={true}
-          session={session}
+          session={session} // Pass the session so the button can change based on the user's authentication status
         />
         {artworks.map((artwork, index) => (
           <CarouselItem
