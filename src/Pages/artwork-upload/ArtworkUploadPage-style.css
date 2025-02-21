@@ -3,7 +3,7 @@
     width: 100%;
     background: var(--card-background-color);
     color: var(--font-primary-color);
-/*     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); */
+    /*     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); */
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -26,7 +26,8 @@
     top: 0;
     margin-bottom: 20px;
     z-index: 100;
-    box-shadow: 0 5px 6px rgba(199, 199, 199, 0.1); /* Add this line for the box shadow */
+    box-shadow: 0 5px 6px rgba(199, 199, 199, 0.1);
+    /* Add this line for the box shadow */
 }
 
 .upload-header-buttons {
@@ -39,7 +40,7 @@
 
 }
 
-.upload-header-buttons .artwork-submit-button{
+.upload-header-buttons .artwork-submit-button {
     border-radius: var(--border-radius-rounded);
     width: 300px;
     height: 50px;
@@ -56,7 +57,7 @@
 
 
 .upload-artwork h2 {
-/*     text-align: center; */
+    /*     text-align: center; */
     margin-bottom: 40px;
 }
 
@@ -76,7 +77,7 @@
     background: var(--card-background-color);
 }
 
-.upload-artwork .form-group > :nth-child(2n+1) {
+.upload-artwork .form-group> :nth-child(2n+1) {
     left: 10px;
 }
 
@@ -136,8 +137,8 @@
 .dragging {
     border-color: #5e66ff;
     backdrop-filter: blur(10px);
- 
-  }
+
+}
 
 .drop-zone span {
     margin-top: 10px;
@@ -155,6 +156,7 @@
 .add-artwork-button {
     font-size: var(--font-size-medium);
 }
+
 .artwork-upload-error-message {
     color: red;
     font-size: var(--font-size-medium);
@@ -264,36 +266,37 @@
 }
 
 @media (max-width: 600px) {
-    
+
     .form-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
     }
 
-    .dimensions-group {
+    /*     .dimensions-group {
         grid-template-columns: 1fr;
         grid-template-columns: repeat(3, 1fr);
-    }
+    } */
 
-    .full-width {
+    /*     .full-width {
         grid-column: span 1;
     }
 
     .form-group {
         grid-column: span 1;
-    }
+    } */
 
-    
+
     .upload-header-buttons,
     .upload-artwork .form-container,
     .home-link {
         padding: 0 20px;
     }
 
-    .upload-header-buttons .artwork-submit-button{
+    .upload-header-buttons .artwork-submit-button {
         display: none;
     }
 
-    .upload-footer-wrapper-sticky{
+    .upload-footer-wrapper-sticky {
         display: flex;
         position: sticky;
         bottom: 0;
@@ -303,8 +306,10 @@
         justify-content: center;
         width: 100%;
         z-index: 100;
-        box-shadow: 0 -4px 6px rgba(199, 199, 199, 0.1); /* Add this line for the box shadow */
+        box-shadow: 0 -4px 6px rgba(199, 199, 199, 0.1);
+        /* Add this line for the box shadow */
     }
+
     .upload-footer-wrapper-sticky .artwork-submit-button {
         display: block;
         width: 100%;
@@ -312,11 +317,12 @@
         border-radius: var(--border-radius-rounded);
         height: 50px;
     }
-    .success-popup, 
+
+    .success-popup,
     .error-popup {
-            transform: translate(-50%,-80%);
-            transform: translate(-50%, 0%);
-      }
+        transform: translate(-50%, -80%);
+        transform: translate(-50%, 0%);
+    }
 }
 
 .select-wrapper {
@@ -347,10 +353,12 @@ select {
     .file-info {
         font-size: var(--font-size-small);
     }
+
     .file-preview-container {
         min-width: 80px;
         height: 80px;
     }
+
     .file-preview {
         max-width: 80px;
         max-height: 80px;
@@ -359,11 +367,13 @@ select {
     .file-size {
         display: none;
     }
+
     .drop-zone {
         font-size: var(--font-size-intermediate);
         text-align: left;
         overflow: hidden;
     }
+
     .drop-zone span {
         font-size: var(--font-size-small);
     }
@@ -373,24 +383,24 @@ select {
     position: fixed;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%,-80%);
+    transform: translate(-50%, -80%);
     background: rgb(69, 187, 98);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     animation: slideUp 0.5s forwards, fadeOut 0.5s 3s forwards;
     z-index: 100;
-  }
-  
-  .error-popup {
+}
+
+.error-popup {
     position: fixed;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%,-80%);
+    transform: translate(-50%, -80%);
     background: #ff4500;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     animation: slideUp 0.5s forwards, fadeOut 0.5s 3s forwards;
     z-index: 100;
-  }
+}

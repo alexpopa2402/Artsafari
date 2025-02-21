@@ -13,7 +13,7 @@ import ProtectedRoute from '@components/auth/protected-route/ProtectedRoute';
 import Spinner from '@components/loading-skeletons/Spinner/Spinner';
 
 // Public components
-import HomePage from '@pages/home/HomePage';
+import HomePage from './pages/home/HomePage';
 import ArtistsPage from '@pages/artists/ArtistsPage';
 import GalleryPage from '@pages/gallery/GalleryPage';
 import ArtworkDetailPage from '@pages/artwork-detail/ArtworkDetailPage';
