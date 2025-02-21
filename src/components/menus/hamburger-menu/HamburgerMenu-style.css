@@ -50,6 +50,7 @@
   border-radius: 50%;
   animation: gradient 4s infinite;
   z-index: 1;
+  overflow: hidden;
 }
 
 @keyframes gradient {
@@ -62,45 +63,41 @@
 }
 
 .burger-menu .animation-container:nth-child(1) {
-  height: 90%;
-  width: 80%;
+  height: 50%;
+  width: 50%;
   background: #ff057c;
   background: var(--animation-color-two);
   opacity: 0.8;
-  left: -29%;
-  top: -10%;
 }
 
 .burger-menu .animation-container:nth-child(2) {
-  height: 80%;
-  width: 70%;
+  height: 50%;
+  width: 50%;
   background: #800f86;
   background: var(--animation-color-one);
   opacity: 0.8;
-  top: -12%;
-  right: -12%;
-  animation-delay: 8s;
+  right: 14%;
+  animation-delay: 9s;
 }
 
 .burger-menu .animation-container:nth-child(3) {
-  height: 65%;
-  width: 80%;
+  height: 50%;
+  width: 50%;
   background: #1619b9;
   background:var(--animation-color-two);
   opacity: 0.8;
-/*   bottom: -15%; */
-  right: -18%;
+  bottom: 25%;
+  right: 12%;
   animation-delay: 0.3s;
 }
 
 .burger-menu .animation-container:nth-child(4) {
   height: 50%;
-  width: 75%;
+  width: 50%;
   background: #1ba8e9;
   background: var(--animation-color-one);
   opacity: 0.8;
-/*   bottom: -10%; */
-  left: -18%;
+  bottom: 25%;
   animation-delay: 1.2s;
 }
 

@@ -143,7 +143,7 @@ const CarouselItem = ({ src, title, artistName, year, isActive, isWelcomeSection
 };
 
 CarouselItem.propTypes = {
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
   title: PropTypes.string.isRequired,
   artistName: PropTypes.string,
   year: PropTypes.number,
