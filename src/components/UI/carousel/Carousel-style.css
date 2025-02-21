@@ -135,6 +135,16 @@
     height: 100%;
 }
 
+/* for slow internet - add blur when initial carousel slide image is loading  */
+.homepage-img1.loading {
+    filter: blur(10px);
+    transition: filter 0.3s ease;
+  }
+  
+  .homepage-img1.loaded {
+    filter: none;
+  }
+
 .homepage-text p {
     font-size: clamp(0.9rem, 3svw, 1rem);
     font-family: var(--ff-k2d);

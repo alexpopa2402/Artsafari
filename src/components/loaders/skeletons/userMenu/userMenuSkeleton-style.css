@@ -1,0 +1,23 @@
+.user-menu-skeleton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-small);
+  height: 35px;
+  width: 35px;
+  top: 0;
+  right: 5rem;
+  position: absolute;
+  margin: 1rem 0 0 0;
+}
+
+/*   .user-menu-skeleton .fa-user {
+    font-size: var(--font-size-intermediate);
+    color: var(--font-primary-color);
+    color: red;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+  } */
