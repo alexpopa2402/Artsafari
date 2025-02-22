@@ -1,0 +1,3 @@
+.upload-button-skeleton {
+    color: rgba(0, 0, 0, 0); /* transparent so only skeleton appears - good workaround to flickering problem for now */
+}
