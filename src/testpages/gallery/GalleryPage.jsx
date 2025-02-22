@@ -1,6 +1,6 @@
 import './GalleryPage-style.css';
 import ArtworkCard from '@components/UI/artwork-card/ArtworkCard';
-import Spinner from '@components/loaders/spinners/globalSpinner/Spinner';
+import Spinner from '@components/loaders/spinners/GlobalSpinner/Spinner';
 import { useFetchArtworks } from '@hooks/apiHooks/useFetchArtworks';
 
 const GalleryPage = () => {

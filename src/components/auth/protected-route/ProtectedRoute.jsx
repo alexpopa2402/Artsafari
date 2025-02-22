@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useSessionContext } from '@supabase/auth-helpers-react';
-import Spinner from '@components/loaders/spinners/globalSpinner/Spinner';
+import Spinner from '@components/loaders/spinners/GlobalSpinner/Spinner';
 
 
 const ProtectedRoute = () => {
