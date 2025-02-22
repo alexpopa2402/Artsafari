@@ -9,7 +9,7 @@ import AuthButton from '@components/buttons/auth-button/AuthButton';
 import UserMenu from '@components/menus/user-menu/UserMenu';
 import HamburgerMenu from '@components/menus/hamburger-menu/HamburgerMenu';
 import YBlogo from '@assets/images/logo/YBlogo.png';
-import UserMenuSkeleton from '@components/loaders/skeletons/userMenu/UserMenuSkeleton'
+import UserMenuSkeleton from '@components/loaders/skeletons/UserMenuSkeleton/UserMenuSkeleton'
 
 import './Header-style.css';
 

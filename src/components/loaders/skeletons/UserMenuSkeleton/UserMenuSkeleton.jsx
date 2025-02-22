@@ -1,4 +1,4 @@
-import './userMenuSkeleton-style.css';
+import './UserMenuSkeleton-style.css';
 
 const UserMenuSkeleton = () => {
     return (
