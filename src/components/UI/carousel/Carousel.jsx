@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import AuthButton from '@components/buttons/auth-button/AuthButton';
 import UploadButton from '@components/buttons/upload-button/UploadButton';
 import carouselImage from '@assets/images/propagart.webp';
+import UploadButtonSkeleton from '@components/loaders/skeletons/UploadButtonSkeleton/UploadButtonSkeleton';
 
 import './Carousel-style.css';
 
@@ -120,7 +121,7 @@ const CarouselItem = ({ src, title, artistName, year, isActive, isWelcomeSection
             <p className="carousel-text-short">
               Do you have a passion for creating art? Would you like to showcase your work to a global audience?
             </p>
-            {isLoading ? null : (
+            {isLoading ? <UploadButtonSkeleton/> : (
               session ? (
                 <UploadButton />
               ) : (

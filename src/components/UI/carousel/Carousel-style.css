@@ -164,7 +164,7 @@
     font-size: 1rem;
 }
 
-.homepage-text button {
+.homepage-text button, .homepage-text .upload-skeleton-button {
     width: 250px;
     /*     margin: 0 auto; */
     border-radius: 45px;
@@ -209,7 +209,7 @@
         display: none;
     }
 
-    .homepage-text button {
+    .homepage-text button, .homepage-text .upload-skeleton-button {
         width: fit-content;
         margin-top: 2rem;
         margin-bottom: 1rem;
@@ -294,7 +294,7 @@
         font-size: 1.3rem;
     }
 
-    .homepage-text button {
+    .homepage-text button, .homepage-text .upload-skeleton-button{
         width: 250px;
         border-radius: 45px;
         font-size: var(--font-size-large);
