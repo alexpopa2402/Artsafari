@@ -11,7 +11,7 @@ import useScrollToTop from './hooks/useScrollToTop';
 // Components
 import MainLayout from '@components/layout/MainLayout';
 import ProtectedRoute from '@components/auth/protected-route/ProtectedRoute';
-import Spinner from '@components/loaders/spinners/GlobalSpinner/Spinner';
+import Spinner from '@components/loaders/spinners/SpinnerGlobal/Spinner';
 import ResettableErrorBoundary from '@components/error-boundary/ResettableErrorBoundary';
 
 // Public pages

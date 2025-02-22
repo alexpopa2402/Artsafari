@@ -1,7 +1,7 @@
 import { useState, Suspense } from "react";
 import ReactDOM from "react-dom";
 import useGlobalScrollLock from "@hooks/useGlobalScrollLock";
-import Spinner from '@components/loaders/spinners/GlobalSpinner/Spinner';
+import Spinner from '@components/loaders/spinners/SpinnerGlobal/Spinner';
 import AuthModals from "@components/auth/auth-modals/AuthModals";
 
 const AuthButton = () => {
