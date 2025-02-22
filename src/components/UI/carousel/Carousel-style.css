@@ -210,12 +210,12 @@
     }
 
     .homepage-text button, .homepage-text .upload-skeleton-button {
-        width: fit-content;
+        width: 150px;
         margin-top: 2rem;
         margin-bottom: 1rem;
         border-radius: 45px;
         height: 40px;
-        padding: 0 40px;
+        padding: 0;
         font-size: 15px;
     }
 
