@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import { useSession } from "@supabase/auth-helpers-react";
+import { useSessionContext } from "@supabase/auth-helpers-react";
 
 import AuthButton from '@components/buttons/auth-button/AuthButton';
 import LogoutButton from '@components/buttons/logout-button/LogoutButton';
@@ -14,7 +14,7 @@ import "./HamburgerMenu-style.css";
 const HamburgerMenu = () => {
 
   const [isOpen, setIsOpen] = useState(false);
-  const session = useSession();
+  const { session } = useSessionContext();
   const menuRef = useRef(null);
   const navigate = useNavigate();
 

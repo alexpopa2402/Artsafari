@@ -2,19 +2,20 @@ import { useEffect } from 'react';
 import { setupScrollListener } from '@utils/scrollHandlers';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useSession } from '@supabase/auth-helpers-react';
+import { useSessionContext } from '@supabase/auth-helpers-react';
 
 import SearchBar from '@components/UI/searchbar/SearchBar';
 import AuthButton from '@components/buttons/auth-button/AuthButton';
 import UserMenu from '@components/menus/user-menu/UserMenu';
 import HamburgerMenu from '@components/menus/hamburger-menu/HamburgerMenu';
 import YBlogo from '@assets/images/logo/YBlogo.png';
+import UserMenuSkeleton from '@components/loaders/skeletons/userMenu/UserMenuSkeleton'
 
 import './Header-style.css';
 
 
 const Header = () => {
-  const session = useSession();
+  const { session, isLoading } = useSessionContext();
   const navigate = useNavigate();
 
   
@@ -50,7 +51,11 @@ const Header = () => {
           <Link to='/about' className="about">About Us</Link>
         </nav>
         <HamburgerMenu />
-        {!session ? <AuthButton /> : <UserMenu />}
+        {isLoading ? (
+          <UserMenuSkeleton />
+        ) : (
+          !session ? <AuthButton /> : <UserMenu />
+        )}
       </div>
     </header>
   );

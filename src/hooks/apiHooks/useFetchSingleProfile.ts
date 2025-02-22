@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
-import { getAvatarUrl } from '@utils/storageHelpers.js';
+import { getAvatarUrl } from '@utils/storageHelpers';
 
 interface Profile {
   id: string;
@@ -40,6 +40,6 @@ export const useFetchSingleProfile = (): UseQueryResult<Profile, Error> => {
     },
     enabled: !!user?.id, // Fetch only if user exists
     //retry: 2, // Retry twice before failing
-/*     staleTime: 1000 * 60 * 5, // 5 minutes */
+    //staleTime: 1000 * 60 * 5, // 5 minutes
   });
 };

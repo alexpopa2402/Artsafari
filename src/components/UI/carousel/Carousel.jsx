@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { useSession } from '@supabase/auth-helpers-react';
+import { useSessionContext } from '@supabase/auth-helpers-react';
 import { useSwipeable } from 'react-swipeable';
 
 import { useFetchArtworks } from '@hooks/apiHooks/useFetchArtworks';
@@ -16,7 +16,7 @@ import './Carousel-style.css';
 const Carousel = () => {
   const { data, isError } = useFetchArtworks(true); // Fetch all artworks
   const [currentIndex, setCurrentIndex] = useState(0);
-  const session = useSession();
+  const { session } = useSessionContext();
 
   // Select 3 random artworks from the fetched data
   const artworks = useMemo(() => {
