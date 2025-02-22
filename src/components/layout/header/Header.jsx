@@ -9,7 +9,7 @@ import AuthButton from '@components/buttons/auth-button/AuthButton';
 import UserMenu from '@components/menus/user-menu/UserMenu';
 import HamburgerMenu from '@components/menus/hamburger-menu/HamburgerMenu';
 import YBlogo from '@assets/images/logo/YBlogo.png';
-import UserMenuSkeleton from '@components/loaders/skeletons/UserMenuSkeleton/UserMenuSkeleton'
+/* import UserMenuSkeleton from '@components/loaders/skeletons/UserMenuSkeleton/UserMenuSkeleton' */
 
 import './Header-style.css';
 
@@ -27,6 +27,10 @@ const Header = () => {
       scrollListener();
     };
   }, []);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <header className='main-header'>
@@ -51,11 +55,9 @@ const Header = () => {
           <Link to='/about' className="about">About Us</Link>
         </nav>
         <HamburgerMenu />
-        {isLoading ? (
-          <UserMenuSkeleton />
-        ) : (
+        {
           !session ? <AuthButton /> : <UserMenu />
-        )}
+        }
       </div>
     </header>
   );

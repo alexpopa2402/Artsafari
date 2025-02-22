@@ -16,7 +16,7 @@ import './Carousel-style.css';
 const Carousel = () => {
   const { data, isError } = useFetchArtworks(true); // Fetch all artworks
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { session } = useSessionContext();
+  const { session, isLoading } = useSessionContext();
 
   // Select 3 random artworks from the fetched data
   const artworks = useMemo(() => {
@@ -60,6 +60,7 @@ const Carousel = () => {
           isActive={currentIndex === 0} // The welcome section is always the first slide
           isWelcomeSection={true}
           session={session} // Pass the session so the button can change based on the user's authentication status
+          isLoading={isLoading} // Pass the loading state so the button can change based on the user's authentication status
         />
         {artworks.map((artwork, index) => (
           <CarouselItem
@@ -101,7 +102,7 @@ const Carousel = () => {
 };
 
 // CarouselItem component
-const CarouselItem = ({ src, title, artistName, year, isActive, isWelcomeSection, session }) => {
+const CarouselItem = ({ src, title, artistName, year, isActive, isWelcomeSection, session, isLoading }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <div className={`carousel-item ${isActive ? 'active' : ''}`} role="tabpanel" aria-hidden={!isActive}>
@@ -119,10 +120,12 @@ const CarouselItem = ({ src, title, artistName, year, isActive, isWelcomeSection
             <p className="carousel-text-short">
               Do you have a passion for creating art? Would you like to showcase your work to a global audience?
             </p>
-            {session ? (
-              <UploadButton />
-            ) : (
-              <AuthButton />
+            {isLoading ? null : (
+              session ? (
+                <UploadButton />
+              ) : (
+                <AuthButton />
+              )
             )}
           </div>
         </div>
@@ -151,6 +154,7 @@ CarouselItem.propTypes = {
   isActive: PropTypes.bool.isRequired,
   isWelcomeSection: PropTypes.bool,
   session: PropTypes.object,
+  isLoading: PropTypes.bool
 };
 
 export default Carousel;

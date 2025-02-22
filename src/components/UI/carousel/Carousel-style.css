@@ -1,7 +1,7 @@
 .carousel-container {
     width: 100%;
     height: 500px;
-/*     overflow: hidden; */
+    /*     overflow: hidden; */
 }
 
 .carousel-slide {
@@ -29,8 +29,8 @@
     height: 100%;
     object-fit: cover;
     background: linear-gradient(90deg,
-            var(--gradient-start-color, var(--card-background-color)) 25%,
-            var(--gradient-end-color, var(--secondary-color)) 75%);
+        var(--gradient-start-color, var(--card-background-color)) 25%,
+        var(--gradient-end-color, var(--secondary-color)) 75%);
     /*     background: var(--background-color); */
     pointer-events: none;
 }
@@ -79,7 +79,8 @@
     border-color: transparent;
 }
 
-.left-arrow, .right-arrow {
+.left-arrow,
+.right-arrow {
     margin: 0 10px;
 }
 
@@ -95,7 +96,8 @@
     height: 1px;
     background: var(--font-accent-color);
     opacity: 0.5;
-    transition: opacity 0.5s ease-in-out; /* Add transition for smooth change */
+    transition: opacity 0.5s ease-in-out;
+    /* Add transition for smooth change */
 }
 
 .carousel-line.active {
@@ -108,6 +110,7 @@
     text-align: left;
     font-family: var(--ff-k2d);
     width: fit-content;
+    margin-top: 2.5em;
     /* white-space: nowrap; */
 }
 
@@ -121,7 +124,7 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     word-wrap: break-word;
     hyphens: auto;
     background-color: var(--card-background-color);
@@ -139,11 +142,11 @@
 .homepage-img1.loading {
     filter: blur(10px);
     transition: filter 0.3s ease;
-  }
-  
-  .homepage-img1.loaded {
+}
+
+.homepage-img1.loaded {
     filter: none;
-  }
+}
 
 .homepage-text p {
     font-size: clamp(0.9rem, 3svw, 1rem);
@@ -192,7 +195,7 @@
         display: block;
         margin: 0;
     }
-    
+
     .homepage-img1 {
         width: 100%;
         height: 85%;
@@ -201,6 +204,7 @@
     .carousel-dynamic-content {
         height: 39px;
     }
+
     .carousel-navigation {
         display: none;
     }
@@ -224,7 +228,7 @@
         font-size: clamp(1.7rem, 3.5svw, 2rem);
         text-align: left;
         font-family: var(--ff-k2d);
-        word-wrap:break-word;
+        word-wrap: break-word;
         white-space: nowrap;
         hyphens: auto;
     }
@@ -245,6 +249,7 @@
     .carousel-text-full {
         margin: 1rem 0 3rem 0;
     }
+
     .homepage-text p {
         font-size: 1.1rem;
     }
@@ -256,7 +261,7 @@
 
 }
 
-@media (min-width: 992px) and  (max-width: 1301px) {
+@media (min-width: 992px) and (max-width: 1301px) {
     .homepage-text {
         padding: 0 4rem;
     }
@@ -274,9 +279,11 @@
     .homepage-text {
         padding: 0 6rem;
     }
+
     .homepage-title {
         font-size: 3rem;
         white-space: nowrap;
+        margin-top: 1.5em;
     }
 
     .carousel-text-full {
