@@ -21,16 +21,19 @@
   font-size: var(--font-size-intermediate);
   line-height: 1.1;
   margin-bottom: 10px;
+  font-style: italic;
+  color: var(--font-secondary-color);
 }
 
 .artwork__author {
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-large);
+  margin-bottom: 10px;
 }
 
 
 
 .artwork__year {
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-intermediate);
 }
 
 .artwork__img {

@@ -15,7 +15,7 @@ import './Header-style.css';
 
 
 const Header = () => {
-  const { session, isLoading } = useSessionContext();
+  const { session } = useSessionContext();
   const navigate = useNavigate();
 
   
@@ -27,10 +27,6 @@ const Header = () => {
       scrollListener();
     };
   }, []);
-
-  if (isLoading) {
-    return null;
-  }
 
   return (
     <header className='main-header'>

@@ -30,12 +30,16 @@ import EditAccountPage from '@testpages/settings/edit-account/EditAccountPage';
 import SettingsPage from '@testpages/settings/SettingsPage';
 const ResetPasswordPage = lazy(() => import('@testpages/password-reset/ResetPasswordPage'));
 
+import { useSessionContext } from '@supabase/auth-helpers-react';
+
 
 export default function App() {
 
   useScrollToTop(); // Scroll to top on route change
-
+  const { isLoading } = useSessionContext(); // adding this here to prevent the app from rendering until the session is loaded, this is to prevent the AuthButton from flickering with the UserMenu
   console.log('Rendering App component');
+
+  if (isLoading) return null;
 
   return (
     <MainLayout>

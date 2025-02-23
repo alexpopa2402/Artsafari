@@ -6,6 +6,7 @@ import './ArtworkDetailPage-style.css';
 import { useFetchSingleArtwork } from '@hooks/apiHooks/useFetchSingleArtwork';
 import useScrollLock from '@hooks/useGlobalScrollLock';
 import useFocusTrap from '@hooks/useFocusTrap';
+import { useSwipeable } from 'react-swipeable';
 
 const ArtworkDetailPage = () => {
   const { slug } = useParams();
@@ -65,23 +66,13 @@ const ArtworkDetailPage = () => {
     setPosition({ x: 0, y: 0 }); // Snap picture back to center
   };
 
-/*   const handleTouchStart = (e) => {
-    setIsDragging(true);
-    const touch = e.touches[0];
-    setStartPosition({ x: touch.clientX - position.x, y: touch.clientY - position.y });
-  };
-
-  const handleTouchMove = (e) => {
-    if (isDragging) {
-      const touch = e.touches[0];
-      setPosition({ x: touch.clientX - startPosition.x, y: touch.clientY - startPosition.y });
-    }
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  }; */
-
+  // Swipe handlers
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNextImage,
+    onSwipedRight: handlePrevImage,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
 
   if (isLoading) {
     return <Spinner />;
@@ -100,20 +91,43 @@ const ArtworkDetailPage = () => {
       <div className="artwork__detail__page">
         <BackButton />
         <div className='dummybox_placeholder'></div>
-        <div className="image__slider">
-          {artwork.image_urls.length > 1 && (
-            <button className="slider__button prev" onClick={handlePrevImage}>
-              <i className="fa-solid fa-chevron-left"></i>
-            </button>
-          )}
-          <button className='clickable__image__zoom' onClick={handleImageClick}>
-            <img src={artwork.image_urls[currentImageIndex]} alt={artwork.title} className="artwork__detail__img" />
+        <div className="image__slider" {...handlers}>
+
+          <button 
+            className='clickable__image__zoom' 
+            onClick={handleImageClick}>
+
+            {artwork.image_urls.length > 1 && (
+              <button
+                className="slider__button prev"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrevImage();
+                }}
+              >
+                <i className="fa-solid fa-chevron-left"></i>
+              </button>
+            )}
+
+            <img
+              className="artwork__detail__img" 
+              src={artwork.image_urls[currentImageIndex]} 
+              alt={artwork.title} 
+            />
+
+            {artwork.image_urls.length > 1 && (
+              <button
+                className="slider__button next"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNextImage();
+                }}
+              >
+                <i className="fa-solid fa-chevron-right"></i>
+              </button>
+            )}
           </button>
-          {artwork.image_urls.length > 1 && (
-            <button className="slider__button next" onClick={handleNextImage}>
-              <i className="fa-solid fa-chevron-right"></i>
-            </button>
-          )}
+
           <div className="image__indicators">
             {artwork.image_urls.map((_, index) => (
               <span
@@ -160,39 +174,39 @@ const ArtworkDetailPage = () => {
       {isOverlayOpen && (
         <div ref={overlayRef} className="overlay" onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp} >
           <button className="overlay__close" onClick={handleOverlayClose}>X</button>
-            <img
-              src={artwork.image_urls[currentImageIndex]}
-              alt={artwork.title}
-              style={{ transform: `scale(${zoomLevel}) translate(${position.x}px, ${position.y}px)` }}
-              className="overlay__image"
-              onMouseDown={handleMouseDown}
-            />
+          <img
+            src={artwork.image_urls[currentImageIndex]}
+            alt={artwork.title}
+            style={{ transform: `scale(${zoomLevel}) translate(${position.x}px, ${position.y}px)` }}
+            className="overlay__image"
+            onMouseDown={handleMouseDown}
+          />
           <div className="overlay__zoom__controls">
             <button
               className="zoom__button__decrease"
               onClick={() => setZoomLevel((prevZoom) => Math.max(1, prevZoom - 0.1))}
               tabIndex="0"
             >
-            <i className="fa-solid fa-minus"></i>
+              <i className="fa-solid fa-minus"></i>
             </button>
 
             <input
-            type="range"
-            min="1"
-            max="3"
-            step="0.1"
-            value={zoomLevel}
-            onChange={(e) => setZoomLevel(parseFloat(e.target.value))}
-            className="overlay__zoom__slider"
-            tabIndex="0"
-          />
+              type="range"
+              min="1"
+              max="3"
+              step="0.1"
+              value={zoomLevel}
+              onChange={(e) => setZoomLevel(parseFloat(e.target.value))}
+              className="overlay__zoom__slider"
+              tabIndex="0"
+            />
 
             <button
               className="zoom__button__increase"
               onClick={() => setZoomLevel((prevZoom) => Math.min(3, prevZoom + 0.1))}
               tabIndex="0"
             >
-            <i className="fa-solid fa-plus"></i>
+              <i className="fa-solid fa-plus"></i>
             </button>
           </div>
         </div>

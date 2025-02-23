@@ -23,8 +23,7 @@ const ArtworkCard = ({ artwork }) => {
       />
       <div className="artwork__content">
       <h1 className="artwork__author">{artwork.artist_name}</h1>
-      <p className="artwork__title">{artwork.title}</p>
-      <p className="artwork__year">{artwork.year}</p>
+      <p className="artwork__title">{artwork.title}, <span className="artwork__year">{artwork.year}</span></p>
       </div>
     </div>
   );
