@@ -13,7 +13,7 @@
   position: absolute;
   background: var(--background-color);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  right: 30px;
+  right: 20px;
   width: 200px;
   border-radius: var(--border-radius-medium);
   overflow: hidden;
@@ -476,7 +476,7 @@ body {
 @media (min-width: 992px) {
   .dropdown-content {
     top: 70px;
-    right: 0px;
+    right: -77px;
   }
 
   .user-menu {
@@ -488,8 +488,8 @@ body {
 
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .dropdown-content {
-    right: -160px;
+    right: -80px;
   }
-}
+} */
