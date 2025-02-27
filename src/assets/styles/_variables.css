@@ -61,6 +61,9 @@
   /* card colors */
   --card-background-color: #fff7f3;
 
+  /* carousel colors */
+  --carousel-background-color: rgb(202, 205, 236);
+
   /* corner colors */
   --corner-color: #ccc;
   --folded-corner-color: #fff;
@@ -122,6 +125,7 @@
   --button-disabled-color: rgb(194, 194, 194);
 
   --card-background-color: #111;
+  --carousel-background-color: #111;
   --corner-color: #171c79;
   --folded-corner-color: #3339b4;
   --corner-box-shadow: -3px -3px 7px rgba(14, 14, 14, 0.756);

@@ -1,7 +1,9 @@
+/* styling is designed to go from mobile to large screen */
+
+
 .carousel-container {
-    width: 100%;
-    height: 500px;
-    /*     overflow: hidden; */
+    height: 450px;
+    position: relative;
 }
 
 .carousel-slide {
@@ -31,7 +33,6 @@
     background: linear-gradient(90deg,
         var(--gradient-start-color, var(--card-background-color)) 25%,
         var(--gradient-end-color, var(--secondary-color)) 75%);
-    /*     background: var(--background-color); */
     pointer-events: none;
 }
 
@@ -52,7 +53,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    height: 70px;
+    height: 85px;
 }
 
 .carousel-navigation {
@@ -89,29 +90,30 @@
     gap: 15px;
     z-index: 3;
     width: 100%;
+    margin: 0 20px;
 }
 
 .carousel-line {
     width: 100%;
     height: 1px;
-    background: var(--font-accent-color);
+  flex: 1 1 0%;
+    background-color: var(--font-primary-color-transparent);
     opacity: 0.5;
     transition: opacity 0.5s ease-in-out;
-    /* Add transition for smooth change */
 }
 
 .carousel-line.active {
     opacity: 1;
+    background: var(--font-accent-color);
 }
 
 
 .homepage-title {
-    font-size: 2.3em;
+    font-size: clamp(1.6rem, 4svw, 3.2rem);
     text-align: left;
     font-family: var(--ff-k2d);
     width: fit-content;
-    margin-top: 2.5em;
-    /* white-space: nowrap; */
+    white-space: nowrap;
 }
 
 .homepage-section {
@@ -120,15 +122,17 @@
     height: 100%;
 }
 
+
+
 .homepage-text {
     width: 50%;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     word-wrap: break-word;
     hyphens: auto;
-    background-color: var(--card-background-color);
+    background-color: var(--carousel-background-color);
     padding: 0 2rem;
+    justify-content: space-evenly;
     z-index: 2;
 }
 
@@ -149,13 +153,12 @@
 }
 
 .homepage-text p {
-    font-size: clamp(0.9rem, 3svw, 1rem);
+    font-size: clamp(0.9rem, 2svw, 1.1rem);
     font-family: var(--ff-k2d);
 }
 
 .carousel-text-full {
     display: block;
-    margin: 2rem 0 3rem 0;
 }
 
 .carousel-text-short {
@@ -166,12 +169,15 @@
 
 .homepage-text button, .homepage-text .upload-skeleton-button {
     width: 250px;
-    /*     margin: 0 auto; */
     border-radius: 45px;
     font-size: var(--font-size-intermediate);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 769px) {
+
+    .carousel-container {
+        height: 500px;
+    }
 
     .homepage-section {
         flex-direction: column;
@@ -202,7 +208,7 @@
     }
 
     .carousel-dynamic-content {
-        height: 39px;
+        height: 44px;
     }
 
     .carousel-navigation {
@@ -223,14 +229,25 @@
 
 @media (min-width: 769px) and (max-width: 991px) {
 
+    .carousel-container {
+        position: relative;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        left: 50%;
+        right: 50%;
+        width: 100vw;
+        max-width: 100vw;
+    }
+
     .homepage-title {
         padding: 1rem 0;
-        font-size: clamp(1.7rem, 3.5svw, 2rem);
+        font-size: clamp(1.7rem, 4svw, 2.1rem);
         text-align: left;
         font-family: var(--ff-k2d);
         word-wrap: break-word;
         white-space: nowrap;
         hyphens: auto;
+        margin-top: 0;
     }
 
     .homepage-section {
@@ -241,63 +258,20 @@
         margin: 0 0 1rem 0;
     }
 
-
-    .homepage-text {
-        padding: 0 3rem;
-    }
-
-    .carousel-text-full {
-        margin: 1rem 0 3rem 0;
-    }
-
-    .homepage-text p {
-        font-size: 1.1rem;
-    }
-
     .homepage-img1 {
         width: 50%;
         object-fit: cover;
     }
 
+    .carousel-dynamic-content {
+        margin: 0 20px;
+    }
+
 }
 
-@media (min-width: 992px) and (max-width: 1301px) {
-    .homepage-text {
-        padding: 0 4rem;
-    }
+@media (min-width: 991px) {
 
     .homepage-text p {
-        font-size: 1.2rem;
-    }
-
-    .homepage-title {
-        white-space: nowrap;
-    }
-}
-
-@media (min-width: 1302px) {
-    .homepage-text {
-        padding: 0 6rem;
-    }
-
-    .homepage-title {
-        font-size: 3rem;
-        white-space: nowrap;
-        margin-top: 1.5em;
-    }
-
-    .carousel-text-full {
-        margin: 2rem 0 3rem 0;
-    }
-
-    .homepage-text p {
-        font-size: 1.3rem;
-    }
-
-    .homepage-text button, .homepage-text .upload-skeleton-button{
-        width: 250px;
-        border-radius: 45px;
-        font-size: var(--font-size-large);
-    }
-
+        font-size: clamp(1.1rem, 1.5svw, 1.3rem);
+  }
 }

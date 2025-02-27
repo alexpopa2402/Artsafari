@@ -36,10 +36,10 @@ const Carousel = () => {
   }, [artworks.length]);
 
   // Automatically go to the next slide every 7 seconds
-  useEffect(() => {
+/*   useEffect(() => {
     const interval = setInterval(goToNext, 7000);
     return () => clearInterval(interval);
-  }, [goToNext]);
+  }, [goToNext]); */
 
   // Swipe handlers
   const handlers = useSwipeable({

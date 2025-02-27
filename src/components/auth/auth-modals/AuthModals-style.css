@@ -338,7 +338,6 @@ input::placeholder {
   }
   .popup-header {
     position: sticky;
-/*     top: 0; */
     z-index: 10;
     gap: 0.2em;
     padding: 0 0 var(--padding-medium) 0;

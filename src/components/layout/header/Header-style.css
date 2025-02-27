@@ -145,7 +145,7 @@
   }
 
   .header-container {
-    max-width: 992px;
+/*     max-width: 992px; */
     flex-direction: column;
     position: relative;
   }

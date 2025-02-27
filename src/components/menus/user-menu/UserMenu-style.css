@@ -435,6 +435,10 @@
     margin-top: 1rem;
   }
 
+  .settings {
+    margin-bottom: 17px;
+  }
+
 }
 
 /* WebKit browsers */
@@ -467,22 +471,6 @@ body {
 
 
 /* media queries for positioning small menu as screen gets resized horizontally */
-
-
-/* @media (min-width: 511px) {
-  .user-links .collection-item-button {
-    color: var(--font-primary-color);
-  }
-
-  .user-links .settings .logout-button-component {
-    color: var(--font-primary-color);
-    font-size: var(--font-size-intermediate);
-    width: 76%;
-  }
-
-} */
-
-
 
 
 @media (min-width: 992px) {
