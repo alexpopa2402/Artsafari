@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Link, useNavigate } from 'react-router-dom';
 import BackButton from '@components/buttons/back-button/BackButton';
 import UploadSubmitButton from '@components/buttons/upload-submit-button/UploadSubmitButton';
+import imageCompression from "browser-image-compression";
 import './ArtworkUploadPage-style.css';
 
 interface ArtworkFormData {
@@ -44,6 +45,7 @@ const UploadImages = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const [status, setStatus] = useState({ loading: false, error: '', success: false });
+  const [conversionStatus, setConversionStatus] = useState<string[]>([]);
 
   // Memoized derived values
   const totalSize = useMemo(() =>
@@ -83,7 +85,7 @@ const UploadImages = () => {
   }), [files]);
 
   // File handling
-  const handleFileAdd = useCallback((newFiles: File[]) => {
+/*   const handleFileAdd = useCallback((newFiles: File[]) => {
     const validFiles = newFiles.filter(file => {
       const { isSupported, isDuplicate } = validateFile(file);
       return isSupported && !isDuplicate;
@@ -99,6 +101,42 @@ const UploadImages = () => {
       URL.revokeObjectURL(prev[index]);
       return prev.filter((_, i) => i !== index);
     });
+  }, []); */
+  
+  // File handling with webp conversion
+  const handleFileAdd = useCallback(async (newFiles: File[]) => {
+    const validFiles = await Promise.all(newFiles.map(async (file, index) => {
+      const { isSupported, isDuplicate } = validateFile(file);
+      if (isSupported && !isDuplicate) {
+        setConversionStatus(prev => [...prev, 'converting/compressing...']);
+        const compressedFile = await imageCompression(file, { 
+          maxSizeMB: 1, 
+          maxWidthOrHeight: 1920, 
+          useWebWorker: true,
+          fileType: 'image/webp'
+        });
+        setConversionStatus(prev => {
+          const newStatus = [...prev];
+          newStatus[index] = 'done';
+          return newStatus;
+        });
+        return compressedFile;
+      }
+      return null;
+    }));
+
+    const filteredFiles = validFiles.filter(file => file !== null) as File[];
+    setFiles(prev => [...prev, ...filteredFiles]);
+    setPreviews(prev => [...prev, ...filteredFiles.map(URL.createObjectURL)]);
+  }, [validateFile]);
+
+  const handleFileRemove = useCallback((index: number) => {
+    setFiles(prev => prev.filter((_, i) => i !== index));
+    setPreviews(prev => {
+      URL.revokeObjectURL(prev[index]);
+      return prev.filter((_, i) => i !== index);
+    });
+    setConversionStatus(prev => prev.filter((_, i) => i !== index));
   }, []);
 
   // Form submission
@@ -151,6 +189,7 @@ const UploadImages = () => {
       previews.forEach(URL.revokeObjectURL);
       setFiles([]);
       setPreviews([]);
+      setConversionStatus([]);
     }
   }, [isFormValid, user, files, formData, supabase, navigate, previews, status]);
 
@@ -387,6 +426,7 @@ const UploadImages = () => {
                   key={files[index].name}
                   preview={preview}
                   file={files[index]}
+                  conversionStatus={conversionStatus[index]}
                   onRemove={() => handleFileRemove(index)}
                 />
               ))}
@@ -406,9 +446,10 @@ const UploadImages = () => {
 };
 
 // Helper components
-const FilePreview = ({ preview, file, onRemove }: {
+const FilePreview = ({ preview, file, conversionStatus, onRemove }: {
   preview: string;
   file: File;
+  conversionStatus: string;
   onRemove: () => void;
 }) => (
   <div className="file-item">
@@ -422,8 +463,8 @@ const FilePreview = ({ preview, file, onRemove }: {
     </div>
 
     <div className="file-info">
-      <span className="file-name">{file.name}</span>
-      <span className="file-size">{(file.size / 1024).toFixed(1)}KB</span>
+    <span className="file-name">{conversionStatus === 'done' ? file.name : conversionStatus}</span>
+    <span className="file-size">{(file.size / 1024).toFixed(1)}KB</span>
     </div>
     <button type="button" onClick={onRemove} aria-label={`Remove ${file.name}`}>Remove</button>
   </div>
