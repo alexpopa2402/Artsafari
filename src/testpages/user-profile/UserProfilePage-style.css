@@ -137,7 +137,7 @@
 
 /* profile gallery layout, serves to the ArtistCard component */
 
-.user-gallery {
+.user-gallery-container {
     margin-inline: auto;
     padding-inline: 20px;
     margin: 1rem 0;
@@ -154,7 +154,7 @@
     text-align: center;
     font-size: var(--font-size-intermediate);
     color: var(--font-secondary-color);
-    margin: auto;
+    margin: 20px 0;
 }
 
 .load-more-button {
