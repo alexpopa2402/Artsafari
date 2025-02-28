@@ -42,10 +42,10 @@ const UserMenu = () => {
 
             {isOpen && (
                     <div className={`dropdown-content ${isOpen ? 'show' : ''}`}>
+{/*                     <div className="animation-container"></div>
                     <div className="animation-container"></div>
                     <div className="animation-container"></div>
-                    <div className="animation-container"></div>
-                    <div className="animation-container"></div>
+                    <div className="animation-container"></div> */}
                     <div className="user-info" >
                         <div className='menu-avatar-circle' alt="Avatar">
                             {profile.avatar_url ? (

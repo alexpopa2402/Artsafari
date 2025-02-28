@@ -39,11 +39,11 @@ const HamburgerMenu = () => {
         <i className="fa fa-bars"></i>
       </div>
       {isOpen && (
-        <div className="burger-menu">
+        <div className={`burger-menu ${isOpen ? 'show' : ''}`}>
+{/*           <div className="animation-container"></div>
           <div className="animation-container"></div>
           <div className="animation-container"></div>
-          <div className="animation-container"></div>
-          <div className="animation-container"></div>
+          <div className="animation-container"></div> */}
           <div className="close-popup-container">
             <button className="hamburger-close-popup" onClick={() => setIsOpen(!isOpen)}>
               <i className="fa fa-solid fa-circle-xmark"></i>

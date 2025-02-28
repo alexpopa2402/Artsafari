@@ -36,10 +36,10 @@ const Carousel = () => {
   }, [artworks.length]);
 
   // Automatically go to the next slide every 7 seconds
-/*   useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(goToNext, 7000);
     return () => clearInterval(interval);
-  }, [goToNext]); */
+  }, [goToNext]);
 
   // Swipe handlers
   const handlers = useSwipeable({
@@ -57,7 +57,7 @@ const Carousel = () => {
       <div className="carousel-slide">
         <CarouselItem
           key="welcome-section"
-          title="Welcome to Youngblood" // Title for the welcome section
+          title="Welcome to Young Blood" // Title for the welcome section
           isActive={currentIndex === 0} // The welcome section is always the first slide
           isWelcomeSection={true}
           session={session} // Pass the session so the button can change based on the user's authentication status

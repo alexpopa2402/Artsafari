@@ -68,4 +68,5 @@
     background: var(--secondary-color);
     margin-bottom: 20px;
     width: fit-content;
+    align-items: center;
 }
