@@ -24,6 +24,6 @@
     //"allowSyntheticDefaultImports": true,
     //"allowJs": true
   },
-  "include": ["src"],
-  "exclude": ["dist", "build", "node_modules"]
+  "include": ["cypress", "src"],
+  "exclude": ["dist", "build", "nodne_modules"]
 }
