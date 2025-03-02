@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useRef } from "react";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 /* import { useFetchSingleProfile } from "@hooks/apiHooks/useFetchSingleProfile"; */
 import { v4 as uuidv4 } from "uuid";
@@ -21,7 +21,7 @@ interface ArtworkFormData {
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const MAX_CONCURRENT_UPLOADS = 3;
-const SUPPORTED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/heic', 'image/webp'];
+const SUPPORTED_MIME_TYPES = ['image/jpg','image/jpeg', 'image/png', 'image/heic', 'image/webp'];
 
 const UploadImages = () => {
   const supabase = useSupabaseClient();
@@ -29,6 +29,8 @@ const UploadImages = () => {
 /*   const { data: profile} = useFetchSingleProfile(); */
   const navigate = useNavigate();
   const [isDragging, setIsDragging] = useState(false);
+
+  const uploadInputRef = useRef<HTMLInputElement>(null);
 
   // Consolidated form state
   const [formData, setFormData] = useState<ArtworkFormData>({
@@ -404,15 +406,16 @@ const UploadImages = () => {
                   multiple
                   onChange={e => handleFileAdd(Array.from(e.target.files || []))}
                   hidden
+                  ref={uploadInputRef}
               />
-              <span>Supported formats: JPG, PNG, HEIC, WEBP</span> 
+              <span>Supported formats: JPG, JPEG, PNG, HEIC, WEBP</span> 
               <span>Max total size: {MAX_FILE_SIZE / 1024 / 1024}MB</span>
               <span>You&apos;re currently at: {totalSize > 0 ? (totalSize / 1024).toFixed(2) : 0} KB</span>
               <div className="file-button-container">
                 <button
                   type="button"
                   className="add-artwork-button"
-                  onClick={() => document.getElementById('photos')?.click()}
+                  onClick={() => uploadInputRef.current?.click()}
                 >
                   Or Add Photos
                 </button>

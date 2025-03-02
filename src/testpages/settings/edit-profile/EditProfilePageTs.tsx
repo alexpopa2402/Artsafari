@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import imageCompression from 'browser-image-compression';
 import { useForm } from 'react-hook-form';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
@@ -21,6 +21,8 @@ const EditProfilePage = () => {
   const supabase = useSupabaseClient();
   const queryClient = useQueryClient();
   const { data: profile } = useFetchSingleProfile();
+
+  const avatarInputRef = useRef<HTMLInputElement>(null);
 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -170,10 +172,11 @@ const EditProfilePage = () => {
               accept="image/jpeg, image/jpg, image/png, image/webp"
               onChange={onAvatarChange}
               style={{ display: 'none' }}
+              ref={avatarInputRef}
             />
             <div
               className="choose-avatar-text"
-              onClick={() => document.getElementById('avatar')?.click()}
+              onClick={() => avatarInputRef.current?.click()}
             >
               Choose an Image
             </div>
