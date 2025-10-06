@@ -13,7 +13,6 @@ const useScrollLock = (isLocked) => {
         document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
       };
 
-
     useEffect(() => {
         if (isLocked) {
             setScrollbarWidth(); // Adjust scrollbar width
